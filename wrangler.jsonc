@@ -1,0 +1,7 @@
+{
+  "name": "cloudlabworks-site",
+  "main": "src/worker.js",
+  "compatibility_date": "2026-09-01",
+  "workers_dev": false,
+  "routes": [{ "pattern": "cloudlabworks.dev", "custom_domain": true }, { "pattern": "www.cloudlabworks.dev", "custom_domain": true }]
+}
