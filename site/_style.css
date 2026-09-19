@@ -41,3 +41,6 @@ li.gh .gh-graph{display:block;max-width:100%;height:auto;margin-top:12px}
 .gh-graph text{font:9px ui-sans-serif,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;fill:var(--muted)}
 .gh-graph .l0{fill:var(--line)}.gh-graph .l1{fill:#99f6e4}.gh-graph .l2{fill:#5eead4}.gh-graph .l3{fill:#14b8a6}.gh-graph .l4{fill:#0f766e}
 @media(prefers-color-scheme:dark){.gh-graph .l1{fill:#134e4a}.gh-graph .l2{fill:#0f766e}.gh-graph .l3{fill:#14b8a6}.gh-graph .l4{fill:#5eead4}}
+.matrix{--m-ink:#b9f5c8;--m-ink-2:#8fdc9f;--m-accent:#39ff14;--m-line:#123a1c;margin:44px 0 0;padding:22px 24px 6px;border:1px solid var(--m-line);border-radius:12px;background:#050a06 repeating-linear-gradient(0deg,rgba(0,0,0,0) 0 2px,rgba(0,0,0,.18) 2px 3px);color:var(--m-ink);font:15px/1.65 ui-monospace,"SF Mono",Menlo,"JetBrains Mono","Fira Code",Consolas,monospace}
+.matrix h2{margin:0 0 12px;color:var(--m-accent);font-size:1.1rem;text-shadow:0 0 10px rgba(57,255,20,.35)}.matrix h2::before{content:"> "}
+.matrix p{color:var(--m-ink-2);margin:0 0 14px}.matrix b{color:var(--m-ink)}.matrix a{color:var(--m-accent)}
