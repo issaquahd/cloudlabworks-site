@@ -29,7 +29,7 @@ Then `node build.mjs` and deploy. The newest three posts appear on the home page
 
 ## GitHub contribution graphs
 
-`/work` shows the contribution calendars for `@issaquahd` and `@Rebl-Botz` as inline SVG.
+`/work` shows the contribution calendars for `@issaquahd` and `@CloudLabWorks` as inline SVG.
 `node fetch-github.mjs` pulls the public calendars into `data/github.json` (no token, no
 runtime requests from the site); `node build.mjs` renders them. Re-run the fetch before a
 deploy to refresh the numbers.

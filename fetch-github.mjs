@@ -2,7 +2,7 @@
 // No token needed (public HTML endpoint). Run before build.mjs; the site itself makes no
 // runtime requests to GitHub. Usage: node fetch-github.mjs [user ...]
 import { writeFileSync, mkdirSync } from "node:fs";
-const users = process.argv.slice(2).length ? process.argv.slice(2) : ["issaquahd", "Rebl-Botz"];
+const users = process.argv.slice(2).length ? process.argv.slice(2) : ["issaquahd", "CloudLabWorks"];
 const out = {};
 for (const user of users) {
   const res = await fetch(`https://github.com/users/${user}/contributions`, { headers: { "user-agent": "cloudlabworks-site build" } });
