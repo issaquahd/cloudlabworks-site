@@ -6,7 +6,8 @@ a{color:var(--accent);text-decoration:none}a:hover{text-decoration:underline}
 main,header,footer{max-width:760px;margin:0 auto;padding:0 24px}
 header{padding-top:40px;display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap}
 .brand{font-weight:700;letter-spacing:.01em;color:var(--ink)}.brand small{display:block;font-weight:400;color:var(--muted);font-size:.8rem}
-nav a{margin-left:18px;color:var(--ink-2);font-size:.95rem}
+nav{display:flex;flex-wrap:wrap;gap:6px 18px}nav a{color:var(--ink-2);font-size:.95rem;white-space:nowrap}
+@media(max-width:560px){header{padding-top:28px;gap:10px}nav{width:100%;gap:4px 12px;justify-content:flex-start}nav a{font-size:.82rem}}
 h1{font-size:clamp(1.9rem,4.5vw,2.6rem);line-height:1.15;margin:56px 0 12px;letter-spacing:-.01em}
 h2{font-size:1.15rem;margin:44px 0 10px;color:var(--ink)}
 .lede{font-size:1.15rem;color:var(--ink-2);max-width:60ch;margin:0 0 8px}
