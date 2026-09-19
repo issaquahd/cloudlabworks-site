@@ -1,6 +1,6 @@
 # cloudlabworks.dev
 
-Landing page for Cloud Lab Works LLC. Three pages (`/`, `/privacy`, `/terms`), one Cloudflare
+Landing page for Cloud Lab Works LLC. Four pages (`/`, `/work`, `/privacy`, `/terms`), one Cloudflare
 Worker, zero external requests (inline CSS, system fonts, no analytics).
 
 - Edit `site/*.html` and `site/_style.css`; `node build.mjs` regenerates `src/worker.js`.
