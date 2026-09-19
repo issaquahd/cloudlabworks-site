@@ -18,3 +18,14 @@ ul.plain b{display:block;color:var(--ink)}ul.plain span{color:var(--ink-2)}
 footer{margin:72px auto 40px;padding-top:20px;border-top:1px solid var(--line);color:var(--muted);font-size:.9rem;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
 footer a{color:var(--muted)}
 .legal h1{font-size:1.9rem;margin-top:40px}.legal h2{margin-top:32px}.legal p,.legal li{color:var(--ink-2)}
+/* blog: Invisible Wires — Agentic Cloud */
+.blog h1 small{display:block;font-size:.55em;font-weight:500;color:var(--accent);letter-spacing:.02em;margin-top:4px}
+ul.posts li{display:grid;grid-template-columns:9.5em 1fr;column-gap:16px}ul.posts time{color:var(--muted);font-size:.9rem;padding-top:2px}ul.posts span{grid-column:2}
+@media(max-width:560px){ul.posts li{grid-template-columns:1fr}ul.posts span{grid-column:1}}
+.post h1{font-size:clamp(1.7rem,4vw,2.3rem);margin-top:16px}.post .crumb{margin-top:40px}.post .meta{color:var(--muted);font-size:.95rem;margin:0 0 28px}
+.post article{color:var(--ink-2)}.post article h2{font-size:1.25rem;margin-top:36px;color:var(--ink)}.post article h3{font-size:1.05rem;margin-top:28px;color:var(--ink)}
+.post article p,.post article li{line-height:1.65}.post article ul,.post article ol{padding-left:1.3em}
+.post article code{font:.9em ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;background:var(--line);padding:1px 5px;border-radius:4px}
+.post article pre{background:var(--line);padding:14px 16px;border-radius:8px;overflow-x:auto;line-height:1.5}.post article pre code{background:none;padding:0}
+.post article blockquote{margin:20px 0;padding:4px 18px;border-left:3px solid var(--accent);color:var(--ink-2)}.post article blockquote p{margin:8px 0}
+.post article hr{border:0;border-top:1px solid var(--line);margin:32px 0}.post .back{margin-top:40px}
