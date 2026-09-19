@@ -7,7 +7,7 @@ set -u
 API=https://api.cloudflare.com/client/v4
 ZONE=37ae17c6461c5cdc908dd564c361888e
 SCRIPT=cloudlabworks-site
-FWD_TO=forwarding-mailbox@example.com
+FWD_TO="${FWD_TO:?set FWD_TO to the forwarding mailbox}"
 FWD_ADDR=alex@cloudlabworks.dev
 DIR="$(cd "$(dirname "$0")" && pwd)"
 AUTH="Authorization: Bearer ${CLOUDFLARE_API_TOKEN_CLOUDLABWORKS:-}"
