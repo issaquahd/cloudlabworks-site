@@ -45,6 +45,7 @@ li.gh .gh-graph{display:block;max-width:100%;height:auto;margin-top:12px}
 .matrix{--m-ink:#b9f5c8;--m-ink-2:#8fdc9f;--m-accent:#39ff14;--m-line:#123a1c;margin:44px 0 0;padding:22px 24px 6px;border:1px solid var(--m-line);border-radius:12px;background:#050a06 repeating-linear-gradient(0deg,rgba(0,0,0,0) 0 2px,rgba(0,0,0,.18) 2px 3px);color:var(--m-ink);font:15px/1.65 ui-monospace,"SF Mono",Menlo,"JetBrains Mono","Fira Code",Consolas,monospace}
 .matrix h2{margin:0 0 12px;color:var(--m-accent);font-size:1.1rem;text-shadow:0 0 10px rgba(57,255,20,.35)}.matrix h2::before{content:"> "}
 .matrix p{color:var(--m-ink-2);margin:0 0 14px}.matrix b{color:var(--m-ink)}.matrix a{color:var(--m-accent)}
+.matrix .poster{margin:6px 0 16px}.matrix .poster img{display:block;width:100%;max-width:420px;height:auto;margin:0 auto;border:1px solid var(--m-line);border-radius:6px}.matrix .poster figcaption{margin-top:8px;text-align:center;font-size:.85rem;color:var(--m-ink-2)}
 form.inquiry{margin-top:28px;max-width:60ch}form.inquiry label{display:block;font-weight:600;margin:18px 0 6px}
 form.inquiry .req,form.inquiry .opt{font-weight:400;color:var(--muted);font-size:.85rem;margin-left:6px}
 form.inquiry input,form.inquiry select,form.inquiry textarea{display:block;width:100%;padding:10px 12px;font:inherit;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:8px}
