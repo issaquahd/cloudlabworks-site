@@ -85,4 +85,4 @@ Please, reach out and connect on LinkedIn. You can reach me at: [linkedin.com/in
 
 ---
 
-*Original: [Authority Magazine, December 18, 2025](https://medium.com/authority-magazine/alexander-alvord-of-nutanix-on-how-to-use-digital-transformation-to-take-your-company-to-the-next-25cb7edb4faa). Interview by Cynthia Corsetti. Reposted with attribution; the text is unchanged apart from section headings added for navigation.*
+**© 2025 Authority Magazine.** Interview by Cynthia Corsetti; first published December 18, 2025 at [medium.com/authority-magazine](https://medium.com/authority-magazine/alexander-alvord-of-nutanix-on-how-to-use-digital-transformation-to-take-your-company-to-the-next-25cb7edb4faa). Reproduced here in full, with attribution, by the interview subject. The text is unchanged apart from section headings added for navigation. All rights remain with the publisher.
