@@ -44,7 +44,7 @@ for r in json.load(sys.stdin).get("result",[]):
   printf 'delete %s %s: ' "$T" "$C"; cf -X DELETE "$API/zones/$ZONE/dns_records/$ID" | ok
 done
 printf 'enable: ';      cf -X POST "$API/zones/$ZONE/email/routing/enable" -H "$J" -d '{}' | ok
-printf 'dns records: '; cf -X POST "$API/zones/$ZONE/email/routing/dns" -H "$J" -d "{\"name\":\"cloudlabworks.dev\"}" | ok
+# apex MX/SPF/DKIM records are written by /enable; POST /email/routing/dns is for subdomains only (error 2007 otherwise)
 printf 'destination: '; cf -X POST "$API/accounts/$ACCT/email/routing/addresses" -H "$J" -d "{\"email\":\"$FWD_TO\"}" | ok
 printf 'rule: ';        cf -X POST "$API/zones/$ZONE/email/routing/rules" -H "$J" \
   -d "{\"name\":\"alex forward\",\"enabled\":true,\"matchers\":[{\"type\":\"literal\",\"field\":\"to\",\"value\":\"$FWD_ADDR\"}],\"actions\":[{\"type\":\"forward\",\"value\":[\"$FWD_TO\"]}]}" | ok
