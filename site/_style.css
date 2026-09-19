@@ -52,3 +52,6 @@ form.inquiry input:focus,form.inquiry select:focus,form.inquiry textarea:focus{o
 form.inquiry textarea{resize:vertical;min-height:140px}form.inquiry button{margin-top:22px;cursor:pointer;background:none;font:inherit}
 form.inquiry .hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
 .notice{margin:20px 0 0;padding:12px 16px;border:1px solid var(--accent);border-radius:8px;color:var(--ink)}.notice.err{border-color:#b91c1c}
+.launch-badge{flex-basis:100%;display:inline-flex;align-items:center;gap:10px;width:255px;max-width:100%;height:55px;padding:0 14px;border:1px solid #374151;border-radius:8px;background:#111827;color:#f9fafb;line-height:1.25}
+.launch-badge:hover{text-decoration:none;border-color:#6b7280}.launch-badge img{width:24px;height:24px;flex:none}
+.launch-badge span{display:flex;flex-direction:column;font-size:.7rem;color:#9ca3af}.launch-badge b{font-size:.8rem;font-weight:600;color:#f9fafb}
