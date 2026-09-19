@@ -133,7 +133,7 @@ ${posts.map((p) => `<item>
 // ---------- GitHub contribution graphs (data/github.json from fetch-github.mjs; no runtime requests) ----------
 let gh = {};
 try { gh = JSON.parse(readFileSync(new URL("./data/github.json", import.meta.url), "utf8")); } catch (e) { if (e.code !== "ENOENT") throw e; }
-const GH_PEOPLE = { issaquahd: "Alex Alvord", CloudLabWorks: "Alex" };
+const GH_PEOPLE = { issaquahd: "Alex Alvord", CloudLabWorks: "Alex Alvord" };
 function githubGraph(user) {
   const d = gh[user]; if (!d) return "";
   const C = 10, G = 2, S = C + G, PAD_T = 14, PAD_L = 0;
