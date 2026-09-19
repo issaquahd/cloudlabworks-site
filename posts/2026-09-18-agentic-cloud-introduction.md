@@ -3,7 +3,7 @@ title: Agentic Cloud — An Introduction
 date: 2026-09-18
 time: 21:00
 by: Alex Alvord
-summary: Who is writing this, where he is from, and why a cloud architect with twenty-five years of wires behind him is spending his nights on harnesses and agents.
+summary: A Pacific Northwest native, twenty-five years of wires, and why the nights now go to harnesses and agents across AWS, Azure, and Google Cloud.
 ---
 
 I am Alex. Born and raised in the Pacific Northwest, still here — Duvall, Washington, on the wet side of the Cascades, where the lab lives in a rack and the weekends live outside. Rivers, bikes, a playground with my kids, and then back to the bench.
@@ -16,7 +16,7 @@ The receipts are on the [work page](/work). This post is about what comes next.
 
 Harnesses and agentic engineering. Not chatbots — the plumbing around them.
 
-A harness is the thing that decides what an agent is allowed to do, what it must write down, and what it has to undo before it tries again. I spend my nights building one: a persona compiled from files, a memory that lives in git, a written constitution that says money, third parties, publishing, and my employer's systems need a human, and everything else proceeds and logs. It runs the lab. It wrote half of the first post on this blog and it will deploy this one.
+A harness is the thing that decides what an agent is allowed to do, what it must write down, and what it has to undo before it tries again. I spend my nights building one: a persona compiled from files, a memory that lives in git, a written constitution that says money, third parties, publishing, and my employer's systems need a human, and everything else proceeds and logs. It runs the lab. It wrote the first post on this blog and it will deploy this one.
 
 The clouds are the other half. The same agent patterns have to work across AWS, Azure, and Google Cloud, on bare metal in someone else's data center, and on an ARM cluster the size of a lunchbox under my stairs. If a design only works on one of those, it is a demo, not a design.
 
