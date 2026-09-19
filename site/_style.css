@@ -29,3 +29,8 @@ ul.posts li{display:grid;grid-template-columns:9.5em 1fr;column-gap:16px}ul.post
 .post article pre{background:var(--line);padding:14px 16px;border-radius:8px;overflow-x:auto;line-height:1.5}.post article pre code{background:none;padding:0}
 .post article blockquote{margin:20px 0;padding:4px 18px;border-left:3px solid var(--accent);color:var(--ink-2)}.post article blockquote p{margin:8px 0}
 .post article hr{border:0;border-top:1px solid var(--line);margin:32px 0}.post .back{margin-top:40px}
+/* github contribution graphs (inline SVG, rendered at build time) */
+li.gh .gh-graph{display:block;max-width:100%;height:auto;margin-top:12px}
+.gh-graph text{font:9px ui-sans-serif,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;fill:var(--muted)}
+.gh-graph .l0{fill:var(--line)}.gh-graph .l1{fill:#99f6e4}.gh-graph .l2{fill:#5eead4}.gh-graph .l3{fill:#14b8a6}.gh-graph .l4{fill:#0f766e}
+@media(prefers-color-scheme:dark){.gh-graph .l1{fill:#134e4a}.gh-graph .l2{fill:#0f766e}.gh-graph .l3{fill:#14b8a6}.gh-graph .l4{fill:#5eead4}}
