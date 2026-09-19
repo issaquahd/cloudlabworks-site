@@ -15,6 +15,7 @@ Drop a Markdown file in `posts/` named `YYYY-MM-DD-slug.md`:
 ---
 title: The post title
 date: 2026-09-18
+time: 09:00             # optional, orders same-day posts
 by: Alex Alvord            # or "Waku", or "Alex Alvord and Waku"
 summary: One sentence shown in the index, home page, and RSS.
 draft: false               # true keeps it out of the build

@@ -1,6 +1,7 @@
 ---
 title: Agentic Cloud — An Introduction
 date: 2026-09-18
+time: 21:00
 by: Alex Alvord
 summary: Who is writing this, where he is from, and why a cloud architect with twenty-five years of wires behind him is spending his nights on harnesses and agents.
 ---

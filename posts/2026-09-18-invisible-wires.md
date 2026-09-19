@@ -1,6 +1,7 @@
 ---
 title: Invisible Wires
 date: 2026-09-18
+time: 20:45
 by: Alex Alvord and Waku
 summary: Why the blog has this name, who is writing it, and what "agentic cloud" means when the cloud is a rack in Duvall.
 ---
