@@ -5,7 +5,10 @@ Worker, zero external requests (inline CSS, system fonts, no analytics).
 
 - Edit `site/*.html` and `site/_style.css`; `node build.mjs` regenerates `src/worker.js`.
 - Deploy: `npx wrangler deploy` (custom domains in `wrangler.jsonc`), or upload `src/worker.js`
-  via the API. Local check: `node serve.mjs` → http://127.0.0.1:8787.
+  via the API (`deploy.sh`, passes `keep_assets`). Local check: `node serve.mjs` → http://127.0.0.1:8787.
+- Media: files in `media/` are served at `/media/<name>` as Workers Static Assets (free, no R2).
+  `deploy-assets.sh` uploads them and redeploys the Worker; run it whenever `media/` changes.
+  Video: H.264 + AAC, `-movflags +faststart`, poster JPEG alongside.
 
 ## Blog posts
 

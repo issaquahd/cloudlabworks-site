@@ -24,7 +24,7 @@ say "account ${ACCT:0:8}…"
 
 say "== 2. worker upload ($SCRIPT)"
 cf -X PUT "$API/accounts/$ACCT/workers/scripts/$SCRIPT" \
-  -F 'metadata={"main_module":"worker.js","compatibility_date":"2026-09-01"};type=application/json' \
+  -F 'metadata={"main_module":"worker.js","compatibility_date":"2026-09-01","keep_assets":true};type=application/json' \
   -F "worker.js=@$DIR/src/worker.js;type=application/javascript+module" | ok
 
 say "== 3. custom domains"
