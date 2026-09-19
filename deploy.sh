@@ -23,8 +23,12 @@ ACCT=$(cf "$API/accounts?per_page=5" | python3 -c 'import sys,json;d=json.load(s
 say "account ${ACCT:0:8}…"
 
 say "== 2. worker upload ($SCRIPT)"
+# Bindings are replaced wholesale on every upload: the /inquire form needs the send_email binding
+# INQUIRY and the var INQUIRY_TO (a verified Email Routing destination — FWD_TO is one) on each deploy.
+INQUIRY_TO="${INQUIRY_TO:-$FWD_TO}"
+META="{\"main_module\":\"worker.js\",\"compatibility_date\":\"2026-09-01\",\"keep_assets\":true,\"bindings\":[{\"type\":\"send_email\",\"name\":\"INQUIRY\"},{\"type\":\"plain_text\",\"name\":\"INQUIRY_TO\",\"text\":\"$INQUIRY_TO\"}]}"
 cf -X PUT "$API/accounts/$ACCT/workers/scripts/$SCRIPT" \
-  -F 'metadata={"main_module":"worker.js","compatibility_date":"2026-09-01","keep_assets":true};type=application/json' \
+  -F "metadata=$META;type=application/json" \
   -F "worker.js=@$DIR/src/worker.js;type=application/javascript+module" | ok
 
 say "== 3. custom domains"

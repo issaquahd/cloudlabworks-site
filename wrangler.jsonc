@@ -3,5 +3,8 @@
   "main": "src/worker.js",
   "compatibility_date": "2026-09-01",
   "workers_dev": false,
-  "routes": [{ "pattern": "cloudlabworks.dev", "custom_domain": true }, { "pattern": "www.cloudlabworks.dev", "custom_domain": true }]
+  "routes": [{ "pattern": "cloudlabworks.dev", "custom_domain": true }, { "pattern": "www.cloudlabworks.dev", "custom_domain": true }],
+  // /inquire form → email. INQUIRY_TO must be a verified Email Routing destination address (free sends); deploy.sh sets it from FWD_TO.
+  "send_email": [{ "name": "INQUIRY" }],
+  "vars": { "INQUIRY_TO": "alex@cloudlabworks.dev" }
 }

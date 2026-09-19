@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Inquire — Cloud Lab Works</title>
+<meta name="description" content="Start a conversation with Cloud Lab Works: architecture review, cloud and AI infrastructure design, technical content, speaking, or mentoring.">
+<link rel="canonical" href="https://cloudlabworks.dev/inquire">
+<meta property="og:title" content="Inquire — Cloud Lab Works">
+<meta property="og:description" content="Start a conversation with Cloud Lab Works.">
+<meta property="og:url" content="https://cloudlabworks.dev/inquire">
+<style>{{STYLE}}</style>
+</head>
+<body>
+{{HEAD}}
+<main class="inquire">
+  <h1>Start a conversation</h1>
+  <p class="lede">Tell me what you are working on. Replies come from <a href="mailto:alex@cloudlabworks.dev">alex@cloudlabworks.dev</a>, usually within two business days.</p>
+{{NOTICE}}
+  <form method="post" action="/inquire" class="inquiry" novalidate>
+    <label for="name">Name <span class="req">required</span></label>
+    <input id="name" name="name" type="text" required maxlength="120" autocomplete="name" value="{{V_NAME}}">
+
+    <label for="email">Email <span class="req">required</span></label>
+    <input id="email" name="email" type="email" required maxlength="200" autocomplete="email" inputmode="email" value="{{V_EMAIL}}">
+
+    <label for="phone">Phone <span class="opt">optional</span></label>
+    <input id="phone" name="phone" type="tel" maxlength="40" autocomplete="tel" inputmode="tel" value="{{V_PHONE}}">
+
+    <label for="company">Company <span class="opt">optional</span></label>
+    <input id="company" name="company" type="text" maxlength="120" autocomplete="organization" value="{{V_COMPANY}}">
+
+    <label for="category">I'm inquiring about <span class="req">required</span></label>
+    <select id="category" name="category" required>
+{{OPTIONS}}
+    </select>
+
+    <label for="context">Context <span class="opt">optional — what you're working on, timelines, anything that helps</span></label>
+    <textarea id="context" name="context" rows="7" maxlength="4000">{{V_CONTEXT}}</textarea>
+
+    <div class="hp" aria-hidden="true"><label for="website">Website</label><input id="website" name="website" type="text" tabindex="-1" autocomplete="off"></div>
+    <input type="hidden" name="t" value="{{T}}">
+
+    <button type="submit" class="cta">Send inquiry</button>
+    <p class="tag">Your details go to Alex by email and nowhere else. <a href="/privacy">Privacy</a>.</p>
+  </form>
+</main>
+{{FOOT}}
+</body>
+</html>

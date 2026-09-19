@@ -60,8 +60,10 @@ while read -r BUCKET; do
 done <<<"$BUCKETS"
 
 say "== 4. worker upload with assets"
+# Bindings are replaced on every upload — carry the /inquire email binding + recipient var (see deploy.sh).
+INQUIRY_TO="${INQUIRY_TO:?set INQUIRY_TO to the verified Email Routing destination address}"
 cf -X PUT "$API/accounts/$ACCT/workers/scripts/$SCRIPT" \
-  -F "metadata={\"main_module\":\"worker.js\",\"compatibility_date\":\"2026-09-01\",\"assets\":{\"jwt\":\"$COMPLETION\",\"config\":{\"not_found_handling\":\"none\",\"run_worker_first\":false}}};type=application/json" \
+  -F "metadata={\"main_module\":\"worker.js\",\"compatibility_date\":\"2026-09-01\",\"assets\":{\"jwt\":\"$COMPLETION\",\"config\":{\"not_found_handling\":\"none\",\"run_worker_first\":false}},\"bindings\":[{\"type\":\"send_email\",\"name\":\"INQUIRY\"},{\"type\":\"plain_text\",\"name\":\"INQUIRY_TO\",\"text\":\"$INQUIRY_TO\"}]};type=application/json" \
   -F "worker.js=@$DIR/src/worker.js;type=application/javascript+module" \
   | python3 -c 'import sys,json;d=json.load(sys.stdin);print("deploy ok" if d.get("success") else "FAIL "+json.dumps(d.get("errors"))[:300])'
 
