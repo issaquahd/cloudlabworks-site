@@ -1,5 +1,7 @@
 # cloudlabworks.dev
 
+Source for [cloudlabworks.dev](https://cloudlabworks.dev) — Cloud Lab Works LLC.
+
 Landing page for Cloud Lab Works LLC. Pages `/`, `/work`, `/privacy`, `/terms`, plus the blog **Invisible Wires — Agentic Cloud** at `/blog` (posts, `/blog/<slug>`, `/blog/feed.xml`), one Cloudflare
 Worker, zero external requests (inline CSS, system fonts, no analytics).
 
