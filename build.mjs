@@ -10,7 +10,7 @@ const BLOG = { title: "Invisible Wires — Agentic Cloud", path: "/blog", desc: 
 const SITE = "https://cloudlabworks.dev";
 const esc = (s) => s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
 
-// Minimal Markdown: headings, paragraphs, lists, fenced code, blockquotes, hr, links, bold, italic, inline code.
+// Minimal Markdown: headings, paragraphs, lists, fenced code, blockquotes, hr, images (own line → figure), links, bold, italic, inline code.
 function inline(s) {
   const codes = [];
   s = s.replace(/`([^`]+)`/g, (_, c) => { codes.push(`<code>${esc(c)}</code>`); return `\u0000${codes.length - 1}\u0000`; });
@@ -31,6 +31,8 @@ function markdown(src) {
     const h = /^(#{1,4})\s+(.*)$/.exec(l);
     if (h) { flush(); const n = Math.max(2, h[1].length); out.push(`<h${n}>${inline(h[2])}</h${n}>`); i++; continue; }
     if (/^(-{3,}|\*{3,})\s*$/.test(l)) { flush(); out.push("<hr>"); i++; continue; }
+    const im = /^!\[([^\]]*)\]\(([^)\s]+)\)\s*$/.exec(l);
+    if (im) { flush(); const cap = im[1] ? `<figcaption>${inline(im[1])}</figcaption>` : ""; out.push(`<figure><img src="${im[2]}" alt="${esc(im[1])}" loading="lazy" decoding="async">${cap}</figure>`); i++; continue; }
     if (/^>\s?/.test(l)) { flush(); const buf = []; while (i < lines.length && /^>\s?/.test(lines[i])) buf.push(lines[i++].replace(/^>\s?/, "")); out.push(`<blockquote>${markdown(buf.join("\n"))}</blockquote>`); continue; }
     if (/^\s*[-*]\s+/.test(l)) { flush(); const buf = []; while (i < lines.length && /^\s*[-*]\s+/.test(lines[i])) buf.push(`<li>${inline(lines[i++].replace(/^\s*[-*]\s+/, ""))}</li>`); out.push(`<ul>${buf.join("")}</ul>`); continue; }
     if (/^\s*\d+\.\s+/.test(l)) { flush(); const buf = []; while (i < lines.length && /^\s*\d+\.\s+/.test(lines[i])) buf.push(`<li>${inline(lines[i++].replace(/^\s*\d+\.\s+/, ""))}</li>`); out.push(`<ol>${buf.join("")}</ol>`); continue; }
