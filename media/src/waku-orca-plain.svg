@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512" role="img" aria-label="Waku, a playful orca">
+  <defs>
+    <clipPath id="body"><use href="#orca-body"/></clipPath>
+    <clipPath id="badge"><circle cx="256" cy="256" r="248"/></clipPath>
+  </defs>
+  <!-- badge -->
+  <!-- splash -->
+  <g fill="#f8fafc" opacity=".85">
+    <circle cx="96" cy="372" r="9"/><circle cx="124" cy="398" r="5"/><circle cx="72" cy="404" r="4"/>
+    <circle cx="452" cy="330" r="7"/><circle cx="474" cy="360" r="4"/><circle cx="440" cy="368" r="4"/>
+  </g>
+  <!-- flukes -->
+  <path d="M106 320 C72 286 42 292 18 314 C48 316 68 320 88 324 C68 334 50 348 30 372 C60 362 86 350 108 334 Z" fill="#0b1220"/>
+  <!-- body -->
+  <path id="orca-body" d="M100 312 C160 200 280 150 380 170 C430 180 470 220 462 250 C450 300 380 330 300 336 C220 342 150 340 100 336 Z" fill="#0b1220"/>
+  <g clip-path="url(#body)">
+    <!-- belly -->
+    <path d="M90 340 C200 306 320 302 456 268 L480 360 L80 360 Z" fill="#f8fafc"/>
+    <!-- eye patch -->
+    <ellipse cx="392" cy="212" rx="36" ry="14" transform="rotate(14 392 212)" fill="#f8fafc"/>
+  </g>
+  <!-- dorsal fin -->
+  <path d="M256 200 C248 150 238 108 226 72 C272 100 312 138 332 194 Z" fill="#0b1220"/>
+  <!-- pectoral fin -->
+  <path d="M318 316 C300 342 306 374 338 382 C358 364 354 330 342 310 Z" fill="#0b1220"/>
+  <!-- eye + grin -->
+  <circle cx="380" cy="215" r="7" fill="#0b1220"/>
+  <circle cx="383" cy="212" r="2.5" fill="#f8fafc"/>
+  <path d="M414 272 Q444 272 458 250" fill="none" stroke="#f8fafc" stroke-width="6" stroke-linecap="round"/>
+</svg>
