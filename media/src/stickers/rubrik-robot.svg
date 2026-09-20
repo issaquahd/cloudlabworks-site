@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="400" height="300">
+  <!-- Rubrik robot, redrawn as clean line art from Alex's sticker (binder photo, 2026-09-20). Die-cut white base. -->
+  <defs>
+    <filter id="dc" x="-10%" y="-10%" width="120%" height="120%"><feMorphology in="SourceAlpha" operator="dilate" radius="9" result="dil"/><feFlood flood-color="#fafafa" result="fl"/><feComposite in="fl" in2="dil" operator="in" result="base"/><feComposite in="SourceGraphic" in2="base" operator="over"/></filter>
+    <g id="bot">
+      <!-- die-cut body fill -->
+      <ellipse cx="150" cy="185" rx="78" ry="60" fill="#fff"/>
+      <circle cx="262" cy="118" r="70" fill="#fff"/>
+      <!-- body outline -->
+      <ellipse cx="150" cy="185" rx="78" ry="60" fill="none" stroke="#1f2937" stroke-width="7"/>
+      <!-- neck -->
+      <path d="M222 168 L200 172" stroke="#1f2937" stroke-width="7" stroke-linecap="round"/>
+      <!-- head -->
+      <circle cx="262" cy="118" r="70" fill="none" stroke="#1f2937" stroke-width="7"/>
+      <!-- eyes: two rings with orange centres -->
+      <circle cx="262" cy="92" r="24" fill="#fff" stroke="#1f2937" stroke-width="6"/><circle cx="262" cy="92" r="13" fill="#d97706"/>
+      <circle cx="262" cy="146" r="24" fill="#fff" stroke="#1f2937" stroke-width="6"/><circle cx="262" cy="146" r="13" fill="#d97706"/>
+      <!-- antenna -->
+      <path d="M262 48 L262 26" stroke="#1f2937" stroke-width="6" stroke-linecap="round"/><circle cx="262" cy="20" r="7" fill="#1f2937"/>
+      <!-- arms -->
+      <path d="M78 165 L34 118" stroke="#1f2937" stroke-width="7" stroke-linecap="round"/><circle cx="30" cy="113" r="10" fill="#fff" stroke="#1f2937" stroke-width="6"/>
+      <path d="M222 205 L272 232" stroke="#1f2937" stroke-width="7" stroke-linecap="round"/><circle cx="278" cy="236" r="10" fill="#fff" stroke="#1f2937" stroke-width="6"/>
+      <!-- legs and feet -->
+      <path d="M118 240 L100 280" stroke="#1f2937" stroke-width="7" stroke-linecap="round"/><path d="M76 284 L118 284" stroke="#1f2937" stroke-width="8" stroke-linecap="round"/>
+      <path d="M180 240 L196 280" stroke="#1f2937" stroke-width="7" stroke-linecap="round"/><path d="M178 284 L220 284" stroke="#1f2937" stroke-width="8" stroke-linecap="round"/>
+      <!-- the blue swoosh emblem on the body -->
+      <path d="M112 178 C140 160 170 158 196 170 C176 168 150 174 130 190 Z" fill="#1d4ed8"/>
+      <path d="M118 196 C146 184 172 186 190 198 C170 196 148 202 132 214 Z" fill="#3b82f6"/>
+      <path d="M150 176 L176 196 L160 184 Z" fill="#fff"/>
+    </g>
+  </defs>
+  <use href="#bot" filter="url(#dc)"/>
+</svg>
