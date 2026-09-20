@@ -49,6 +49,25 @@ async function inquire(request, env) {
   }
   return new Response(inquireForm({ notice: "Thanks, " + values.name + " — your inquiry is on its way to Alex." }), { headers: NOSTORE });
 }
+// /media/*: Static Assets ignore Range (200, full body). WebKit needs 206 byte ranges to seek — and to
+// seek back to 0 for <video loop> — so serve the asset through the ASSETS binding and slice it here.
+async function media(request, env) {
+  if (request.method !== "GET" && request.method !== "HEAD") return new Response("Method not allowed", { status: 405, headers: { allow: "GET, HEAD" } });
+  const res = await env.ASSETS.fetch(new Request(request.url, { method: "GET" }));
+  if (!res.ok || res.status === 206) return res;
+  const h = new Headers(res.headers);
+  h.set("accept-ranges", "bytes");
+  const m = /^bytes=(\d*)-(\d*)$/.exec(request.headers.get("range") || "");
+  if (!m) return new Response(request.method === "HEAD" ? null : res.body, { status: 200, headers: h });
+  const buf = await res.arrayBuffer();
+  const size = buf.byteLength;
+  let start = m[1] === "" ? Math.max(0, size - Number(m[2])) : Number(m[1]);
+  let end = m[1] !== "" && m[2] !== "" ? Math.min(Number(m[2]), size - 1) : size - 1;
+  if (m[1] === "" && m[2] === "" || start >= size || start > end) return new Response(null, { status: 416, headers: { "content-range": "bytes */" + size } });
+  h.set("content-range", "bytes " + start + "-" + end + "/" + size);
+  h.set("content-length", String(end - start + 1));
+  return new Response(request.method === "HEAD" ? null : buf.slice(start, end + 1), { status: 206, headers: h });
+}
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
@@ -57,6 +76,7 @@ export default {
       return Response.redirect(url.toString(), 301);
     }
     let path = url.pathname.replace(/\/+$/, "") || "/";
+    if (path.startsWith("/media/") && env.ASSETS) return media(request, env);
     if (path === "/inquire" || path === "/inquire.html") {
       if (request.method === "POST") return inquire(request, env);
       if (request.method !== "GET" && request.method !== "HEAD") return new Response("Method not allowed", { status: 405, headers: { allow: "GET, HEAD, POST" } });

@@ -26,7 +26,7 @@ say "== 2. worker upload ($SCRIPT)"
 # Bindings are replaced wholesale on every upload: the /inquire form needs the send_email binding
 # INQUIRY and the var INQUIRY_TO (a verified Email Routing destination; alex@ verified 2026-09-19) on each deploy.
 INQUIRY_TO="${INQUIRY_TO:-alex@cloudlabworks.dev}"
-META="{\"main_module\":\"worker.js\",\"compatibility_date\":\"2026-09-01\",\"keep_assets\":true,\"bindings\":[{\"type\":\"send_email\",\"name\":\"INQUIRY\"},{\"type\":\"plain_text\",\"name\":\"INQUIRY_TO\",\"text\":\"$INQUIRY_TO\"}]}"
+META="{\"main_module\":\"worker.js\",\"compatibility_date\":\"2026-09-01\",\"keep_assets\":true,\"bindings\":[{\"type\":\"assets\",\"name\":\"ASSETS\"},{\"type\":\"send_email\",\"name\":\"INQUIRY\"},{\"type\":\"plain_text\",\"name\":\"INQUIRY_TO\",\"text\":\"$INQUIRY_TO\"}]}"
 cf -X PUT "$API/accounts/$ACCT/workers/scripts/$SCRIPT" \
   -F "metadata=$META;type=application/json" \
   -F "worker.js=@$DIR/src/worker.js;type=application/javascript+module" | ok

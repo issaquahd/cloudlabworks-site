@@ -30,7 +30,7 @@ say "account ${ACCT:0:8}…"
 
 say "== 4. worker upload"
 curl -s --max-time 40 -H "$AUTH" -X PUT "https://api.cloudflare.com/client/v4/accounts/$ACCT/workers/scripts/cloudlabworks-site" \
-  -F 'metadata={"main_module":"worker.js","compatibility_date":"2026-09-01","keep_assets":true};type=application/json' \
+  -F "metadata={\"main_module\":\"worker.js\",\"compatibility_date\":\"2026-09-01\",\"keep_assets\":true,\"bindings\":[{\"type\":\"assets\",\"name\":\"ASSETS\"},{\"type\":\"send_email\",\"name\":\"INQUIRY\"},{\"type\":\"plain_text\",\"name\":\"INQUIRY_TO\",\"text\":\"${INQUIRY_TO:-alex@cloudlabworks.dev}\"}]};type=application/json" \
   -F "worker.js=@$DIR/src/worker.js;type=application/javascript+module" | ok
 
 say "== 5. commit"

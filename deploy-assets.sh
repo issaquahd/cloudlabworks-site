@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Upload media/* as Workers Static Assets and redeploy src/worker.js with them attached.
-# Assets are served by the platform before the Worker runs (run_worker_first=false), so
-# /media/<file> needs no code. Runs on the OpenClaw gateway host; the token is an opaque
+# /media/* runs the Worker first (run_worker_first) so it can answer Range requests via the ASSETS
+# binding — WebKit needs 206s to seek/loop video; everything else is served by the platform. Runs on the OpenClaw gateway host; the token is an opaque
 # sentinel substituted by the egress proxy. Never prints the credential. Idempotent.
 #
 # Flow (developers.cloudflare.com/workers/static-assets/direct-upload):
@@ -60,10 +60,10 @@ while read -r BUCKET; do
 done <<<"$BUCKETS"
 
 say "== 4. worker upload with assets"
-# Bindings are replaced on every upload — carry the /inquire email binding + recipient var (see deploy.sh).
+# Bindings are replaced on every upload — carry the ASSETS binding (Range on /media/*), the /inquire email binding + recipient var (see deploy.sh).
 INQUIRY_TO="${INQUIRY_TO:-alex@cloudlabworks.dev}"   # must be a verified Email Routing destination
 cf -X PUT "$API/accounts/$ACCT/workers/scripts/$SCRIPT" \
-  -F "metadata={\"main_module\":\"worker.js\",\"compatibility_date\":\"2026-09-01\",\"assets\":{\"jwt\":\"$COMPLETION\",\"config\":{\"not_found_handling\":\"none\",\"run_worker_first\":false}},\"bindings\":[{\"type\":\"send_email\",\"name\":\"INQUIRY\"},{\"type\":\"plain_text\",\"name\":\"INQUIRY_TO\",\"text\":\"$INQUIRY_TO\"}]};type=application/json" \
+  -F "metadata={\"main_module\":\"worker.js\",\"compatibility_date\":\"2026-09-01\",\"assets\":{\"jwt\":\"$COMPLETION\",\"config\":{\"not_found_handling\":\"none\",\"run_worker_first\":[\"/media/*\"]}},\"bindings\":[{\"type\":\"assets\",\"name\":\"ASSETS\"},{\"type\":\"send_email\",\"name\":\"INQUIRY\"},{\"type\":\"plain_text\",\"name\":\"INQUIRY_TO\",\"text\":\"$INQUIRY_TO\"}]};type=application/json" \
   -F "worker.js=@$DIR/src/worker.js;type=application/javascript+module" \
   | python3 -c 'import sys,json;d=json.load(sys.stdin);print("deploy ok" if d.get("success") else "FAIL "+json.dumps(d.get("errors"))[:300])'
 
