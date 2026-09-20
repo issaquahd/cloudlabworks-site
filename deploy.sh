@@ -69,4 +69,4 @@ say "routing status:"; cf "$API/zones/$ZONE/email/routing" | python3 -c 'import 
 
 # Infrastructure as Music: the deploy phrase, only when the apex verified 200. Never fails the deploy.
 curl -s -o /dev/null --max-time 20 -w '%{http_code}' https://cloudlabworks.dev/ | grep -q '^200$' \
-  && sh /Users/rebl/.openclaw/workspace/ops/iam/play.sh deploy || true
+  && { sh /Users/rebl/.openclaw/workspace/ops/iam/play.sh deploy; sh /Users/rebl/.openclaw/workspace/ops/iam/play.sh deploy-cue; } || true
