@@ -8,17 +8,27 @@
 <link rel="canonical" href="https://cloudlabworks.dev/orcas">
 <style>{{STYLE}}</style>
 <style>
+/* Coast Salish–vocabulary tile behind the page, dimmed; panels over it (same treatment as /live) */
+body{background:#1c1410 url(/media/salish-pattern.svg) center top/480px 480px repeat}
+#dim{position:fixed;inset:0;z-index:0;background:rgba(11,18,32,.5)}
+header,main,footer{position:relative;z-index:1}
+header{background:rgba(11,18,32,.6);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+header .brand,header .brand small,nav a{color:#e2e8f0}nav a:hover{color:#2dd4bf}
+main{color:#e2e8f0}main h1,main h2{color:#f8fafc;text-shadow:0 2px 12px rgba(0,0,0,.7)}main .lede,main .tag{color:#e2e8f0;text-shadow:0 1px 8px rgba(0,0,0,.7)}
 .feeds{list-style:none;padding:0;margin:16px 0 0;display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px}
-.feeds li{border:1px solid var(--line);border-radius:12px;padding:16px 18px;display:flex;flex-direction:column;gap:6px}
-.feeds b{color:var(--ink);font-size:1.02rem}
-.feeds .where{color:var(--accent);font-size:.82rem;font-weight:600;letter-spacing:.04em;text-transform:uppercase}
-.feeds span{color:var(--ink-2);font-size:.95rem}
-.feeds a.go{margin-top:auto;padding-top:8px;font-weight:600}
-.rules{border-left:3px solid var(--accent);padding:10px 16px;margin:20px 0 0;color:var(--ink-2)}
-.rules b{color:var(--ink)}
+.feeds li{background:rgba(11,18,32,.74);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border:1px solid rgba(226,232,240,.16);border-radius:12px;padding:16px 18px;display:flex;flex-direction:column;gap:6px}
+.feeds b{color:#f8fafc;font-size:1.02rem}
+.feeds .where{color:#2dd4bf;font-size:.82rem;font-weight:600;letter-spacing:.04em;text-transform:uppercase}
+.feeds span{color:#cbd5e1;font-size:.95rem}
+.feeds a{color:#5eead4}.feeds a.go{margin-top:auto;padding-top:8px;font-weight:600}
+.rules{background:rgba(11,18,32,.74);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border:1px solid rgba(226,232,240,.16);border-left:3px solid #2dd4bf;border-radius:12px;padding:14px 18px;margin:20px 0 0;color:#cbd5e1}
+.rules b{color:#f8fafc}.rules a,main .tag a{color:#5eead4}
+.credit{color:#94a3b8;font-size:.8rem;margin-top:26px;text-shadow:0 1px 6px rgba(0,0,0,.8)}
+footer{background:rgba(11,18,32,.6)}footer,footer a{color:#cbd5e1}
 </style>
 </head>
 <body>
+<div id="dim" aria-hidden="true"></div>
 {{HEAD}}
 <main>
   <h1>Orca Watch</h1>
@@ -50,7 +60,8 @@
     <b>On the water, Washington rules for Southern Residents (endangered):</b> stay at least 1,000 yards away; under 7 knots within half a mile; engines off if they surface within 400 yards. Bigg's orcas: 200 yards. When you can't tell which you're looking at, treat them as Southern Residents. <a href="https://www.bewhalewise.org/" rel="noopener">Be Whale Wise</a>.
   </div>
 
-  <p class="tag" style="margin-top:28px">Know a feed that belongs here? <a href="/inquire?category=Something+else&amp;context=Orca+Watch+feed+suggestion+%E2%80%94+">Send it.</a> Background of the <a href="/live">IaC Live Music</a> page: L79 of L pod in Haro Strait.</p>
+  <p class="credit">The pattern behind this page was drawn for the site from Coast Salish design vocabulary — the ovoid, the crescent, the trigon, the formline — with respect for the Coast Salish peoples whose waters these are. It reproduces no artist's work; the lab sits on Snoqualmie land in Duvall.</p>
+  <p class="tag" style="margin-top:20px">Know a feed that belongs here? <a href="/inquire?category=Something+else&amp;context=Orca+Watch+feed+suggestion+%E2%80%94+">Send it.</a> Background of the <a href="/live">IaC Live Music</a> page: L79 of L pod in Haro Strait.</p>
 
 {{FOOT}}
 </main>
