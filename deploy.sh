@@ -7,7 +7,8 @@ set -u
 API=https://api.cloudflare.com/client/v4
 ZONE=37ae17c6461c5cdc908dd564c361888e
 SCRIPT=cloudlabworks-site
-FWD_TO="${FWD_TO:?set FWD_TO to the forwarding mailbox}"
+# Email Routing (step 4) is one-time setup, done 2026-09-18. Opt in with FWD_TO=<mailbox>; a plain redeploy skips it.
+FWD_TO="${FWD_TO:-}"
 FWD_ADDR=alex@cloudlabworks.dev
 DIR="$(cd "$(dirname "$0")" && pwd)"
 AUTH="Authorization: Bearer ${CLOUDFLARE_API_TOKEN_CLOUDLABWORKS:-}"
@@ -38,6 +39,7 @@ for H in cloudlabworks.dev www.cloudlabworks.dev; do
     -d "{\"zone_id\":\"$ZONE\",\"hostname\":\"$H\",\"service\":\"$SCRIPT\",\"environment\":\"production\"}" | ok
 done
 
+if [ -n "$FWD_TO" ]; then
 say "== 4. email routing (forward $FWD_ADDR -> $FWD_TO)"
 # 4a. remove the null-MX and SPF -all records so Cloudflare's MX/SPF can take their place
 cf "$API/zones/$ZONE/dns_records?per_page=100" | python3 -c '
@@ -52,6 +54,9 @@ printf 'enable: ';      cf -X POST "$API/zones/$ZONE/email/routing/enable" -H "$
 printf 'destination: '; cf -X POST "$API/accounts/$ACCT/email/routing/addresses" -H "$J" -d "{\"email\":\"$FWD_TO\"}" | ok
 printf 'rule: ';        cf -X POST "$API/zones/$ZONE/email/routing/rules" -H "$J" \
   -d "{\"name\":\"alex forward\",\"enabled\":true,\"matchers\":[{\"type\":\"literal\",\"field\":\"to\",\"value\":\"$FWD_ADDR\"}],\"actions\":[{\"type\":\"forward\",\"value\":[\"$FWD_TO\"]}]}" | ok
+else
+say "== 4. email routing: skipped (set FWD_TO to run)"
+fi
 
 say "== 5. verify"
 sleep 20
