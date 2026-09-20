@@ -172,7 +172,7 @@ const home = page("index.html").replace("{{LATEST}}", posts.length ? posts.slice
 const INQUIRE = page("inquire.html");
 const CATEGORIES = ["Architecture review", "Cloud and AI infrastructure design", "Technical content", "Speaking and interviews", "Mentoring", "Meet at an event", "Something else"];
 
-const pages = { "/": home, "/work": page("work.html").replace("{{GITHUB}}", GITHUB), [BLOG.path]: blogIndex, ...postPages, "/notes": page("notes.html"), "/privacy": page("privacy.html"), "/terms": page("terms.html"), "/card": page("card.html"), "/live": page("live.html") };
+const pages = { "/": home, "/work": page("work.html").replace("{{GITHUB}}", GITHUB), [BLOG.path]: blogIndex, ...postPages, "/notes": page("notes.html"), "/privacy": page("privacy.html"), "/terms": page("terms.html"), "/card": page("card.html"), "/live": page("live.html"), "/orcas": page("orcas.html") };
 // /card is the NFC business-card landing page; the tag on the card carries only this URL.
 const VCARD = ["BEGIN:VCARD", "VERSION:3.0", "N:Alvord;Alex;;;", "FN:Alex Alvord", "ORG:Cloud Lab Works LLC", "TITLE:Advisory Solutions Architect, Hybrid Multicloud", "EMAIL;TYPE=INTERNET,WORK:alex@cloudlabworks.dev", "URL:https://cloudlabworks.dev", "URL;TYPE=LinkedIn:https://www.linkedin.com/in/alexalvord/", "ADR;TYPE=WORK:;;;Duvall;WA;;USA", "NOTE:Hybrid multicloud architecture, cloud and AI infrastructure design, technical content. cloudlabworks.dev", "END:VCARD"].join("\r\n") + "\r\n";
 // /live.js is the only script on the site: the browser instrument + visualizer for /live (self-hosted; CSP script-src 'self').
