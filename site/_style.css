@@ -103,10 +103,12 @@ ul.conf img.wide{width:40px;height:auto;filter:drop-shadow(0 1px 2px rgba(0,0,0,
 /* conferences timeline: one row per event-year, oldest first, in a scroll box */
 .timeline{max-height:440px;overflow-y:auto;border:1px solid var(--line);border-radius:12px;padding:4px 16px;margin-top:14px;scrollbar-width:thin;background:linear-gradient(var(--paper) 30%,rgba(248,250,252,0)),linear-gradient(rgba(248,250,252,0),var(--paper) 70%) 0 100%,radial-gradient(farthest-side at 50% 0,rgba(0,0,0,.12),rgba(0,0,0,0)),radial-gradient(farthest-side at 50% 100%,rgba(0,0,0,.12),rgba(0,0,0,0)) 0 100%;background-repeat:no-repeat;background-size:100% 40px,100% 40px,100% 14px,100% 14px;background-attachment:local,local,scroll,scroll}
 .timeline:focus{outline:2px solid var(--accent);outline-offset:2px}
-ol.tl{list-style:none;padding:0;margin:0}
-ol.tl li{display:grid;grid-template-columns:56px 32px 1fr;column-gap:12px;align-items:center;padding:9px 0;border-top:1px solid var(--line)}
-ol.tl li:first-child{border-top:0}
-ol.tl time{color:var(--accent);font-weight:700;font-variant-numeric:tabular-nums}
-ol.tl img{width:24px;height:24px;justify-self:center}ol.tl img.wide{width:32px;height:auto}
-ol.tl b{color:var(--ink);font-weight:600}ol.tl span{display:block;color:var(--muted);font-size:.9rem}
-@media(max-width:560px){ol.tl li{grid-template-columns:48px 28px 1fr;column-gap:8px}.timeline{max-height:380px}}
+.yr{padding:6px 0 10px}.yr+.yr{border-top:1px solid var(--line)}
+.yr h3{position:sticky;top:0;z-index:1;margin:0;padding:10px 0 6px;background:var(--paper);display:flex;align-items:baseline;gap:12px;font-size:1.25rem}
+.yr h3 time{color:var(--accent);font-variant-numeric:tabular-nums}.yr h3 span{color:var(--muted);font-size:.8rem;font-weight:500;letter-spacing:.04em;text-transform:uppercase}
+.yr ol{list-style:none;padding:0;margin:0}
+.yr li{display:grid;grid-template-columns:32px 1fr;column-gap:12px;align-items:center;padding:7px 0 7px 8px}
+.yr li+li{border-top:1px dashed var(--line)}
+.yr img{width:24px;height:24px;justify-self:center}.yr img.wide{width:32px;height:auto}
+.yr b{color:var(--ink);font-weight:600}.yr li span{display:block;color:var(--muted);font-size:.9rem}
+@media(max-width:560px){.yr li{grid-template-columns:28px 1fr;column-gap:8px;padding-left:4px}.timeline{max-height:380px}}
