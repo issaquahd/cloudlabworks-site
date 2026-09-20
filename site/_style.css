@@ -90,6 +90,6 @@ ul.plain li.has-stk .stk img{display:block;border-radius:8px;box-shadow:0 1px 3p
 ul.plain li.has-stk .stk img+img{transform:rotate(3deg)}
 ul.plain li.has-stk b,ul.plain li.has-stk>span:not(.stk){grid-column:2}
 .friend{display:block;max-width:760px;margin:6px auto -30px;padding:0 24px;text-align:right;position:relative;z-index:2}
-.friend img{display:inline-block;border-radius:10px;box-shadow:0 2px 6px rgba(0,0,0,.25);transform:rotate(6deg);transition:transform .2s}
+.friend img{display:inline-block;filter:drop-shadow(0 3px 5px rgba(0,0,0,.28));transform:rotate(6deg);transition:transform .2s}
 .friend:hover img{transform:rotate(0deg) scale(1.06)}
-@media(max-width:560px){.friend{margin:4px auto -18px}.friend img{width:72px;height:auto}}
+@media(max-width:560px){.friend{margin:4px auto -18px}.friend img{width:88px;height:auto}}
