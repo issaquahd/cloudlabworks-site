@@ -24,9 +24,10 @@
     <!-- formline: one crescent on the flank, one trigon behind it -->
     <use href="#crescent" transform="translate(250 262) rotate(-18) scale(.8)" fill="#efe6d6"/>
     <use href="#trigon" transform="translate(330 282) rotate(180) scale(.6)" fill="#b3372b"/>
-    <!-- eye -->
-    <circle cx="392" cy="222" r="20" fill="#efe6d6"/>
-    <circle cx="395" cy="222" r="9" fill="#0b1220"/>
+    <!-- eye: patch + dot + highlight, from the first cut -->
+    <ellipse cx="392" cy="212" rx="36" ry="14" transform="rotate(14 392 212)" fill="#efe6d6"/>
+    <circle cx="380" cy="215" r="7" fill="#0b1220"/>
+    <circle cx="383" cy="212" r="2.5" fill="#efe6d6"/>
     <use href="#trigon" transform="translate(438 268) rotate(150) scale(.5)" fill="#b3372b"/>
     <!-- jaw -->
     <path d="M410 284 Q444 280 460 254" fill="none" stroke="#efe6d6" stroke-width="6" stroke-linecap="round"/>
