@@ -69,10 +69,10 @@ form.inquiry .hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hi
 
 .pixel img{image-rendering:pixelated}
 
-ol.events{list-style:none;padding:0;margin:0}ol.events li{display:grid;grid-template-columns:150px 1fr auto;gap:8px 18px;align-items:center;padding:14px 0;border-top:1px solid var(--line)}ol.events li:last-child{border-bottom:1px solid var(--line)}
-ol.events time{color:var(--accent);font-weight:600;font-variant-numeric:tabular-nums;white-space:nowrap}ol.events b{display:block;color:var(--ink)}ol.events span{display:block;color:var(--muted);font-size:.95rem}
+ol.events{list-style:none;padding:0;margin:0}ol.events li{display:grid;grid-template-columns:168px 1fr auto;gap:8px 18px;align-items:center;padding:14px 0;border-top:1px solid var(--line)}ol.events li:last-child{border-bottom:1px solid var(--line)}
+ol.events time{color:var(--accent);font-weight:600;font-size:.85rem;letter-spacing:.01em;font-variant-numeric:tabular-nums;white-space:nowrap}ol.events b{display:block;color:var(--ink)}ol.events span{display:block;color:var(--muted);font-size:.95rem}
 a.meet{padding:7px 12px;border:1px solid var(--accent);border-radius:8px;color:var(--accent);font-weight:600;font-size:.9rem;white-space:nowrap}a.meet:hover{background:var(--accent);color:var(--paper);text-decoration:none}
-@media(max-width:560px){ol.events li{grid-template-columns:1fr}ol.events time{font-size:.9rem}a.meet{justify-self:start}}
+@media(max-width:560px){ol.events li{grid-template-columns:1fr}ol.events time{font-size:.8rem}a.meet{justify-self:start}}
 .music{margin:28px 0 0;padding:14px 18px;border:1px solid var(--line);border-left:3px solid var(--accent);border-radius:10px;display:grid;grid-template-columns:1fr auto;gap:4px 18px;align-items:center}
 .music p{margin:0}.music-label{grid-column:1/-1;color:var(--muted);font-size:.8rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase}
 .music-track{color:var(--ink-2)}.music-track b{color:var(--ink)}.music-play{display:inline-block;width:26px;height:26px;line-height:26px;margin-right:10px;border-radius:50%;background:var(--accent);color:var(--paper);font-size:.7rem;text-align:center;vertical-align:middle}
