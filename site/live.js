@@ -4,8 +4,7 @@
   "use strict";
   var STATE_URL = "/media/iam-state.json", FEED_URL = "/media/iam-feed.json";
   var hudState = document.getElementById("hud-state"), hudSince = document.getElementById("hud-since"), hud = document.getElementById("hud");
-  var nowEl = document.getElementById("now"), playBtn = document.getElementById("play"), canvas = document.getElementById("viz");
-  var ctx2d = canvas.getContext("2d");
+  var nowEl = document.getElementById("now"), playBtn = document.getElementById("play");
   var lab = { state: "ok", since: null, events: [], seen: 0 };
   var ac = null, master = null, analyser = null, playing = false, stepTimer = null, padTimer = null, source = "lab";
   var fmt = function (iso) { try { return new Date(iso).toLocaleString(undefined, { dateStyle: "medium", timeStyle: "short" }); } catch (e) { return iso || ""; } };
@@ -74,7 +73,7 @@
   function deployFigure() {
     if (!ac) return; var t = ac.currentTime + 0.05;
     [["e5", 0], ["gs5", 0.2], ["b5", 0.4], ["e6", 0.6]].forEach(function (n) { bell(NOTE[n[0]], 0.18, n[1] === 0.6 ? 1.6 : 1.2, t + n[1]); });
-    nowEl.textContent = "A deploy just landed in the lab.";
+    nowEl.textContent = "A deploy just landed in the lab."; breach();
   }
   function start() {
     ensureAudio(); if (ac.state === "suspended") ac.resume();
@@ -84,31 +83,70 @@
   function stop() { playing = false; clearTimeout(stepTimer); clearTimeout(padTimer); playBtn.textContent = "Play the lab"; nowEl.textContent = "Stopped."; }
   playBtn.addEventListener("click", function () { playing && source === "lab" ? stop() : start(); });
 
-  // --- visualizer ---------------------------------------------------------------------------------
-  var raf = null, freq = null, wave = null;
-  function draw() {
-    if (raf) return;
-    var W = canvas.width, H = canvas.height, ok;
-    (function frame() {
-      raf = requestAnimationFrame(frame);
-      if (!analyser) return;
-      freq = freq || new Uint8Array(analyser.frequencyBinCount); wave = wave || new Uint8Array(analyser.fftSize);
-      analyser.getByteFrequencyData(freq); analyser.getByteTimeDomainData(wave); ok = lab.state === "ok";
-      ctx2d.fillStyle = "rgba(11,18,32,0.28)"; ctx2d.fillRect(0, 0, W, H);
-      var bars = 64, bw = W / bars;
-      for (var i = 0; i < bars; i++) {
-        var v = freq[Math.floor(i * 3.2)] / 255, h = v * v * (H - 40);
-        ctx2d.fillStyle = ok ? "rgba(45,212,191," + (0.25 + v * 0.7) + ")" : "rgba(248,113,113," + (0.25 + v * 0.7) + ")";
-        ctx2d.fillRect(i * bw + 2, H - h, bw - 4, h);
-      }
-      ctx2d.beginPath(); ctx2d.strokeStyle = ok ? "#e2e8f0" : "#fca5a5"; ctx2d.lineWidth = 1.5;
-      for (var j = 0; j < wave.length; j += 4) { var x = j / wave.length * W, y = H * 0.42 + (wave[j] - 128) / 128 * H * 0.3; j ? ctx2d.lineTo(x, y) : ctx2d.moveTo(x, y); }
-      ctx2d.stroke();
-    })();
+  // --- the Salish Sea (visualizer) --------------------------------------------------------------
+  // One full-page canvas: dusk sky, the Olympics, four wave layers, and Waku. Swell follows the low
+  // end, light on the water follows the highs, a deploy is a breach. Runs idle (slow) with no audio.
+  var sea = document.getElementById("sea"), sc = sea.getContext("2d"), dpr = Math.min(window.devicePixelRatio || 1, 2);
+  var W = 0, H = 0, t0 = performance.now(), raf = null, freq = null, wave = null;
+  var ORCA = { body: new Path2D("M100 312 C160 200 280 150 380 170 C430 180 470 220 462 250 C450 300 380 330 300 336 C220 342 150 340 100 336 Z"),
+               belly: new Path2D("M120 330 C220 300 340 296 452 262 C420 316 250 340 120 330 Z"),
+               dorsal: new Path2D("M256 200 C248 150 238 108 226 72 C272 100 312 138 332 194 Z"),
+               pect: new Path2D("M318 316 C300 342 306 374 338 382 C358 364 354 330 342 310 Z"),
+               fluke: new Path2D("M106 320 C72 286 42 292 18 314 C48 316 68 320 88 324 C68 334 50 348 30 372 C60 362 86 350 108 334 Z") };
+  var orca = { x: 0.12, dir: 1, phase: 0.9, breach: 0, speed: 0.022 }; // x in screen widths, phase drives the dive cycle
+  function resize() { W = sea.clientWidth; H = sea.clientHeight; sea.width = W * dpr; sea.height = H * dpr; sc.setTransform(dpr, 0, 0, dpr, 0, 0); }
+  window.addEventListener("resize", resize); resize();
+  function band(a, b) { if (!freq) return 0; var s = 0, n = 0; for (var i = a; i < b && i < freq.length; i++) { s += freq[i]; n++; } return n ? s / n / 255 : 0; }
+  function drawOrca(x, y, scale, tilt, alpha) {
+    sc.save(); sc.translate(x, y); sc.rotate(tilt); sc.scale(scale * (orca.dir), scale); sc.translate(-280, -300); sc.globalAlpha = alpha;
+    sc.fillStyle = "#0b1220"; sc.fill(ORCA.fluke); sc.fill(ORCA.body); sc.fill(ORCA.dorsal);
+    sc.fillStyle = "#f8fafc"; sc.globalAlpha = alpha * 0.9; sc.fill(ORCA.belly);
+    sc.fillStyle = "#0b1220"; sc.globalAlpha = alpha; sc.fill(ORCA.pect);
+    sc.restore();
   }
-  // idle frame so the stage is not black before play
-  ctx2d.fillStyle = "#0b1220"; ctx2d.fillRect(0, 0, canvas.width, canvas.height);
-  ctx2d.strokeStyle = "#1e293b"; ctx2d.beginPath(); ctx2d.moveTo(0, canvas.height * 0.42); ctx2d.lineTo(canvas.width, canvas.height * 0.42); ctx2d.stroke();
+  function frame(now) {
+    raf = requestAnimationFrame(frame);
+    var t = (now - t0) / 1000, ok = lab.state === "ok", live = !!analyser && (playing || source === "rec");
+    if (live) { freq = freq || new Uint8Array(analyser.frequencyBinCount); analyser.getByteFrequencyData(freq); }
+    var low = live ? band(2, 12) : 0.12 + 0.05 * Math.sin(t * 0.5), high = live ? band(60, 200) : 0.05;
+    var horizon = H * 0.46;
+    // sky — dusk over the Sound; storm when something is down
+    var sky = sc.createLinearGradient(0, 0, 0, horizon);
+    if (ok) { sky.addColorStop(0, "#0b1220"); sky.addColorStop(0.55, "#1e3a4c"); sky.addColorStop(1, "#c2703a"); }
+    else { sky.addColorStop(0, "#0b1220"); sky.addColorStop(0.6, "#27212b"); sky.addColorStop(1, "#7f1d1d"); }
+    sc.fillStyle = sky; sc.fillRect(0, 0, W, horizon + 2);
+    // the Olympics — two ridges
+    sc.fillStyle = ok ? "#12283a" : "#1a1a22"; ridge(horizon, 0.11, 0.0011, 7, 0); sc.fillStyle = ok ? "#0d1c2a" : "#101018"; ridge(horizon, 0.07, 0.0019, 13, 40);
+    // sea — four wave layers, amplitude from the low end
+    var layers = [[0.02, 0.018, 0.9, ok ? "#134e4a" : "#2a1f28"], [0.05, 0.012, 0.6, ok ? "#0f766e" : "#3b1f28"], [0.09, 0.009, 0.45, ok ? "#115e59" : "#331b22"], [0.13, 0.007, 0.35, ok ? "#0b3b3a" : "#241419"]];
+    for (var L = 0; L < layers.length; L++) {
+      var yb = horizon + (H - horizon) * layers[L][0], amp = (6 + low * 34) * (1 - L * 0.15), k = layers[L][1], sp = layers[L][2];
+      sc.beginPath(); sc.moveTo(0, H);
+      for (var x = 0; x <= W; x += 6) sc.lineTo(x, yb + Math.sin(x * k + t * sp + L) * amp + Math.sin(x * k * 2.3 - t * sp * 1.7) * amp * 0.35);
+      sc.lineTo(W, H); sc.closePath(); sc.fillStyle = layers[L][3]; sc.fill();
+    }
+    // light on the water — highs
+    var g = sc.createLinearGradient(0, horizon, 0, H); g.addColorStop(0, "rgba(255,200,140," + (0.10 + high * 0.5) + ")"); g.addColorStop(1, "rgba(255,200,140,0)");
+    sc.fillStyle = g; sc.fillRect(W * 0.55 - 60, horizon, 120 + high * 300, H - horizon);
+    // Waku — cruises, dives, surfaces; breaches on deploy
+    orca.phase += 0.004 + low * 0.01; orca.x += orca.speed * orca.dir / 60;
+    if (orca.x > 1.25) orca.dir = -1; if (orca.x < -0.25) orca.dir = 1;
+    var surf = Math.sin(orca.phase);                          // -1 deep … 1 surfaced
+    var yO = horizon + (H - horizon) * 0.07 + (1 - surf) * 46 - orca.breach * 90;
+    var tilt = (orca.dir * -Math.cos(orca.phase) * 0.25) - orca.breach * orca.dir * 0.7;
+    var alpha = Math.max(0.15, Math.min(1, 0.55 + surf * 0.45 + orca.breach));
+    if (orca.breach > 0) orca.breach = Math.max(0, orca.breach - 0.012);
+    drawOrca(orca.x * W, yO, 0.36 + (surf + 1) * 0.05, tilt, alpha);
+    if (surf > 0.85 || orca.breach > 0.5) { sc.fillStyle = "rgba(248,250,252,.7)"; for (var d = 0; d < 6; d++) sc.beginPath(), sc.arc(orca.x * W + (Math.random() - 0.5) * 120, yO - 30 - Math.random() * 40 * (1 + orca.breach), 2 + Math.random() * 3, 0, 6.28), sc.fill(); }
+    // foam line at the horizon layer
+    sc.strokeStyle = "rgba(248,250,252," + (0.08 + high * 0.3) + ")"; sc.lineWidth = 1; sc.beginPath();
+    for (var x2 = 0; x2 <= W; x2 += 6) { var y2 = horizon + (H - horizon) * 0.02 + Math.sin(x2 * 0.018 + t * 0.9) * (6 + low * 34); x2 ? sc.lineTo(x2, y2) : sc.moveTo(x2, y2); }
+    sc.stroke();
+  }
+  function ridge(horizon, hFrac, k, seed, off) { sc.beginPath(); sc.moveTo(0, horizon); for (var x = 0; x <= W; x += 8) sc.lineTo(x, horizon - H * hFrac * (0.55 + 0.45 * Math.abs(Math.sin(x * k + seed) * Math.sin(x * k * 2.7 + seed))) + off * 0.2); sc.lineTo(W, horizon); sc.closePath(); sc.fill(); }
+  function draw() { if (!raf) raf = requestAnimationFrame(frame); }
+  function breach() { orca.breach = 1; }
+  draw();
 
   // --- recordings ----------------------------------------------------------------------------------
   var list = document.getElementById("episodes");
