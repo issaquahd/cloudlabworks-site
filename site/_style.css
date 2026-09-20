@@ -56,3 +56,5 @@ form.inquiry .hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hi
 .launch-badge{flex-basis:100%;display:inline-flex;align-items:center;gap:10px;width:255px;max-width:100%;height:55px;padding:0 14px;border:1px solid #374151;border-radius:8px;background:#111827;color:#f9fafb;line-height:1.25}
 .launch-badge:hover{text-decoration:none;border-color:#6b7280}.launch-badge img{width:24px;height:24px;flex:none}
 .launch-badge span{display:flex;flex-direction:column;font-size:.7rem;color:#9ca3af}.launch-badge b{font-size:.8rem;font-weight:600;color:#f9fafb}
+
+.pixel img{image-rendering:pixelated}
