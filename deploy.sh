@@ -66,3 +66,7 @@ done
 say "MX:"; dig +short MX cloudlabworks.dev @ashton.ns.cloudflare.com
 say "TXT:"; dig +short TXT cloudlabworks.dev @ashton.ns.cloudflare.com
 say "routing status:"; cf "$API/zones/$ZONE/email/routing" | python3 -c 'import sys,json;r=json.load(sys.stdin).get("result",{});print(r.get("status"),r.get("enabled"))'
+
+# Infrastructure as Music: the deploy phrase, only when the apex verified 200. Never fails the deploy.
+curl -s -o /dev/null --max-time 20 -w '%{http_code}' https://cloudlabworks.dev/ | grep -q '^200$' \
+  && sh /Users/rebl/.openclaw/workspace/ops/iam/play.sh deploy || true
