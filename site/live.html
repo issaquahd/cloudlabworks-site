@@ -8,15 +8,20 @@
 <link rel="canonical" href="https://cloudlabworks.dev/live">
 <style>{{STYLE}}</style>
 <style>
-/* Salish Sea scene: one canvas behind everything, panels over it */
-body{background:#0b1220}
-#sea{position:fixed;inset:0;width:100%;height:100%;z-index:0;display:block}
+/* Salish Sea: a real photo, dimmed ("opaque"), with the audio-reactive canvas over it and the panels over that */
+body{background:#0b1220 url(/media/salish-sea-l79-960.jpg) left 40%/cover no-repeat fixed}
+@media(min-width:961px){body{background-image:url(/media/salish-sea-l79.jpg)}}
+@supports (-webkit-touch-callout:none){body{background-attachment:scroll}}
+#dim{position:fixed;inset:0;z-index:0;background:rgba(11,18,32,.42);transition:background 1.5s}
+#dim.fault{background:rgba(60,14,20,.55)}
+#sea{position:fixed;inset:0;width:100%;height:100%;z-index:0;display:block;mix-blend-mode:screen;pointer-events:none}
 header,main,footer{position:relative;z-index:1}
 header{background:rgba(11,18,32,.55);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
 header .brand,header .brand small,nav a{color:#e2e8f0}nav a:hover{color:#2dd4bf}
 main{color:#e2e8f0}
-main h1,main h2{color:#f8fafc}main .lede,main .tag,main .how{color:#cbd5e1}
-.panel{background:rgba(11,18,32,.66);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border:1px solid rgba(226,232,240,.14);border-radius:14px;padding:20px 22px;margin-top:22px}
+main h1,main h2{color:#f8fafc;text-shadow:0 2px 12px rgba(0,0,0,.6)}main .lede,main .tag,main .how{color:#e2e8f0}main .lede{text-shadow:0 1px 8px rgba(0,0,0,.7)}
+.panel{background:rgba(11,18,32,.72);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border:1px solid rgba(226,232,240,.14);border-radius:14px;padding:20px 22px;margin-top:22px}
+.credit{color:#94a3b8;font-size:.8rem;margin-top:26px}.credit a{color:#94a3b8}
 .hud{color:#e2e8f0;font-size:.85rem;letter-spacing:.06em;text-transform:uppercase;opacity:.9;margin:0 0 10px}
 .hud b{color:#2dd4bf}.hud.fault b{color:#f87171}
 .controls{display:flex;flex-wrap:wrap;gap:10px 16px;align-items:center}
@@ -34,11 +39,12 @@ footer{background:rgba(11,18,32,.55)}footer,footer a{color:#cbd5e1}
 </style>
 </head>
 <body>
+<div id="dim" aria-hidden="true"></div>
 <canvas id="sea" aria-hidden="true"></canvas>
 {{HEAD}}
 <main>
   <h1>IaC Live Music!</h1>
-  <p class="lede">The lab, as sound — and as the Salish Sea. Every deploy, every health check, every fault in the Duvall lab drives an instrument: Sonic Pi on the machine that runs the agents. The water behind this page moves with the music; Waku surfaces when the lab has something to say.</p>
+  <p class="lede">The lab, as sound — and as the Salish Sea. Every deploy, every health check, every fault in the Duvall lab drives an instrument: Sonic Pi on the machine that runs the agents. That is L79 behind this page, a Southern Resident in Haro Strait. The light on the water moves with the music; a deploy sends a ring across it.</p>
 
   <div class="panel">
     <p class="hud" id="hud">lab · <b id="hud-state">loading</b> <span id="hud-since"></span></p>
@@ -57,6 +63,8 @@ footer{background:rgba(11,18,32,.55)}footer,footer a{color:#cbd5e1}
     <p class="tag">Recorded from the lab's own instrument: twenty seconds around each fault, recovery and deploy, assembled nightly into one take per day.</p>
     <ol class="episodes" id="episodes"><li><span class="ev">Loading…</span></li></ol>
   </div>
+
+  <p class="credit">Background: L79, a Southern Resident male of L pod, just south of Turn Point, Stuart Island, in Haro Strait — the Salish Sea. Photo by Erik Stockdale, <a href="https://commons.wikimedia.org/wiki/File:Male_orca_whale_L79_southern_resident_puget_sound.jpg" rel="noopener">Wikimedia Commons</a>, CC0.</p>
 
 {{FOOT}}
 </main>

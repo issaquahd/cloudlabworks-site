@@ -84,68 +84,41 @@
   playBtn.addEventListener("click", function () { playing && source === "lab" ? stop() : start(); });
 
   // --- the Salish Sea (visualizer) --------------------------------------------------------------
-  // One full-page canvas: dusk sky, the Olympics, four wave layers, and Waku. Swell follows the low
-  // end, light on the water follows the highs, a deploy is a breach. Runs idle (slow) with no audio.
-  var sea = document.getElementById("sea"), sc = sea.getContext("2d"), dpr = Math.min(window.devicePixelRatio || 1, 2);
-  var W = 0, H = 0, t0 = performance.now(), raf = null, freq = null, wave = null;
-  var ORCA = { body: new Path2D("M100 312 C160 200 280 150 380 170 C430 180 470 220 462 250 C450 300 380 330 300 336 C220 342 150 340 100 336 Z"),
-               belly: new Path2D("M120 330 C220 300 340 296 452 262 C420 316 250 340 120 330 Z"),
-               dorsal: new Path2D("M256 200 C248 150 238 108 226 72 C272 100 312 138 332 194 Z"),
-               pect: new Path2D("M318 316 C300 342 306 374 338 382 C358 364 354 330 342 310 Z"),
-               fluke: new Path2D("M106 320 C72 286 42 292 18 314 C48 316 68 320 88 324 C68 334 50 348 30 372 C60 362 86 350 108 334 Z") };
-  var orca = { x: 0.12, dir: 1, phase: 0.9, breach: 0, speed: 0.022 }; // x in screen widths, phase drives the dive cycle
+  // The photo is the sea. This canvas is a light layer over it (mix-blend-mode: screen): shimmer on the
+  // water follows the highs, slow swell lines follow the lows, a deploy sends rings across the water.
+  var sea = document.getElementById("sea"), sc = sea.getContext("2d"), dim = document.getElementById("dim"), dpr = Math.min(window.devicePixelRatio || 1, 2);
+  var W = 0, H = 0, t0 = performance.now(), raf = null, freq = null, rings = [];
   function resize() { W = sea.clientWidth; H = sea.clientHeight; sea.width = W * dpr; sea.height = H * dpr; sc.setTransform(dpr, 0, 0, dpr, 0, 0); }
   window.addEventListener("resize", resize); resize();
   function band(a, b) { if (!freq) return 0; var s = 0, n = 0; for (var i = a; i < b && i < freq.length; i++) { s += freq[i]; n++; } return n ? s / n / 255 : 0; }
-  function drawOrca(x, y, scale, tilt, alpha) {
-    sc.save(); sc.translate(x, y); sc.rotate(tilt); sc.scale(scale * (orca.dir), scale); sc.translate(-280, -300); sc.globalAlpha = alpha;
-    sc.fillStyle = "#0b1220"; sc.fill(ORCA.fluke); sc.fill(ORCA.body); sc.fill(ORCA.dorsal);
-    sc.fillStyle = "#f8fafc"; sc.globalAlpha = alpha * 0.9; sc.fill(ORCA.belly);
-    sc.fillStyle = "#0b1220"; sc.globalAlpha = alpha; sc.fill(ORCA.pect);
-    sc.restore();
-  }
   function frame(now) {
     raf = requestAnimationFrame(frame);
     var t = (now - t0) / 1000, ok = lab.state === "ok", live = !!analyser && (playing || source === "rec");
     if (live) { freq = freq || new Uint8Array(analyser.frequencyBinCount); analyser.getByteFrequencyData(freq); }
-    var low = live ? band(2, 12) : 0.12 + 0.05 * Math.sin(t * 0.5), high = live ? band(60, 200) : 0.05;
-    var horizon = H * 0.46;
-    // sky — dusk over the Sound; storm when something is down
-    var sky = sc.createLinearGradient(0, 0, 0, horizon);
-    if (ok) { sky.addColorStop(0, "#0b1220"); sky.addColorStop(0.55, "#1e3a4c"); sky.addColorStop(1, "#c2703a"); }
-    else { sky.addColorStop(0, "#0b1220"); sky.addColorStop(0.6, "#27212b"); sky.addColorStop(1, "#7f1d1d"); }
-    sc.fillStyle = sky; sc.fillRect(0, 0, W, horizon + 2);
-    // the Olympics — two ridges
-    sc.fillStyle = ok ? "#12283a" : "#1a1a22"; ridge(horizon, 0.11, 0.0011, 7, 0); sc.fillStyle = ok ? "#0d1c2a" : "#101018"; ridge(horizon, 0.07, 0.0019, 13, 40);
-    // sea — four wave layers, amplitude from the low end
-    var layers = [[0.02, 0.018, 0.9, ok ? "#134e4a" : "#2a1f28"], [0.05, 0.012, 0.6, ok ? "#0f766e" : "#3b1f28"], [0.09, 0.009, 0.45, ok ? "#115e59" : "#331b22"], [0.13, 0.007, 0.35, ok ? "#0b3b3a" : "#241419"]];
-    for (var L = 0; L < layers.length; L++) {
-      var yb = horizon + (H - horizon) * layers[L][0], amp = (6 + low * 34) * (1 - L * 0.15), k = layers[L][1], sp = layers[L][2];
-      sc.beginPath(); sc.moveTo(0, H);
-      for (var x = 0; x <= W; x += 6) sc.lineTo(x, yb + Math.sin(x * k + t * sp + L) * amp + Math.sin(x * k * 2.3 - t * sp * 1.7) * amp * 0.35);
-      sc.lineTo(W, H); sc.closePath(); sc.fillStyle = layers[L][3]; sc.fill();
+    var low = live ? band(2, 12) : 0.10 + 0.04 * Math.sin(t * 0.4), high = live ? band(60, 200) : 0.04;
+    dim.className = ok ? "" : "fault";
+    sc.clearRect(0, 0, W, H);
+    var water = H * 0.45;                                             // the water starts roughly mid-frame in the photo
+    // swell — three translucent bands drifting across the lower half, amplitude from the low end
+    for (var L = 0; L < 3; L++) {
+      var yb = water + (H - water) * (0.25 + L * 0.25), amp = (4 + low * 26) * (1 - L * 0.2), k = 0.012 - L * 0.002, sp = 0.5 + L * 0.2;
+      sc.beginPath();
+      for (var x = 0; x <= W; x += 8) { var y = yb + Math.sin(x * k + t * sp + L * 2) * amp + Math.sin(x * k * 2.1 - t * sp * 1.6) * amp * 0.4; x ? sc.lineTo(x, y) : sc.moveTo(x, y); }
+      sc.strokeStyle = ok ? "rgba(153,246,228," + (0.10 + low * 0.35) + ")" : "rgba(252,165,165," + (0.10 + low * 0.35) + ")"; sc.lineWidth = 1.5 + low * 3; sc.stroke();
     }
-    // light on the water — highs
-    var g = sc.createLinearGradient(0, horizon, 0, H); g.addColorStop(0, "rgba(255,200,140," + (0.10 + high * 0.5) + ")"); g.addColorStop(1, "rgba(255,200,140,0)");
-    sc.fillStyle = g; sc.fillRect(W * 0.55 - 60, horizon, 120 + high * 300, H - horizon);
-    // Waku — cruises, dives, surfaces; breaches on deploy
-    orca.phase += 0.004 + low * 0.01; orca.x += orca.speed * orca.dir / 60;
-    if (orca.x > 1.25) orca.dir = -1; if (orca.x < -0.25) orca.dir = 1;
-    var surf = Math.sin(orca.phase);                          // -1 deep … 1 surfaced
-    var yO = horizon + (H - horizon) * 0.07 + (1 - surf) * 46 - orca.breach * 90;
-    var tilt = (orca.dir * -Math.cos(orca.phase) * 0.25) - orca.breach * orca.dir * 0.7;
-    var alpha = Math.max(0.15, Math.min(1, 0.55 + surf * 0.45 + orca.breach));
-    if (orca.breach > 0) orca.breach = Math.max(0, orca.breach - 0.012);
-    drawOrca(orca.x * W, yO, 0.36 + (surf + 1) * 0.05, tilt, alpha);
-    if (surf > 0.85 || orca.breach > 0.5) { sc.fillStyle = "rgba(248,250,252,.7)"; for (var d = 0; d < 6; d++) sc.beginPath(), sc.arc(orca.x * W + (Math.random() - 0.5) * 120, yO - 30 - Math.random() * 40 * (1 + orca.breach), 2 + Math.random() * 3, 0, 6.28), sc.fill(); }
-    // foam line at the horizon layer
-    sc.strokeStyle = "rgba(248,250,252," + (0.08 + high * 0.3) + ")"; sc.lineWidth = 1; sc.beginPath();
-    for (var x2 = 0; x2 <= W; x2 += 6) { var y2 = horizon + (H - horizon) * 0.02 + Math.sin(x2 * 0.018 + t * 0.9) * (6 + low * 34); x2 ? sc.lineTo(x2, y2) : sc.moveTo(x2, y2); }
-    sc.stroke();
+    // shimmer — a soft glow on the water that breathes with the highs
+    var g = sc.createRadialGradient(W * 0.62, water + (H - water) * 0.35, 10, W * 0.62, water + (H - water) * 0.35, W * 0.35 + high * W * 0.4);
+    g.addColorStop(0, ok ? "rgba(255,214,170," + (0.12 + high * 0.6) + ")" : "rgba(255,170,170," + (0.10 + high * 0.5) + ")"); g.addColorStop(1, "rgba(0,0,0,0)");
+    sc.fillStyle = g; sc.fillRect(0, water, W, H - water);
+    // sparkle — points of light on the water, more with the highs
+    var n = 6 + Math.floor(high * 60); sc.fillStyle = "rgba(255,255,255," + (0.25 + high * 0.5) + ")";
+    for (var i = 0; i < n; i++) { var px = (Math.sin(i * 12.9898 + Math.floor(t * 2)) * 43758.5453) % 1; px = Math.abs(px); var py = Math.abs((Math.sin(i * 78.233 + Math.floor(t * 2)) * 12345.678) % 1); sc.fillRect(px * W, water + py * (H - water), 2, 1); }
+    // rings — a deploy sends them across the water from where the dorsal fin is in the photo
+    for (var r = rings.length - 1; r >= 0; r--) { var R = rings[r]; R.a += 2.6; R.life -= 0.006; if (R.life <= 0) { rings.splice(r, 1); continue; }
+      sc.beginPath(); sc.ellipse(W * 0.78, water + (H - water) * 0.1, R.a, R.a * 0.28, 0, 0, 6.283); sc.strokeStyle = "rgba(226,232,240," + (R.life * 0.6) + ")"; sc.lineWidth = 2; sc.stroke(); }
   }
-  function ridge(horizon, hFrac, k, seed, off) { sc.beginPath(); sc.moveTo(0, horizon); for (var x = 0; x <= W; x += 8) sc.lineTo(x, horizon - H * hFrac * (0.55 + 0.45 * Math.abs(Math.sin(x * k + seed) * Math.sin(x * k * 2.7 + seed))) + off * 0.2); sc.lineTo(W, horizon); sc.closePath(); sc.fill(); }
   function draw() { if (!raf) raf = requestAnimationFrame(frame); }
-  function breach() { orca.breach = 1; }
+  function breach() { rings.push({ a: 6, life: 1 }); setTimeout(function () { rings.push({ a: 6, life: 1 }); }, 350); setTimeout(function () { rings.push({ a: 6, life: 1 }); }, 700); }
   draw();
 
   // --- recordings ----------------------------------------------------------------------------------
