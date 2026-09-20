@@ -65,7 +65,9 @@ INQUIRY_TO="${INQUIRY_TO:-alex@cloudlabworks.dev}"   # must be a verified Email 
 cf -X PUT "$API/accounts/$ACCT/workers/scripts/$SCRIPT" \
   -F "metadata={\"main_module\":\"worker.js\",\"compatibility_date\":\"2026-09-01\",\"assets\":{\"jwt\":\"$COMPLETION\",\"config\":{\"not_found_handling\":\"none\",\"run_worker_first\":[\"/media/*\"]}},\"bindings\":[{\"type\":\"assets\",\"name\":\"ASSETS\"},{\"type\":\"send_email\",\"name\":\"INQUIRY\"},{\"type\":\"plain_text\",\"name\":\"INQUIRY_TO\",\"text\":\"$INQUIRY_TO\"}]};type=application/json" \
   -F "worker.js=@$DIR/src/worker.js;type=application/javascript+module" \
-  | python3 -c 'import sys,json;d=json.load(sys.stdin);print("deploy ok" if d.get("success") else "FAIL "+json.dumps(d.get("errors"))[:300])'
+  | python3 -c 'import sys,json;d=json.load(sys.stdin);print("deploy ok" if d.get("success") else "FAIL "+json.dumps(d.get("errors"))[:300])' | tee /tmp/deploy-assets.result
+# Infrastructure as Music: deploy phrase + cue when the upload was accepted. Never fails the deploy.
+grep -q '^deploy ok$' /tmp/deploy-assets.result && { sh /Users/rebl/.openclaw/workspace/ops/iam/play.sh deploy; sh /Users/rebl/.openclaw/workspace/ops/iam/play.sh deploy-cue; } || true
 
 say "== 5. verify"
 sleep 15

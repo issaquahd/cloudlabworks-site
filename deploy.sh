@@ -28,9 +28,9 @@ say "== 2. worker upload ($SCRIPT)"
 # INQUIRY and the var INQUIRY_TO (a verified Email Routing destination; alex@ verified 2026-09-19) on each deploy.
 INQUIRY_TO="${INQUIRY_TO:-alex@cloudlabworks.dev}"
 META="{\"main_module\":\"worker.js\",\"compatibility_date\":\"2026-09-01\",\"keep_assets\":true,\"bindings\":[{\"type\":\"assets\",\"name\":\"ASSETS\"},{\"type\":\"send_email\",\"name\":\"INQUIRY\"},{\"type\":\"plain_text\",\"name\":\"INQUIRY_TO\",\"text\":\"$INQUIRY_TO\"}]}"
-cf -X PUT "$API/accounts/$ACCT/workers/scripts/$SCRIPT" \
+UPLOAD=$(cf -X PUT "$API/accounts/$ACCT/workers/scripts/$SCRIPT" \
   -F "metadata=$META;type=application/json" \
-  -F "worker.js=@$DIR/src/worker.js;type=application/javascript+module" | ok
+  -F "worker.js=@$DIR/src/worker.js;type=application/javascript+module" | ok); say "$UPLOAD"
 
 say "== 3. custom domains"
 for H in cloudlabworks.dev www.cloudlabworks.dev; do
@@ -67,6 +67,6 @@ say "MX:"; dig +short MX cloudlabworks.dev @ashton.ns.cloudflare.com
 say "TXT:"; dig +short TXT cloudlabworks.dev @ashton.ns.cloudflare.com
 say "routing status:"; cf "$API/zones/$ZONE/email/routing" | python3 -c 'import sys,json;r=json.load(sys.stdin).get("result",{});print(r.get("status"),r.get("enabled"))'
 
-# Infrastructure as Music: the deploy phrase, only when the apex verified 200. Never fails the deploy.
-curl -s -o /dev/null --max-time 20 -w '%{http_code}' https://cloudlabworks.dev/ | grep -q '^200$' \
-  && { sh /Users/rebl/.openclaw/workspace/ops/iam/play.sh deploy; sh /Users/rebl/.openclaw/workspace/ops/iam/play.sh deploy-cue; } || true
+# Infrastructure as Music: the deploy phrase + cue when the worker upload was accepted. Keyed on the API result, not on a
+# curl to the public site — from the gateway exec sandbox that curl is a proxy artifact (hosts outside the token's allowlist). Never fails the deploy.
+[ "$UPLOAD" = ok ] && { sh /Users/rebl/.openclaw/workspace/ops/iam/play.sh deploy; sh /Users/rebl/.openclaw/workspace/ops/iam/play.sh deploy-cue; } || true
