@@ -1,0 +1,26 @@
+{
+ "title": "IaC Live Music",
+ "episodes": [
+  {
+   "slug": "2026-09-20",
+   "date": "2026-09-20",
+   "seconds": 20.1,
+   "events": [
+    "145500-deploy"
+   ],
+   "m4a": "iam-2026-09-20.m4a"
+  },
+  {
+   "slug": "2026-09-20-ep0",
+   "date": "2026-09-20",
+   "seconds": 29.5,
+   "events": [
+    "hello",
+    "fault",
+    "deploy",
+    "recover"
+   ],
+   "m4a": "iam-2026-09-20-ep0.m4a"
+  }
+ ]
+}

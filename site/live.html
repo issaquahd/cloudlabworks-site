@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>IaC Live Music! — Cloud Lab Works</title>
+<meta name="description" content="The Duvall lab, as sound. Infrastructure state played live in your browser, and the day's recordings from the lab's own instrument.">
+<link rel="canonical" href="https://cloudlabworks.dev/live">
+<style>{{STYLE}}
+.live-wrap{margin-top:28px}
+.stage{position:relative;border:1px solid var(--line);border-radius:14px;overflow:hidden;background:#0b1220}
+.stage canvas{display:block;width:100%;height:260px}
+.stage .hud{position:absolute;left:16px;top:14px;color:#e2e8f0;font-size:.85rem;letter-spacing:.06em;text-transform:uppercase;opacity:.85}
+.stage .hud b{color:#2dd4bf}
+.stage .hud.fault b{color:#f87171}
+.controls{display:flex;flex-wrap:wrap;gap:10px 16px;align-items:center;margin-top:14px}
+.controls button{font:inherit;font-weight:600;padding:10px 16px;border:1px solid var(--accent);border-radius:8px;background:none;color:var(--accent);cursor:pointer}
+.controls button:hover{background:var(--accent);color:var(--paper)}
+.controls .now{color:var(--muted);font-size:.95rem}
+ol.episodes{list-style:none;padding:0;margin:16px 0 0}
+ol.episodes li{display:grid;grid-template-columns:150px 1fr;gap:6px 18px;align-items:center;padding:14px 0;border-top:1px solid var(--line)}
+ol.episodes li:last-child{border-bottom:1px solid var(--line)}
+ol.episodes time{color:var(--accent);font-weight:600;font-size:.9rem;font-variant-numeric:tabular-nums}
+ol.episodes .ev{color:var(--muted);font-size:.9rem;display:block}
+ol.episodes audio{width:100%;max-width:520px;margin-top:6px}
+.how{color:var(--ink-2)}
+@media(max-width:560px){ol.episodes li{grid-template-columns:1fr}.stage canvas{height:200px}}
+</style>
+</head>
+<body>
+{{HEAD}}
+<main>
+  <h1>IaC Live Music!</h1>
+  <p class="lede">The lab, as sound. Every deploy, every health check, every fault in the Duvall lab drives an instrument — Sonic Pi on the machine that runs the agents. This page plays the same music from the same state, in your browser, and keeps the lab's own recordings by date.</p>
+
+  <div class="live-wrap">
+    <div class="stage">
+      <canvas id="viz" width="1200" height="260" aria-label="Audio visualizer"></canvas>
+      <div class="hud" id="hud">lab · <b id="hud-state">loading</b> <span id="hud-since"></span></div>
+    </div>
+    <div class="controls">
+      <button id="play" type="button">Play the lab</button>
+      <span class="now" id="now">Press play. Your browser becomes the instrument; nothing streams from the lab.</span>
+    </div>
+    <p class="how">How it works: the lab publishes its state — every site answering, or not, and the last few events — as a small file. The page reads it every half minute and plays it: E major, a slow plucked arpeggio and an airy pad while everything answers; minor, slower, with a low tone underneath, while something is down; a rising bell figure when a deploy lands. The score is code in git; the browser is a second copy of the instrument.</p>
+  </div>
+
+  <h2 id="recordings">Recordings, by date</h2>
+  <p class="tag">Recorded from the lab's own instrument: twenty seconds around each fault, recovery and deploy, assembled nightly into one take per day.</p>
+  <ol class="episodes" id="episodes"><li><span class="ev">Loading…</span></li></ol>
+
+{{FOOT}}
+</main>
+<script src="/live.js"></script>
+</body>
+</html>
