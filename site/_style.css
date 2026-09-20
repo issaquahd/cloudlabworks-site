@@ -94,3 +94,8 @@ ul.plain li.has-stk b,ul.plain li.has-stk>span:not(.stk){grid-column:2}
 .friend img{display:inline-block;filter:drop-shadow(0 3px 5px rgba(0,0,0,.28));transform:rotate(6deg);transition:transform .2s}
 .friend:hover img{transform:rotate(0deg) scale(1.06)}
 @media(max-width:560px){.friend{margin:4px auto -18px}.friend img{width:88px;height:auto}}
+
+/* conferences: brand mark left of the name */
+ul.conf li{display:grid;grid-template-columns:40px 1fr;column-gap:14px;align-items:start}
+ul.conf img{width:28px;height:28px;margin-top:4px;justify-self:center}
+ul.conf img.wide{width:40px;height:auto;filter:drop-shadow(0 1px 2px rgba(0,0,0,.25))}
