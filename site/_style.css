@@ -68,3 +68,8 @@ form.inquiry .hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hi
 .launch-badge span{display:flex;flex-direction:column;font-size:.7rem;color:#9ca3af}.launch-badge b{font-size:.8rem;font-weight:600;color:#f9fafb}
 
 .pixel img{image-rendering:pixelated}
+
+ol.events{list-style:none;padding:0;margin:0}ol.events li{display:grid;grid-template-columns:150px 1fr auto;gap:8px 18px;align-items:center;padding:14px 0;border-top:1px solid var(--line)}ol.events li:last-child{border-bottom:1px solid var(--line)}
+ol.events time{color:var(--accent);font-weight:600;font-variant-numeric:tabular-nums;white-space:nowrap}ol.events b{display:block;color:var(--ink)}ol.events span{display:block;color:var(--muted);font-size:.95rem}
+a.meet{padding:7px 12px;border:1px solid var(--accent);border-radius:8px;color:var(--accent);font-weight:600;font-size:.9rem;white-space:nowrap}a.meet:hover{background:var(--accent);color:var(--paper);text-decoration:none}
+@media(max-width:560px){ol.events li{grid-template-columns:1fr}ol.events time{font-size:.9rem}a.meet{justify-self:start}}

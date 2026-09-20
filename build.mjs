@@ -162,7 +162,7 @@ const home = page("index.html").replace("{{LATEST}}", posts.length ? posts.slice
 
 // Inquiry form (/inquire): rendered at runtime from this template so it can echo values back on a validation error.
 const INQUIRE = page("inquire.html");
-const CATEGORIES = ["Architecture review", "Cloud and AI infrastructure design", "Technical content", "Speaking and interviews", "Mentoring", "Something else"];
+const CATEGORIES = ["Architecture review", "Cloud and AI infrastructure design", "Technical content", "Speaking and interviews", "Mentoring", "Meet at an event", "Something else"];
 
 const pages = { "/": home, "/work": page("work.html").replace("{{GITHUB}}", GITHUB), [BLOG.path]: blogIndex, ...postPages, "/notes": page("notes.html"), "/privacy": page("privacy.html"), "/terms": page("terms.html") };
 const files = { [`${BLOG.path}/feed.xml`]: { body: feed, type: "application/rss+xml; charset=utf-8" } };
@@ -249,7 +249,11 @@ export default {
     if (path === "/inquire" || path === "/inquire.html") {
       if (request.method === "POST") return inquire(request, env);
       if (request.method !== "GET" && request.method !== "HEAD") return new Response("Method not allowed", { status: 405, headers: { allow: "GET, HEAD, POST" } });
-      return new Response(inquireForm(), { headers: NOSTORE });
+      // Prefill from the query string (event "Request to meet" links): category must be a known option, context is trimmed and capped.
+      const q = url.searchParams, pre = {};
+      if (CATEGORIES.includes(q.get("category") || "")) pre.category = q.get("category");
+      if (q.get("context")) pre.context = q.get("context").trim().slice(0, 4000);
+      return new Response(inquireForm({ values: pre }), { headers: NOSTORE });
     }
     const file = FILES[path];
     if (file) return new Response(file.body, { headers: { ...HEADERS, "content-type": file.type } });
