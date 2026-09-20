@@ -1,6 +1,7 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 300" width="520" height="300">
-  <rect x="10" y="10" width="500" height="280" rx="18" fill="#fafafa"/>
-  <rect x="18" y="18" width="484" height="264" rx="12" fill="#0f2140"/>
-  <text x="40" y="130" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="700" font-size="38" fill="#fff" letter-spacing="-0.5">My laptop scales more</text><text x="40" y="182" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="700" font-size="38" fill="#fff" letter-spacing="-0.5">servers than yours<tspan fill="#f59e0b">.</tspan></text>
-  <text x="480" y="258" text-anchor="end" font-family="Avenir Next, Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="600" font-size="16" fill="#cbd5e1" letter-spacing="1.5">RIGHTSCALE</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 272" width="520" height="272">
+  <rect x="8" y="8" width="504" height="256" rx="14" fill="#fafafa"/>
+  <rect x="16" y="16" width="488" height="240" rx="9" fill="#0c2048"/>
+  <text x="40" y="126" font-family="Arial Rounded MT Bold, Helvetica Rounded, Helvetica Neue, Arial, sans-serif" font-size="40" fill="#fff" letter-spacing="-0.5">My laptop scales more</text>
+  <text x="40" y="176" font-family="Arial Rounded MT Bold, Helvetica Rounded, Helvetica Neue, Arial, sans-serif" font-size="40" fill="#fff" letter-spacing="-0.5">servers than yours<tspan fill="#f58220">.</tspan></text>
+  <text x="482" y="232" text-anchor="end" font-family="Arial Rounded MT Bold, Helvetica Rounded, Helvetica Neue, Arial, sans-serif" font-size="15" fill="#e2e8f0" letter-spacing="0.5">RIGHTSCALE</text>
 </svg>
