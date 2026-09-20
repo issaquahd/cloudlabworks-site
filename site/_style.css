@@ -39,6 +39,14 @@ ul.posts li{display:grid;grid-template-columns:9.5em 1fr;column-gap:16px}ul.post
 blockquote.rec{margin:20px 0;padding:4px 18px;border-left:3px solid var(--accent);color:var(--ink-2)}blockquote.rec p{margin:8px 0}blockquote.rec footer{color:var(--muted);font-size:.95rem;margin:6px 0 8px}
 .post article figure{margin:24px 0}.post article figure img{max-width:100%;height:auto;border:1px solid var(--line);border-radius:8px}.post article figcaption{color:var(--muted);font-size:.9rem;margin-top:6px}
 .post article hr{border:0;border-top:1px solid var(--line);margin:32px 0}.post .back{margin-top:40px}
+/* notes: short-form LinkedIn posts */
+.notes h1{margin-top:16px}
+.note{border-top:1px solid var(--line);padding:20px 0}
+.note:last-child{border-bottom:1px solid var(--line)}
+.note .meta{color:var(--muted);font-size:.9rem;margin:0 0 8px}
+.note p{color:var(--ink-2);line-height:1.6;margin:0 0 10px}
+.note p:last-of-type{margin-bottom:0}
+.note .tag{margin-top:10px}
 /* github contribution graphs (inline SVG, rendered at build time) */
 li.gh .gh-graph{display:block;max-width:100%;height:auto;margin-top:12px}
 .gh-graph text{font:9px ui-sans-serif,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;fill:var(--muted)}
