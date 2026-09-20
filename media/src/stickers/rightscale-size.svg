@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 300" width="520" height="300">
+  <rect x="10" y="10" width="500" height="280" rx="18" fill="#fafafa"/>
+  <rect x="18" y="18" width="484" height="264" rx="12" fill="#0f2140"/>
+  <g fill="#173058"><circle cx="452" cy="66" r="15"/><circle cx="432" cy="98" r="15"/><circle cx="472" cy="98" r="15"/></g><text x="40" y="172" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="700" font-size="44" fill="#fff" letter-spacing="-0.5">When size matters<tspan fill="#f59e0b">.</tspan></text>
+  <text x="480" y="258" text-anchor="end" font-family="Avenir Next, Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="600" font-size="16" fill="#cbd5e1" letter-spacing="1.5">RIGHTSCALE</text>
+</svg>
