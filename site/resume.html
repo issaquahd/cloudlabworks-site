@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Résumé — Alex Alvord — Cloud Lab Works</title>
+<meta name="description" content="Alex Alvord — Advisory Solutions Architect, Hybrid Multicloud. Twenty years across cloud, infrastructure and the business side of both; now building agentic operations in a home lab. The live résumé.">
+<meta name="robots" content="noai, noimageai">
+<link rel="canonical" href="https://cloudlabworks.dev/resume">
+<style>{{STYLE}}</style>
+<style>
+/* the résumé lives here as a page, not a file: nothing to download, nothing to re-upload as someone else's */
+.cv{user-select:none;-webkit-user-select:none}
+.cv-head{display:grid;grid-template-columns:1fr auto;gap:10px 24px;align-items:end;padding:22px 0 18px;border-bottom:3px solid var(--accent)}
+.cv-head h1{margin:0;font-size:2rem;letter-spacing:-.01em}
+.cv-head .role{margin:4px 0 0;color:var(--accent);font-weight:600;font-size:1.05rem}
+.cv-head .where{margin:6px 0 0;color:var(--muted)}
+.cv-head .links{text-align:right;color:var(--muted);font-size:.92rem;line-height:1.7}.cv-head .links a{color:var(--ink)}
+.cv-grid{display:grid;grid-template-columns:minmax(0,1fr) 250px;gap:8px 40px;margin-top:22px}
+.cv h2{font-size:.82rem;letter-spacing:.09em;text-transform:uppercase;color:var(--accent);margin:26px 0 10px;padding-bottom:6px;border-bottom:1px solid var(--line)}
+.cv main-col h2:first-child{margin-top:0}
+.cv .summary{font-size:1.02rem;color:var(--ink-2);margin:0}
+.job{display:grid;grid-template-columns:1fr auto;gap:2px 16px;margin:0 0 18px}
+.job h3{margin:0;font-size:1.05rem;grid-column:1}.job .when{grid-column:2;grid-row:1;color:var(--muted);font-size:.9rem;white-space:nowrap;font-variant-numeric:tabular-nums}
+.job .org{grid-column:1/3;color:var(--muted);font-size:.92rem}
+.job ul{grid-column:1/3;margin:6px 0 0;padding-left:18px;color:var(--ink-2)}.job li{margin:3px 0}
+.job .titles{grid-column:1/3;color:var(--ink-2);font-size:.92rem;margin-top:2px}
+.side h2{margin-top:0}.side h2 + *{margin-top:0}.side h2:not(:first-child){margin-top:24px}
+.side ul{list-style:none;padding:0;margin:0}.side li{padding:4px 0;border-top:1px dashed var(--line);font-size:.92rem;color:var(--ink-2)}.side li:first-child{border-top:0}
+.side b{color:var(--ink)}.side .group{display:block;color:var(--accent);font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;margin:12px 0 2px}
+.tags{display:flex;flex-wrap:wrap;gap:6px}.tags span{border:1px solid var(--line);border-radius:999px;padding:3px 10px;font-size:.82rem;color:var(--ink-2)}
+.honors li{border-top:1px dashed var(--line)}.honors li:first-child{border-top:0}
+.cv-foot{margin-top:28px;padding-top:12px;border-top:1px solid var(--line);color:var(--muted);font-size:.82rem}
+@media(max-width:760px){.cv-grid{grid-template-columns:1fr}.cv-head{grid-template-columns:1fr}.cv-head .links{text-align:left}}
+@media print{
+  header,footer,.topbar,.friend,.cv-foot .np{display:none!important}
+  body{background:#fff}.cv{color:#000}
+  .cv::before{content:"Alex Alvord · cloudlabworks.dev/resume";position:fixed;inset:0;display:grid;place-items:center;font-size:52px;color:rgba(0,0,0,.07);transform:rotate(-28deg);pointer-events:none;z-index:9}
+  .cv-grid{grid-template-columns:1fr 220px}
+}
+</style>
+</head>
+<body>
+{{HEAD}}
+<main class="cv">
+  <div class="cv-head">
+    <div>
+      <h1>Alex Alvord</h1>
+      <p class="role">Advisory Solutions Architect, Hybrid Multicloud</p>
+      <p class="where">Duvall, Washington · Pacific Northwest, remote-first</p>
+    </div>
+    <div class="links">
+      <a href="mailto:alex@cloudlabworks.dev">alex@cloudlabworks.dev</a><br>
+      <a href="https://www.linkedin.com/in/alexalvord/" rel="noopener">linkedin.com/in/alexalvord</a><br>
+      <a href="https://cloudlabworks.dev">cloudlabworks.dev</a> · <a href="https://github.com/issaquahd" rel="noopener">github.com/issaquahd</a>
+    </div>
+  </div>
+
+  <div class="cv-grid">
+    <div class="main-col">
+      <h2>Profile</h2>
+      <p class="summary">Twenty years on both sides of the table: seven as a finance and operations controller, then thirteen designing, selling and running cloud infrastructure — OpenStack and bare metal, the three hyperscalers, and since 2019 Nutanix hybrid multicloud, where he has been on NC2 since the incubation team of about fifteen people. Every design is grounded in what it costs to operate. Current work outside the day job: agentic operations — multi-agent systems with harnesses, tools and memory that run infrastructure — built and published from a home lab as <a href="https://cloudlabworks.dev">Cloud Lab Works</a>.</p>
+
+      <h2>Experience</h2>
+
+      <div class="job">
+        <h3>Nutanix</h3><span class="when">2019 – present</span>
+        <span class="org">Seattle, WA · Americas Solutions Architecture, Hybrid Multicloud</span>
+        <span class="titles">Advisory Solutions Architect, Hybrid Multicloud (2023 –) · Hybrid Multicloud SME (2021 – 2023) · Sr. Systems Engineer (2020 – 2021) · Systems Engineer (2019 – 2020)</span>
+        <ul>
+          <li>Subject-matter expert for Nutanix Cloud Clusters (NC2) on AWS, Azure and Google Cloud, from the incubation team to a 250-person organization; owns the NC2 on AWS lab sessions at Global Tech Summit since 2023 and presents on the XTour since 2022.</li>
+          <li>Runs the field motion end to end: PoC/PoV, multi-phase migration journeys, FinOps and TCO/ROI, solution demos, and partner and channel enablement across the Americas.</li>
+          <li>Built the "Commercial TCO/ROI light" that any AE/SE can run in front of a customer; trained partners and account teams on it — a core differentiator that shortened time to purchase.</li>
+          <li>First Commercial SE hired in the Pacific Northwest; supported WA, OR, ID and AK, closed the largest Oregon Commercial and Alaska deals of the time, and onboarded every Commercial AE in the region. Mentored four Systems Engineers directly.</li>
+          <li>Founder and champion sponsor of the Seattle Nutanix User Group (2020 –); founded the Anchorage NUG (2020 – 2022).</li>
+        </ul>
+      </div>
+
+      <div class="job">
+        <h3>Cloud Lab Works LLC</h3><span class="when">2026 – present</span>
+        <span class="org">Duvall, WA · Principal · independent architecture practice and lab</span>
+        <ul>
+          <li>Designs and operates an agentic operations stack: multi-agent orchestration (OpenClaw), purpose-built harnesses and tool policies, file-backed identity and memory in git, local inference (Ollama) with no egress, and scheduled sentinels that watch the estate.</li>
+          <li>Infrastructure as code for the lab and its edge: Cloudflare Workers and Zero Trust Access, Proxmox sandbox tier, Tailscale subnet routing, health monitoring — and Infrastructure as Music, where deploys and faults drive an instrument.</li>
+          <li>Writes <em>Invisible Wires — Agentic Cloud</em> and <em>Nutanix Notes</em>; architecture reviews, cloud and AI infrastructure design, technical content, speaking and mentoring.</li>
+        </ul>
+      </div>
+
+      <div class="job">
+        <h3>Rubrik</h3><span class="when">2018 – 2019</span>
+        <span class="org">Seattle, WA · Systems Engineer · Field CTO for the Pacific Northwest channel</span>
+        <ul>
+          <li>Technical lead for cloud data management across hybrid and multicloud, Open API integrations, SaaS (O365), orchestrated DR and ransomware analytics.</li>
+          <li>Enabled the channel — VARs, LARs, SIs, consultancies — through instructor-led sessions, QBRs and the LMS; drove the ecosystem: ServiceNow/ITSM, Ansible, Chef, Puppet, SaltStack, containers, HashiCorp.</li>
+          <li>2018 quota attainment: 175% Q1, 210% Q2, 195% Q3, 220% Q4.</li>
+        </ul>
+      </div>
+
+      <div class="job">
+        <h3>Internap (INAP)</h3><span class="when">2015 – 2018</span>
+        <span class="org">Seattle, WA · Cloud Solutions Architect</span>
+        <ul>
+          <li>Owned technical feasibility and design for large hybrid solutions: OpenStack, bare-metal cloud, VMware, Hyper-V and KVM private cloud, colocation, managed hosting, Layer 2–7 networking and compliance.</li>
+          <li>Migration strategy, interoperability, orchestration and API management across OpenStack, AWS, Azure and Google Cloud; Equinix Cloud Exchange hybrid designs.</li>
+          <li>Trained partner SE communities at AWS, Azure, VMware, New Relic, NGINX, OpenStack, NetApp and Aerospike; ran the labs and wrote the whitepapers and case studies. President's Club 2015, 2016, 2017 (top 5% revenue attainment).</li>
+        </ul>
+      </div>
+
+      <div class="job">
+        <h3>Smartsheet</h3><span class="when">2014</span>
+        <span class="org">Bellevue, WA · Strategic Accounts (technical + sales)</span>
+        <ul>
+          <li>Enterprise-wide SaaS rollouts from beachhead to site license for organizations of 2,000 to 200,000 seats; co-selling with API partners; scope covered Open APIs, compliance, security, governance and SSO. Completed M3 Proactive Selling with its author.</li>
+        </ul>
+      </div>
+
+      <div class="job">
+        <h3>RightScale</h3><span class="when">2013</span>
+        <span class="org">Seattle, WA · Technical Account Manager</span>
+        <ul>
+          <li>Partner alliances with AWS, Azure, IBM SoftLayer, Rackspace and Google Compute Engine; ran the AWS west-coast joint enablement cadence — leads up 310%, close rate up 23%, sales cycle 19 days shorter.</li>
+          <li>Multi-cloud PoCs on the RightScale platform: portability via orchestration and automation; a multi-cloud Open API Wi-Fi framework for what became South America's largest airline group.</li>
+        </ul>
+      </div>
+
+      <div class="job">
+        <h3>Zones</h3><span class="when">2007 – 2013</span>
+        <span class="org">Seattle, WA · Enterprise Solutions Architect, Expert Connect</span>
+        <ul>
+          <li>Complex solutions for strategic and large enterprise accounts — cloud, HPC, networking, analytics — with project management through delivery. Top 1% in revenue and margin; employee of the quarter three times.</li>
+          <li>Certified Zones to sell enterprise technologies it had not been authorized for (public cloud, JD Edwards); "Insight Selling" cut the net-new sales cycle to 36 days.</li>
+        </ul>
+      </div>
+
+      <div class="job">
+        <h3>Earlier</h3><span class="when">2001 – 2007</span>
+        <span class="org">The HN BBPII LLC, Seattle — Controller, Finance &amp; Operations (2001 – 2007) · Invisible Wires Inc., Seattle — Project Manager, Business Analytics (2005)</span>
+        <ul>
+          <li>Ran finance and operations reporting to the executive team: forecasting, asset management, cost control; redesigned operations for a 22% year-over-year margin gain and double-digit revenue growth; brokered the company's sale and led through the acquisition.</li>
+          <li>Launched a SaaS analytics stack integrated with POS and CRM — real-time view of customer behaviour and variable cost, double-digit reduction in variable costs. The name lives on as the blog.</li>
+        </ul>
+      </div>
+
+      <h2>Education</h2>
+      <div class="job">
+        <h3>Pacific Lutheran University</h3><span class="when">2001 – 2006</span>
+        <span class="org">Bachelor of Business Administration, Information Technology Management · AACSB-accredited</span>
+      </div>
+      <div class="job">
+        <h3>University of Washington</h3><span class="when">2013 – 2014</span>
+        <span class="org">Cloud Data Management &amp; Analytics</span>
+      </div>
+      <div class="job">
+        <h3>Peking University, Beijing</h3><span class="when">2001</span>
+        <span class="org">Mandarin Chinese</span>
+      </div>
+    </div>
+
+    <aside class="side">
+      <h2>Skills</h2>
+      <span class="group">Hybrid multicloud</span>
+      <div class="tags"><span>Nutanix NC2 · AWS · Azure · GCP</span><span>Prism Central · v4 APIs</span><span>Flow Virtual Networking</span><span>OpenStack</span><span>VMware · KVM · Hyper-V</span><span>AHV</span><span>Datacenter divestment · L2 stretch</span><span>DR · Multicloud Snapshot</span></div>
+      <span class="group">Agentic &amp; AI infrastructure</span>
+      <div class="tags"><span>Multi-agent orchestration</span><span>Agent harnesses &amp; tool policy</span><span>MCP tool integration</span><span>Memory engines · embeddings</span><span>Local inference (Ollama)</span><span>Agentic runbooks &amp; sentinels</span><span>GPU/AI substrate sizing</span></div>
+      <span class="group">Cloud native &amp; IaC</span>
+      <div class="tags"><span>OpenTofu / Terraform</span><span>Ansible</span><span>Kubernetes</span><span>Containers</span><span>GitOps</span><span>Cloudflare Workers · Zero Trust</span><span>Proxmox</span><span>CI/CD</span></div>
+      <span class="group">Business</span>
+      <div class="tags"><span>FinOps · TCO / ROI</span><span>Cloud economics</span><span>PoC / PoV design</span><span>Partner &amp; channel enablement</span><span>Insight Selling</span><span>Financial forecasting</span><span>Public speaking · labs</span></div>
+
+      <h2>Honors</h2>
+      <ul class="honors">
+        <li><b>FY24 Americas Portfolio Solutions Architect of the Year</b>, Nutanix</li>
+        <li><b>Solutions Architect of the Quarter</b> — Q4 2022, Q2 2023, Q4 2024, Q1 2025, Q3 2026</li>
+        <li><b>Authority Magazine</b> interview on digital transformation, Dec 2025</li>
+        <li><b>INAP President's Club</b> 2015 – 2017</li>
+        <li><b>Seattle Nutanix User Group</b> — founder, 2020</li>
+      </ul>
+
+      <h2>Certifications</h2>
+      <ul>
+        <li><b>AWS</b> Solutions Architect – Professional; Solutions Architect – Associate; Cloud Practitioner</li>
+        <li><b>Microsoft</b> Azure Solutions Architect Expert; Azure Administrator; Azure Fundamentals</li>
+        <li><b>Google Cloud</b> Professional Cloud Architect</li>
+        <li><b>Nutanix</b> NCP – Multicloud Infrastructure; NCP – Multicloud Automation; NCP – SME; NCSE I &amp; II</li>
+        <li><b>Kubernetes</b> Administrator</li>
+        <li><b>Also</b> IBM Certified Cloud Computing Advisor; EMC Cloud Infrastructure &amp; Services; Rackspace uCloud; Red Hat partner (platform, middleware, virtualization); VMware, Citrix, Cisco, Juniper, NetApp, Oracle sales and technical tracks; Sandler Training</li>
+      </ul>
+
+      <h2>Community</h2>
+      <ul>
+        <li>OpenStack foundation member (2011); CNCF (2015); SNIA technical council (2025); Cloud Security Alliance CxO Trust WG; FinOps Foundation; FINOS; ONUG</li>
+        <li>Mentor: PLU Econ Mentoring Program (2016 –), National Society of Sales Engineers, Technology Access Foundation</li>
+        <li>Full list: <a href="/#volunteering">cloudlabworks.dev/#volunteering</a></li>
+      </ul>
+
+      <h2>Languages</h2>
+      <ul><li>English · Mandarin Chinese (eight years of study; lived in China)</li></ul>
+    </aside>
+  </div>
+
+  <p class="cv-foot">This is the living résumé; it changes as the work does. References and a formal copy on request — <a class="np" href="/inquire">send an inquiry</a>. © Alex Alvord.</p>
+
+{{FOOT}}
+</main>
+</body>
+</html>

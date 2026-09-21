@@ -125,3 +125,4 @@ ul.orgs li div{display:flex;flex-wrap:wrap;gap:4px 12px;align-items:baseline}ul.
 .vol h3{margin:0 0 6px;font-size:.85rem;letter-spacing:.05em;text-transform:uppercase;color:var(--accent)}
 .vol ul{list-style:none;padding:0;margin:0}.vol li{padding:6px 0;border-top:1px dashed var(--line);color:var(--ink-2);font-size:.95rem;display:flex;gap:14px;align-items:baseline}.vol li div{flex:1}
 .vol li:first-child{border-top:0}.vol b{color:var(--ink);font-weight:600}.vol li span{color:var(--muted);font-size:.85rem;white-space:nowrap;font-variant-numeric:tabular-nums}
+.cv .main-col h2:first-child{margin-top:0}
