@@ -194,7 +194,7 @@ const HEADERS = {
   "strict-transport-security": "max-age=31536000; includeSubDomains; preload",
   "x-content-type-options": "nosniff",
   "referrer-policy": "strict-origin-when-cross-origin",
-  "content-security-policy": "default-src 'none'; style-src 'unsafe-inline'; img-src 'self'; media-src 'self'; script-src 'self'; connect-src 'self'; base-uri 'none'; form-action 'self'; frame-ancestors 'none'",
+  "content-security-policy": "default-src 'none'; style-src 'unsafe-inline'; img-src 'self'; media-src 'self'; script-src 'self'; connect-src 'self'; base-uri 'none'; form-action 'self' https://buttondown.com; frame-ancestors 'none'",
 };
 const NOSTORE = { ...HEADERS, "cache-control": "no-store" };
 const esc = (s) => String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");

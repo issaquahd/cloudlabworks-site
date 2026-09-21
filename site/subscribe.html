@@ -4,22 +4,36 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Subscribe — Cloud Lab Works</title>
-<meta name="description" content="Follow Cloud Lab Works: the blog feed for any RSS reader, and where else the work shows up.">
+<meta name="description" content="Follow Cloud Lab Works: every post by email, or the blog feed for any RSS reader.">
 <link rel="canonical" href="https://cloudlabworks.dev/subscribe">
 <style>{{STYLE}}</style>
 <style>
 .feedurl{display:block;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:1rem;background:var(--paper-2,rgba(127,127,127,.08));border:1px solid var(--line);border-radius:8px;padding:12px 14px;margin:12px 0 4px;word-break:break-all;user-select:all}
 ul.readers{list-style:none;padding:0;margin:8px 0 0;display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:10px}
 ul.readers li{border:1px solid var(--line);border-radius:10px;padding:12px 14px}ul.readers b{display:block}ul.readers span{color:var(--muted);font-size:.9rem}
+form.sub{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0 6px;max-width:520px}
+form.sub input[type=email]{flex:1 1 240px;font:inherit;padding:10px 12px;border:1px solid var(--line);border-radius:8px;background:transparent;color:var(--ink)}
+form.sub button{font:inherit;font-weight:600;padding:10px 18px;border:1px solid var(--accent);border-radius:8px;background:var(--accent);color:#fff;cursor:pointer}
+form.sub button:hover{filter:brightness(1.1)}
+.sr{position:absolute;left:-9999px}
 </style>
 </head>
 <body>
 {{HEAD}}
 <main>
   <h1>Subscribe</h1>
-  <p class="lede">Nothing to sign up for and nothing to sell you. The blog publishes a feed; point any reader at it and new posts arrive on their own.</p>
+  <p class="lede">Nothing to sell you. Get each post by email the day it publishes, or point any feed reader at the blog — your choice.</p>
 
-  <h2 id="rss">The feed</h2>
+  <h2 id="email">By email</h2>
+  <form class="sub" action="https://buttondown.com/api/emails/embed-subscribe/CloudLabWorks" method="post">
+    <label for="bd-email" class="sr">Email address</label>
+    <input id="bd-email" type="email" name="email" placeholder="you@example.com" autocomplete="email" required>
+    <input type="hidden" name="embed" value="1">
+    <button type="submit">Subscribe</button>
+  </form>
+  <p class="tag">One email per post, full text, nothing else — no tracking pixels, no "just checking in." Delivered by <a href="https://buttondown.com/CloudLabWorks" rel="noopener">Buttondown</a>, which also keeps the <a href="https://buttondown.com/CloudLabWorks/archive/" rel="noopener">archive</a>. Unsubscribe is one click in any email.</p>
+
+  <h2 id="rss">By feed reader</h2>
   <code class="feedurl">https://cloudlabworks.dev/blog/feed.xml</code>
   <p class="tag">Copy that address into your reader, or paste <b>cloudlabworks.dev</b> — every page on this site announces the feed, so readers find it by themselves.</p>
 
@@ -33,7 +47,6 @@ ul.readers li{border:1px solid var(--line);border-radius:10px;padding:12px 14px}
 
   <h2 id="elsewhere">Elsewhere</h2>
   <p class="tag">Shorter notes go to <a href="https://www.linkedin.com/in/alexalvord/" rel="noopener">LinkedIn</a>; the <a href="/notes">Notes</a> page keeps the ones worth keeping. Conferences Alex will be at are on the <a href="/#events">home page</a>.</p>
-  <p class="tag">Prefer email? There is no mailing list yet. <a href="/inquire?category=Something+else&amp;context=Email+updates+%E2%80%94+">Say so</a> and you'll hear about it first when there is.</p>
 
 {{FOOT}}
 </main>

@@ -70,3 +70,6 @@ say "routing status:"; cf "$API/zones/$ZONE/email/routing" | python3 -c 'import 
 # Infrastructure as Music: the deploy phrase + cue when the worker upload was accepted. Keyed on the API result, not on a
 # curl to the public site — from the gateway exec sandbox that curl is a proxy artifact (hosts outside the token's allowlist). Never fails the deploy.
 [ "$UPLOAD" = ok ] && { sh /Users/rebl/.openclaw/workspace/ops/iam/play.sh deploy; sh /Users/rebl/.openclaw/workspace/ops/iam/play.sh deploy-cue; } || true
+
+# Post → email: any post not yet mailed goes to the Buttondown list once the new build is live. Never fails the deploy.
+[ "$UPLOAD" = ok ] && bash "$DIR/notify-buttondown.sh" || true
