@@ -128,4 +128,4 @@ ul.orgs li div{display:flex;flex-wrap:wrap;gap:4px 12px;align-items:baseline}ul.
 .cv .main-col h2:first-child{margin-top:0}
 
 /* the site's own Coast Salish–vocabulary art (media/salish-pattern.svg), full-bleed band on the home page and the /orcas background */
-.salish-band{margin:44px calc(50% - 50vw) 8px;height:150px;background:#1c1410 url(/media/salish-pattern.svg) center center/150px 150px repeat}.salish-top{margin:0;width:100%}
+.salish-band{margin:44px calc(50% - 50vw) 8px;height:150px;background:#1c1410 url(/media/salish-pattern.svg) center center/150px 150px repeat}.salish-top{margin:0;width:100%}main{position:relative;z-index:0}main::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background:url(/media/salish-pattern-alpha.svg) center top/180px 180px repeat;opacity:.04}@media(prefers-color-scheme:dark){main::before{background-image:url(/media/salish-pattern-alpha-dark.svg)}}
