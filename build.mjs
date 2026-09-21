@@ -105,7 +105,8 @@ ${body}
 `);
 
 // Provenance is visible where the reader is: the by-line names the author, and a repost says where it first ran.
-const origin = (p) => p.origin ? ` · first published on <a href="${p.origin}" rel="noopener">LinkedIn</a>` : "";
+const originName = (u) => /linkedin\.com/.test(u) ? "LinkedIn" : /medium\.com/.test(u) ? "Medium" : new URL(u).hostname.replace(/^www\./, "");
+const origin = (p) => p.origin ? ` · first published on <a href="${p.origin}" rel="noopener">${originName(p.origin)}</a>` : "";
 const postItem = (p) => `    <li><time datetime="${p.date}">${fmtDate(p.date)}</time><b><a href="${p.section.path}/${p.slug}">${esc(p.title)}</a></b><span>${esc(p.summary)}</span><span class="by">By ${esc(p.by)}${origin(p)}</span></li>`;
 const emptyItem = (sec) => `    <li><b>First post is on its way.</b><span><a href="${sec.path}/feed.xml">Subscribe to the feed</a> and it will find you.</span></li>`;
 const drafts = posts.filter((p) => p.draft);
