@@ -3,7 +3,7 @@ import { readFileSync, writeFileSync, readdirSync } from "node:fs";
 const r = (p) => readFileSync(new URL(`./site/${p}`, import.meta.url), "utf8");
 const style = r("_style.css").trim(), head = r("_head.html").trim(), foot = r("_foot.html").trim();
 // Site-wide head: the Waku orca as favicon / touch icon, and the share card for pages that carry no og:image of their own.
-const ICONS = `<link rel="icon" href="/media/waku-orca-pale.svg" type="image/svg+xml">
+const ICONS = `<link rel="icon" href="/media/waku-orca.svg" type="image/svg+xml">
 <link rel="icon" href="/media/waku-orca-32.png" sizes="32x32" type="image/png">
 <link rel="apple-touch-icon" href="/media/waku-orca-180.png">`;
 const OG_IMAGE = `<meta property="og:image" content="https://cloudlabworks.dev/media/waku-orca-og.png">

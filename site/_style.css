@@ -126,3 +126,6 @@ ul.orgs li div{display:flex;flex-wrap:wrap;gap:4px 12px;align-items:baseline}ul.
 .vol ul{list-style:none;padding:0;margin:0}.vol li{padding:6px 0;border-top:1px dashed var(--line);color:var(--ink-2);font-size:.95rem;display:flex;gap:14px;align-items:baseline}.vol li div{flex:1}
 .vol li:first-child{border-top:0}.vol b{color:var(--ink);font-weight:600}.vol li span{color:var(--muted);font-size:.85rem;white-space:nowrap;font-variant-numeric:tabular-nums}
 .cv .main-col h2:first-child{margin-top:0}
+
+/* the site's own Coast Salish–vocabulary art (media/salish-pattern.svg), full-bleed band on the home page and the /orcas background */
+.salish-band{margin:44px calc(50% - 50vw) 8px;height:150px;background:#1c1410 url(/media/salish-pattern.svg) center center/150px 150px repeat}
