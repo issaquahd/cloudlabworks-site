@@ -1,0 +1,188 @@
+[
+{
+"name": "minke",
+"title": "Minke, the little cousin",
+"text": "Waku's little cousin, half the size and twice the questions. Ball under one flipper, always.",
+"role": "little cousin"
+},
+{
+"name": "humpback",
+"title": "Humpback, the uncle",
+"text": "The big uncle who sings at the family dinner whether anyone asked. Bumps on the chin, barnacles he calls character.",
+"role": "uncle"
+},
+{
+"name": "porpoise",
+"title": "Porpoise, the old friend",
+"text": "Waku's friend from the harbour days. Shy, quick, gone before the photo. Wears the scarf Heron knitted.",
+"role": "old friend"
+},
+{
+"name": "dolphin",
+"title": "Dolphin, the friend",
+"text": "Talks fast, jumps for no reason, keeps the pod laughing. Balloon from the last birthday, still up.",
+"role": "friend"
+},
+{
+"name": "sealion",
+"title": "Sea Lion, the neighbour",
+"text": "Barks from the dock, mostly at nothing. Bandana, whiskers, a mug of something hot.",
+"role": "neighbour"
+},
+{
+"name": "otter",
+"title": "Otter, the friend",
+"text": "Floats on her back holding a shell she is not going to open yet. Everyone's favourite; she knows.",
+"role": "friend"
+},
+{
+"name": "seal",
+"title": "Seal, the friend",
+"text": "Harbour seal, spotted, round, asleep on the ramp until something interesting happens. Pacifier is a joke that stuck.",
+"role": "friend"
+},
+{
+"name": "puffin",
+"title": "Puffin, the nephew",
+"text": "Heron's nephew, apprentice scout. The beak is bigger than the plan. Backpack packed for a trip nobody has announced.",
+"role": "Heron's nephew"
+},
+{
+"name": "kingfisher",
+"title": "Kingfisher, the sister",
+"text": "Heron's sister, faster and louder. Turquoise back, rust front, one fish, no comment.",
+"role": "Heron's sister"
+},
+{
+"name": "sandpiper",
+"title": "Sandpiper, the little one",
+"text": "Heron's youngest, runs the tide line back and forth for the joy of it. Bucket, no plan for the bucket.",
+"role": "Heron's little one"
+},
+{
+"name": "egret",
+"title": "Egret, the grandmother",
+"text": "Heron's grandmother, all white, all patience. Glasses for the reading, not the looking.",
+"role": "Heron's grandmother"
+},
+{
+"name": "crow",
+"title": "Crow, the brother",
+"text": "Raven's brother, the one without the keys and fine with it. Collects shiny things; the crown was on sale.",
+"role": "Raven's brother"
+},
+{
+"name": "jay",
+"title": "Jay, the kid",
+"text": "Steller's jay, Raven's kid, blue as a gas flame with a black crest that will not stay down. Kite weather is every weather.",
+"role": "Raven's kid"
+},
+{
+"name": "magpie",
+"title": "Magpie, the cousin",
+"text": "Raven's cousin from the other side of the mountains. Black and white and a green sheen when the light is right. Bow tie for no occasion.",
+"role": "Raven's cousin"
+},
+{
+"name": "nutcracker",
+"title": "Nutcracker, the aunt",
+"text": "Clark's nutcracker, Raven's aunt from the high passes. Remembers where every seed is buried. Pencil behind the wing, a list in the head.",
+"role": "Raven's aunt"
+},
+{
+"name": "trout",
+"title": "Trout, the cousin",
+"text": "Salmon's freshwater cousin who never went to sea and doesn't see the point. Speckled, content, reading.",
+"role": "Salmon's cousin"
+},
+{
+"name": "steelhead",
+"title": "Steelhead, the big sister",
+"text": "Salmon's big sister: went to sea, came back, went again. Silver, a rose stripe, headphones for the long swims.",
+"role": "Salmon's big sister"
+},
+{
+"name": "herring",
+"title": "Herring, the little one",
+"text": "Salmon's littlest, one of ten thousand, and the only one with a name. Sparkles because the light does that on herring.",
+"role": "Salmon's little one"
+},
+{
+"name": "sturgeon",
+"title": "Sturgeon, the great-uncle",
+"text": "Salmon's great-uncle, older than the bridge, armoured, unhurried. Cap from a boat that no longer exists.",
+"role": "Salmon's great-uncle"
+},
+{
+"name": "eagle",
+"title": "Eagle, the grandfather",
+"text": "Bald eagle, Osprey's grandfather, sits in the same snag every morning judging the harbour. White head, gold beak, no jokes.",
+"role": "Osprey's grandfather"
+},
+{
+"name": "owl",
+"title": "Owl, the aunt",
+"text": "Barred owl, Osprey's aunt, runs the night shift and says so. Lantern, ear tufts, the look.",
+"role": "Osprey's aunt"
+},
+{
+"name": "hawk",
+"title": "Hawk, the kid",
+"text": "Red-tailed hawk, Osprey's kid, learning the watch by doing it wrong first. Beanie because the wind is real.",
+"role": "Osprey's kid"
+},
+{
+"name": "falcon",
+"title": "Falcon, the friend",
+"text": "Peregrine, Osprey's friend from the cliffs, fastest thing on the coast and quiet about it. Bandana, no other equipment.",
+"role": "Osprey's friend"
+},
+{
+"name": "loon",
+"title": "Loon, the friend",
+"text": "Cormorant's friend from the lake. Checkerboard back, a red eye, a call that empties the campground. Flower behind the ear, always.",
+"role": "Cormorant's friend"
+},
+{
+"name": "grebe",
+"title": "Grebe, the cousin",
+"text": "Cormorant's cousin, dives before you've finished the sentence. Rust neck, a crest that has opinions.",
+"role": "Cormorant's cousin"
+},
+{
+"name": "murre",
+"title": "Murre, the kid",
+"text": "Cormorant's kid, black and white like a small waiter, stands on the ledge with a thousand others and still thinks it is a solo act.",
+"role": "Cormorant's kid"
+},
+{
+"name": "crab",
+"title": "Crab, the reviewer's reviewer",
+"text": "Dungeness, Cormorant's oldest friend, reviews the reviewer. Sideways is a choice. The claws are for emphasis.",
+"role": "the reviewer's reviewer"
+},
+{
+"name": "octopus",
+"title": "Octopus, the fixer",
+"text": "Giant Pacific octopus, everybody's friend, eight things at once and a ninth in mind. Escapes anything, returns the key.",
+"role": "the fixer"
+},
+{
+"name": "seastar",
+"title": "Sea Star, the youngest",
+"text": "Ochre star from the tide pools, the youngest in the whole set, five arms and no idea which is the front. Sparkles, obviously.",
+"role": "the youngest"
+},
+{
+"name": "jellyfish",
+"title": "Jellyfish, the dreamer",
+"text": "Moon jelly, drifts in on the tide and drifts out, never in a hurry, never lost. Nobody knows what she does; she does it well.",
+"role": "the dreamer"
+},
+{
+"name": "beaver",
+"title": "Beaver, the builder",
+"text": "Lives up the creek, builds the thing before the meeting about the thing. Teeth, tail, pencil; the plan is in the wood.",
+"role": "the builder"
+}
+]

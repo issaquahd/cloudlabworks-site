@@ -27,6 +27,10 @@ done
 for n in $(python3 -c 'import json;print(" ".join(x["name"] for x in json.load(open("'"$S"'/gardens/set.json"))))'); do
   render "$S/gardens/$n.svg" "art-wm-$n.jpg" 1200
 done
+# Waku art: friends and family (thirty-one more chibi characters; family.py writes the SVGs, headless Chrome the PNGs).
+for n in $(python3 -c 'import json;print(" ".join(x["name"] for x in json.load(open("'"$S"'/agents/family.json"))))'); do
+  render "$S/agents/family-$n.png" "art-wm-family-$n.jpg" 1024
+done
 # Waku art: the Matrix set (Kyoto and Tokyo scenes as digital rain; gen.py writes set.json and matrix-NN.png).
 for n in $(python3 -c 'import json;print(" ".join(x["name"] for x in json.load(open("'"$S"'/matrix/set.json"))))'); do
   render "$S/matrix/$n.png" "art-wm-$n.jpg" 1200
