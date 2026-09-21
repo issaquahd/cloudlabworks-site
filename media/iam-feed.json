@@ -9,7 +9,12 @@
     "150526-deploy"
    ],
    "m4a": "iam-2026-09-20.m4a",
-   "art": "iam-art-2026-09-20.svg"
+   "art": "iam-art-2026-09-20.svg",
+   "haiku": [
+    "orca fin, then light",
+    "two chords resolve, the build lands",
+    "and the night goes soft"
+   ]
   },
   {
    "slug": "2026-09-20-ep0",
@@ -22,7 +27,12 @@
     "recover"
    ],
    "m4a": "iam-2026-09-20-ep0.m4a",
-   "art": "iam-art-2026-09-20-ep0.svg"
+   "art": "iam-art-2026-09-20-ep0.svg",
+   "haiku": [
+    "slack tide in the rack",
+    "hello, and the lab wakes up",
+    "it ends on a rise"
+   ]
   }
  ]
 }
