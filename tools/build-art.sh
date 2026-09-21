@@ -18,6 +18,10 @@ done
 for n in salmon raven-sun heron thunderbird-whale welcome-figure canoe; do
   render "$S/salish/salish-$n.svg" "art-wm-salish-$n.jpg" 1024
 done
+# Waku art: the Japanese set (badges drawn for the household portal; sources copied from alvordhouse-site/media/icons).
+for n in okio-ja otto-office takarak-travel osama-finance clw-ledger; do
+  render "$S/japanese/$n.svg" "art-wm-jp-$n.jpg" 1024
+done
 # Waku art: the site set.
 render "$M/waku-orca-pale.svg" art-wm-orca-mark.jpg 1024
 render "$M/cloudlabworks-banner-salish.jpg" art-wm-salish-band.jpg 1600
