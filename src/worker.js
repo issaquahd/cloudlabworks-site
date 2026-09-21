@@ -60,7 +60,7 @@ async function media(request, env) {
   h.set("accept-ranges", "bytes");
   // Static Assets label the IaM feed files octet-stream; Safari refuses octet-stream audio, fetch().json() is fine either way.
   const ext = (new URL(request.url).pathname.match(/\.([a-z0-9]+)$/) || [])[1];
-  const mime = { json: "application/json; charset=utf-8", m4a: "audio/mp4", opus: "audio/ogg", mp3: "audio/mpeg", pdf: "application/pdf" }[ext];
+  const mime = { json: "application/json; charset=utf-8", m4a: "audio/mp4", opus: "audio/ogg", mp3: "audio/mpeg", pdf: "application/pdf", zip: "application/zip", ico: "image/x-icon" }[ext];
   if (mime) h.set("content-type", mime);
   if (ext === "json") h.set("cache-control", "public, max-age=60");
   const m = /^bytes=(\d*)-(\d*)$/.exec(request.headers.get("range") || "");

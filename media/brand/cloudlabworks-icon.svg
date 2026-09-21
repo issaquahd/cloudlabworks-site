@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512" role="img" aria-label="Waku, an orca drawn in a Coast Salish–inspired formline style">
+  <defs>
+    <clipPath id="body"><use href="#orca-body"/></clipPath>
+    <clipPath id="badge"><circle cx="256" cy="256" r="248"/></clipPath>
+    <!-- Coast Salish design elements: crescent and trigon -->
+    <path id="crescent" d="M-40 0 A40 40 0 0 1 40 0 A54 54 0 0 0 -40 0 Z"/>
+    <path id="trigon" d="M-30 -22 Q0 -12 30 -22 Q12 6 0 30 Q-12 6 -30 -22 Z"/>
+  </defs>
+  <!-- badge: teal, with the wave band and splash from the first cut -->
+  <circle cx="256" cy="256" r="248" fill="#cae0df"/>
+  <circle cx="256" cy="256" r="248" fill="none" stroke="#2dd4bf" stroke-width="6"/>
+  <path clip-path="url(#badge)" d="M8 420 Q80 392 150 420 T290 420 T430 420 T512 412 L512 470 Q440 442 370 470 T230 470 T90 470 T8 470 Z" fill="#a8cdca"/>
+  <g fill="#2dd4bf" opacity=".9">
+    <circle cx="96" cy="372" r="9"/><circle cx="124" cy="398" r="5"/><circle cx="72" cy="404" r="4"/>
+    <circle cx="452" cy="330" r="7"/><circle cx="474" cy="360" r="4"/><circle cx="440" cy="368" r="4"/>
+  </g>
+  <!-- flukes -->
+  <path d="M106 320 C72 286 42 292 18 314 C48 316 68 320 88 324 C68 334 50 348 30 372 C60 362 86 350 108 334 Z" fill="#0b1220"/>
+  <use href="#trigon" transform="translate(58 330) rotate(-90) scale(.55)" fill="#f8fafc"/>
+  <!-- body -->
+  <path id="orca-body" d="M100 312 C160 200 280 150 380 170 C430 180 470 220 462 250 C450 300 380 330 300 336 C220 342 150 340 100 336 Z" fill="#0b1220"/>
+  <g clip-path="url(#body)">
+    <!-- belly: one long crescent -->
+    <path d="M120 330 C220 300 340 296 452 262 C420 316 250 340 120 330 Z" fill="#f8fafc"/>
+    <!-- formline: one crescent on the flank, one trigon behind it -->
+    <use href="#crescent" transform="translate(250 262) rotate(-18) scale(.8)" fill="#f8fafc"/>
+    <use href="#trigon" transform="translate(330 282) rotate(180) scale(.6)" fill="#b3372b"/>
+    <!-- eye: patch + dot + highlight, from the first cut -->
+    <ellipse cx="392" cy="212" rx="36" ry="14" transform="rotate(14 392 212)" fill="#f8fafc"/>
+    <circle cx="380" cy="215" r="7" fill="#0b1220"/>
+    <circle cx="383" cy="212" r="2.5" fill="#f8fafc"/>
+    <use href="#trigon" transform="translate(438 268) rotate(150) scale(.5)" fill="#b3372b"/>
+    <!-- jaw -->
+    <path d="M410 284 Q444 280 460 254" fill="none" stroke="#f8fafc" stroke-width="6" stroke-linecap="round"/>
+  </g>
+  <!-- dorsal fin with trigon cut and red crescent -->
+  <path d="M256 200 C248 150 238 108 226 72 C272 100 312 138 332 194 Z" fill="#0b1220"/>
+  <use href="#crescent" transform="translate(262 142) rotate(72) scale(.5)" fill="#f8fafc"/>
+  <use href="#trigon" transform="translate(298 186) rotate(205) scale(.45)" fill="#b3372b"/>
+  <!-- pectoral fin with red crescent -->
+  <path d="M318 316 C300 342 306 374 338 382 C358 364 354 330 342 310 Z" fill="#0b1220"/>
+  <use href="#crescent" transform="translate(334 350) rotate(104) scale(.45)" fill="#f8fafc"/>
+</svg>
