@@ -1,7 +1,7 @@
 ---
 title: NC2 on AWS, as code — Multicloud Manager to the first VM with the v4 APIs and OpenTofu
 date: 2026-09-21
-time: 09:00
+time: 07:00
 by: Alex Alvord
 slug: nc2-aws-as-code-multicloud-manager-to-first-vm
 section: nutanix
