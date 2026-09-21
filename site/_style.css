@@ -93,6 +93,7 @@ ul.plain li.has-stk b,ul.plain li.has-stk>span:not(.stk){grid-column:2}
 .friends{display:flex;justify-content:space-between;align-items:flex-end;max-width:760px;margin:6px auto -30px;padding:0 24px;position:relative;z-index:2}
 .friend{display:block;text-align:right}
 .friend.left img{transform:rotate(-7deg)}
+.friend.mid{align-self:flex-end;margin-bottom:26px}.friend.mid img{transform:rotate(-3deg)}
 .inl{display:inline-block;height:26px;width:auto;vertical-align:-7px;margin-right:6px}
 .friend img{display:inline-block;filter:drop-shadow(0 3px 5px rgba(0,0,0,.28));transform:rotate(6deg);transition:transform .2s}
 .friend:hover img{transform:rotate(0deg) scale(1.06)}
