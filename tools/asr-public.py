@@ -80,7 +80,7 @@ def row(r):
 p = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "site", "asr.html")
 s = open(p).read()
 a, b = "<!-- ASR-ROWS -->", "<!-- /ASR-ROWS -->"
-body = "\n" + "\n".join(row(r) for r in ROWS) + "\n    "
+body = "\n" + "\n".join(row(r) for r in reversed(ROWS)) + "\n    "  # newest first (Alex, 2026-09-21)
 s = s[: s.index(a) + len(a)] + body + s[s.index(b):]
 open(p, "w").write(s)
 print(f"{len(ROWS)} rows")
