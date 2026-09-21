@@ -16,23 +16,23 @@ So the build has two halves. The first is Multicloud Manager: a UI where you onb
 ## The map
 
 ```text
- ┌─ Multicloud Manager (cloud.nutanix.com) ─────────────────────────────┐
+ ┌─ Multicloud Manager (cloud.nutanix.com) ──────────────────────────────┐
  │  1. org ─▶ 2. AWS cloud account (CloudFormation) ─▶ 3. Create Cluster │
  │                                                    + Prism Central    │
- └───────────────────────────────┬──────────────────────────────────────┘
+ └───────────────────────────────┬───────────────────────────────────────┘
                                  │ orchestrates, over TCP/443
                                  ▼
- ┌─ AWS account · region · AZ ──────────────────────────────────────────┐
- │  VPC                                                                 │
- │   ├─ management subnet (private)  ── bare-metal nodes  ── cluster    │
- │   ├─ Prism Central subnet  /28    ── PC VM(s)  ◀── you talk to this  │
- │   └─ Flow Virtual Networking /24  ── transit-vpc, external subnets   │
- └───────────────────────────────┬──────────────────────────────────────┘
+ ┌─ AWS account · region · AZ ───────────────────────────────────────────┐
+ │  VPC                                                                  │
+ │   ├─ management subnet (private)  ── bare-metal nodes  ── cluster     │
+ │   ├─ Prism Central subnet  /28    ── PC VM(s)  ◀── you talk to this   │
+ │   └─ Flow Virtual Networking /24  ── transit-vpc, external subnets    │
+ └───────────────────────────────┬───────────────────────────────────────┘
                                  │ v4 APIs, :9440
                                  ▼
- ┌─ laptop ─ tofu ─ one provider, one endpoint: Prism Central ──────────┐
- │  4. VPC + overlay subnets  5. default route  6. image + VM + FIP     │
- └──────────────────────────────────────────────────────────────────────┘
+ ┌─ laptop ─ tofu ─ one provider, one endpoint: Prism Central ───────────┐
+ │  4. VPC + overlay subnets  5. default route  6. image + VM + FIP      │
+ └───────────────────────────────────────────────────────────────────────┘
 ```
 
 No Prism Element in the picture. Not because it isn't there — the CVMs are — but because nothing you do touches it.
@@ -54,16 +54,16 @@ This is the step that used to be a runbook. Multicloud Manager generates a Cloud
 
 ```text
  Multicloud Manager                          AWS console
- ┌───────────────────────────┐              ┌─────────────────────────────┐
+ ┌───────────────────────────┐              ┌──────────────────────────────┐
  │ Organizations ▸ <org>     │              │ CloudFormation ▸ Quick create│
- │  Cloud Accounts ▸ Add     │  template    │  stack: Nutanix-Clusters-   │
- │   provider: amazon        │ ──URL──────▶ │   High-Nc2-Cloud-Stack-Prod │
- │   account id: 123456789012│              │  ☑ may create IAM resources │
- │   features: ☑ FVN ☑ …     │              │  Create ─▶ CREATE_COMPLETE  │
- │  [Verify credentials] ◀───│──────────────│  roles: …Nc2-Cluster-Role,  │
- │  regions: us-west-2       │              │         …Nc2-Orchestrator-  │
- │  [Add Account]  ─▶ R      │              │         Role-Prod           │
- └───────────────────────────┘              └─────────────────────────────┘
+ │  Cloud Accounts ▸ Add     │  template    │  stack: Nutanix-Clusters-    │
+ │   provider: amazon        │ ──URL──────▶ │   High-Nc2-Cloud-Stack-Prod  │
+ │   account id: 123456789012│              │  ☑ may create IAM resources  │
+ │   features: ☑ FVN ☑ …     │              │  Create ─▶ CREATE_COMPLETE   │
+ │  [Verify credentials] ◀───│──────────────│  roles: …Nc2-Cluster-Role,   │
+ │  regions: us-west-2       │              │         …Nc2-Orchestrator-   │
+ │  [Add Account]  ─▶ R      │              │         Role-Prod            │
+ └───────────────────────────┘              └──────────────────────────────┘
 ```
 
 Click path, from the guide: sign in at cloud.nutanix.com → Organizations → your org → Cloud Accounts → Add Cloud Account → provider `amazon`, a name, the 12-digit account ID without hyphens → select features → Generate CloudFormation Template → Open AWS Console → Quick create stack, acknowledge IAM, Create → wait for `CREATE_COMPLETE` → back in Multicloud Manager, Verify credentials → choose regions → Add Account. Status `R` means ready.
