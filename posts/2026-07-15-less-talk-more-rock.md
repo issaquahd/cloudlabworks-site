@@ -4,7 +4,7 @@ date: 2026-07-15
 time: 09:09
 by: Alex Alvord
 slug: less-talk-more-rock
-summary: A logical diagram in under five minutes, validated, version-controlled, and living somewhere you can find it — why Mermaid plus Gemini and NotebookLM beat the image gallery, worked through an NC2 on Azure firewall design. Reposted from Medium.
+summary: A logical diagram in under five minutes, validated, version-controlled, and living somewhere you can find it, why Mermaid plus Gemini and NotebookLM beat the image gallery, worked through an NC2 on Azure firewall design. Reposted from Medium.
 ---
 
 *First published on [Medium](https://medium.com/@MyCloudCompute/less-talk-more-rock-c2c0fb5cdb4e) on July 15, 2026. Reposted here so it lives alongside the rest of the lab notes. It follows an earlier piece, [In walked a Mermaid diagram](https://medium.com/@MyCloudCompute/in-walked-a-mermaid-diagram-f7758f761ab3).*

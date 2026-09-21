@@ -4,7 +4,7 @@ date: 2021-02-25
 time: 09:03
 by: Alex Alvord
 slug: automate-or-die
-summary: Alvord Signs had Eddie Bauer, REI, and half the high-rises in downtown Seattle. Then signage went digital, got automated, and went global — and the choice was invest or become irrelevant. A family story about what automation is really measured in. Reposted from LinkedIn.
+summary: Alvord Signs had Eddie Bauer, REI, and half the high-rises in downtown Seattle. Then signage went digital, got automated, and went global, and the choice was invest or become irrelevant. A family story about what automation is really measured in. Reposted from LinkedIn.
 origin: https://www.linkedin.com/pulse/automate-die-sometimes-slowly-alex-alvord
 ---
 

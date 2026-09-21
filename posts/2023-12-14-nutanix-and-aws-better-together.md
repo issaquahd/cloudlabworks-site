@@ -4,7 +4,7 @@ date: 2023-12-14
 time: 10:03
 by: Alex Alvord
 slug: nutanix-and-aws-better-together
-summary: In 1930 Indiana Bell rotated a 22-million-pound building 90 degrees with 600 people working inside and nobody felt it move. Ninety years later a workload move to cloud should feel the same — the NC2 on AWS recipe for datacenter divestment, L2 stretch, and refactoring on your own time and dime. Reposted from LinkedIn.
+summary: In 1930 Indiana Bell rotated a 22-million-pound building 90 degrees with 600 people working inside and nobody felt it move. Ninety years later a workload move to cloud should feel the same, the NC2 on AWS recipe for datacenter divestment, L2 stretch, and refactoring on your own time and dime. Reposted from LinkedIn.
 section: nutanix
 moved_from: /blog/nutanix-and-aws-better-together
 origin: https://www.linkedin.com/pulse/nutanix-aws-better-together-alex-alvord-xdblf

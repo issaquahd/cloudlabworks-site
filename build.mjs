@@ -18,7 +18,7 @@ const page = (f) => fill(r(f).replace("</head>", `${FEED_LINK}\n</head>`));
 // ---------- blog: Invisible Wires — Agentic Cloud ----------
 const BLOG = { key: "blog", title: "Invisible Wires — Agentic Cloud", h1: "Invisible Wires", sub: "Agentic Cloud", path: "/blog", desc: "Notes from a home lab on agentic operations, hybrid multicloud, and the wires nobody sees. By Alex Alvord and Waku." };
 // A second, dedicated section: Nutanix. Posts opt in with `section: nutanix` in frontmatter; they get their own index, feed and URLs.
-const NUTANIX = { key: "nutanix", title: "Nutanix Notes", h1: "Nutanix Notes", sub: "Hybrid multicloud, NC2, and the field", path: "/nutanix", desc: "Field notes on Nutanix: NC2 on AWS and Azure, hybrid multicloud design, and what works in real customer environments. Written by Alex Alvord in a personal capacity — opinions are his own, not Nutanix's; everything here is public information.", disclaimer: "Personal blog. Alex works at Nutanix; the opinions here are his own and nothing here is Nutanix confidential — every fact is public or his own field experience." };
+const NUTANIX = { key: "nutanix", title: "Nutanix Notes", h1: "Nutanix Notes", sub: "Hybrid multicloud, NC2, and the field", path: "/nutanix", desc: "Field notes on Nutanix: NC2 on AWS and Azure, hybrid multicloud design, and what works in real customer environments. Written by Alex Alvord in a personal capacity, opinions are his own, not Nutanix's; everything here is public information.", disclaimer: "Personal blog. Alex works at Nutanix; the opinions here are his own and nothing here is Nutanix confidential: every fact is public or his own field experience." };
 const SECTIONS = { blog: BLOG, nutanix: NUTANIX };
 const SITE = "https://cloudlabworks.dev";
 const esc = (s) => s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
@@ -116,7 +116,7 @@ posts = posts.filter((p) => !p.draft);
 const inSection = (sec) => posts.filter((p) => p.section === sec || p.also.includes(sec));
 
 const sectionIndex = (sec) => shell({
-  title: `${sec.title} — Cloud Lab Works`, desc: sec.desc, path: sec.path, cls: "blog",
+  title: `${sec.title} · Cloud Lab Works`, desc: sec.desc, path: sec.path, cls: "blog",
   body: `  <h1>${esc(sec.h1)}<small>${esc(sec.sub)}</small></h1>
   <p class="lede">${esc(sec.desc)}</p>
   ${sec.disclaimer ? `<p class="tag">${esc(sec.disclaimer)}</p>\n  ` : ""}<p class="tag"><a href="${sec.path}/feed.xml">RSS feed</a> · <a href="/subscribe">Subscribe by email</a></p>
@@ -125,9 +125,9 @@ ${inSection(sec).length ? inSection(sec).map(postItem).join("\n") : emptyItem(se
   </ul>`,
 });
 const postPages = Object.fromEntries([...posts, ...drafts].map((p) => [`${p.section.path}/${p.slug}`, shell({
-  title: `${p.draft ? "DRAFT: " : ""}${p.title} — ${p.section.title}`, desc: p.summary || p.section.desc, path: `${p.section.path}/${p.slug}`, noindex: p.draft,
+  title: `${p.draft ? "DRAFT: " : ""}${p.title} · ${p.section.title}`, desc: p.summary || p.section.desc, path: `${p.section.path}/${p.slug}`, noindex: p.draft,
   extraHead: `<meta property="og:type" content="article"><meta property="article:published_time" content="${p.date}">`,
-  body: `  ${p.draft ? `<p class="tag draft">Draft — unlisted preview. Not in the index, the feed, or the mail; search engines are told to ignore it.</p>\n  ` : ""}<p class="tag crumb"><a href="${p.section.path}">${esc(p.section.title)}</a></p>
+  body: `  ${p.draft ? `<p class="tag draft">Draft: unlisted preview. Not in the index, the feed, or the mail; search engines are told to ignore it.</p>\n  ` : ""}<p class="tag crumb"><a href="${p.section.path}">${esc(p.section.title)}</a></p>
   <h1>${esc(p.title)}</h1>
   <p class="meta"><time datetime="${p.date}">${fmtDate(p.date)}</time> · By ${esc(p.by)}${origin(p)}</p>
   <article>
@@ -176,7 +176,7 @@ function githubGraph(user) {
   const cols = Math.ceil((d.days.length + startDow) / 7), w = PAD_L + cols * S, h = PAD_T + 7 * S;
   const mlabels = months.filter((m, i, a) => i === 0 || m.col - a[i - 1].col >= 3).map((m) => `<text x="${PAD_L + m.col * S}" y="9">${m.label}</text>`).join("");
   const total = d.total.toLocaleString("en-US");
-  return `    <li class="gh"><b><a href="https://github.com/${user}" rel="noopener">@${user}</a> — ${esc(GH_PEOPLE[user] || user)}</b><span>${total} contribution${d.total === 1 ? "" : "s"} in the last year · as of ${d.fetched}</span>
+  return `    <li class="gh"><b><a href="https://github.com/${user}" rel="noopener">@${user}</a>, ${esc(GH_PEOPLE[user] || user)}</b><span>${total} contribution${d.total === 1 ? "" : "s"} in the last year · as of ${d.fetched}</span>
       <svg class="gh-graph" viewBox="0 0 ${w} ${h}" width="${w}" height="${h}" role="img" aria-label="GitHub contribution calendar for ${user}: ${total} contributions in the last year">${mlabels}${cells.join("")}</svg></li>`;
 }
 const GITHUB = Object.keys(GH_PEOPLE).map(githubGraph).join("\n");
@@ -195,7 +195,7 @@ const VCARD = ["BEGIN:VCARD", "VERSION:3.0", "N:Alvord;Alex;;;", "FN:Alex Alvord
 const LIVE_JS = readFileSync(new URL("./site/live.js", import.meta.url), "utf8");
 const files = { [`${BLOG.path}/feed.xml`]: { body: sectionFeed(BLOG), type: "application/rss+xml; charset=utf-8" }, [`${NUTANIX.path}/feed.xml`]: { body: sectionFeed(NUTANIX), type: "application/rss+xml; charset=utf-8" }, "/alex-alvord.vcf": { body: VCARD, type: "text/vcard; charset=utf-8" }, "/live.js": { body: LIVE_JS, type: "text/javascript; charset=utf-8" } };
 
-const worker = `// Generated by build.mjs — do not edit. Source: site/*.html, posts/*.md
+const worker = `// Generated by build.mjs, do not edit. Source: site/*.html, posts/*.md
 const PAGES = ${JSON.stringify(pages)};
 const FILES = ${JSON.stringify(files)};
 const REDIRECTS = ${JSON.stringify(REDIRECTS)};
@@ -229,15 +229,15 @@ async function inquire(request, env) {
   const f = (k, max) => (form.get(k) || "").toString().trim().slice(0, max);
   const values = { name: f("name", 120), email: f("email", 200), phone: f("phone", 40), company: f("company", 120), category: f("category", 60), context: f("context", 4000) };
   const bad = (msg) => new Response(inquireForm({ values, notice: msg, err: true }), { status: 400, headers: NOSTORE });
-  if (f("website", 10)) return new Response(inquireForm({ notice: "Thanks — your inquiry is on its way." }), { headers: NOSTORE });
+  if (f("website", 10)) return new Response(inquireForm({ notice: "Thanks, your inquiry is on its way." }), { headers: NOSTORE });
   const t = Number(f("t", 20));
   if (!t || Date.now() - t < 3000) return bad("That was quick. Please take a second look and send again.");
   if (!values.name) return bad("Name is required.");
   if (!/^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(values.email)) return bad("A valid email address is required so Alex can reply.");
   if (!CATEGORIES.includes(values.category)) return bad("Choose what you are inquiring about.");
-  const lines = ["Inquiry from cloudlabworks.dev/inquire", "", "Name:     " + values.name, "Email:    " + values.email, "Phone:    " + (values.phone || "—"), "Company:  " + (values.company || "—"), "Category: " + values.category, "", "Context:", values.context || "—", "", "— Received " + new Date().toISOString() + " · IP " + (request.headers.get("cf-connecting-ip") || "?") + " · " + (request.headers.get("cf-ipcountry") || "")];
+  const lines = ["Inquiry from cloudlabworks.dev/inquire", "", "Name:     " + values.name, "Email:    " + values.email, "Phone:    " + (values.phone || "-"), "Company:  " + (values.company || "-"), "Category: " + values.category, "", "Context:", values.context || ", ", "", ",  Received " + new Date().toISOString() + " · IP " + (request.headers.get("cf-connecting-ip") || "?") + " · " + (request.headers.get("cf-ipcountry") || "")];
   const body = lines.join("\\r\\n");
-  const raw = ["From: " + hdr("Cloud Lab Works inquiry") + " <" + INQUIRY_FROM + ">", "To: " + env.INQUIRY_TO, "Reply-To: " + hdr(values.name) + " <" + values.email + ">", "Subject: " + hdr("[cloudlabworks.dev] " + values.category + " — " + values.name), "Date: " + new Date().toUTCString(), "Message-ID: <" + crypto.randomUUID() + "@cloudlabworks.dev>", "MIME-Version: 1.0", "Content-Type: text/plain; charset=utf-8", "Content-Transfer-Encoding: base64", "", b64(body).replace(/.{76}/g, "$&\\r\\n")].join("\\r\\n");
+  const raw = ["From: " + hdr("Cloud Lab Works inquiry") + " <" + INQUIRY_FROM + ">", "To: " + env.INQUIRY_TO, "Reply-To: " + hdr(values.name) + " <" + values.email + ">", "Subject: " + hdr("[cloudlabworks.dev] " + values.category + ", " + values.name), "Date: " + new Date().toUTCString(), "Message-ID: <" + crypto.randomUUID() + "@cloudlabworks.dev>", "MIME-Version: 1.0", "Content-Type: text/plain; charset=utf-8", "Content-Transfer-Encoding: base64", "", b64(body).replace(/.{76}/g, "$&\\r\\n")].join("\\r\\n");
   if (!env.INQUIRY || !env.INQUIRY_TO) return new Response(inquireForm({ values, notice: "The form is not wired up yet. Email alex@cloudlabworks.dev directly.", err: true }), { status: 503, headers: NOSTORE });
   try {
     const EmailMessage = await import("cloudflare:email").then((m) => m.EmailMessage, () => class { constructor(from, to, raw) { Object.assign(this, { from, to, raw }); } }); // fallback only for serve.mjs
@@ -245,10 +245,10 @@ async function inquire(request, env) {
   } catch (e) {
     return new Response(inquireForm({ values, notice: "Sending failed on our side (" + (e && e.message ? e.message : "unknown error") + "). Email alex@cloudlabworks.dev directly.", err: true }), { status: 502, headers: NOSTORE });
   }
-  return new Response(inquireForm({ notice: "Thanks, " + values.name + " — your inquiry is on its way to Alex." }), { headers: NOSTORE });
+  return new Response(inquireForm({ notice: "Thanks, " + values.name + ", your inquiry is on its way to Alex." }), { headers: NOSTORE });
 }
-// /media/*: Static Assets ignore Range (200, full body). WebKit needs 206 byte ranges to seek — and to
-// seek back to 0 for <video loop> — so serve the asset through the ASSETS binding and slice it here.
+// /media/*: Static Assets ignore Range (200, full body). WebKit needs 206 byte ranges to seek, and to
+// seek back to 0 for <video loop>, so serve the asset through the ASSETS binding and slice it here.
 async function media(request, env) {
   if (request.method !== "GET" && request.method !== "HEAD") return new Response("Method not allowed", { status: 405, headers: { allow: "GET, HEAD" } });
   const res = await env.ASSETS.fetch(new Request(request.url, { method: "GET" }));

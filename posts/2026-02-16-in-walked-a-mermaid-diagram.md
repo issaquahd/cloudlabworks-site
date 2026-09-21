@@ -6,7 +6,7 @@ by: Alex Alvord
 slug: in-walked-a-mermaid-diagram
 also: nutanix
 origin: https://medium.com/@MyCloudCompute/in-walked-a-mermaid-diagram-f7758f761ab3
-summary: NotebookLM as the one place a customer folder lives, Gemini to turn the sources into a Mermaid diagram, mermaid.live to render it — a lightweight, version-controllable way to keep the logical diagram honest without building a documentation pipeline. Reposted from Medium.
+summary: NotebookLM as the one place a customer folder lives, Gemini to turn the sources into a Mermaid diagram, mermaid.live to render it, a lightweight, version-controllable way to keep the logical diagram honest without building a documentation pipeline. Reposted from Medium.
 ---
 
 *First published on [Medium](https://medium.com/@MyCloudCompute/in-walked-a-mermaid-diagram-f7758f761ab3) on February 16, 2026. Reposted here so it lives alongside the rest of the lab notes. The follow-up is [Less Talk, More Rock!](/blog/less-talk-more-rock).*

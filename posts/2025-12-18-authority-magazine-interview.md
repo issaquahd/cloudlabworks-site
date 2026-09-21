@@ -7,7 +7,7 @@ slug: authority-magazine-interview
 section: nutanix
 moved_from: /blog/authority-magazine-interview
 origin: https://medium.com/authority-magazine/alexander-alvord-of-nutanix-on-how-to-use-digital-transformation-to-take-your-company-to-the-next-25cb7edb4faa
-summary: The full December 2025 Authority Magazine interview — the point-of-sale "aha" moment, RightScale, five ways digital transformation moves a company, and why the lab runs zero trust. Reposted with attribution.
+summary: The full December 2025 Authority Magazine interview, the point-of-sale "aha" moment, RightScale, five ways digital transformation moves a company, and why the lab runs zero trust. Reposted with attribution.
 ---
 
 *This interview first appeared in [Authority Magazine on Medium](https://medium.com/authority-magazine/alexander-alvord-of-nutanix-on-how-to-use-digital-transformation-to-take-your-company-to-the-next-25cb7edb4faa) on December 18, 2025, as part of the series "How To Use Digital Transformation To Take Your Company To The Next Level," conducted by Cynthia Corsetti. It is reproduced here in full, with the publication's original framing, so the interview lives alongside the rest of the [work page](/work#recognition). Copyright remains with Authority Magazine.*
