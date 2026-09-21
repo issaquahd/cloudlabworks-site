@@ -114,3 +114,4 @@ ul.conf img.wide{width:40px;height:auto;filter:drop-shadow(0 1px 2px rgba(0,0,0,
 @media(max-width:560px){.yr li{grid-template-columns:28px 1fr;column-gap:8px;padding-left:4px}.timeline{height:50vh}}
 
 .rec footer img.co{width:18px;height:18px;vertical-align:-4px;margin:0 8px}
+.rec footer img.pickles{width:34px;height:44px;vertical-align:-16px;margin:0 6px}
