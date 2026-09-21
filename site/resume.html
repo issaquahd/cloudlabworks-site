@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Résumé — Alex Alvord — Cloud Lab Works</title>
-<meta name="description" content="Alex Alvord — Advisory Solutions Architect, Hybrid Multicloud. Twenty years across cloud, infrastructure and the business side of both; now building agentic operations in a home lab. The live résumé.">
+<meta name="description" content="Alex Alvord — Advisory Solutions Architect, Hybrid Multicloud; AI infrastructure and agentic systems. Twenty years across cloud, infrastructure and the business side of both. The live résumé.">
 <meta name="robots" content="noai, noimageai">
 <link rel="canonical" href="https://cloudlabworks.dev/resume">
 <style>{{STYLE}}</style>
@@ -46,7 +46,7 @@
   <div class="cv-head">
     <div>
       <h1>Alex Alvord</h1>
-      <p class="role">Advisory Solutions Architect, Hybrid Multicloud</p>
+      <p class="role">Advisory Solutions Architect, Hybrid Multicloud · AI infrastructure &amp; agentic systems</p>
       <p class="where">Duvall, Washington · Pacific Northwest, remote-first</p>
     </div>
     <div class="links">
@@ -59,7 +59,24 @@
   <div class="cv-grid">
     <div class="main-col">
       <h2>Profile</h2>
-      <p class="summary">Twenty years on both sides of the table: seven as a finance and operations controller, then thirteen designing, selling and running cloud infrastructure — OpenStack and bare metal, the three hyperscalers, and since 2019 Nutanix hybrid multicloud, where he has been on NC2 since the incubation team of about fifteen people. Every design is grounded in what it costs to operate. Current work outside the day job: agentic operations — multi-agent systems with harnesses, tools and memory that run infrastructure — built and published from a home lab as <a href="https://cloudlabworks.dev">Cloud Lab Works</a>.</p>
+      <p class="summary">Solutions architect who puts AI systems into real infrastructure and explains them to the people who have to run and pay for them. Twenty years on both sides of the table: seven as a finance and operations controller, thirteen designing, selling and running cloud — OpenStack and bare metal, the three hyperscalers, and since 2019 Nutanix hybrid multicloud, on NC2 from a fifteen-person incubation team to 250. Since 2025, hands-on with production agentic systems: a multi-agent operations stack with harnesses, tool policy, memory and local inference, run daily from a home lab and published as <a href="https://cloudlabworks.dev">Cloud Lab Works</a>. Every design is grounded in what it costs to operate — GPUs included.</p>
+
+      <h2>Selected work</h2>
+      <div class="job">
+        <h3>Agentic operations stack — Cloud Lab Works</h3><span class="when">2025 – present</span>
+        <span class="org"><a href="https://github.com/issaquahd" rel="noopener">github.com/issaquahd</a> · <a href="/blog">Invisible Wires — Agentic Cloud</a></span>
+        <ul>
+          <li>Multi-agent system on OpenClaw with a principal agent, sub-agents and a family agent; three model lanes routed by task (hosted frontier models by subscription and API, local Qwen via Ollama), each kind of work pinned to a lane with no silent fallback.</li>
+          <li>File-backed identity and memory in git; semantic memory with local embeddings (nomic-embed-text) and no egress; prompt-injection defenses (untrusted-content markers, paired senders, memory-less inbound agents); secrets that never enter model context (egress-proxy sentinels, vault-only credentials, CDP-side injection).</li>
+          <li>Agents that run infrastructure: Cloudflare Workers + Zero Trust across three domains deployed by agent, scheduled sentinels for site health, a post-to-email pipeline, and Infrastructure as Music — lab state rendered as a live instrument.</li>
+          <li>Governance as code: a constitution with gated vs. ungated action classes, prompt-budget limits with soft ceilings, a control ledger, and a persona prompt budget enforced at build time.</li>
+        </ul>
+      </div>
+      <div class="job">
+        <h3>NC2 on AWS, as code</h3><span class="when">2026</span>
+        <span class="org"><a href="/nutanix">Nutanix Notes</a> · v4 APIs, OpenTofu, Flow Virtual Networking</span>
+        <ul><li>End-to-end walkthrough from the NC2 console to the first VM with every block verified against the provider; the pattern used in customer PoCs and lab sessions.</li></ul>
+      </div>
 
       <h2>Experience</h2>
 
@@ -70,6 +87,7 @@
         <ul>
           <li>Subject-matter expert for Nutanix Cloud Clusters (NC2) on AWS, Azure and Google Cloud, from the incubation team to a 250-person organization; owns the NC2 on AWS lab sessions at Global Tech Summit since 2023 and presents on the XTour since 2022.</li>
           <li>Runs the field motion end to end: PoC/PoV, multi-phase migration journeys, FinOps and TCO/ROI, solution demos, and partner and channel enablement across the Americas.</li>
+          <li>AI infrastructure engineering for customers moving models next to their data: GPU node sizing, storage and network substrate, and the cost model that decides on-prem vs. cloud for inference and fine-tuning.</li>
           <li>Built the "Commercial TCO/ROI light" that any AE/SE can run in front of a customer; trained partners and account teams on it — a core differentiator that shortened time to purchase.</li>
           <li>First Commercial SE hired in the Pacific Northwest; supported WA, OR, ID and AK, closed the largest Oregon Commercial and Alaska deals of the time, and onboarded every Commercial AE in the region. Mentored four Systems Engineers directly.</li>
           <li>Founder and champion sponsor of the Seattle Nutanix User Group (2020 –); founded the Anchorage NUG (2020 – 2022).</li>
@@ -80,9 +98,9 @@
         <h3>Cloud Lab Works LLC</h3><span class="when">2026 – present</span>
         <span class="org">Duvall, WA · Principal · independent architecture practice and lab</span>
         <ul>
-          <li>Designs and operates an agentic operations stack: multi-agent orchestration (OpenClaw), purpose-built harnesses and tool policies, file-backed identity and memory in git, local inference (Ollama) with no egress, and scheduled sentinels that watch the estate.</li>
-          <li>Infrastructure as code for the lab and its edge: Cloudflare Workers and Zero Trust Access, Proxmox sandbox tier, Tailscale subnet routing, health monitoring — and Infrastructure as Music, where deploys and faults drive an instrument.</li>
-          <li>Writes <em>Invisible Wires — Agentic Cloud</em> and <em>Nutanix Notes</em>; architecture reviews, cloud and AI infrastructure design, technical content, speaking and mentoring.</li>
+          <li>Independent practice: architecture reviews, cloud and AI infrastructure design (including the lab-scale GPU, storage and network substrate AI workloads need), technical content, speaking and mentoring.</li>
+          <li>Runs the lab as a product: M4 Pro inference host, Proxmox sandbox tier, Tailscale subnet routing, Cloudflare edge; everything with an owner, a health check and a place in git.</li>
+          <li>Writes <em>Invisible Wires — Agentic Cloud</em> and <em>Nutanix Notes</em>; sixty-plus conference-years of field work since 2011, staff on site at re:Invent, Ignite and Google Cloud Next.</li>
         </ul>
       </div>
 
@@ -158,10 +176,10 @@
 
     <aside class="side">
       <h2>Skills</h2>
+      <span class="group">Agentic &amp; AI infrastructure</span>
+      <div class="tags"><span>Multi-agent orchestration</span><span>Agent harnesses &amp; tool policy</span><span>LLM APIs (Anthropic, OpenAI-compatible)</span><span>Model routing · hosted + local</span><span>MCP tool integration</span><span>Memory engines · embeddings · RAG</span><span>Local inference (Ollama)</span><span>Prompt-injection defense</span><span>Sandboxed execution</span><span>Evals &amp; verification gates</span><span>GPU/AI substrate sizing</span><span>Inference cost modelling</span></div>
       <span class="group">Hybrid multicloud</span>
       <div class="tags"><span>Nutanix NC2 · AWS · Azure · GCP</span><span>Prism Central · v4 APIs</span><span>Flow Virtual Networking</span><span>OpenStack</span><span>VMware · KVM · Hyper-V</span><span>AHV</span><span>Datacenter divestment · L2 stretch</span><span>DR · Multicloud Snapshot</span></div>
-      <span class="group">Agentic &amp; AI infrastructure</span>
-      <div class="tags"><span>Multi-agent orchestration</span><span>Agent harnesses &amp; tool policy</span><span>MCP tool integration</span><span>Memory engines · embeddings</span><span>Local inference (Ollama)</span><span>Agentic runbooks &amp; sentinels</span><span>GPU/AI substrate sizing</span></div>
       <span class="group">Cloud native &amp; IaC</span>
       <div class="tags"><span>OpenTofu / Terraform</span><span>Ansible</span><span>Kubernetes</span><span>Containers</span><span>GitOps</span><span>Cloudflare Workers · Zero Trust</span><span>Proxmox</span><span>CI/CD</span></div>
       <span class="group">Business</span>
