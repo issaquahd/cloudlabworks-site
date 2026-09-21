@@ -9,9 +9,9 @@ draft: true
 summary: Nutanix Cloud Clusters on AWS has no Prism Element to log into: with Flow Virtual Networking you are Prism Central–bound from the first minute. One walkthrough, ASCII at every step: onboarding the AWS account in the NC2 console, the URLs and ports to allowlist, the cluster and Prism Central in one create, then OpenTofu on the v4 APIs for VPCs, subnets, floating IPs and the first VM.
 ---
 
-The first time I stood up NC2 on AWS, I went looking for Prism Element. Habit. Fifteen years of clusters will do that to you. It wasn't there, and that was the whole lesson: with Flow Virtual Networking you are Prism Central-bound from the first minute. The NC2 console builds the cluster *and* Prism Central in one create, and everything after that (VPCs, subnets, images, VMs) is a Prism Central v4 API call. Which is exactly what the version 2 OpenTofu/Terraform provider speaks.
+An NC2 on AWS cluster is a Nutanix cluster on EC2 bare metal, and the temptation is to treat it like the one in the datacenter: Foundation, Prism Element, then Prism Central. That is the wrong map. With Flow Virtual Networking there is no Prism Element in your workflow. The NC2 console builds the cluster *and* Prism Central in one create, and everything after that, VPCs, subnets, images, VMs, is a Prism Central v4 API call. Which is exactly what the version 2 OpenTofu/Terraform provider speaks.
 
-So the build has two halves. The first is the NC2 console: a UI where you onboard a cloud account, pick a region and instance type, and press Create. It replaces the manual AWS and Nutanix setup that used to eat a day. The second half is code, and it's the fun half. Here is the whole path, once, with a picture at every step, because that is what I wished someone had drawn for me. Everything below comes from the public NC2 on AWS Deployment and User Guide and the provider's docs and `examples/nc2` samples on GitHub, run with OpenTofu. If Terraform is your shop, swap the binary; the HCL is identical.
+So the build has two halves. The first is the NC2 console: a UI where you onboard a cloud account, pick a region and instance type, and press Create. It replaces the manual AWS and Nutanix setup that used to take a day. The second is code. Here is the whole path, with a picture at each step. Everything is from the public NC2 on AWS Deployment and User Guide and the provider's docs and `examples/nc2` samples on GitHub.
 
 ## The map
 
@@ -35,7 +35,7 @@ So the build has two halves. The first is the NC2 console: a UI where you onboar
  └───────────────────────────────────────────────────────────────────────┘
 ```
 
-No Prism Element in the picture. It's there (the CVMs are running) but nothing you do touches it, and that took me a minute to trust.
+No Prism Element in the picture. Not because it isn't there (the CVMs are) but because nothing you do touches it.
 
 ## Step 1: before the NC2 console: the AWS side
 
@@ -46,11 +46,11 @@ No Prism Element in the picture. It's there (the CVMs are running) but nothing y
    └─ region enabled                                              (some are opt-in)
 ```
 
-Three things, none of them Nutanix. The IAM permissions are only for running a CloudFormation stack that creates NC2's roles; NC2 itself never uses them, which is the first question your security team will ask, so have the answer ready. The quota is counted in vCPUs at 2 per physical core and must cover one more node than you deploy, because a node replacement runs n+1 for a while.
+Three things, none of them Nutanix. The IAM permissions are for running a CloudFormation stack that creates NC2's roles; NC2 itself does not use them. The quota is counted in vCPUs at 2 per physical core and must cover one more node than you deploy, because a node replacement runs n+1 for a while.
 
 ## Step 2: onboard the cloud account in the NC2 console
 
-This is the step that used to be a runbook, and I have written that runbook more than once. The NC2 console generates a CloudFormation template scoped to the features you tick, you create the stack in your AWS account, and it verifies the roles it can now assume.
+This is the step that used to be a runbook. The NC2 console generates a CloudFormation template scoped to the features you tick, you create the stack in your AWS account, and it verifies the roles it can now assume.
 
 ```text
  NC2 console                                 AWS console
@@ -85,13 +85,13 @@ The NC2 console has its own set of endpoints, and a cluster that can't reach the
                   ──▶ ec2.<region>.amazonaws.com/*                EC2 metadata (e.g. ec2.us-west-2.amazonaws.com)
 ```
 
-Nutanix publishes names, not IPs: the destinations sit behind DNS failover, so an IP allowlist rots. I have watched a cluster sit at "Creating" for an hour over exactly this. If the management subnet has no route out (no NAT gateway, or an egress firewall), this table is the first thing to check, and the guide is explicit that it is not exhaustive: Prism Central and the microservices platform have their own port lists.
+Nutanix publishes names, not IPs: the destinations sit behind DNS failover, so an IP allowlist rots. If the management subnet has no route out (no NAT gateway, or an egress firewall), this table is the first thing to check, and the guide is explicit that it is not exhaustive: Prism Central and the microservices platform have their own port lists.
 
 Inbound, the user-management security group opens 22, 80, 9440, 8443 and the DR/NGT/Files ports by default; 9440 is the one you will use from the laptop.
 
 ## Step 4: Create Cluster, with Prism Central inside it
 
-One wizard, and Prism Central comes out the other side. Still feels like cheating. The parts that matter are on the Network and Prism Central tabs.
+One wizard, and the multicluster manager comes out of it. The parts that matter are on the Network and Prism Central tabs.
 
 ```text
  Create Cluster
@@ -352,11 +352,11 @@ resource "nutanix_floating_ip_v2" "web01" {
    No changes. Your infrastructure matches the configuration.
 ```
 
-That empty second plan is the deliverable, and it is the part I show customers first. The NC2 console owns the cluster and Prism Central; git owns everything above them; and because every v4 write carries an ETag, a colleague's click in Prism Central shows up as a plan diff instead of a silent overwrite.
+That empty second plan is the deliverable. The NC2 console owns the cluster and Prism Central; git owns everything above them; and because every v4 write carries an ETag, a colleague's click in Prism Central shows up as a plan diff instead of a silent overwrite.
 
 ## What to watch
 
-- **Two owners, one line between them.** Keep it sharp. The NC2 console owns the cluster, Prism Central, the transit VPC and the external subnets. Code owns your VPCs, subnets, routes, images and VMs. Don't manage the NC2-built objects from state; look them up with data sources, as above.
+- **Two owners, one line between them.** The NC2 console owns the cluster, Prism Central, the transit VPC and the external subnets. Code owns your VPCs, subnets, routes, images and VMs. Don't manage the NC2-built objects from state; look them up with data sources, as above.
 - **Flow Virtual Networking is a create-time decision.** No FVN, no Prism Central tab, no overlay VPCs, and no adding it later.
 - **The allowlist is names.** `gateway-external-api.cloud.nutanix.com` is the NC2 console's door into your cluster; without it the cluster never reports Running.
 - **Default credentials.** The new Prism Central's first password is the documented default. Change it before the provider ever sees it; keep it in the environment or a vault, never in `.tf` or state you don't encrypt.
