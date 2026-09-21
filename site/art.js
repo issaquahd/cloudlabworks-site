@@ -7,3 +7,9 @@
     var d = document.createElement("small"); d.textContent = " " + e.date; d.style.opacity = ".7"; el.appendChild(d);
   }).catch(function () {});
 })();
+// The pieces are Cloud Lab Works property: no context-menu save or drag on the gallery. A deterrent, not a lock;
+// the watermark baked into every file is the real control, and the originals are never served.
+(function () {
+  var block = function (e) { if (e.target && e.target.closest && e.target.closest(".pieces img, img.art")) e.preventDefault(); };
+  document.addEventListener("contextmenu", block); document.addEventListener("dragstart", block);
+})();

@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+# Render every piece on /art as a watermarked JPEG in media/ (flat, what deploy-assets.sh uploads).
+# Sources live under media/src/ and are never uploaded; the site chrome files (orca mark, banner,
+# pattern tile, share card, stickers) stay public because the pages need them, but /art shows the
+# watermarked copy and links to no source. Idempotent: re-renders only when the source is newer.
+set -u
+DIR="$(cd "$(dirname "$0")/.." && pwd)"; WM="$DIR/tools/watermark.py"; M="$DIR/media"; S="$M/src"
+render() { # render SRC OUT [width]
+  local src="$1" out="$M/$2" w="${3:-1600}"
+  [ -f "$src" ] || { echo "MISSING $src"; return 1; }
+  if [ ! -f "$out" ] || [ "$src" -nt "$out" ] || [ "$WM" -nt "$out" ]; then "$WM" "$src" "$out" --width "$w"; else echo "$2 up to date"; fi
+}
+# Made here: photographs of the work as it hangs and sits (served originals moved to src/art/served/).
+for n in hands-canvas pour-red-drips pour-multicolor fan-and-canvas glass-bowl glass-shelf raku-shelf kabuki-1 kabuki-2; do
+  render "$S/art/served/art-$n.jpg" "art-wm-$n.jpg" 1200
+done
+# Waku art: the Salish Sea set.
+for n in salmon raven-sun heron thunderbird-whale welcome-figure canoe; do
+  render "$S/salish/salish-$n.svg" "art-wm-salish-$n.jpg" 1024
+done
+# Waku art: the site set.
+render "$M/waku-orca-pale.svg" art-wm-orca-mark.jpg 1024
+render "$M/cloudlabworks-banner-salish.jpg" art-wm-salish-band.jpg 1600
+render "$M/salish-pattern-alpha.svg" art-wm-watermark-tile.jpg 1024
+render "$M/waku-orca-og.png" art-wm-share-card.jpg 1200
+render "$S/stickers/rubrik-robot.svg" art-wm-sticker-rubrik.jpg 800
+render "$S/stickers/rightscale-size.svg" art-wm-sticker-rightscale.jpg 800
+render "$S/stickers/inap-disc.jpg" art-wm-sticker-inap.jpg 420

@@ -130,7 +130,7 @@
       var li = document.createElement("li"), t = document.createElement("time"), d = document.createElement("div"), ev = document.createElement("span"), a = document.createElement("audio");
       t.dateTime = e.date; t.textContent = e.date + (e.seconds ? " · " + Math.round(e.seconds) + " s" : "");
       ev.className = "ev"; ev.textContent = (e.events || []).map(function (x) { return x.replace(/^\d{6}-/, ""); }).join(" · ") || "lab";
-      if (e.art) { var im = document.createElement("img"); im.className = "art"; im.src = "/media/" + e.art; im.alt = "Art drawn from this recording: " + e.date; im.loading = "lazy"; d.appendChild(im); }
+      if (e.art) { var im = document.createElement("img"); im.className = "art"; im.draggable = false; im.src = "/media/" + e.art; im.alt = "Art drawn from this recording: " + e.date; im.loading = "lazy"; d.appendChild(im); }
       if (e.haiku && e.haiku.length) { var hk = document.createElement("p"); hk.className = "haiku"; e.haiku.forEach(function (ln, i) { if (i) hk.appendChild(document.createElement("br")); hk.appendChild(document.createTextNode(ln)); }); d.appendChild(hk); }
       a.controls = true; a.preload = "none"; a.src = "/media/" + e.m4a;
       a.addEventListener("play", function () { ensureAudio(); if (ac.state === "suspended") ac.resume(); if (playing) stop(); source = "rec"; if (!a._node) { a._node = ac.createMediaElementSource(a); a._node.connect(analyser); } draw(); nowEl.textContent = "Playing the lab's own recording from " + e.date + "."; });
