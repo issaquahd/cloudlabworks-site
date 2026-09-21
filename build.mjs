@@ -74,7 +74,9 @@ try {
     if (!meta.title) throw new Error(`posts/${f}: missing title`);
     const section = SECTIONS[meta.section || "blog"];
     if (!section) throw new Error(`posts/${f}: unknown section ${meta.section}`);
-    return { slug, date, sort: `${date}T${meta.time || "00:00"}`, title: meta.title, summary: meta.summary || "", by: meta.by || "Alex Alvord", html: markdown(body), section, moved: meta.moved_from || "", origin: meta.origin || "", draft: meta.draft === "true" };
+    // `also: nutanix` lists a post in a second section's index and feed; its URL stays under the primary section.
+    const also = (meta.also || "").split(/[,\s]+/).filter(Boolean).map((k) => { if (!SECTIONS[k]) throw new Error(`posts/${f}: unknown section ${k}`); return SECTIONS[k]; });
+    return { slug, date, sort: `${date}T${meta.time || "00:00"}`, title: meta.title, summary: meta.summary || "", by: meta.by || "Alex Alvord", html: markdown(body), section, moved: meta.moved_from || "", origin: meta.origin || "", draft: meta.draft === "true", also };
   }).filter(Boolean).sort((a, b) => (a.sort === b.sort ? 0 : a.sort < b.sort ? 1 : -1));
 } catch (e) { if (e.code !== "ENOENT") throw e; }
 
@@ -111,7 +113,7 @@ const postItem = (p) => `    <li><time datetime="${p.date}">${fmtDate(p.date)}</
 const emptyItem = (sec) => `    <li><b>First post is on its way.</b><span><a href="${sec.path}/feed.xml">Subscribe to the feed</a> and it will find you.</span></li>`;
 const drafts = posts.filter((p) => p.draft);
 posts = posts.filter((p) => !p.draft);
-const inSection = (sec) => posts.filter((p) => p.section === sec);
+const inSection = (sec) => posts.filter((p) => p.section === sec || p.also.includes(sec));
 
 const sectionIndex = (sec) => shell({
   title: `${sec.title} — Cloud Lab Works`, desc: sec.desc, path: sec.path, cls: "blog",
