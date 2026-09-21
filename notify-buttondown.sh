@@ -4,7 +4,7 @@
 # recorded. Runs from deploy.sh after a successful Worker upload; safe to re-run; never re-sends.
 #   bash notify-buttondown.sh            send what is unsent
 #   bash notify-buttondown.sh --dry-run  list what would be sent
-# Key: Bitwarden item "ButtonDown RSS Email" (the API key is in its notes), unlocked with the
+# Key: Bitwarden item "ButtonDown API" (the API key is in its notes; older name "ButtonDown RSS Email"), unlocked with the
 # master password stored in the login Keychain (service bitwarden-waku-master, account waku).
 # The key is never printed and never lands in git.
 set -u
@@ -42,7 +42,8 @@ echo "buttondown: unsent:"; printf '%s\n' "$UNSENT" | cut -f1 | sed 's/^/  /'
 export BW_MASTER_PASSWORD="$(security find-generic-password -a waku -s bitwarden-waku-master -w 2>/dev/null)"
 export BW_SESSION="$(bw unlock --passwordenv BW_MASTER_PASSWORD --raw 2>/dev/null)"
 unset BW_MASTER_PASSWORD
-KEY="$(bw get notes "ButtonDown RSS Email" 2>/dev/null | tr -d '[:space:]')"
+KEY="$(bw get notes "ButtonDown API" 2>/dev/null | tr -d '[:space:]')"
+[ ${#KEY} -ge 20 ] || KEY="$(bw get notes "ButtonDown RSS Email" 2>/dev/null | tr -d '[:space:]')"
 unset BW_SESSION
 [ ${#KEY} -ge 20 ] || { echo "buttondown: FAIL no API key from Bitwarden"; exit 1; }
 
@@ -58,17 +59,17 @@ if m:
         k = line.find(":")
         if k > 0: meta[line[:k].strip()] = line[k+1:].strip().strip("\"'")
     body = m.group(2)
-url = f"{sys.argv[3]}/blog/{sys.argv[2]}"
+url = f"{sys.argv[3]}/{meta.get('section') or 'blog'}/{sys.argv[2]}"
 # relative image/link paths on the site become absolute in mail
 body = re.sub(r"\]\((/[^)\s]*)\)", lambda mm: f"]({sys.argv[3]}{mm.group(1)})", body)
 text = (f"*{meta.get('summary','')}*\n\n" if meta.get("summary") else "") + f"Read on the site: {url}\n\n---\n\n" + body.strip() + \
-       f"\n\n---\n\n— {meta.get('by','Alex Alvord')}, Cloud Lab Works · Duvall, Washington\n"
+       f"\n\n---\n\n{meta.get('by','Alex Alvord')}, Cloud Lab Works · Duvall, Washington\n"
 print(json.dumps({"subject": meta.get("title", sys.argv[2]), "slug": sys.argv[2], "canonical_url": url,
                   "description": meta.get("summary", ""), "body": text, "status": "about_to_send"}))
 EOF
 )
   CODE=$(curl -s -o /tmp/bd-send.json -w '%{http_code}' --max-time 40 -X POST https://api.buttondown.com/v1/emails \
-    -H "Authorization: Token $KEY" -H 'Content-Type: application/json' -d "$BODY_JSON")
+    -H "Authorization: Token $KEY" -H 'Content-Type: application/json' -H 'X-Buttondown-Live-Dangerously: true' -d "$BODY_JSON")
   case "$CODE" in
     2*) echo "$slug" >> "$SENT"; echo "buttondown: sent $slug ($CODE)";;
     *)  echo "buttondown: FAIL $slug ($CODE) $(head -c 300 /tmp/bd-send.json)";;
