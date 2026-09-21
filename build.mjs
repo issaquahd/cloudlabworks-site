@@ -16,7 +16,10 @@ const FEED_LINK = `<link rel="alternate" type="application/rss+xml" title="Invis
 const page = (f) => fill(r(f).replace("</head>", `${FEED_LINK}\n</head>`));
 
 // ---------- blog: Invisible Wires — Agentic Cloud ----------
-const BLOG = { title: "Invisible Wires — Agentic Cloud", path: "/blog", desc: "Notes from a home lab on agentic operations, hybrid multicloud, and the wires nobody sees. By Alex Alvord and Waku." };
+const BLOG = { key: "blog", title: "Invisible Wires — Agentic Cloud", h1: "Invisible Wires", sub: "Agentic Cloud", path: "/blog", desc: "Notes from a home lab on agentic operations, hybrid multicloud, and the wires nobody sees. By Alex Alvord and Waku." };
+// A second, dedicated section: Nutanix. Posts opt in with `section: nutanix` in frontmatter; they get their own index, feed and URLs.
+const NUTANIX = { key: "nutanix", title: "Nutanix Notes", h1: "Nutanix Notes", sub: "Hybrid multicloud, NC2, and the field", path: "/nutanix", desc: "Field notes on Nutanix: NC2 on AWS and Azure, hybrid multicloud design, and what works in real customer environments. Written by Alex Alvord in a personal capacity — opinions are his own, not Nutanix's; everything here is public information.", disclaimer: "Personal blog. Alex works at Nutanix; the opinions here are his own and nothing here is Nutanix confidential — every fact is public or his own field experience." };
+const SECTIONS = { blog: BLOG, nutanix: NUTANIX };
 const SITE = "https://cloudlabworks.dev";
 const esc = (s) => s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
 
@@ -70,7 +73,9 @@ try {
     const date = meta.date || f.slice(0, 10);
     if (!meta.title) throw new Error(`posts/${f}: missing title`);
     if (meta.draft === "true") return null;
-    return { slug, date, sort: `${date}T${meta.time || "00:00"}`, title: meta.title, summary: meta.summary || "", by: meta.by || "Alex Alvord", html: markdown(body) };
+    const section = SECTIONS[meta.section || "blog"];
+    if (!section) throw new Error(`posts/${f}: unknown section ${meta.section}`);
+    return { slug, date, sort: `${date}T${meta.time || "00:00"}`, title: meta.title, summary: meta.summary || "", by: meta.by || "Alex Alvord", html: markdown(body), section, moved: meta.moved_from || "" };
   }).filter(Boolean).sort((a, b) => (a.sort === b.sort ? 0 : a.sort < b.sort ? 1 : -1));
 } catch (e) { if (e.code !== "ENOENT") throw e; }
 
@@ -100,41 +105,44 @@ ${body}
 </html>
 `);
 
-const postItem = (p) => `    <li><time datetime="${p.date}">${fmtDate(p.date)}</time><b><a href="${BLOG.path}/${p.slug}">${esc(p.title)}</a></b><span>${esc(p.summary)}</span></li>`;
-const emptyItem = `    <li><b>First post is on its way.</b><span><a href="${BLOG.path}/feed.xml">Subscribe to the feed</a> and it will find you.</span></li>`;
+const postItem = (p) => `    <li><time datetime="${p.date}">${fmtDate(p.date)}</time><b><a href="${p.section.path}/${p.slug}">${esc(p.title)}</a></b><span>${esc(p.summary)}</span></li>`;
+const emptyItem = (sec) => `    <li><b>First post is on its way.</b><span><a href="${sec.path}/feed.xml">Subscribe to the feed</a> and it will find you.</span></li>`;
+const inSection = (sec) => posts.filter((p) => p.section === sec);
 
-const blogIndex = shell({
-  title: `${BLOG.title} — Cloud Lab Works`, desc: BLOG.desc, path: BLOG.path, cls: "blog",
-  body: `  <h1>Invisible Wires<small>Agentic Cloud</small></h1>
-  <p class="lede">${esc(BLOG.desc)}</p>
-  <p class="tag"><a href="${BLOG.path}/feed.xml">RSS feed</a></p>
+const sectionIndex = (sec) => shell({
+  title: `${sec.title} — Cloud Lab Works`, desc: sec.desc, path: sec.path, cls: "blog",
+  body: `  <h1>${esc(sec.h1)}<small>${esc(sec.sub)}</small></h1>
+  <p class="lede">${esc(sec.desc)}</p>
+  ${sec.disclaimer ? `<p class="tag">${esc(sec.disclaimer)}</p>\n  ` : ""}<p class="tag"><a href="${sec.path}/feed.xml">RSS feed</a> · <a href="/subscribe">Subscribe by email</a></p>
   <ul class="plain posts">
-${posts.length ? posts.map(postItem).join("\n") : emptyItem}
+${inSection(sec).length ? inSection(sec).map(postItem).join("\n") : emptyItem(sec)}
   </ul>`,
 });
-const postPages = Object.fromEntries(posts.map((p) => [`${BLOG.path}/${p.slug}`, shell({
-  title: `${p.title} — ${BLOG.title}`, desc: p.summary || BLOG.desc, path: `${BLOG.path}/${p.slug}`,
+const postPages = Object.fromEntries(posts.map((p) => [`${p.section.path}/${p.slug}`, shell({
+  title: `${p.title} — ${p.section.title}`, desc: p.summary || p.section.desc, path: `${p.section.path}/${p.slug}`,
   extraHead: `<meta property="og:type" content="article"><meta property="article:published_time" content="${p.date}">`,
-  body: `  <p class="tag crumb"><a href="${BLOG.path}">Invisible Wires — Agentic Cloud</a></p>
+  body: `  <p class="tag crumb"><a href="${p.section.path}">${esc(p.section.title)}</a></p>
   <h1>${esc(p.title)}</h1>
   <p class="meta"><time datetime="${p.date}">${fmtDate(p.date)}</time> · ${esc(p.by)}</p>
   <article>
 ${p.html}
   </article>
-  <p class="tag back"><a href="${BLOG.path}">← All posts</a></p>`,
+  ${p.section.disclaimer ? `<p class="tag">${esc(p.section.disclaimer)}</p>\n  ` : ""}<p class="tag back"><a href="${p.section.path}">← All posts</a></p>`,
 })]));
-const feed = `<?xml version="1.0" encoding="UTF-8"?>
+// Old URLs of posts that moved between sections (frontmatter `moved_from: /blog/<slug>`) → 301.
+const REDIRECTS = Object.fromEntries(posts.filter((p) => p.moved).map((p) => [p.moved, `${p.section.path}/${p.slug}`]));
+const sectionFeed = (sec) => `<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
 <channel>
-<title>${esc(BLOG.title)}</title>
-<link>${SITE}${BLOG.path}</link>
-<atom:link href="${SITE}${BLOG.path}/feed.xml" rel="self" type="application/rss+xml"/>
-<description>${esc(BLOG.desc)}</description>
+<title>${esc(sec.title)}</title>
+<link>${SITE}${sec.path}</link>
+<atom:link href="${SITE}${sec.path}/feed.xml" rel="self" type="application/rss+xml"/>
+<description>${esc(sec.desc)}</description>
 <language>en-us</language>
-${posts.map((p) => `<item>
+${inSection(sec).map((p) => `<item>
 <title>${esc(p.title)}</title>
-<link>${SITE}${BLOG.path}/${p.slug}</link>
-<guid isPermaLink="true">${SITE}${BLOG.path}/${p.slug}</guid>
+<link>${SITE}${sec.path}/${p.slug}</link>
+<guid isPermaLink="true">${SITE}${sec.path}/${p.slug}</guid>
 <pubDate>${new Date(p.date + "T12:00:00Z").toUTCString()}</pubDate>
 <description>${esc(p.summary)}</description>
 </item>`).join("\n")}
@@ -168,22 +176,23 @@ function githubGraph(user) {
 const GITHUB = Object.keys(GH_PEOPLE).map(githubGraph).join("\n");
 
 // Home page: latest three posts.
-const home = page("index.html").replace("{{LATEST}}", posts.length ? posts.slice(0, 3).map(postItem).join("\n") : emptyItem).replace("{{GITHUB}}", GITHUB);
+const home = page("index.html").replace("{{LATEST}}", inSection(BLOG).length ? inSection(BLOG).slice(0, 3).map(postItem).join("\n") : emptyItem(BLOG)).replace("{{GITHUB}}", GITHUB);
 
 // Inquiry form (/inquire): rendered at runtime from this template so it can echo values back on a validation error.
 const INQUIRE = page("inquire.html");
 const CATEGORIES = ["Architecture review", "Cloud and AI infrastructure design", "Technical content", "Speaking and interviews", "Mentoring", "Meet at an event", "Something else"];
 
-const pages = { "/": home, "/work": page("work.html").replace("{{GITHUB}}", GITHUB), [BLOG.path]: blogIndex, ...postPages, "/notes": page("notes.html"), "/privacy": page("privacy.html"), "/terms": page("terms.html"), "/card": page("card.html"), "/live": page("live.html"), "/orcas": page("orcas.html"), "/subscribe": page("subscribe.html") };
+const pages = { "/": home, "/work": page("work.html").replace("{{GITHUB}}", GITHUB), [BLOG.path]: sectionIndex(BLOG), [NUTANIX.path]: sectionIndex(NUTANIX), ...postPages, "/notes": page("notes.html"), "/privacy": page("privacy.html"), "/terms": page("terms.html"), "/card": page("card.html"), "/live": page("live.html"), "/orcas": page("orcas.html"), "/subscribe": page("subscribe.html") };
 // /card is the NFC business-card landing page; the tag on the card carries only this URL.
 const VCARD = ["BEGIN:VCARD", "VERSION:3.0", "N:Alvord;Alex;;;", "FN:Alex Alvord", "ORG:Cloud Lab Works LLC", "TITLE:Advisory Solutions Architect, Hybrid Multicloud", "EMAIL;TYPE=INTERNET,WORK:alex@cloudlabworks.dev", "URL:https://cloudlabworks.dev", "URL;TYPE=LinkedIn:https://www.linkedin.com/in/alexalvord/", "ADR;TYPE=WORK:;;;Duvall;WA;;USA", "NOTE:Hybrid multicloud architecture, cloud and AI infrastructure design, technical content. cloudlabworks.dev", "END:VCARD"].join("\r\n") + "\r\n";
 // /live.js is the only script on the site: the browser instrument + visualizer for /live (self-hosted; CSP script-src 'self').
 const LIVE_JS = readFileSync(new URL("./site/live.js", import.meta.url), "utf8");
-const files = { [`${BLOG.path}/feed.xml`]: { body: feed, type: "application/rss+xml; charset=utf-8" }, "/alex-alvord.vcf": { body: VCARD, type: "text/vcard; charset=utf-8" }, "/live.js": { body: LIVE_JS, type: "text/javascript; charset=utf-8" } };
+const files = { [`${BLOG.path}/feed.xml`]: { body: sectionFeed(BLOG), type: "application/rss+xml; charset=utf-8" }, [`${NUTANIX.path}/feed.xml`]: { body: sectionFeed(NUTANIX), type: "application/rss+xml; charset=utf-8" }, "/alex-alvord.vcf": { body: VCARD, type: "text/vcard; charset=utf-8" }, "/live.js": { body: LIVE_JS, type: "text/javascript; charset=utf-8" } };
 
 const worker = `// Generated by build.mjs — do not edit. Source: site/*.html, posts/*.md
 const PAGES = ${JSON.stringify(pages)};
 const FILES = ${JSON.stringify(files)};
+const REDIRECTS = ${JSON.stringify(REDIRECTS)};
 const INQUIRE = ${JSON.stringify(INQUIRE)};
 const CATEGORIES = ${JSON.stringify(CATEGORIES)};
 const INQUIRY_FROM = "inquiry@cloudlabworks.dev";
@@ -274,6 +283,7 @@ export default {
       if (q.get("context")) pre.context = q.get("context").trim().slice(0, 4000);
       return new Response(inquireForm({ values: pre }), { headers: NOSTORE });
     }
+    if (REDIRECTS[path]) return Response.redirect(url.origin + REDIRECTS[path], 301);
     const file = FILES[path];
     if (file) return new Response(file.body, { headers: { ...HEADERS, "content-type": file.type } });
     if (path.endsWith(".html")) path = path.slice(0, -5) || "/";
