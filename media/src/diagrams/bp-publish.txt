@@ -1,0 +1,12 @@
+ ┌──────────┐   ┌──────────┐   ┌──────────┐   ┌──────────┐   ┌──────────┐
+ │ draft.md │──▶│ build    │──▶│ Worker   │──▶│ verify   │──▶│ mail the │
+ │ front-   │   │ one JS   │   │ upload   │   │ curl 200 │   │ list     │
+ │ matter   │   │ bundle   │   │ + assets │   │ + diff   │   │ once     │
+ └──────────┘   └──────────┘   └──────────┘   └──────────┘   └──────────┘
+      ▲              │                              │              │
+      │              ▼                              ▼              ▼
+ ┌──────────┐   ┌──────────┐                  ┌──────────┐   ┌──────────┐
+ │ approve  │   │ feed.xml │                  │ receipt  │   │ sent-list│
+ │ (human)  │   │ vCard    │                  │ logged   │   │ in git   │
+ └──────────┘   └──────────┘                  └──────────┘   └──────────┘
+   the only gate      every deploy is idempotent; a rerun never re-sends

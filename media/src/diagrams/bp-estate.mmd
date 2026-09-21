@@ -1,0 +1,21 @@
+%%{init: {'theme':'base','themeVariables':{'primaryColor':'#fbf7ef','primaryTextColor':'#1f3a3a','primaryBorderColor':'#1f3a3a','lineColor':'#1f3a3a','secondaryColor':'#f1e3c3','tertiaryColor':'#f1e3c3','fontFamily':'sans-serif','fontSize':'16px'}}}%%
+flowchart TB
+  subgraph EDGE["Cloudflare edge: DNS · TLS · WAF"]
+    SITE["Public site<br/>Worker + static assets"]
+    PORTAL["Private portal<br/>Worker + D1 + mail"]
+    ACCESS["Access<br/>identity gate"]
+    ACCESS --> PORTAL
+  end
+  subgraph LAB["Home lab: no inbound ports"]
+    INF["Inference host"]
+    SBX["Sandbox tier<br/>hypervisor"]
+    RTR["Subnet router"]
+    ORCH["Orchestrator<br/>agents"]
+    KVM["KVM console<br/>out-of-band"]
+  end
+  Internet((Internet)) --> EDGE
+  EDGE -. "tunnel, outbound only" .-> RTR
+  RTR --- INF
+  RTR --- SBX
+  RTR --- ORCH
+  RTR --- KVM

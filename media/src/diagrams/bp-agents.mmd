@@ -1,0 +1,18 @@
+%%{init: {'theme':'base','themeVariables':{'primaryColor':'#fbf7ef','primaryTextColor':'#1f3a3a','primaryBorderColor':'#1f3a3a','lineColor':'#1f3a3a','secondaryColor':'#f1e3c3','tertiaryColor':'#f1e3c3','fontFamily':'sans-serif','fontSize':'16px'}}}%%
+flowchart LR
+  ORCH["Orchestrator<br/>the one voice"]
+  ORCH --> H["Heron · scout<br/>fetches outside context"]
+  ORCH --> S["Salmon · scribe<br/>memory folds, digests"]
+  ORCH --> O["Osprey · watch<br/>scheduled health"]
+  H --> R["Raven · courier<br/>the only one with keys"]
+  R --> C["Cormorant · reviewer<br/>second confirmation"]
+  C -->|"live"| ORCH
+  subgraph LANES["Model lanes"]
+    L1["subscription: judgement"]
+    L2["metered API: secret + judgement, justified"]
+    L3["local model: pattern matching"]
+  end
+  H -.-> L2
+  R -.-> L2
+  S -.-> L1
+  O -.-> L3

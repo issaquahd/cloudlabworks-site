@@ -1,0 +1,76 @@
+{
+ "art": [
+  {
+   "name": "torii",
+   "title": "Torii",
+   "text": "The gate, in eleven lines of pipe and underscore. Two lintels, two posts, the space between them is the point."
+  },
+  {
+   "name": "fuji",
+   "title": "Fuji",
+   "text": "Snow on the shoulders as a zigzag, the sun as a period. Every woodblock does the same three things."
+  },
+  {
+   "name": "wave",
+   "title": "The wave",
+   "text": "Hokusai's claw as one long curl rising from the left, the spray as periods. The boat is not in this one; the boat never had a chance."
+  },
+  {
+   "name": "crane",
+   "title": "Tsuru",
+   "text": "The crane, standing. The head is three characters; the legs are the same pipe as the torii posts."
+  },
+  {
+   "name": "chochin",
+   "title": "Chōchin",
+   "text": "The paper lantern: a hood, six ribs, a tassel. The ribs are underscores because that is what ribs are."
+  },
+  {
+   "name": "pagoda",
+   "title": "Pagoda",
+   "text": "Three stories of roof and lath. Each roof is one line wider than the one above, which is the whole trick of a pagoda."
+  },
+  {
+   "name": "daruma",
+   "title": "Daruma",
+   "text": "One eye painted. The other waits for the goal. Round, weighted, gets back up: the whole doll is a proverb."
+  },
+  {
+   "name": "bamboo",
+   "title": "Take",
+   "text": "Three culms, the nodes as double bars, leaves as slashes. Bends in wind; drawn straight because ASCII does not bend."
+  }
+ ],
+ "blueprints": [
+  {
+   "name": "estate",
+   "title": "The estate",
+   "text": "Public site at the edge, a private portal behind an identity gate, the lab at home behind a tunnel. Nothing at home listens to the internet."
+  },
+  {
+   "name": "agents",
+   "title": "The agent roster",
+   "text": "One voice, five roles, three model lanes. Fetch, act, verify: a claim of \"live\" without the verifier's pass is an open step."
+  },
+  {
+   "name": "publish",
+   "title": "The publish path",
+   "text": "A post is a markdown file. Everything after the commit is a machine: build, deploy, verify, mail. The human approves the draft, never the button."
+  },
+  {
+   "name": "nightly",
+   "title": "Infrastructure as Music, nightly",
+   "text": "The lab plays its own state. Every night the recording is cut, measured, drawn and written, then published with the music."
+  },
+  {
+   "name": "secrets",
+   "title": "Where a secret can go",
+   "text": "The model never sees a credential. Names go in, a proxy swaps the value at the edge of the box, and the receipt comes back without it."
+  },
+  {
+   "name": "request",
+   "title": "One request, edge to byte",
+   "text": "What happens to a URL on the public site: redirects, then the Worker, then either a built page from memory or a ranged asset from the edge store."
+  }
+ ]
+}

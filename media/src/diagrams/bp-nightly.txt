@@ -1,0 +1,14 @@
+ ┌─ every 15 min ─────────┐      ┌─ nightly ────────────────────────────┐
+ │ health probe           │      │ cut episodes (song length)           │
+ │  ok / fault / recover  │──┐   │   │                                  │
+ └────────────────────────┘  │   │   ├─▶ measure: loudness, brightness, │
+ ┌─ on change ────────────┐  │   │   │   events per bin                 │
+ │ play a phrase          │◀─┘   │   ├─▶ draw one piece (SVG)           │
+ │  deploy · fault · hello│──┐   │   ├─▶ write one haiku (same numbers) │
+ └────────────────────────┘  │   │   └─▶ watermark · feed.json          │
+ ┌─ recorder ─────────────┐  │   └──────────────────┬───────────────────┘
+ │ 4-minute takes         │◀─┘                      ▼
+ └────────────────────────┘             ┌─ publish ──────────────────┐
+                                        │ /live · /art · RSS         │
+   same night, same numbers, same       │ deterministic: rerun = same│
+   drawing, forever                     └────────────────────────────┘

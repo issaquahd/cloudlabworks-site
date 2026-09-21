@@ -1,0 +1,13 @@
+   client ──▶ edge ──▶ www → apex 301 ──▶ Worker fetch()
+                                            │
+              ┌─────────────────────────────┼───────────────────────┐
+              ▼                             ▼                       ▼
+        /media/*  (assets)          /inquire (POST)           everything else
+        Range → 206 slices          validate → mail           PAGES[path] from
+        (video seeks, audio         → 303 to /thanks          the build; 404 if
+        loops on WebKit)                                      not in the map
+              │                             │                       │
+              └──────────────┬──────────────┘                       │
+                             ▼                                      │
+                  headers: CSP default-src 'none', HSTS,            │
+                  no-store on forms, immutable on assets ◀──────────┘

@@ -1,0 +1,13 @@
+%%{init: {'theme':'base','themeVariables':{'primaryColor':'#fbf7ef','primaryTextColor':'#1f3a3a','primaryBorderColor':'#1f3a3a','lineColor':'#1f3a3a','secondaryColor':'#f1e3c3','tertiaryColor':'#f1e3c3','fontFamily':'sans-serif','fontSize':'16px'}}}%%
+flowchart TB
+  C((client)) --> E["edge: DNS · TLS"]
+  E --> R{"www?"}
+  R -->|"301 to apex"| W
+  R -->|no| W["Worker fetch()"]
+  W --> A["/media/*<br/>ranged 206 slices"]
+  W --> I["/inquire POST<br/>validate → mail → 303"]
+  W --> P["PAGES[path]<br/>built HTML from memory"]
+  P --> N["404 if not in the map"]
+  A --> H["headers: strict CSP · HSTS<br/>no-store forms · immutable assets"]
+  I --> H
+  P --> H

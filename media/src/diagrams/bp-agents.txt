@@ -1,0 +1,18 @@
+ ┌─ Orchestrator (the one voice) ─────────────────────────────────────┐
+ │                                                                    │
+ │   Heron ──▶ Raven ──▶ Cormorant          Salmon        Osprey      │
+ │   scout     courier   reviewer           scribe        watch       │
+ │   fetches   the only  second             memory        scheduled   │
+ │   outside   one with  confirmation       folds,        health,     │
+ │   context   keys      before "live"      digests       silent on ok│
+ │      │         │          │                 │             │        │
+ └──────┼─────────┼──────────┼─────────────────┼─────────────┼────────┘
+        ▼         ▼          ▼                 ▼             ▼
+ ┌─ Model lanes ────────────────────────────────────────────────────┐
+ │  subscription (judgement) │ metered API (secret + judgement,     │
+ │  local model (pattern)    │ justified in writing)                │
+ └──────────────────────────────────────────────────────────────────┘
+ ┌─ Rules ──────────────────────────────────────────────────────────┐
+ │  fetch → act → verify · two roles never share a spawn ·          │
+ │  a courier argument is never sourced from scout output unread    │
+ └──────────────────────────────────────────────────────────────────┘

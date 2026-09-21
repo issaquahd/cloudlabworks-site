@@ -1,0 +1,12 @@
+%%{init: {'theme':'base','themeVariables':{'primaryColor':'#fbf7ef','primaryTextColor':'#1f3a3a','primaryBorderColor':'#1f3a3a','lineColor':'#1f3a3a','secondaryColor':'#f1e3c3','tertiaryColor':'#f1e3c3','fontFamily':'sans-serif','fontSize':'16px'}}}%%
+flowchart TB
+  P["health probe<br/>every 15 min"] -->|"ok / fault / recover"| PH["play a phrase<br/>deploy · fault · hello"]
+  PH --> REC["recorder<br/>4-minute takes"]
+  REC --> CUT["nightly: cut episodes"]
+  CUT --> MEAS["measure<br/>loudness · brightness · events"]
+  MEAS --> DRAW["draw one piece (SVG)"]
+  MEAS --> HAIKU["write one haiku"]
+  DRAW --> WM["watermark"]
+  HAIKU --> FEED["feed.json"]
+  WM --> FEED
+  FEED --> PUB["/live · /art · RSS"]

@@ -1,0 +1,10 @@
+%%{init: {'theme':'base','themeVariables':{'primaryColor':'#fbf7ef','primaryTextColor':'#1f3a3a','primaryBorderColor':'#1f3a3a','lineColor':'#1f3a3a','secondaryColor':'#f1e3c3','tertiaryColor':'#f1e3c3','fontFamily':'sans-serif','fontSize':'16px'}}}%%
+flowchart LR
+  A["approve<br/>(the human's only gate)"] --> D["draft.md<br/>front-matter"]
+  D --> B["build<br/>one JS bundle"]
+  B --> F["feed.xml · vCard"]
+  B --> W["Worker upload<br/>+ assets"]
+  W --> V["verify<br/>curl 200 + diff"]
+  V --> M["mail the list<br/>exactly once"]
+  V --> RC["receipt logged"]
+  M --> SL["sent-list in git"]
