@@ -16,7 +16,7 @@ header .brand,header .brand small,nav a{color:#e2e8f0}nav a:hover{color:#a8cdca}
 main{color:#e2e8f0}main h1,main h2,main h3{color:#f8fafc;text-shadow:0 2px 12px rgba(0,0,0,.7)}main .lede,main .tag{color:#e2e8f0;text-shadow:0 1px 8px rgba(0,0,0,.7)}
 .pieces{list-style:none;padding:0;margin:16px 0 0;display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px}
 .pieces li{background:rgba(11,18,32,.74);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border:1px solid rgba(226,232,240,.16);border-radius:12px;padding:14px 16px;display:flex;flex-direction:column;gap:6px}
-.pieces li img{width:100%;height:auto;border-radius:8px;display:block;margin-bottom:6px}
+.pieces li img{width:100%;height:auto;max-height:420px;object-fit:contain;border-radius:8px;display:block;margin-bottom:6px;background:rgba(28,20,16,.55);padding:8px}
 .pieces .medium{color:#a8cdca;font-size:.82rem;font-weight:600;letter-spacing:.04em;text-transform:uppercase}
 .pieces b{color:#f8fafc;font-size:1.02rem}
 .pieces span{color:#cbd5e1;font-size:.95rem}
@@ -36,11 +36,30 @@ footer{background:rgba(11,18,32,.6)}footer,footer a{color:#cbd5e1}
   <p class="lede">Two shelves. The first is work made here: Raku-fired ceramics, blown glass, thrown pots, acrylic and watercolor, and the metal and driftwood that get mixed in. The second is what feeds it: artists, single pieces, photographs and writing that Alex keeps coming back to. Earth tones first, then the loud colour set against them.</p>
 
   <h2 id="made">Made here</h2>
+  <p class="tag">Photographed at the house, cut from their backgrounds and flattened so the work reads on its own. Titles and years to follow from the maker.</p>
+  <h3 id="paint">Acrylic</h3>
   <ul class="pieces">
-    <li class="soon"><span class="medium">Raku ceramics</span><b>First pieces arriving</b><span>Photographed from the studio, titled and dated as they go up. Crackle glazes, the copper flash, the smoke where the reduction took.</span></li>
-    <li class="soon"><span class="medium">Glass</span><b>Blown and fused</b><span>Vessels and flat work; the colour goes in hot and the light finishes it.</span></li>
-    <li class="soon"><span class="medium">Pottery</span><b>Thrown stoneware</b><span>Cups and bowls that get used. Natural clay bodies, a few loud glazes.</span></li>
-    <li class="soon"><span class="medium">Paint</span><b>Acrylic and watercolor</b><span>Pacific Northwest subjects, mostly: water, weather, the driftwood coast.</span></li>
+    <li><img src="/media/art-hands-canvas.jpg" width="506" height="900" alt="Tall acrylic canvas: a green field and a yellow sun over red and blue, with white hand marks pressed into the paint" loading="lazy"><span class="medium">Acrylic on canvas</span><b>Hands</b><span>Green over red over blue, a yellow sun in the corner, and the white hand marks pressed into the wet paint. The loud colour set against the earth.</span></li>
+    <li><img src="/media/art-pour-red-drips.jpg" width="679" height="900" alt="Acrylic pour: white and black drips running down a red and orange field with a blue corner" loading="lazy"><span class="medium">Acrylic pour</span><b>Red, with drips</b><span>Red and orange field, white and black drips run straight down, one blue corner holding the top.</span></li>
+    <li><img src="/media/art-pour-multicolor.jpg" width="653" height="900" alt="Acrylic pour canvas in teal, rust, white and gold splatter" loading="lazy"><span class="medium">Acrylic pour</span><b>Teal and rust</b><span>Splatter and pour, teal against rust and gold. Looks like a tide pool from three feet back.</span></li>
+    <li><img src="/media/art-fan-and-canvas.png" width="783" height="900" alt="A red lacquer folding fan with silhouette figures resting on the top edge of an acrylic canvas" loading="lazy"><span class="medium">Acrylic and lacquer</span><b>Fan on canvas</b><span>The red lacquer fan with its silhouette figures, resting on the top edge of the Hands canvas, as it hangs in the house.</span></li>
+  </ul>
+  <h3 id="glass">Glass</h3>
+  <ul class="pieces">
+    <li><img src="/media/art-glass-bowl.png" width="430" height="513" alt="Hand-blown glass bowl with a ruffled pink rim over a yellow-green body" loading="lazy"><span class="medium">Blown glass</span><b>Ruffled bowl</b><span>Pink rim pulled into ruffles over a yellow-green body. The light does the last third of the work.</span></li>
+    <li><img src="/media/art-glass-vase.png" width="343" height="446" alt="Amber teardrop glass vase with orange and yellow flecks" loading="lazy"><span class="medium">Blown glass</span><b>Amber teardrop</b><span>Amber body, orange and yellow flecks worked into the gather. Sits on the shelf with the jars.</span></li>
+    <li><img src="/media/art-glass-jar-1.png" width="223" height="359" alt="Glass jar filled with sea glass and beach stones" loading="lazy"><span class="medium">Sea glass</span><b>Jar one</b><span>Sea glass and stones off the beach, kept in a jar. Not made, found; it lives on the same shelf.</span></li>
+    <li><img src="/media/art-glass-jar-2.png" width="195" height="342" alt="Glass jar of beach stones and sea glass with a marble on the lid" loading="lazy"><span class="medium">Sea glass</span><b>Jar two</b><span>Second jar, a marble on the lid.</span></li>
+  </ul>
+  <h3 id="ceramics">Raku ceramics</h3>
+  <ul class="pieces">
+    <li><img src="/media/art-raku-pots-2.png" width="312" height="278" alt="Raku-fired pot with crackle glaze and two brushed Japanese characters" loading="lazy"><span class="medium">Raku-fired stoneware</span><b>Pot with characters</b><span>Crackle glaze, smoke in the cracks where the reduction took, two brushed characters on the shoulder.</span></li>
+    <li><img src="/media/art-raku-pots-1.png" width="605" height="318" alt="Two raku-fired bowls with white crackle glaze and copper and black flashing" loading="lazy"><span class="medium">Raku-fired stoneware</span><b>Two bowls</b><span>White crackle with the copper and black flashing that raku gives you and no other firing does.</span></li>
+  </ul>
+  <h3 id="drawing">Drawing</h3>
+  <ul class="pieces">
+    <li><img src="/media/art-kabuki-1.png" width="508" height="900" alt="Graphite drawing of a kabuki figure in a patterned kimono, cut from its paper" loading="lazy"><span class="medium">Graphite on paper</span><b>Kabuki figure</b><span>Patterned kimono, hair up, the whole figure in line. Signed on the sheet.</span></li>
+    <li><img src="/media/art-kabuki-2.jpg" width="662" height="900" alt="Graphite drawing of a kabuki figure titled kabuki san" loading="lazy"><span class="medium">Graphite on paper</span><b>Kabuki san</b><span>Second figure, titled on the sheet, the drapery worked in detail.</span></li>
   </ul>
 
   <h2 id="inspirations">What feeds it</h2>
