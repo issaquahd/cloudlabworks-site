@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Alex Alvord Portfolio · CloudLab Works</title>
+<meta name="description" content="Alex Alvord's portfolio in one place: the work, the résumé, the certifications, the recommendations, and the volunteering. Advisory Solutions Architect, Hybrid Multicloud; Duvall, Washington.">
+<link rel="canonical" href="https://cloudlabworks.dev/portfolio">
+<style>{{STYLE}}</style>
+<style>
+.who{display:grid;grid-template-columns:160px 1fr;gap:22px;align-items:center;margin:8px 0 24px}
+.who img{width:160px;height:160px;border-radius:50%;object-fit:cover;border:3px solid var(--line)}
+.who p{margin:6px 0 0;color:#4b5563}
+@media(max-width:560px){.who{grid-template-columns:1fr;text-align:center}.who img{margin:0 auto}}
+.folio{list-style:none;padding:0;margin:0 0 30px;display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px}
+.folio li{display:flex;flex-direction:column;gap:8px;padding:18px 18px 16px;border:1px solid var(--line);border-radius:16px;background:#fff}
+.folio .n{font-size:.76rem;letter-spacing:.08em;text-transform:uppercase;color:#4b5563}
+.folio b{font-size:20px;line-height:1.2}
+.folio span{color:#4b5563;font-size:15px;line-height:1.5;flex:1}
+.folio a.go{align-self:flex-start;padding:8px 14px;border-radius:999px;background:#a8cdca;color:#0b1220;font-weight:700;text-decoration:none}
+.folio a.go:hover{background:#cae0df}
+</style>
+</head>
+<body>
+<div id="dim" aria-hidden="true"></div>
+{{HEAD}}
+<main>
+  <h1>Alex Alvord Portfolio</h1>
+  <div class="who">
+    <img src="/media/alex-headshot.jpg" width="160" height="160" alt="Alex Alvord">
+    <div>
+      <p class="lede" style="margin:0">Advisory Solutions Architect, Hybrid Multicloud. Twenty-five years from the server room to hybrid multicloud; at Nutanix since 2019, on Cloud Clusters from an incubation team of fewer than twelve to an organization of more than 250. Duvall, Washington.</p>
+      <p>Five places to look, one page each. The work first; the paper after.</p>
+    </div>
+  </div>
+
+  <ul class="folio">
+    <li><span class="n">01</span><b>Work</b><span>Selected projects, the career in order, recognition, community, writing, and the GitHub activity that backs it. The long page; start here.</span><a class="go" href="/work">Open Work →</a></li>
+    <li><span class="n">02</span><b>Résumé</b><span>The one-page version: profile, selected work, why these companies, experience, education, skills, honors. Printable, and the vCard is on the card page.</span><a class="go" href="/resume">Open Résumé →</a></li>
+    <li><span class="n">03</span><b>Certifications</b><span>Thirty-eight credentials grouped by what they are for: cloud architecture, the Nutanix multicloud set, networking, earlier platforms, presales method, executive education. Verification links where the issuer gives one.</span><a class="go" href="/certifications">Open Certifications →</a></li>
+    <li><span class="n">04</span><b>Recommendations</b><span>What the people he has built with say, in their own words, with their current title and company. Engineering, product, customers, partners.</span><a class="go" href="/#recommendations">Open Recommendations →</a></li>
+    <li><span class="n">05</span><b>Volunteering</b><span>Thirty-one organizations, from the Technology Access Foundation classroom to the Washington Technology Industry Association: teaching, mentoring, standards work, and the odd board.</span><a class="go" href="/#volunteering">Open Volunteering →</a></li>
+  </ul>
+
+  <p class="tag">Also in this column: <a href="/nutanix">Nutanix</a>, the field notes from the NC2 years; <a href="/#mentoring">Mentoring</a>; <a href="/#organizations">Organizations</a>. Business inquiries go through <a href="/inquire">Inquire</a>; the vCard is on <a href="/card">the card</a>.</p>
+</main>
+{{FOOT}}
+</body>
+</html>
