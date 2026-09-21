@@ -75,7 +75,7 @@ try {
     if (meta.draft === "true") return null;
     const section = SECTIONS[meta.section || "blog"];
     if (!section) throw new Error(`posts/${f}: unknown section ${meta.section}`);
-    return { slug, date, sort: `${date}T${meta.time || "00:00"}`, title: meta.title, summary: meta.summary || "", by: meta.by || "Alex Alvord", html: markdown(body), section, moved: meta.moved_from || "" };
+    return { slug, date, sort: `${date}T${meta.time || "00:00"}`, title: meta.title, summary: meta.summary || "", by: meta.by || "Alex Alvord", html: markdown(body), section, moved: meta.moved_from || "", origin: meta.origin || "" };
   }).filter(Boolean).sort((a, b) => (a.sort === b.sort ? 0 : a.sort < b.sort ? 1 : -1));
 } catch (e) { if (e.code !== "ENOENT") throw e; }
 
@@ -105,7 +105,9 @@ ${body}
 </html>
 `);
 
-const postItem = (p) => `    <li><time datetime="${p.date}">${fmtDate(p.date)}</time><b><a href="${p.section.path}/${p.slug}">${esc(p.title)}</a></b><span>${esc(p.summary)}</span></li>`;
+// Provenance is visible where the reader is: the by-line names the author, and a repost says where it first ran.
+const origin = (p) => p.origin ? ` · first published on <a href="${p.origin}" rel="noopener">LinkedIn</a>` : "";
+const postItem = (p) => `    <li><time datetime="${p.date}">${fmtDate(p.date)}</time><b><a href="${p.section.path}/${p.slug}">${esc(p.title)}</a></b><span>${esc(p.summary)}</span><span class="by">By ${esc(p.by)}${origin(p)}</span></li>`;
 const emptyItem = (sec) => `    <li><b>First post is on its way.</b><span><a href="${sec.path}/feed.xml">Subscribe to the feed</a> and it will find you.</span></li>`;
 const inSection = (sec) => posts.filter((p) => p.section === sec);
 
@@ -123,7 +125,7 @@ const postPages = Object.fromEntries(posts.map((p) => [`${p.section.path}/${p.sl
   extraHead: `<meta property="og:type" content="article"><meta property="article:published_time" content="${p.date}">`,
   body: `  <p class="tag crumb"><a href="${p.section.path}">${esc(p.section.title)}</a></p>
   <h1>${esc(p.title)}</h1>
-  <p class="meta"><time datetime="${p.date}">${fmtDate(p.date)}</time> · ${esc(p.by)}</p>
+  <p class="meta"><time datetime="${p.date}">${fmtDate(p.date)}</time> · By ${esc(p.by)}${origin(p)}</p>
   <article>
 ${p.html}
   </article>

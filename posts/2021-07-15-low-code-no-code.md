@@ -5,6 +5,7 @@ time: 14:15
 by: Alex Alvord
 slug: low-code-no-code
 summary: Automation is too complex and the barrier to entry is too high. IFTTT turned ten, the hyperscalers are coming for low code, and Nutanix Test Drive, Prism Central playbooks, and Beam already show what "stupid simple" looks like. Reposted from LinkedIn.
+origin: https://www.linkedin.com/pulse/low-code-removes-barrier-entry-automation-alex-alvord
 ---
 
 *First published as a [LinkedIn article](https://www.linkedin.com/pulse/low-code-removes-barrier-entry-automation-alex-alvord) on July 15, 2021. Reposted here so it lives alongside the rest of the lab notes. Product names and trial terms are as they were in 2021.*
