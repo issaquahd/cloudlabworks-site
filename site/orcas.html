@@ -12,8 +12,8 @@
 body{background:#1c1410 url(/media/salish-pattern.svg) center top/480px 480px repeat}
 #dim{position:fixed;inset:0;z-index:0;background:rgba(11,18,32,.5)}
 header,main,footer{position:relative;z-index:1}
-header{background:rgba(11,18,32,.6);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
-header .brand,header .brand small,nav a{color:#e2e8f0}nav a:hover{color:#a8cdca}
+header{position:relative}header::before{content:"";position:absolute;inset:0;z-index:-1;border-radius:12px;background:rgba(11,18,32,.6);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+header .brand,header .brand small,nav.quick a{color:#e2e8f0}nav.quick a:hover{color:#a8cdca}
 main{color:#e2e8f0}main h1,main h2{color:#f8fafc;text-shadow:0 2px 12px rgba(0,0,0,.7)}main .lede,main .tag{color:#e2e8f0;text-shadow:0 1px 8px rgba(0,0,0,.7)}
 .feeds{list-style:none;padding:0;margin:16px 0 0;display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px}
 .feeds li{background:rgba(11,18,32,.74);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border:1px solid rgba(226,232,240,.16);border-radius:12px;padding:16px 18px;display:flex;flex-direction:column;gap:6px}
