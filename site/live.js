@@ -1,4 +1,4 @@
-// IaC Live Music — a browser copy of the lab's instrument (ops/iam/drone.rb) plus a visualizer.
+// Code as Music — a browser copy of the lab's instrument (ops/iam/drone.rb) plus a visualizer.
 // Self-hosted, no third-party requests. State comes from /media/iam-state.json; recordings from /media/iam-feed.json.
 (function () {
   "use strict";
