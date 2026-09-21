@@ -27,7 +27,7 @@ footer a{color:var(--muted)}
 .social-icon{width:18px;height:18px;flex:none}
 .headshot{display:block;width:120px;height:120px;border-radius:50%;object-fit:cover;margin:8px 0 14px}
 .legal h1{font-size:1.9rem;margin-top:40px}.legal h2{margin-top:32px}.legal p,.legal li{color:var(--ink-2)}
-/* blog: Invisible Wires — Agentic Cloud */
+/* blog: Invisible Wires: Agentic Cloud */
 .blog h1 small{display:block;font-size:.55em;font-weight:500;color:var(--accent);letter-spacing:.02em;margin-top:4px}
 ul.posts li{display:grid;grid-template-columns:9.5em 1fr;column-gap:16px}ul.posts time{color:var(--muted);font-size:.9rem;padding-top:2px}ul.posts span{grid-column:2}
 @media(max-width:560px){ul.posts li{grid-template-columns:1fr}ul.posts span{grid-column:1}}

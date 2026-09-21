@@ -2,7 +2,7 @@
 
 Source for [cloudlabworks.dev](https://cloudlabworks.dev) — Cloud Lab Works LLC.
 
-Landing page for Cloud Lab Works LLC. Pages `/`, `/work`, `/inquire`, `/privacy`, `/terms`, plus the blog **Invisible Wires — Agentic Cloud** at `/blog` (posts, `/blog/<slug>`, `/blog/feed.xml`), one Cloudflare
+Landing page for Cloud Lab Works LLC. Pages `/`, `/work`, `/inquire`, `/privacy`, `/terms`, plus the blog **Invisible Wires: Agentic Cloud** at `/blog` (posts, `/blog/<slug>`, `/blog/feed.xml`), one Cloudflare
 Worker, zero external requests (inline CSS, system fonts, no analytics).
 
 - Edit `site/*.html` and `site/_style.css`; `node build.mjs` regenerates `src/worker.js`.

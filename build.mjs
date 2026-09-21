@@ -12,11 +12,11 @@ const OG_IMAGE = `<meta property="og:image" content="https://cloudlabworks.dev/m
 <meta name="twitter:card" content="summary_large_image">`;
 const fill = (html) => html.replace("<style>{{STYLE}}</style>", ICONS + "\n" + (html.includes('property="og:image"') ? "" : OG_IMAGE + "\n") + "<style>" + style + "</style>").replace("{{HEAD}}", head).replace("{{FOOT}}", foot);
 // Feed autodiscovery on every page, not only the blog: a reader pointed at cloudlabworks.dev finds the feed.
-const FEED_LINK = `<link rel="alternate" type="application/rss+xml" title="Invisible Wires — Agentic Cloud" href="/blog/feed.xml">`;
+const FEED_LINK = `<link rel="alternate" type="application/rss+xml" title="Invisible Wires: Agentic Cloud" href="/blog/feed.xml">`;
 const page = (f) => fill(r(f).replace("</head>", `${FEED_LINK}\n</head>`));
 
-// ---------- blog: Invisible Wires — Agentic Cloud ----------
-const BLOG = { key: "blog", title: "Invisible Wires — Agentic Cloud", h1: "Invisible Wires", sub: "Agentic Cloud", path: "/blog", desc: "Notes from a home lab on agentic operations, hybrid multicloud, and the wires nobody sees. By Alex Alvord and Waku." };
+// ---------- blog: Invisible Wires: Agentic Cloud ----------
+const BLOG = { key: "blog", title: "Invisible Wires: Agentic Cloud", h1: "Invisible Wires", sub: "Agentic Cloud", path: "/blog", desc: "Notes from a home lab on agentic operations, hybrid multicloud, and the wires nobody sees. By Alex Alvord and Waku." };
 // A second, dedicated section: Nutanix. Posts opt in with `section: nutanix` in frontmatter; they get their own index, feed and URLs.
 const NUTANIX = { key: "nutanix", title: "Nutanix Notes", h1: "Nutanix Notes", sub: "Hybrid multicloud, NC2, and the field", path: "/nutanix", desc: "Field notes on Nutanix: NC2 on AWS and Azure, hybrid multicloud design, and what works in real customer environments. Written by Alex Alvord in a personal capacity, opinions are his own, not Nutanix's; everything here is public information.", disclaimer: "Personal blog. Alex works at Nutanix; the opinions here are his own and nothing here is Nutanix confidential: every fact is public or his own field experience." };
 const SECTIONS = { blog: BLOG, nutanix: NUTANIX };
