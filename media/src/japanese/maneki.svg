@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+<circle cx="256" cy="256" r="236" fill="#f1e3c3" stroke="#1f3a3a" stroke-width="14"/>
+<circle cx="256" cy="256" r="252" fill="none" stroke="#f1e3c3" stroke-width="8" opacity=".9"/>
+<path d="M170 210 l-20-80 l70 40 h72 l70-40 l-20 80 q60 60 40 130 q-20 70-126 70 q-106 0-126-70 q-20-70 40-130 z" fill="#fbf7ef" stroke="#1f3a3a" stroke-width="12" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M150 130 l30 40 M362 130 l-30 40" stroke="#1f3a3a" stroke-width="8" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="220" cy="236" r="8" fill="#1f3a3a"/><circle cx="292" cy="236" r="8" fill="#1f3a3a"/>
+<path d="M244 266 q12 10 24 0 M236 266 l8 8 M276 266 l-8 8" fill="none" stroke="#1f3a3a" stroke-width="8" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M186 320 q70 30 140 0" fill="none" stroke="#d94a3d" stroke-width="16" stroke-linecap="round"/>
+<circle cx="256" cy="330" r="14" fill="#e0a52a" stroke="#1f3a3a" stroke-width="8" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M112 200 q-40-60 10-90 q50 10 40 80 q-20 20-50 10 z" fill="#fbf7ef" stroke="#1f3a3a" stroke-width="12" stroke-linejoin="round" stroke-linecap="round"/>
+</svg>

@@ -1,0 +1,232 @@
+[
+ {
+  "name": "torii",
+  "title": "Torii",
+  "text": "The gate between the ordinary and the sacred. Two posts, two lintels, the one red thing."
+ },
+ {
+  "name": "fuji",
+  "title": "Fuji",
+  "text": "The mountain with snow on its shoulders and a red sun behind it. Drawn the way the woodblocks draw it: three strokes and a cap."
+ },
+ {
+  "name": "wave",
+  "title": "The wave",
+  "text": "Hokusai's claw, redrawn as three curls and a red sun. The foam is the field showing through."
+ },
+ {
+  "name": "koi",
+  "title": "Koi",
+  "text": "One carp, going up. The red patch on the head is the whole colour budget."
+ },
+ {
+  "name": "daruma",
+  "title": "Daruma",
+  "text": "Paint one eye when you set the goal, the other when you reach it. This one has one eye."
+ },
+ {
+  "name": "maneki",
+  "title": "Maneki-neko",
+  "text": "The beckoning cat, left paw up for customers. The collar is the red."
+ },
+ {
+  "name": "sakura",
+  "title": "Sakura",
+  "text": "Five petals, each notched once. The centre is red because the season is short."
+ },
+ {
+  "name": "momiji",
+  "title": "Momiji",
+  "text": "The maple leaf in autumn red, the one month Kyoto is unbearable to visit and everyone goes anyway."
+ },
+ {
+  "name": "bamboo",
+  "title": "Take",
+  "text": "Bamboo: three culms, the nodes marked, leaves at the top. It bends, it does not break, the proverb writes itself."
+ },
+ {
+  "name": "chochin",
+  "title": "Chōchin",
+  "text": "The paper lantern. Ribs drawn as arcs, a character left off on purpose so it can mean any shop."
+ },
+ {
+  "name": "kitsune",
+  "title": "Kitsune",
+  "text": "The fox mask from the festival stall. White face, red markings, ears that hear everything."
+ },
+ {
+  "name": "orizuru",
+  "title": "Orizuru",
+  "text": "The folded crane, drawn flat: two wings, a beak, a tail, and the creases that make it a crane and not a paper triangle."
+ },
+ {
+  "name": "bonsai",
+  "title": "Bonsai",
+  "text": "A pine in a shallow pot, forty years of patience in a shape that fits on a shelf."
+ },
+ {
+  "name": "pagoda",
+  "title": "Pagoda",
+  "text": "Five stories, each roof a little smaller, the finial the one red line. Wood, no nails."
+ },
+ {
+  "name": "sensu",
+  "title": "Sensu",
+  "text": "The folding fan, open. Nine ribs, a red field, the rivet at the bottom."
+ },
+ {
+  "name": "uchiwa",
+  "title": "Uchiwa",
+  "text": "The flat fan for summer festivals. Round, a handle, a red circle: the cheapest good design in Japan."
+ },
+ {
+  "name": "geta",
+  "title": "Geta",
+  "text": "Wooden sandals, two teeth each, the red thong. The sound of a summer street."
+ },
+ {
+  "name": "kimono",
+  "title": "Kimono",
+  "text": "The garment, hung flat as a T. The obi is the red band; the sleeves tell you it is a woman's."
+ },
+ {
+  "name": "obi",
+  "title": "Obi knot",
+  "text": "The taiko musubi, the drum knot on the back of a kimono. Drawn from behind, which is the only way to see it."
+ },
+ {
+  "name": "onigiri",
+  "title": "Onigiri",
+  "text": "Rice, a strip of nori, one umeboshi. Lunch, drawn in three shapes."
+ },
+ {
+  "name": "ramen",
+  "title": "Ramen",
+  "text": "A bowl with the red double line, noodles, two chopsticks, and steam. Drawn at 1 a.m."
+ },
+ {
+  "name": "chawan",
+  "title": "Chawan",
+  "text": "The tea bowl, with a kintsugi seam. The break is the red line; the repair is the point."
+ },
+ {
+  "name": "chasen",
+  "title": "Chasen",
+  "text": "The bamboo whisk, eighty tines from one piece of bamboo, and the matcha it is for."
+ },
+ {
+  "name": "sake",
+  "title": "Tokkuri and ochoko",
+  "text": "The flask and the cup. Warm in winter, cold in summer, the same drawing either way."
+ },
+ {
+  "name": "kokeshi",
+  "title": "Kokeshi",
+  "text": "The wooden doll from Tōhoku: a head, a body, no arms, and a red flower on the kimono."
+ },
+ {
+  "name": "kabuto",
+  "title": "Kabuto",
+  "text": "The samurai helmet with its crescent crest. Drawn front-on, the crest the only red."
+ },
+ {
+  "name": "katana",
+  "title": "Katana",
+  "text": "The sword, sheathed. A single curve, the guard, and the red cord on the grip."
+ },
+ {
+  "name": "kendama",
+  "title": "Kendama",
+  "text": "The cup-and-ball. Red ball, string, three cups. Harder than it looks, like most things here."
+ },
+ {
+  "name": "koinobori",
+  "title": "Koinobori",
+  "text": "Carp streamers for Children's Day, three on a pole, the red one for the mother."
+ },
+ {
+  "name": "tombo",
+  "title": "Tombo",
+  "text": "The dragonfly, the samurai's insect because it never flies backward. Four wings, a red body."
+ },
+ {
+  "name": "tsuki",
+  "title": "Tsuki to usagi",
+  "text": "The moon and the rabbit pounding mochi in it. Every child in Japan sees the rabbit; the west sees a face."
+ },
+ {
+  "name": "hanabi",
+  "title": "Hanabi",
+  "text": "Fireworks over the river. A chrysanthemum burst, red at the centre, and the trail it rode up on."
+ },
+ {
+  "name": "temari",
+  "title": "Temari",
+  "text": "The embroidered thread ball. Bands of red and teal over a paper sphere; a gift, never a toy."
+ },
+ {
+  "name": "ema",
+  "title": "Ema",
+  "text": "The wooden wish plaque from the shrine rack, the string through the hole, a red horse where the wish goes."
+ },
+ {
+  "name": "omamori",
+  "title": "Omamori",
+  "text": "The amulet in its brocade pouch, knotted with the red cord. Not opened, ever; that is the rule."
+ },
+ {
+  "name": "shishiodoshi",
+  "title": "Shishi-odoshi",
+  "text": "The bamboo tube in the garden that fills, tips, and knocks the rock. Meant to scare deer; keeps time instead."
+ },
+ {
+  "name": "ikebana",
+  "title": "Ikebana",
+  "text": "Three stems, heaven, earth and human, in a shallow dish. The red bloom is heaven."
+ },
+ {
+  "name": "noren",
+  "title": "Noren",
+  "text": "The split curtain over a shop door. Two panels, a red circle across the gap, the rod above."
+ },
+ {
+  "name": "shoji",
+  "title": "Shōji",
+  "text": "The paper screen, the grid of lath, and a red sun through the paper from the garden side."
+ },
+ {
+  "name": "taiko",
+  "title": "Taiko",
+  "text": "The drum, on its side, two bachi crossed above it. Loud enough to feel in the ribs."
+ },
+ {
+  "name": "shamisen",
+  "title": "Shamisen",
+  "text": "Three strings, a square body, a long neck, and the bachi that plays it. Red for the body's edge."
+ },
+ {
+  "name": "mizuhiki",
+  "title": "Mizuhiki",
+  "text": "The paper cord knot on a gift envelope: red and white, tied once, not meant to be untied."
+ },
+ {
+  "name": "hinomaru",
+  "title": "Hinomaru",
+  "text": "The sun on the field. The simplest flag there is, and the reason one red accent works in every badge above."
+ },
+ {
+  "name": "sushi",
+  "title": "Nigiri",
+  "text": "Two pieces: tuna and salmon, the rice underneath, the wasabi nobody sees."
+ },
+ {
+  "name": "furoshiki",
+  "title": "Furoshiki",
+  "text": "The wrapping cloth, tied over a box. The knot on top is the handle; the cloth is the gift's second gift."
+ },
+ {
+  "name": "ume",
+  "title": "Ume",
+  "text": "The plum blossom, five round petals, out in February when nothing else is. Red centre, as before."
+ }
+]

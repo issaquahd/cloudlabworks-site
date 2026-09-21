@@ -19,7 +19,8 @@ for n in salmon raven-sun heron thunderbird-whale welcome-figure canoe; do
   render "$S/salish/salish-$n.svg" "art-wm-salish-$n.jpg" 1024
 done
 # Waku art: the Japanese set (badges drawn for the household portal; sources copied from alvordhouse-site/media/icons).
-for n in okio-ja otto-office takarak-travel osama-finance clw-ledger; do
+# gen.py writes set.json (title, text) and one SVG per motif; the five portal badges are hand files beside them.
+for n in okio-ja otto-office takarak-travel osama-finance clw-ledger $(python3 -c 'import json;print(" ".join(x["name"] for x in json.load(open("'"$S"'/japanese/set.json"))))'); do
   render "$S/japanese/$n.svg" "art-wm-jp-$n.jpg" 1024
 done
 # Waku art: the site set.
