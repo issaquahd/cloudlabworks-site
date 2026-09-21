@@ -2,8 +2,25 @@
  "title": "Code as Music",
  "episodes": [
   {
+   "slug": "asr-2026-09-21",
+   "date": "2026-09-21",
+   "title": "ASR as Music: the register, one drop",
+   "seconds": 96.3,
+   "events": [
+    "asr-25-rows"
+   ],
+   "m4a": "iam-asr-2026-09-21.m4a",
+   "art": "iam-art-asr-2026-09-21.jpg",
+   "haiku": [
+    "the drone finds its pitch",
+    "the loop ran and no one called",
+    "the tail keeps its heat"
+   ]
+  },
+  {
    "slug": "2026-09-20",
    "date": "2026-09-20",
+   "title": null,
    "seconds": 469.8,
    "events": [
     "150526-deploy"
@@ -19,6 +36,7 @@
   {
    "slug": "2026-09-20-ep0",
    "date": "2026-09-20",
+   "title": null,
    "seconds": 29.5,
    "events": [
     "hello",
