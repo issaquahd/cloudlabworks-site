@@ -9,8 +9,8 @@ const ICONS = `<link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="manifest" href="/site.webmanifest">
 <meta name="theme-color" content="#0b1220">
-<meta name="application-name" content="Cloud Lab Works">
-<meta name="apple-mobile-web-app-title" content="Cloud Lab Works">`;
+<meta name="application-name" content="CloudLab Works">
+<meta name="apple-mobile-web-app-title" content="CloudLab Works">`;
 const OG_IMAGE = `<meta property="og:image" content="https://cloudlabworks.dev/media/waku-orca-og.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -121,7 +121,7 @@ posts = posts.filter((p) => !p.draft);
 const inSection = (sec) => posts.filter((p) => p.section === sec || p.also.includes(sec));
 
 const sectionIndex = (sec) => shell({
-  title: `${sec.title} · Cloud Lab Works`, desc: sec.desc, path: sec.path, cls: "blog",
+  title: `${sec.title} · CloudLab Works`, desc: sec.desc, path: sec.path, cls: "blog",
   body: `  <h1>${esc(sec.h1)}<small>${esc(sec.sub)}</small></h1>
   <p class="lede">${esc(sec.desc)}</p>
   ${sec.disclaimer ? `<p class="tag">${esc(sec.disclaimer)}</p>\n  ` : ""}<p class="tag"><a href="${sec.path}/feed.xml">RSS feed</a> · <a href="/subscribe">Subscribe by email</a></p>
@@ -200,7 +200,7 @@ const VCARD = ["BEGIN:VCARD", "VERSION:3.0", "N:Alvord;Alex;;;", "FN:Alex Alvord
 const LIVE_JS = readFileSync(new URL("./site/live.js", import.meta.url), "utf8");
 const ART_JS = readFileSync(new URL("./site/art.js", import.meta.url), "utf8");
 const MENU_JS = readFileSync(new URL("./site/menu.js", import.meta.url), "utf8");
-const files = { [`${BLOG.path}/feed.xml`]: { body: sectionFeed(BLOG), type: "application/rss+xml; charset=utf-8" }, [`${NUTANIX.path}/feed.xml`]: { body: sectionFeed(NUTANIX), type: "application/rss+xml; charset=utf-8" }, "/alex-alvord.vcf": { body: VCARD, type: "text/vcard; charset=utf-8" }, "/live.js": { body: LIVE_JS, type: "text/javascript; charset=utf-8" }, "/art.js": { body: ART_JS, type: "text/javascript; charset=utf-8" }, "/menu.js": { body: MENU_JS, type: "text/javascript; charset=utf-8" }, "/site.webmanifest": { body: JSON.stringify({ name: "Cloud Lab Works", short_name: "Cloud Lab Works", description: "Cloud and AI infrastructure, designed to be run.", start_url: "/", display: "standalone", background_color: "#0b1220", theme_color: "#0b1220", icons: [{ src: "/media/cloudlabworks-icon-192.png", sizes: "192x192", type: "image/png" }, { src: "/media/cloudlabworks-icon-512.png", sizes: "512x512", type: "image/png" }, { src: "/media/cloudlabworks-icon-maskable-512.png", sizes: "512x512", type: "image/png", purpose: "maskable" }] }), type: "application/manifest+json; charset=utf-8" } };
+const files = { [`${BLOG.path}/feed.xml`]: { body: sectionFeed(BLOG), type: "application/rss+xml; charset=utf-8" }, [`${NUTANIX.path}/feed.xml`]: { body: sectionFeed(NUTANIX), type: "application/rss+xml; charset=utf-8" }, "/alex-alvord.vcf": { body: VCARD, type: "text/vcard; charset=utf-8" }, "/live.js": { body: LIVE_JS, type: "text/javascript; charset=utf-8" }, "/art.js": { body: ART_JS, type: "text/javascript; charset=utf-8" }, "/menu.js": { body: MENU_JS, type: "text/javascript; charset=utf-8" }, "/site.webmanifest": { body: JSON.stringify({ name: "CloudLab Works", short_name: "CloudLab Works", description: "Cloud and AI infrastructure, designed to be run.", start_url: "/", display: "standalone", background_color: "#0b1220", theme_color: "#0b1220", icons: [{ src: "/media/cloudlabworks-icon-192.png", sizes: "192x192", type: "image/png" }, { src: "/media/cloudlabworks-icon-512.png", sizes: "512x512", type: "image/png" }, { src: "/media/cloudlabworks-icon-maskable-512.png", sizes: "512x512", type: "image/png", purpose: "maskable" }] }), type: "application/manifest+json; charset=utf-8" } };
 // Root-level icon names that browsers, crawlers and link unfurlers request without reading the page.
 const ICON_ALIASES = { "/favicon.ico": "/media/favicon.ico", "/favicon.svg": "/media/cloudlabworks-icon.svg", "/favicon.png": "/media/cloudlabworks-icon-32.png", "/apple-touch-icon.png": "/media/cloudlabworks-icon-180.png", "/apple-touch-icon-precomposed.png": "/media/cloudlabworks-icon-180.png" };
 
@@ -247,7 +247,7 @@ async function inquire(request, env) {
   if (!CATEGORIES.includes(values.category)) return bad("Choose what you are inquiring about.");
   const lines = ["Inquiry from cloudlabworks.dev/inquire", "", "Name:     " + values.name, "Email:    " + values.email, "Phone:    " + (values.phone || "-"), "Company:  " + (values.company || "-"), "Category: " + values.category, "", "Context:", values.context || ", ", "", ",  Received " + new Date().toISOString() + " · IP " + (request.headers.get("cf-connecting-ip") || "?") + " · " + (request.headers.get("cf-ipcountry") || "")];
   const body = lines.join("\\r\\n");
-  const raw = ["From: " + hdr("Cloud Lab Works inquiry") + " <" + INQUIRY_FROM + ">", "To: " + env.INQUIRY_TO, "Reply-To: " + hdr(values.name) + " <" + values.email + ">", "Subject: " + hdr("[cloudlabworks.dev] " + values.category + ", " + values.name), "Date: " + new Date().toUTCString(), "Message-ID: <" + crypto.randomUUID() + "@cloudlabworks.dev>", "MIME-Version: 1.0", "Content-Type: text/plain; charset=utf-8", "Content-Transfer-Encoding: base64", "", b64(body).replace(/.{76}/g, "$&\\r\\n")].join("\\r\\n");
+  const raw = ["From: " + hdr("CloudLab Works inquiry") + " <" + INQUIRY_FROM + ">", "To: " + env.INQUIRY_TO, "Reply-To: " + hdr(values.name) + " <" + values.email + ">", "Subject: " + hdr("[cloudlabworks.dev] " + values.category + ", " + values.name), "Date: " + new Date().toUTCString(), "Message-ID: <" + crypto.randomUUID() + "@cloudlabworks.dev>", "MIME-Version: 1.0", "Content-Type: text/plain; charset=utf-8", "Content-Transfer-Encoding: base64", "", b64(body).replace(/.{76}/g, "$&\\r\\n")].join("\\r\\n");
   if (!env.INQUIRY || !env.INQUIRY_TO) return new Response(inquireForm({ values, notice: "The form is not wired up yet. Email alex@cloudlabworks.dev directly.", err: true }), { status: 503, headers: NOSTORE });
   try {
     const EmailMessage = await import("cloudflare:email").then((m) => m.EmailMessage, () => class { constructor(from, to, raw) { Object.assign(this, { from, to, raw }); } }); // fallback only for serve.mjs
