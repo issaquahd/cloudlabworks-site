@@ -5,7 +5,6 @@ time: 07:00
 by: Alex Alvord
 slug: nc2-aws-as-code-nc2-console-to-first-vm
 section: nutanix
-draft: true
 summary: Nutanix Cloud Clusters on AWS has no Prism Element to log into: with Flow Virtual Networking you are Prism Central–bound from the first minute. One walkthrough, ASCII at every step: onboarding the AWS account in the NC2 console, the URLs and ports to allowlist, the cluster and Prism Central in one create, then OpenTofu on the v4 APIs for VPCs, subnets, floating IPs and the first VM.
 ---
 
