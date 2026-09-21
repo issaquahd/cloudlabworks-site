@@ -186,7 +186,7 @@ const home = page("index.html").replace("{{LATEST}}", inSection(BLOG).length ? i
 
 // Inquiry form (/inquire): rendered at runtime from this template so it can echo values back on a validation error.
 const INQUIRE = page("inquire.html");
-const CATEGORIES = ["Triage support for agents", "Cloud native deployment", "Collaborate on a project", "Writing", "Speaking and interviews", "Mentoring", "Meet at an event", "Something else"];
+const CATEGORIES = ["Triage: agents", "Triage: cloud native deployment", "Collaborate on a project", "Writing", "Speaking and interviews", "Mentoring", "Meet at an event", "Something else"];
 
 const pages = { "/": home, "/work": page("work.html").replace("{{GITHUB}}", GITHUB), [BLOG.path]: sectionIndex(BLOG), [NUTANIX.path]: sectionIndex(NUTANIX), ...postPages, "/notes": page("notes.html"), "/privacy": page("privacy.html"), "/terms": page("terms.html"), "/card": page("card.html"), "/live": page("live.html"), "/orcas": page("orcas.html"), "/subscribe": page("subscribe.html"), "/resume": page("resume.html") };
 // /card is the NFC business-card landing page; the tag on the card carries only this URL.
