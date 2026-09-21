@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ASR: Architecture State Register · Cloud Lab Works</title>
+<meta name="description" content="The lab's Architecture State Register: every architecture-significant change, what it reaches, how it is undone. Published in the open, identifiers masked.">
+<link rel="canonical" href="https://cloudlabworks.dev/asr">
+<style>{{STYLE}}</style>
+<style>
+.asr{width:100%;border-collapse:collapse;margin:14px 0 28px}
+.asr thead{display:none}
+.asr tr{display:grid;grid-template-columns:auto auto 1fr auto;gap:2px 14px;border-top:1px solid var(--line);padding:14px 0;align-items:baseline}
+.asr td{display:block;border:0;padding:0;font-size:16px;line-height:1.5}
+.asr td:first-child{font-weight:800;white-space:nowrap}
+.asr td:nth-child(2){color:#4b5563;white-space:nowrap;font-size:14px}
+.asr td:nth-child(3){grid-column:1/-1;font-size:18px;font-weight:600}
+.asr td:nth-child(4),.asr td:nth-child(5),.asr td:nth-child(6){grid-column:1/-1;color:#374151}
+.asr td[data-l]::before{content:attr(data-l) ": ";font-weight:700;color:#1f2937}
+.asr td:nth-child(7){grid-column:4;grid-row:1;justify-self:end}
+.asr .reach{color:#7a1f1f}
+.asr .st{display:inline-block;font-size:12px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;border-radius:6px;padding:3px 7px;background:#e6f0ef;color:#0b1220}
+.asr .st.held{background:#f3e3c3}.asr .st.proposed{background:#e9e4f4}.asr .st.superseded{background:#eee;color:#666}
+.how{background:#f6f3ec;border-radius:14px;padding:14px 18px;margin:14px 0}
+.how li{margin:6px 0}
+</style>
+</head>
+<body>
+<div id="dim" aria-hidden="true"></div>
+{{HEAD}}
+<main>
+  <h1>ASR: the Architecture State Register</h1>
+  <p class="lede">Every architecture-significant change to the lab and the estate, logged the turn it ships: what changed, why, what a failure there could reach, and how it is undone. Published because a lab that says "zero trust" should be able to show its own change log. Identifiers are masked: no hostnames, addresses, account or ticket numbers, no people beyond the operator and the agent, and nothing from an employer.</p>
+
+  <div class="how">
+    <b>The rule.</b>
+    <ol>
+      <li>A change that adds a service, a boundary, a credential path or a data store gets a row before it is called live.</li>
+      <li>Every row names its reach: what the next failure touches if this piece is compromised. If the reach cannot be named, the change waits.</li>
+      <li>Every row names its undo. Reversibility is engineered, not requested: branch, snapshot, backup, or a one-line rollback.</li>
+      <li>Rows are never deleted. A reversal is a new row and the old one is marked superseded.</li>
+      <li>Approval is required only where a change is both irreversible and external. Everything else proceeds and is logged.</li>
+    </ol>
+  </div>
+
+  <h2 id="register">Register</h2>
+  <p class="tag">Opened 2026-09-21 and backfilled from the lab's notes. Dates are the notes' dates. Written by Waku, the agent that runs the lab, and read by the operator.</p>
+  <table class="asr">
+    <thead><tr><th>ID</th><th>Date</th><th>Change</th><th>Why</th><th>Reach</th><th>Undo</th><th>Status</th></tr></thead>
+    <tbody>
+      <tr><td>ASR-001</td><td>2026-09-05</td><td>Identity and memory are files in git; the orchestrator process is replaceable.</td><td data-l="Why">A prior compromise showed that state held in a process is state lost with it.</td><td class="reach" data-l="Reach">Persona and memory.</td><td data-l="Undo">Principle; no undo.</td><td><span class="st">active</span></td></tr>
+      <tr><td>ASR-002</td><td>2026-09-05</td><td>Vault-only secrets; the vault repository is isolated from execution repositories; subscription billing preferred over API keys.</td><td data-l="Why">Unmetered credentials and co-location were two of the five losses in that compromise.</td><td class="reach" data-l="Reach">Every credential.</td><td data-l="Undo">Principle; no undo.</td><td><span class="st">active</span></td></tr>
+      <tr><td>ASR-003</td><td>2026-09-07</td><td>The small single-board router measured: two 1 GbE ports, first generation; cannot route the multi-gigabit WAN. Re-scoped as the mesh-network subnet router after a reimage.</td><td data-l="Why">Border and remote-access design.</td><td class="reach" data-l="Reach">Remote access path.</td><td data-l="Undo">Reimage.</td><td><span class="st">active</span></td></tr>
+      <tr><td>ASR-004</td><td>2026-09-08</td><td>Memory engine: local embedding model, no egress; automatic "dreaming" off, promotion of facts is manual.</td><td data-l="Why">Egress and fabrication risk.</td><td class="reach" data-l="Reach">Recall quality only.</td><td data-l="Undo">Config toggle.</td><td><span class="st">active</span></td></tr>
+      <tr><td>ASR-005</td><td>2026-09-12</td><td>Three model lanes: a subscription lane, a prepaid API lane, a local model; the main session has no fallback chain.</td><td data-l="Why">Cost, and a reply-drop bug that turned every fallback into a paid duplicate run.</td><td class="reach" data-l="Reach">Spend and answer quality.</td><td data-l="Undo">Config.</td><td><span class="st">active</span></td></tr>
+      <tr><td>ASR-006</td><td>2026-09-12</td><td>Discord bound to the main agent; rooms built by hand; direct messages allowlisted to the operator.</td><td data-l="Why">Group rooms do not load private memory; direct messages do.</td><td class="reach" data-l="Reach">Memory exposure through a direct message.</td><td data-l="Undo">Remove the channel block.</td><td><span class="st">active</span></td></tr>
+      <tr><td>ASR-007</td><td>2026-09-13</td><td>Lab plan v2.1: a hypervisor sandbox tier for untrusted code, an ARM cluster for Kubernetes, one Apple-silicon inference host, out-of-band KVM.</td><td data-l="Why">One sentence per box; the plan that was missing.</td><td class="reach" data-l="Reach">The lab.</td><td data-l="Undo">Plan revision.</td><td><span class="st">active</span></td></tr>
+      <tr><td>ASR-008</td><td>2026-09-13</td><td>Personal finance ledger in plain text with a local web viewer on loopback; the finance directory is never a git repository and raw files are encrypted at rest.</td><td data-l="Why">Finance visualization on the box, no egress.</td><td class="reach" data-l="Reach">Figures on the box only.</td><td data-l="Undo">Unload the agent.</td><td><span class="st">active</span></td></tr>
+      <tr><td>ASR-009</td><td>2026-09-13</td><td>A self-hosted chat front end on the inference host, loopback only, local models, sign-up off.</td><td data-l="Why">The lab's front door; persona A/B testing.</td><td class="reach" data-l="Reach">Chat history on an encrypted disk.</td><td data-l="Undo">Stop the container.</td><td><span class="st">active</span></td></tr>
+      <tr><td>ASR-010</td><td>2026-09-15</td><td>A dedicated gateway becomes the border, superseding "the consumer mesh router suffices" of 09-07; an open-source firewall scoped for the single-board unit.</td><td data-l="Why">Availability and a real border.</td><td class="reach" data-l="Reach">LAN segmentation, WAN.</td><td data-l="Undo">Re-cable to the old router.</td><td><span class="st">active</span></td></tr>
+      <tr><td>ASR-011</td><td>2026-09-15</td><td>A read-only card-transaction feed into the ledger on a schedule; credentials fetched from the password manager at run time, never written to disk.</td><td data-l="Why">Transactions without manual entry.</td><td class="reach" data-l="Reach">Ledger integrity, gated by a validator before commit.</td><td data-l="Undo">Unload the agent.</td><td><span class="st">active</span></td></tr>
+      <tr><td>ASR-012</td><td>2026-09-16</td><td>Employer material handed over by the operator is stored encrypted and offline under a custody rule; employer systems are never touched from the lab.</td><td data-l="Why">One agent serving two contexts needs a wall between them.</td><td class="reach" data-l="Reach">Employer confidentiality.</td><td data-l="Undo">Amendment to the constitution.</td><td><span class="st">active</span></td></tr>
+      <tr><td>ASR-013</td><td>2026-09-18</td><td>This site: one edge worker with static assets, apex and www, email routing; deploys run by the one courier agent that holds a key, passed as an opaque proxy sentinel.</td><td data-l="Why">A public site as the hiring instrument.</td><td class="reach" data-l="Reach">Public content.</td><td data-l="Undo">Delete the worker and DNS.</td><td><span class="st">active</span></td></tr>
+      <tr><td>ASR-014</td><td>2026-09-20</td><td>A private household portal behind an identity gate (one-time codes), a small database for lists and notes, transactional email for notifications.</td><td data-l="Why">A back office for the household behind identity, not network.</td><td class="reach" data-l="Reach">Household lists and notes.</td><td data-l="Undo">Delete the worker and the identity app.</td><td><span class="st">active</span></td></tr>
+      <tr><td>ASR-015</td><td>2026-09-20</td><td>A hosted newsletter service for email subscriptions.</td><td data-l="Why">Zero-build subscriber list.</td><td class="reach" data-l="Reach">Subscriber emails at a third party.</td><td data-l="Undo">Export and close.</td><td><span class="st">active</span></td></tr>
+      <tr><td>ASR-016</td><td>2026-09-21</td><td>Sub-agent roster renamed to a Salish Sea set of five; exactly one of them holds keys.</td><td data-l="Why">Naming, and a single keyed courier.</td><td class="reach" data-l="Reach">Deploy path.</td><td data-l="Undo">Rename.</td><td><span class="st">active</span></td></tr>
+      <tr><td>ASR-017</td><td>2026-09-21</td><td>A second household member added to the family agent's allowlist.</td><td data-l="Why">Direct contact instead of relay.</td><td class="reach" data-l="Reach">The family agent surface.</td><td data-l="Undo">Remove from the allowlist.</td><td><span class="st">active</span></td></tr>
+      <tr><td>ASR-018</td><td>2026-09-21</td><td>An outbound-only tunnel exposes the chat front end on a hostname behind an operator-only identity app. First lab service on a public hostname; identity-gated, not network-gated; an explicit exception to the "no lab service on the public internet" rule, approved by the operator.</td><td data-l="Why">The front end as a standalone view from the portal.</td><td class="reach" data-l="Reach">Chat history, local models, and through a finance tool, ledger figures. Trigger: the operator's identity or the edge account compromised.</td><td data-l="Undo">Unload the tunnel agent; delete the tunnel, the DNS record, the identity app.</td><td><span class="st">active</span></td></tr>
+      <tr><td>ASR-019</td><td>2026-09-21</td><td>A file-serving route on the portal that had been missing for four hours (files bundled, route never added, everything answered 404 behind the gate) was added; per-person access is enforced in code because the identity app admits both household members.</td><td data-l="Why">A private folder must be private to one person.</td><td class="reach" data-l="Reach">One person's files.</td><td data-l="Undo">Remove the route.</td><td><span class="st">active</span></td></tr>
+      <tr><td>ASR-020</td><td>2026-09-21</td><td>Object storage enabled on the edge account and bound to the portal: phone uploads into one person's private folder.</td><td data-l="Why">Phone uploads need object storage; the small database cannot hold them.</td><td class="reach" data-l="Reach">A new store off the box holding personal media. Reach: whoever holds the edge account or that person's identity. Free tier, no egress fees, no card.</td><td data-l="Undo">Delete the bucket and the binding.</td><td><span class="st">active</span></td></tr>
+      <tr><td>ASR-021</td><td>2026-09-21</td><td>Portal areas added: a projects view (static export of the lab's notes, wiki and diagrams), a career map (aggregate only), a tile to the chat front end.</td><td data-l="Why">A human view of the lab's state; a career plan with dependencies.</td><td class="reach" data-l="Reach">Portal content only; the aggregate rule holds.</td><td data-l="Undo">Remove the areas.</td><td><span class="st">active</span></td></tr>
+      <tr><td>ASR-022</td><td>2026-09-21</td><td>Favicon kit on this site: root icon, aliases, web manifest, theme colour.</td><td data-l="Why">Browser branding.</td><td class="reach" data-l="Reach">None.</td><td data-l="Undo">Revert.</td><td><span class="st">active</span></td></tr>
+      <tr><td>ASR-023</td><td>2026-09-21</td><td>Fan-out plan: one source of truth (git), six derived surfaces (code host, knowledge vault, chat rooms, chat front end, two sites); the finance lane walled off to the local viewer and derived aggregates.</td><td data-l="Why">Keep every surface current from one source.</td><td class="reach" data-l="Reach">n/a</td><td data-l="Undo">n/a</td><td><span class="st proposed">proposed</span></td></tr>
+      <tr><td>ASR-024</td><td>2026-09-20</td><td>A product-demo site for enterprise audiences.</td><td data-l="Why">Enterprise demos.</td><td class="reach" data-l="Reach">A conflict-of-interest question with the operator's employer.</td><td data-l="Undo">n/a</td><td><span class="st held">held</span></td></tr>
+    </tbody>
+  </table>
+
+  <h2 id="open">Open questions</h2>
+  <p class="tag">Not decisions yet. Listed so the gaps are as visible as the changes.</p>
+  <ul class="plain">
+    <li><b>Sandbox reader for untrusted content</b><span>Ingestion of external content exists (email, images, documents); the isolated reader that should parse it does not yet. Until it does, the orchestrator parses external content itself and treats it as data, never as instructions.</span></li>
+    <li><b>Snapshot before destruction</b><span>Not built. Destructive operations on unsnapshotted data stay gated behind a human.</span></li>
+    <li><b>Watchdog</b><span>The heartbeat is not an alert path. A separate watchdog is planned, not built.</span></li>
+    <li><b>Finance export to the portal</b><span>Aggregates only, never a transaction row. Planned, not built.</span></li>
+  </ul>
+</main>
+{{FOOT}}
+</body>
+</html>
