@@ -1,0 +1,38 @@
+[
+{
+"name": "waku",
+"title": "Waku",
+"text": "The orca who runs the lab: headset on, wrench cross on the chest, one eyebrow always slightly up. The one voice Alex talks to.",
+"role": "the orchestrator"
+},
+{
+"name": "heron",
+"title": "Heron, the scout",
+"text": "Long legs, longer beak, a brass spyglass and a scarf for the wind. Goes out, looks, comes back with the source and the date. Never with a key.",
+"role": "scout"
+},
+{
+"name": "raven",
+"title": "Raven, the courier",
+"text": "Glossy black with a violet sheen, a satchel with the red seal, and the only key ring in the lab. Runs the fixed script, reports the HTTP code, hands the key back.",
+"role": "courier"
+},
+{
+"name": "salmon",
+"title": "Salmon, the scribe",
+"text": "Pink, round, a brush in one fin and a scroll in the other, ink on the cheek. Folds the days into memory and never invents a word of it.",
+"role": "scribe"
+},
+{
+"name": "osprey",
+"title": "Osprey, the watch",
+"text": "The masked one with the binoculars and the lantern. Runs the night checks, says nothing when all is well, and says it loudly when it is not.",
+"role": "watch"
+},
+{
+"name": "cormorant",
+"title": "Cormorant, the reviewer",
+"text": "Dark green, yellow face, a magnifying glass and a clipboard with exactly two ticks. The second confirmation before anything is called live.",
+"role": "reviewer"
+}
+]
