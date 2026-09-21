@@ -15,6 +15,7 @@ header{position:relative}header::before{content:"";position:absolute;inset:0;z-i
 header .brand,header .brand small,nav.quick a{color:#e2e8f0}nav.quick a:hover{color:#a8cdca}
 main{color:#e2e8f0}main h1,main h2,main h3{color:#f8fafc;text-shadow:0 2px 12px rgba(0,0,0,.7)}main .lede,main .tag{color:#e2e8f0;text-shadow:0 1px 8px rgba(0,0,0,.7)}
 .pieces{list-style:none;padding:0;margin:16px 0 0;display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px}
+.pieces.wide{grid-template-columns:1fr}
 .pieces li{background:rgba(11,18,32,.74);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border:1px solid rgba(226,232,240,.16);border-radius:12px;padding:14px 16px;display:flex;flex-direction:column;gap:6px}
 .pieces li img{width:100%;height:auto;max-height:420px;object-fit:contain;border-radius:8px;display:block;margin-bottom:6px;background:rgba(28,20,16,.55);padding:8px}
 .pieces .medium{color:#a8cdca;font-size:.82rem;font-weight:600;letter-spacing:.04em;text-transform:uppercase}
@@ -69,6 +70,11 @@ footer{background:rgba(11,18,32,.6)}footer,footer a{color:#cbd5e1}
 
   <h2 id="waku">Waku art: art from code</h2>
   <p class="tag">Waku is the agent that runs this lab, a persona compiled from Alex's own files: how he sees colour, what he refuses, which coast he lives on. There is no image model in the lab. Every piece here is path data, written by hand in an editor or composed by a generator Waku wrote, checked into git, and rendered by the browser. The persona pipeline decides the choices; the code carries them.</p>
+  <h3 id="three-ways">Alex, three ways</h3>
+  <p class="tag">One studio photograph, then the same face as a script sees it. Middle: green katakana and digits on black, every glyph placed by the light on his face, the way the film did it. Right: 110 columns of plain ASCII, bright-for-dense, the terminal way. No model in the loop; a Python script, one seed, the photo as the only input.</p>
+  <ul class="pieces wide">
+    <li><img src="/media/art-wm-alex-three-ways.jpg" draggable="false" width="1600" height="507" alt="Triptych: a studio photo of Alex Alvord, the same face rendered in green matrix glyphs, and in ASCII characters" loading="lazy"><span class="medium">Photograph · matrix render · ASCII render</span><b>Alex, three ways</b><span>Left, the photo. Middle, the matrix. Right, the ASCII. The script is the same one that draws the household's private portraits; the seed is the date.</span></li>
+  </ul>
   <h3 id="nightly">Nightly, from the recording</h3>
   <p class="tag">Every night the lab's Infrastructure as Music episode is cut and published, and the same run draws one piece from it and writes one haiku from the same numbers. Deterministic: the recording is measured (loudness per bin, brightness per bin, the events that fired) and the numbers become a river of formline shapes. Same night, same drawing, forever. The newest is below; every episode's piece sits next to its player on <a href="/live">/live</a>.</p>
   <ul class="pieces" style="grid-template-columns:1fr">

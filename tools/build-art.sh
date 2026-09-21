@@ -32,6 +32,7 @@ for n in $(python3 -c 'import json;print(" ".join(x["name"] for x in json.load(o
   render "$S/agents/agent-$n.png" "art-wm-agent-$n.jpg" 1024
 done
 # Waku art: the site set.
+render "$S/portrait/alex-three-ways.jpg" art-wm-alex-three-ways.jpg 1600
 render "$M/waku-orca-pale.svg" art-wm-orca-mark.jpg 1024
 render "$M/cloudlabworks-banner-salish.jpg" art-wm-salish-band.jpg 1600
 render "$M/salish-pattern-alpha.svg" art-wm-watermark-tile.jpg 1024
