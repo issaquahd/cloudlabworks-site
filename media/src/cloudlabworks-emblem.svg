@@ -1,12 +1,12 @@
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 680 680" width="680" height="680" role="img" aria-label="Cloud Lab Works emblem: the orca badge ringed by the words CloudLab and Works, with a wrench cross">
 <defs>
-  <path id="arc-top" d="M 60 340 A 280 280 0 0 1 620 340"/>
+  <path id="arc-top" d="M 64 340 A 276 276 0 0 1 616 340"/>
   <path id="arc-bot" d="M 24 340 A 316 316 0 0 0 656 340"/>
 </defs>
 <circle cx="340" cy="340" r="332" fill="#f8fafc"/>
 <circle cx="340" cy="340" r="332" fill="none" stroke="#0b1220" stroke-width="8"/>
-<circle cx="340" cy="340" r="236" fill="none" stroke="#0b1220" stroke-width="4"/>
-<g transform="translate(112 112) scale(0.89)">
+<circle cx="340" cy="340" r="262" fill="none" stroke="#0b1220" stroke-width="4"/>
+<g transform="translate(84 84) scale(1)">
   <defs>
     <clipPath id="i-body"><use href="#i-orca-body"/></clipPath>
     <clipPath id="i-badge"><circle cx="256" cy="256" r="248"/></clipPath>
@@ -49,7 +49,7 @@
   <path d="M318 316 C300 342 306 374 338 382 C358 364 354 330 342 310 Z" fill="#0b1220"/>
   <use href="#i-crescent" transform="translate(334 350) rotate(104) scale(.45)" fill="#f8fafc"/>
 </g>
-<text font-family="Futura, 'Avenir Next', Helvetica, Arial, sans-serif" font-weight="700" font-size="60" letter-spacing="8" fill="#0b1220"><textPath xlink:href="#arc-top" href="#arc-top" startOffset="50%" text-anchor="middle">CLOUDLAB</textPath></text>
-<text font-family="Futura, 'Avenir Next', Helvetica, Arial, sans-serif" font-weight="700" font-size="60" letter-spacing="8" fill="#0b1220"><textPath xlink:href="#arc-bot" href="#arc-bot" startOffset="46%" text-anchor="middle">WORKS</textPath></text>
-<g transform="translate(464 595) rotate(-26) scale(0.78)"><g transform="rotate(45)"><rect x="-5" y="-14" width="10" height="54" rx="5" fill="#0b1220"/><path d="M-16 -26 A16 16 0 1 1 16 -26 L16 -16 L-16 -16 Z" fill="#0b1220"/><path d="M-7 -38 L-7 -22 L7 -22 L7 -38 Z" fill="#f8fafc"/></g><g transform="rotate(-45)"><rect x="-5" y="-14" width="10" height="54" rx="5" fill="#0b1220"/><path d="M-16 -26 A16 16 0 1 1 16 -26 L16 -16 L-16 -16 Z" fill="#0b1220"/><path d="M-7 -38 L-7 -22 L7 -22 L7 -38 Z" fill="#f8fafc"/></g></g>
+<text font-family="Futura, 'Avenir Next', Helvetica, Arial, sans-serif" font-weight="700" font-size="48" letter-spacing="7" fill="#0b1220"><textPath xlink:href="#arc-top" href="#arc-top" startOffset="50%" text-anchor="middle">CLOUDLAB</textPath></text>
+<text font-family="Futura, 'Avenir Next', Helvetica, Arial, sans-serif" font-weight="700" font-size="48" letter-spacing="7" fill="#0b1220"><textPath xlink:href="#arc-bot" href="#arc-bot" startOffset="47%" text-anchor="middle">WORKS</textPath></text>
+<g transform="translate(461 611) rotate(-24) scale(0.7)"><g transform="rotate(45)"><rect x="-5" y="-14" width="10" height="54" rx="5" fill="#0b1220"/><path d="M-16 -26 A16 16 0 1 1 16 -26 L16 -16 L-16 -16 Z" fill="#0b1220"/><path d="M-7 -38 L-7 -22 L7 -22 L7 -38 Z" fill="#f8fafc"/></g><g transform="rotate(-45)"><rect x="-5" y="-14" width="10" height="54" rx="5" fill="#0b1220"/><path d="M-16 -26 A16 16 0 1 1 16 -26 L16 -16 L-16 -16 Z" fill="#0b1220"/><path d="M-7 -38 L-7 -22 L7 -22 L7 -38 Z" fill="#f8fafc"/></g></g>
 </svg>
