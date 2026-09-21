@@ -20,6 +20,7 @@
 .cv h2{font-size:.82rem;letter-spacing:.09em;text-transform:uppercase;color:var(--accent);margin:26px 0 10px;padding-bottom:6px;border-bottom:1px solid var(--line)}
 .cv main-col h2:first-child{margin-top:0}
 .cv .summary{font-size:1.02rem;color:var(--ink-2);margin:0}
+.why{list-style:none;padding:0;margin:0}.why li{padding:10px 0;border-top:1px dashed var(--line);color:var(--ink-2);font-size:.95rem}.why li:first-child{border-top:0}.why b{color:var(--ink)}
 .job{display:grid;grid-template-columns:1fr auto;gap:2px 16px;margin:0 0 18px}
 .job h3{margin:0;font-size:1.05rem;grid-column:1}.job .when{grid-column:2;grid-row:1;color:var(--muted);font-size:.9rem;white-space:nowrap;font-variant-numeric:tabular-nums}
 .job .org{grid-column:1/3;color:var(--muted);font-size:.92rem}
@@ -77,6 +78,16 @@
         <span class="org"><a href="/nutanix">Nutanix Notes</a> · v4 APIs, OpenTofu, Flow Virtual Networking</span>
         <ul><li>End-to-end walkthrough from the NC2 console to the first VM with every block verified against the provider; the pattern used in customer PoCs and lab sessions.</li></ul>
       </div>
+
+      <h2>Why these companies</h2>
+      <p class="summary" style="margin-bottom:10px">A career is a sequence of bets on where infrastructure was going. These were the bets.</p>
+      <ul class="why">
+        <li><b>RightScale (2013)</b> — early to cloud when "cloud" still meant one vendor. RightScale's thesis was that orchestrating resources through APIs would matter more than owning them: multi-cloud management, ServerTemplates, automation across AWS, Azure, SoftLayer, Rackspace and Google Compute Engine years before "multicloud" was a category. Its co-founder and CTO, <a href="https://www.cs.cornell.edu/tve/" rel="noopener">Thorsten von Eicken</a>, had been a Cornell computer-science professor who co-authored the <a href="https://dl.acm.org/doi/10.1145/224056.224061" rel="noopener">U-Net work</a> with Werner Vogels — later Amazon's CTO. Working the AWS alliance from inside that company was a front-row seat to the API-first, orchestrate-don't-own model everything since has been built on.</li>
+        <li><b>Smartsheet (2014)</b> — SaaS at enterprise scale before it was assumed: rollouts from 2,000 to 200,000 seats, API partners as the growth channel, SSO and governance as the buying criteria. The playbook for how software actually lands in a large company.</li>
+        <li><b>Internap / INAP (2015 – 2018)</b> — a monster in networking: a global backbone with route-optimized transit and high-density data centers, plus OpenStack, bare-metal cloud and colocation on top. It is where Layer 2–7, peering, latency and the physical substrate under "the cloud" became first-hand knowledge — the part most cloud architects never touch.</li>
+        <li><b>Rubrik (2018 – 2019)</b> — the data layer reinvented as a cloud-native, API-first platform: backup, recovery, replication and search as one distributed system with an open API, at the moment ransomware made data management a board-level problem. Field CTO for the channel there meant teaching the ecosystem how orchestration and Open APIs change operations.</li>
+        <li><b>Nutanix (2019 –)</b> — the hybrid multicloud bet made real: the same platform on-prem and in AWS, Azure and Google Cloud, with NC2 taken from a fifteen-person incubation team to a 250-person organization. The v4 APIs, Flow Virtual Networking and infrastructure-as-code on top of it are the current chapter; AI infrastructure — GPUs, storage and the cost model next to the data — is the next one.</li>
+      </ul>
 
       <h2>Experience</h2>
 
