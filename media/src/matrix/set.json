@@ -1,0 +1,142 @@
+[
+ {
+  "name": "matrix-01",
+  "scene": "kyoto-fushimi",
+  "city": "Kyoto",
+  "title": "Fushimi Inari, the tunnel",
+  "text": "The thousand gates of Fushimi Inari, receding uphill. The one warm thing in the frame is vermilion, repeated until it becomes a corridor."
+ },
+ {
+  "name": "matrix-02",
+  "scene": "kyoto-kinkaku",
+  "city": "Kyoto",
+  "title": "Kinkaku-ji, on the pond",
+  "text": "The golden pavilion and its reflection: two storeys of light over a black pond, a pine leaning in from the left."
+ },
+ {
+  "name": "matrix-03",
+  "scene": "kyoto-kiyomizu",
+  "city": "Kyoto",
+  "title": "Kiyomizu, the stage",
+  "text": "The wooden stage of Kiyomizu-dera on its lattice of pillars, the hillside falling away below, the city as a spill of small lights."
+ },
+ {
+  "name": "matrix-04",
+  "scene": "kyoto-arashiyama",
+  "city": "Kyoto",
+  "title": "Arashiyama, the bamboo",
+  "text": "The bamboo grove at Arashiyama: culms taller than the frame, the light coming down between them in bars."
+ },
+ {
+  "name": "matrix-05",
+  "scene": "kyoto-gion",
+  "city": "Kyoto",
+  "title": "Gion, the lantern lane",
+  "text": "A machiya street in Gion after dark: lattice fronts, tiled eaves, and a row of paper lanterns doing the work of the moon."
+ },
+ {
+  "name": "matrix-06",
+  "scene": "kyoto-togetsukyo",
+  "city": "Kyoto",
+  "title": "Togetsukyō, the moon bridge",
+  "text": "The long bridge at Arashiyama over the Katsura, the hills behind it, and the moon it is named for."
+ },
+ {
+  "name": "matrix-07",
+  "scene": "kyoto-toji",
+  "city": "Kyoto",
+  "title": "Tō-ji, five storeys",
+  "text": "The five-storey pagoda of Tō-ji, the tallest wooden tower in the country, drawn as five roofs and a spire against the moon."
+ },
+ {
+  "name": "matrix-08",
+  "scene": "kyoto-tetsugaku",
+  "city": "Kyoto",
+  "title": "The Philosopher's Path",
+  "text": "The canal walk in blossom season: cherry trees on both banks, petals in the water, a stone path that only goes one way."
+ },
+ {
+  "name": "matrix-09",
+  "scene": "kyoto-ryoanji",
+  "city": "Kyoto",
+  "title": "Ryōan-ji, the fifteen stones",
+  "text": "The rock garden: raked gravel drawn as rows of glyphs, the stones as silences in it. You cannot see all fifteen from any one place, and you cannot here either."
+ },
+ {
+  "name": "matrix-10",
+  "scene": "kyoto-yasaka",
+  "city": "Kyoto",
+  "title": "Yasaka, the pagoda street",
+  "text": "Hōkan-ji's pagoda at the top of the sloping street, the shop lanterns coming on, dusk doing the rest."
+ },
+ {
+  "name": "matrix-11",
+  "scene": "tokyo-shibuya",
+  "city": "Tokyo",
+  "title": "Shibuya, the crossing",
+  "text": "The scramble from above: five screens, a thousand heads, every one of them a glyph for the two seconds the light is green."
+ },
+ {
+  "name": "matrix-12",
+  "scene": "tokyo-tower",
+  "city": "Tokyo",
+  "title": "Tokyo Tower, lit",
+  "text": "The tower over Shiba, orange by night, the office blocks around it holding still while the rain moves."
+ },
+ {
+  "name": "matrix-13",
+  "scene": "tokyo-skytree",
+  "city": "Tokyo",
+  "title": "Skytree, over the Sumida",
+  "text": "The tallest thing in the city as a needle of light, the river taking a copy of it and breaking it up."
+ },
+ {
+  "name": "matrix-14",
+  "scene": "tokyo-yokocho",
+  "city": "Tokyo",
+  "title": "Omoide Yokochō",
+  "text": "The yakitori alley behind Shinjuku station: six feet wide, lanterns overhead, every stall a lit window with smoke where the rain should be."
+ },
+ {
+  "name": "matrix-15",
+  "scene": "tokyo-rainbow",
+  "city": "Tokyo",
+  "title": "Rainbow Bridge",
+  "text": "The suspension bridge across the bay from Odaiba, its cables as a lattice of glyphs, the bay black under it."
+ },
+ {
+  "name": "matrix-16",
+  "scene": "tokyo-akihabara",
+  "city": "Tokyo",
+  "title": "Akihabara, the signs",
+  "text": "Electric Town: a wall of signage seven storeys high, each sign a block of glyphs at its own brightness."
+ },
+ {
+  "name": "matrix-17",
+  "scene": "tokyo-kaminarimon",
+  "city": "Tokyo",
+  "title": "Kaminarimon, the lantern",
+  "text": "The thunder gate at Asakusa: one giant lantern, red, under a roof wide enough to hide the street behind it."
+ },
+ {
+  "name": "matrix-18",
+  "scene": "tokyo-shinkansen",
+  "city": "Tokyo",
+  "title": "Shinkansen, the platform",
+  "text": "The nose of the train at the platform, the doors lit, the departure board as a grid of glyphs that only says the time."
+ },
+ {
+  "name": "matrix-19",
+  "scene": "tokyo-station",
+  "city": "Tokyo",
+  "title": "Tokyo Station, the facade",
+  "text": "The Marunouchi side: two domes, three storeys of brick drawn as lit arches, the plaza empty for once."
+ },
+ {
+  "name": "matrix-20",
+  "scene": "tokyo-hanabi",
+  "city": "Tokyo",
+  "title": "Sumida, fireworks",
+  "text": "The river festival: one burst over the skyline, the whole city looking up, the water taking the copy."
+ }
+]
