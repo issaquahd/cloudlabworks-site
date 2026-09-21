@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 420" width="1200" height="420">
+<rect width="1200" height="420" fill="#1c1410"/>
+<path d="M60.0 224.0 L107.0 221.0 L153.9 223.4 L200.9 229.0 L247.8 237.5 L294.8 245.8 L341.7 246.2 L388.7 239.6 L435.7 229.0 L482.6 219.0 L529.6 207.5 L576.5 218.2 L623.5 228.0 L670.4 238.0 L717.4 245.3 L764.3 241.5 L811.3 236.4 L858.3 229.6 L905.2 224.6 L952.2 222.6 L999.1 223.2 L1046.1 226.2 L1093.0 236.9 L1140.0 239.1" fill="none" stroke="#0f766e" stroke-width="6" stroke-linecap="round" opacity=".7"/>
+<path d="M43.8 224.0 A16.2 16.2 0 0 1 76.2 224.0 A21.9 21.9 0 0 0 43.8 224.0 Z" fill="#565b43"/>
+<path d="M89.8 221.0 A17.1 17.1 0 0 1 124.1 221.0 A23.1 23.1 0 0 0 89.8 221.0 Z" fill="#595b43"/>
+<path d="M153.9 229.4 l-12.8 20.8 l25.6 0 z" fill="#575b43"/>
+<ellipse cx="200.9" cy="215.9" rx="14.5" ry="10.4" fill="#595b43"/><ellipse cx="200.9" cy="215.9" rx="7.3" ry="4.9" fill="#1c1410"/>
+<path d="M247.8 243.5 l-22.7 36.8 l45.3 0 z" fill="#5d5c43"/>
+<path d="M262.1 245.8 A32.7 32.7 0 0 1 327.5 245.8 A44.1 44.1 0 0 0 262.1 245.8 Z" fill="#5f5c43"/>
+<path d="M341.7 252.2 l-25.9 42.1 l51.8 0 z" fill="#5e5c43"/>
+<path d="M388.7 245.6 l-26.1 42.4 l52.1 0 z" fill="#4f5944"/>
+<path d="M404.4 229.0 A31.2 31.2 0 0 1 466.9 229.0 A42.2 42.2 0 0 0 404.4 229.0 Z" fill="#525a44"/>
+<ellipse cx="482.6" cy="189.2" rx="33.1" ry="23.8" fill="#565b43"/><ellipse cx="482.6" cy="189.2" rx="16.5" ry="11.2" fill="#1c1410"/>
+<ellipse cx="529.6" cy="161.0" rx="51.7" ry="37.2" fill="#a76a3c"/><ellipse cx="529.6" cy="161.0" rx="25.8" ry="17.6" fill="#1c1410"/>
+<path d="M543.4 218.2 A33.2 33.2 0 0 1 609.7 218.2 A44.8 44.8 0 0 0 543.4 218.2 Z" fill="#8b653f"/>
+<path d="M623.5 234.0 l-22.6 36.8 l45.3 0 z" fill="#4d5944"/>
+<path d="M640.8 238.0 A29.7 29.7 0 0 1 700.1 238.0 A40.1 40.1 0 0 0 640.8 238.0 Z" fill="#515a44"/>
+<path d="M717.4 251.3 l-24.8 40.3 l49.6 0 z" fill="#4f5944"/>
+<path d="M764.3 247.5 l-15.9 25.9 l31.8 0 z" fill="#3f5645"/>
+<ellipse cx="811.3" cy="220.3" rx="17.9" ry="12.9" fill="#435745"/><ellipse cx="811.3" cy="220.3" rx="9.0" ry="6.1" fill="#1c1410"/>
+<ellipse cx="858.3" cy="215.4" rx="15.7" ry="11.3" fill="#415745"/><ellipse cx="858.3" cy="215.4" rx="7.9" ry="5.4" fill="#1c1410"/>
+<ellipse cx="905.2" cy="212.6" rx="13.3" ry="9.6" fill="#405645"/><ellipse cx="905.2" cy="212.6" rx="6.7" ry="4.5" fill="#1c1410"/>
+<path d="M952.2 228.6 l-10.5 17.1 l21.0 0 z" fill="#465845"/>
+<path d="M982.0 223.2 A17.1 17.1 0 0 1 1016.3 223.2 A23.1 23.1 0 0 0 982.0 223.2 Z" fill="#585b43"/>
+<ellipse cx="1046.1" cy="175.8" rx="56.0" ry="40.3" fill="#c2703a"/><ellipse cx="1046.1" cy="175.8" rx="28.0" ry="19.0" fill="#1c1410"/>
+<ellipse cx="1093.0" cy="216.4" rx="22.8" ry="16.4" fill="#93663e"/><ellipse cx="1093.0" cy="216.4" rx="11.4" ry="7.8" fill="#1c1410"/>
+<path d="M1140.0 245.1 l-11.1 18.0 l22.2 0 z" fill="#5f5c43"/>
+<circle cx="90" cy="90" r="38" fill="#b3372b"/><circle cx="90" cy="90" r="24" fill="#c2703a"/>
+<path d="M166 122 L210 54 L254 122 Z" fill="#b3372b"/><path d="M194 112 L210 84 L226 112 Z" fill="#1c1410"/>
+<ellipse cx="330" cy="90" rx="46" ry="34" fill="#134e4a"/><ellipse cx="330" cy="90" rx="24" ry="18" fill="#f8fafc"/><circle cx="330" cy="90" r="8" fill="#1c1410"/>
+<path d="M404 112 A46 46 0 0 1 496 112 A64 64 0 0 0 404 112 Z" fill="#f8fafc"/>
+<text x="60" y="380" fill="#f8fafc" font-family="-apple-system,Helvetica,Arial,sans-serif" font-size="22" font-weight="700">Infrastructure as Music · 2026-09-20-ep0</text>
+<text x="60" y="404" fill="#a8cdca" font-family="-apple-system,Helvetica,Arial,sans-serif" font-size="14">29 s · 24 shapes, one per 1 s · size = loudness · teal→rust = brightness · hello, fault, deploy, recover · drawn by Waku from the recording</text>
+</svg>

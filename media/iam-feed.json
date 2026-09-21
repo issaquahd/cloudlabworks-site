@@ -8,7 +8,8 @@
    "events": [
     "150526-deploy"
    ],
-   "m4a": "iam-2026-09-20.m4a"
+   "m4a": "iam-2026-09-20.m4a",
+   "art": "iam-art-2026-09-20.svg"
   },
   {
    "slug": "2026-09-20-ep0",
@@ -20,7 +21,8 @@
     "deploy",
     "recover"
    ],
-   "m4a": "iam-2026-09-20-ep0.m4a"
+   "m4a": "iam-2026-09-20-ep0.m4a",
+   "art": "iam-art-2026-09-20-ep0.svg"
   }
  ]
 }
