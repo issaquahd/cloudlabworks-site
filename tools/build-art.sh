@@ -23,6 +23,3 @@ render "$M/waku-orca-pale.svg" art-wm-orca-mark.jpg 1024
 render "$M/cloudlabworks-banner-salish.jpg" art-wm-salish-band.jpg 1600
 render "$M/salish-pattern-alpha.svg" art-wm-watermark-tile.jpg 1024
 render "$M/waku-orca-og.png" art-wm-share-card.jpg 1200
-render "$S/stickers/rubrik-robot.svg" art-wm-sticker-rubrik.jpg 800
-render "$S/stickers/rightscale-size.svg" art-wm-sticker-rightscale.jpg 800
-render "$S/stickers/inap-disc.jpg" art-wm-sticker-inap.jpg 420
