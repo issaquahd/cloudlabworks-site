@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+<circle cx="256" cy="256" r="236" fill="#f1e3c3" stroke="#1f3a3a" stroke-width="14"/>
+<circle cx="256" cy="256" r="252" fill="none" stroke="#f1e3c3" stroke-width="8" opacity=".9"/>
+<circle cx="256" cy="200" r="110" fill="#e0a52a" stroke="#1f3a3a" stroke-width="12" stroke-linejoin="round" stroke-linecap="round"/><path d="M40 400 q216-120 432 0 z" fill="#3f6e6a" stroke="#1f3a3a" stroke-width="12" stroke-linejoin="round" stroke-linecap="round"/><g transform="translate(206 0) scale(1 1)">
+<path d="M-40 300 q0-60 40-60 q40 0 40 60 v40 h-80 z" fill="#fbf7ef" stroke="#1f3a3a" stroke-width="12" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M-24 250 l-12-70 q0-12 12-12 q12 0 12 12 l4 62 M8 250 l-4-62 q0-12 12-12 q12 0 12 12 l-12 70" fill="#fbf7ef" stroke="#1f3a3a" stroke-width="12" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="-12" cy="272" r="5" fill="#1f3a3a"/><circle cx="12" cy="272" r="5" fill="#1f3a3a"/><path d="M-6 288 q6 6 12 0" fill="none" stroke="#1f3a3a" stroke-width="8" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="-24" cy="286" r="6" fill="#d94a3d" opacity=".55"/><circle cx="24" cy="286" r="6" fill="#d94a3d" opacity=".55"/></g><g transform="translate(306 0) scale(-1 1)">
+<path d="M-40 300 q0-60 40-60 q40 0 40 60 v40 h-80 z" fill="#fbf7ef" stroke="#1f3a3a" stroke-width="12" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M-24 250 l-12-70 q0-12 12-12 q12 0 12 12 l4 62 M8 250 l-4-62 q0-12 12-12 q12 0 12 12 l-12 70" fill="#fbf7ef" stroke="#1f3a3a" stroke-width="12" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="-12" cy="272" r="5" fill="#1f3a3a"/><circle cx="12" cy="272" r="5" fill="#1f3a3a"/><path d="M-6 288 q6 6 12 0" fill="none" stroke="#1f3a3a" stroke-width="8" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="-24" cy="286" r="6" fill="#d94a3d" opacity=".55"/><circle cx="24" cy="286" r="6" fill="#d94a3d" opacity=".55"/></g><path d="M56 130 l10 10 M420 100 l10 10 M100 90 l8 8" stroke="#1f3a3a" stroke-width="8" stroke-linejoin="round" stroke-linecap="round" opacity=".5"/>
+</svg>

@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+<circle cx="256" cy="256" r="236" fill="#f1e3c3" stroke="#1f3a3a" stroke-width="14"/>
+<circle cx="256" cy="256" r="252" fill="none" stroke="#f1e3c3" stroke-width="8" opacity=".9"/>
+<path d="M238 196 h36 v34 q52 18 52 80 q0 70-70 70 q-70 0-70-70 q0-62 52-80 z" fill="#3f6e6a" stroke="#1f3a3a" stroke-width="12" stroke-linejoin="round" stroke-linecap="round"/><path d="M238 196 h36" stroke="#1f3a3a" stroke-width="12" stroke-linecap="round"/><circle cx="256" cy="316" r="24" fill="#fbf7ef" stroke="#1f3a3a" stroke-width="8" stroke-linejoin="round" stroke-linecap="round"/><path d="M246 316 h20 M256 306 v20" stroke="#1f3a3a" stroke-width="8" stroke-linejoin="round" stroke-linecap="round"/><g transform="rotate(14 150 300)">
+<path d="M104 270 q6 60 46 60 q40 0 46-60 z" fill="#d94a3d" stroke="#1f3a3a" stroke-width="12" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M104 270 q46-12 92 0 q-46 12-92 0 z" fill="#fbf7ef" stroke="#1f3a3a" stroke-width="8" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M136 330 h28 v12 q0 8-14 8 q-14 0-14-8 z" fill="#d94a3d" stroke="#1f3a3a" stroke-width="8" stroke-linejoin="round" stroke-linecap="round"/></g><g transform="rotate(-14 362 300)">
+<path d="M316 270 q6 60 46 60 q40 0 46-60 z" fill="#fbf7ef" stroke="#1f3a3a" stroke-width="12" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M316 270 q46-12 92 0 q-46 12-92 0 z" fill="#fbf7ef" stroke="#1f3a3a" stroke-width="8" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M348 330 h28 v12 q0 8-14 8 q-14 0-14-8 z" fill="#fbf7ef" stroke="#1f3a3a" stroke-width="8" stroke-linejoin="round" stroke-linecap="round"/></g><path d="M232 236 l-14-20 M256 226 v-24 M280 236 l14-20" fill="none" stroke="#1f3a3a" stroke-width="8" stroke-linejoin="round" stroke-linecap="round"/><path d="M0 14 C -18 -2, -30 -14, -18 -26 C -10 -34, 0 -28, 0 -18 C 0 -28, 10 -34, 18 -26 C 30 -14, 18 -2, 0 14 z" fill="#d94a3d" stroke="#1f3a3a" stroke-width="8" stroke-linejoin="round" stroke-linecap="round" transform="translate(256 150) scale(0.9)"/>
+</svg>

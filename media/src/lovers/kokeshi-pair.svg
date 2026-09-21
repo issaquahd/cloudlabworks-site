@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+<circle cx="256" cy="256" r="236" fill="#f1e3c3" stroke="#1f3a3a" stroke-width="14"/>
+<circle cx="256" cy="256" r="252" fill="none" stroke="#f1e3c3" stroke-width="8" opacity=".9"/>
+<g transform="rotate(8 196 300)">
+<rect x="156" y="250" width="80" height="150" rx="30" fill="#3f6e6a" stroke="#1f3a3a" stroke-width="12" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M156 300 h80 M156 330 h80" fill="none" stroke="#1f3a3a" stroke-width="8" stroke-linejoin="round" stroke-linecap="round" opacity=".6"/>
+<circle cx="196" cy="200" r="52" fill="#fbf7ef" stroke="#1f3a3a" stroke-width="12" stroke-linejoin="round" stroke-linecap="round"/><circle cx="182" cy="194" r="6" fill="#1f3a3a"/><circle cx="210" cy="194" r="6" fill="#1f3a3a"/><path d="M186 212 q10 10 20 0" fill="none" stroke="#1f3a3a" stroke-width="8" stroke-linejoin="round" stroke-linecap="round"/><circle cx="170" cy="208" r="7" fill="#d94a3d" opacity=".55"/><circle cx="222" cy="208" r="7" fill="#d94a3d" opacity=".55"/>
+<path d="M144 186 q52-60 104 0 q-52-14-104 0 z" fill="#1f3a3a"/></g><g transform="rotate(-8 316 300)">
+<rect x="276" y="250" width="80" height="150" rx="30" fill="#fbf7ef" stroke="#1f3a3a" stroke-width="12" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M276 300 h80 M276 330 h80" fill="none" stroke="#1f3a3a" stroke-width="8" stroke-linejoin="round" stroke-linecap="round" opacity=".6"/>
+<circle cx="316" cy="200" r="52" fill="#fbf7ef" stroke="#1f3a3a" stroke-width="12" stroke-linejoin="round" stroke-linecap="round"/><circle cx="302" cy="194" r="6" fill="#1f3a3a"/><circle cx="330" cy="194" r="6" fill="#1f3a3a"/><path d="M306 212 q10 10 20 0" fill="none" stroke="#1f3a3a" stroke-width="8" stroke-linejoin="round" stroke-linecap="round"/><circle cx="290" cy="208" r="7" fill="#d94a3d" opacity=".55"/><circle cx="342" cy="208" r="7" fill="#d94a3d" opacity=".55"/>
+<path d="M264 186 q52-60 104 0 q-52-14-104 0 z" fill="#1f3a3a"/></g><circle cx="256" cy="174" r="16" fill="#d94a3d" stroke="#1f3a3a" stroke-width="8" stroke-linejoin="round" stroke-linecap="round"/><circle cx="256" cy="150" r="9" fill="#d94a3d" transform="rotate(0 256 174)"/><circle cx="256" cy="150" r="9" fill="#d94a3d" transform="rotate(72 256 174)"/><circle cx="256" cy="150" r="9" fill="#d94a3d" transform="rotate(144 256 174)"/><circle cx="256" cy="150" r="9" fill="#d94a3d" transform="rotate(216 256 174)"/><circle cx="256" cy="150" r="9" fill="#d94a3d" transform="rotate(288 256 174)"/>
+</svg>
