@@ -11,7 +11,9 @@ const OG_IMAGE = `<meta property="og:image" content="https://cloudlabworks.dev/m
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">`;
 const fill = (html) => html.replace("<style>{{STYLE}}</style>", ICONS + "\n" + (html.includes('property="og:image"') ? "" : OG_IMAGE + "\n") + "<style>" + style + "</style>").replace("{{HEAD}}", head).replace("{{FOOT}}", foot);
-const page = (f) => fill(r(f));
+// Feed autodiscovery on every page, not only the blog: a reader pointed at cloudlabworks.dev finds the feed.
+const FEED_LINK = `<link rel="alternate" type="application/rss+xml" title="Invisible Wires — Agentic Cloud" href="/blog/feed.xml">`;
+const page = (f) => fill(r(f).replace("</head>", `${FEED_LINK}\n</head>`));
 
 // ---------- blog: Invisible Wires — Agentic Cloud ----------
 const BLOG = { title: "Invisible Wires — Agentic Cloud", path: "/blog", desc: "Notes from a home lab on agentic operations, hybrid multicloud, and the wires nobody sees. By Alex Alvord and Waku." };
@@ -172,7 +174,7 @@ const home = page("index.html").replace("{{LATEST}}", posts.length ? posts.slice
 const INQUIRE = page("inquire.html");
 const CATEGORIES = ["Architecture review", "Cloud and AI infrastructure design", "Technical content", "Speaking and interviews", "Mentoring", "Meet at an event", "Something else"];
 
-const pages = { "/": home, "/work": page("work.html").replace("{{GITHUB}}", GITHUB), [BLOG.path]: blogIndex, ...postPages, "/notes": page("notes.html"), "/privacy": page("privacy.html"), "/terms": page("terms.html"), "/card": page("card.html"), "/live": page("live.html"), "/orcas": page("orcas.html") };
+const pages = { "/": home, "/work": page("work.html").replace("{{GITHUB}}", GITHUB), [BLOG.path]: blogIndex, ...postPages, "/notes": page("notes.html"), "/privacy": page("privacy.html"), "/terms": page("terms.html"), "/card": page("card.html"), "/live": page("live.html"), "/orcas": page("orcas.html"), "/subscribe": page("subscribe.html") };
 // /card is the NFC business-card landing page; the tag on the card carries only this URL.
 const VCARD = ["BEGIN:VCARD", "VERSION:3.0", "N:Alvord;Alex;;;", "FN:Alex Alvord", "ORG:Cloud Lab Works LLC", "TITLE:Advisory Solutions Architect, Hybrid Multicloud", "EMAIL;TYPE=INTERNET,WORK:alex@cloudlabworks.dev", "URL:https://cloudlabworks.dev", "URL;TYPE=LinkedIn:https://www.linkedin.com/in/alexalvord/", "ADR;TYPE=WORK:;;;Duvall;WA;;USA", "NOTE:Hybrid multicloud architecture, cloud and AI infrastructure design, technical content. cloudlabworks.dev", "END:VCARD"].join("\r\n") + "\r\n";
 // /live.js is the only script on the site: the browser instrument + visualizer for /live (self-hosted; CSP script-src 'self').
