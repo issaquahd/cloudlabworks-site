@@ -1,0 +1,212 @@
+[
+{
+"name": "garden-01",
+"title": "Kiyomizu, under the moon",
+"text": "Kiyomizu under the moon: a 4-tier pagoda, a wooden bridge and 5 koi. Composed from one seed; the palette is the seed's choice too.",
+"palette": "night",
+"structure": "pagoda"
+},
+{
+"name": "garden-02",
+"title": "Ryōan, at dusk",
+"text": "Ryōan at dusk: a wisteria pergola, a red bridge and a pine. Composed from one seed; the palette is the seed's choice too.",
+"palette": "dusk",
+"structure": "pergola"
+},
+{
+"name": "garden-03",
+"title": "Kenroku, at sunset",
+"text": "Kenroku at sunset: a torii, a red bridge, 3 koi, a pine and wisteria. Composed from one seed; the palette is the seed's choice too.",
+"palette": "sunset",
+"structure": "torii"
+},
+{
+"name": "garden-04",
+"title": "Kōraku, at sunset",
+"text": "Kōraku at sunset: a tea house, a red bridge and wisteria. Composed from one seed; the palette is the seed's choice too.",
+"palette": "sunset",
+"structure": "teahouse"
+},
+{
+"name": "garden-05",
+"title": "Kairaku, in blossom",
+"text": "Kairaku in blossom: a wisteria pergola, a red bridge and 5 koi. Composed from one seed; the palette is the seed's choice too.",
+"palette": "blossom",
+"structure": "pergola"
+},
+{
+"name": "garden-06",
+"title": "Ginkaku, in the afternoon",
+"text": "Ginkaku in the afternoon: a tea house, a wooden bridge and 8 koi. Composed from one seed; the palette is the seed's choice too.",
+"palette": "day",
+"structure": "teahouse"
+},
+{
+"name": "garden-07",
+"title": "Tōfuku, under the moon",
+"text": "Tōfuku under the moon: a tea house, a red bridge, 7 koi and a pine. Composed from one seed; the palette is the seed's choice too.",
+"palette": "night",
+"structure": "teahouse"
+},
+{
+"name": "garden-08",
+"title": "Heian, under the moon",
+"text": "Heian under the moon: a wisteria pergola and a wooden bridge. Composed from one seed; the palette is the seed's choice too.",
+"palette": "night",
+"structure": "pergola"
+},
+{
+"name": "garden-09",
+"title": "Arashiyama, at dusk",
+"text": "Arashiyama at dusk: a tea house, a red bridge, 4 koi, a pine and wisteria. Composed from one seed; the palette is the seed's choice too.",
+"palette": "dusk",
+"structure": "teahouse"
+},
+{
+"name": "garden-10",
+"title": "Shinjuku, under the moon",
+"text": "Shinjuku under the moon: a stone lantern, a wooden bridge, 4 koi and wisteria. Composed from one seed; the palette is the seed's choice too.",
+"palette": "night",
+"structure": "lantern"
+},
+{
+"name": "garden-11",
+"title": "Rikugi, in the afternoon",
+"text": "Rikugi in the afternoon: a stone lantern, a red bridge, 8 koi and a pine. Composed from one seed; the palette is the seed's choice too.",
+"palette": "day",
+"structure": "lantern"
+},
+{
+"name": "garden-12",
+"title": "Hama-rikyū, in blossom",
+"text": "Hama-rikyū in blossom: a tea house, a red bridge and 8 koi. Composed from one seed; the palette is the seed's choice too.",
+"palette": "blossom",
+"structure": "teahouse"
+},
+{
+"name": "garden-13",
+"title": "Byōdō, in blossom",
+"text": "Byōdō in blossom: a wisteria pergola, a red bridge and 7 koi. Composed from one seed; the palette is the seed's choice too.",
+"palette": "blossom",
+"structure": "pergola"
+},
+{
+"name": "garden-14",
+"title": "Daigo, at dusk",
+"text": "Daigo at dusk: a torii, a red bridge, 7 koi, a pine and wisteria. Composed from one seed; the palette is the seed's choice too.",
+"palette": "dusk",
+"structure": "torii"
+},
+{
+"name": "garden-15",
+"title": "Nanzen, at sunset",
+"text": "Nanzen at sunset: a wisteria pergola, a red bridge and a pine. Composed from one seed; the palette is the seed's choice too.",
+"palette": "sunset",
+"structure": "pergola"
+},
+{
+"name": "garden-16",
+"title": "Tenryū, at dusk",
+"text": "Tenryū at dusk: a tea house, a wooden bridge and 4 koi. Composed from one seed; the palette is the seed's choice too.",
+"palette": "dusk",
+"structure": "teahouse"
+},
+{
+"name": "garden-17",
+"title": "Eikan, in the afternoon",
+"text": "Eikan in the afternoon: a wisteria pergola, a red bridge and 4 koi. Composed from one seed; the palette is the seed's choice too.",
+"palette": "day",
+"structure": "pergola"
+},
+{
+"name": "garden-18",
+"title": "Saihō, under the moon",
+"text": "Saihō under the moon: a stone lantern, a red bridge, 4 koi, a pine and wisteria. Composed from one seed; the palette is the seed's choice too.",
+"palette": "night",
+"structure": "lantern"
+},
+{
+"name": "garden-19",
+"title": "Kinkaku, at dusk",
+"text": "Kinkaku at dusk: a tea house, a red bridge, 7 koi and a pine. Composed from one seed; the palette is the seed's choice too.",
+"palette": "dusk",
+"structure": "teahouse"
+},
+{
+"name": "garden-20",
+"title": "Sankei, under the moon",
+"text": "Sankei under the moon: a torii, a wooden bridge and 7 koi. Composed from one seed; the palette is the seed's choice too.",
+"palette": "night",
+"structure": "torii"
+},
+{
+"name": "garden-21",
+"title": "Shukkei, under the moon",
+"text": "Shukkei under the moon: a torii, a red bridge, 4 koi and a pine. Composed from one seed; the palette is the seed's choice too.",
+"palette": "night",
+"structure": "torii"
+},
+{
+"name": "garden-22",
+"title": "Ritsurin, at sunset",
+"text": "Ritsurin at sunset: a stone lantern, a wooden bridge, 8 koi, a pine and wisteria. Composed from one seed; the palette is the seed's choice too.",
+"palette": "sunset",
+"structure": "lantern"
+},
+{
+"name": "garden-23",
+"title": "Kōko, at dusk",
+"text": "Kōko at dusk: a wisteria pergola, a red bridge and a pine. Composed from one seed; the palette is the seed's choice too.",
+"palette": "dusk",
+"structure": "pergola"
+},
+{
+"name": "garden-24",
+"title": "Jōju, in blossom",
+"text": "Jōju in blossom: a wisteria pergola, a red bridge and 8 koi. Composed from one seed; the palette is the seed's choice too.",
+"palette": "blossom",
+"structure": "pergola"
+},
+{
+"name": "garden-25",
+"title": "Mōtsū, at dusk",
+"text": "Mōtsū at dusk: a 3-tier pagoda, a wooden bridge, 6 koi and wisteria. Composed from one seed; the palette is the seed's choice too.",
+"palette": "dusk",
+"structure": "pagoda"
+},
+{
+"name": "garden-26",
+"title": "Kōdai, under the moon",
+"text": "Kōdai under the moon: a stone lantern, a wooden bridge, a pine and wisteria. Composed from one seed; the palette is the seed's choice too.",
+"palette": "night",
+"structure": "lantern"
+},
+{
+"name": "garden-27",
+"title": "Shōren, at sunset",
+"text": "Shōren at sunset: a stone lantern, a wooden bridge, 7 koi and wisteria. Composed from one seed; the palette is the seed's choice too.",
+"palette": "sunset",
+"structure": "lantern"
+},
+{
+"name": "garden-28",
+"title": "Hōkoku, in the afternoon",
+"text": "Hōkoku in the afternoon: a 3-tier pagoda, a red bridge, 8 koi and a pine. Composed from one seed; the palette is the seed's choice too.",
+"palette": "day",
+"structure": "pagoda"
+},
+{
+"name": "garden-29",
+"title": "Ninna, in the afternoon",
+"text": "Ninna in the afternoon: a tea house, a red bridge, 8 koi, a pine and wisteria. Composed from one seed; the palette is the seed's choice too.",
+"palette": "day",
+"structure": "teahouse"
+},
+{
+"name": "garden-30",
+"title": "Tōji, in the afternoon",
+"text": "Tōji in the afternoon: a 5-tier pagoda, a wooden bridge, 6 koi and a pine. Composed from one seed; the palette is the seed's choice too.",
+"palette": "day",
+"structure": "pagoda"
+}
+]
