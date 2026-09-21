@@ -117,3 +117,11 @@ ul.conf img.wide{width:40px;height:auto;filter:drop-shadow(0 1px 2px rgba(0,0,0,
 .rec footer img.pickles{width:34px;height:44px;vertical-align:-16px;margin:0 6px}
 ul.posts .by{display:block;color:var(--muted);font-size:.82rem;margin-top:4px}ul.posts .by a{color:var(--muted)}
 .tag.draft{background:#fef3c7;color:#78350f;border:1px solid #f59e0b;border-radius:8px;padding:8px 12px;font-weight:600}
+
+/* organizations + volunteering */
+ul.orgs li div{display:flex;flex-wrap:wrap;gap:4px 12px;align-items:baseline}ul.orgs b{color:var(--ink)}ul.orgs span{color:var(--muted);font-size:.9rem}ul.orgs p{margin:6px 0 0;color:var(--ink-2)}
+.vol{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:18px 28px;margin-top:6px}
+.vol section{border-top:1px solid var(--line);padding-top:10px}
+.vol h3{margin:0 0 6px;font-size:.85rem;letter-spacing:.05em;text-transform:uppercase;color:var(--accent)}
+.vol ul{list-style:none;padding:0;margin:0}.vol li{padding:6px 0;border-top:1px dashed var(--line);color:var(--ink-2);font-size:.95rem;display:flex;gap:14px;align-items:baseline}.vol li div{flex:1}
+.vol li:first-child{border-top:0}.vol b{color:var(--ink);font-weight:600}.vol li span{color:var(--muted);font-size:.85rem;white-space:nowrap;font-variant-numeric:tabular-nums}
