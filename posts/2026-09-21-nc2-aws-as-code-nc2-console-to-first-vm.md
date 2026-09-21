@@ -16,7 +16,7 @@ So the build has two halves. The first is the NC2 console: a UI where you onboar
 ## The map
 
 ```text
- ┌─ NC2 console (cloud.nutanix.com) ──────────────────────────────────────┐
+ ┌─ NC2 console (cloud.nutanix.com) ─────────────────────────────────────┐
  │  1. org ─▶ 2. AWS cloud account (CloudFormation) ─▶ 3. Create Cluster │
  │                                                    + Prism Central    │
  └───────────────────────────────┬───────────────────────────────────────┘
