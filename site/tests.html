@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Live Test Pipeline · CloudLab Works</title>
+<meta name="description" content="The lab's tests, published as they run: what each one checks, whether it passed or failed, how long a failure has stood, and every transition as a feed.">
+<link rel="canonical" href="https://cloudlabworks.dev/tests">
+<link rel="alternate" type="application/json" title="Live Test Pipeline transitions" href="/tests/feed.json">
+<style>{{STYLE}}</style>
+<style>
+ul.tests{list-style:none;padding:0;margin:14px 0 0}
+ul.tests li.trow{padding:14px 0;border-top:1px solid var(--line);display:grid;gap:4px}
+ul.tests li.trow:first-child{border-top:0}
+ul.tests .head{display:flex;gap:10px;align-items:baseline;flex-wrap:wrap}ul.tests .head b{font-size:1.05rem}
+ul.tests .st{display:inline-block;font-size:.7rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;border-radius:6px;padding:3px 8px;background:#e6f0ef;color:#0b1220}
+ul.tests .st.pass{background:#cfe9d6}ul.tests .st.fail{background:#f5c6c6}ul.tests .st.wip{background:#f3e3c3}ul.tests .st.planned{background:#e9e4f4}ul.tests .st.finished{background:#dfe7f2}
+ul.tests .check{color:var(--ink-2);line-height:1.5}ul.tests .meta{color:var(--muted);font-size:.85rem}ul.tests .fail{color:#9b2c2c;font-size:.95rem}
+@media(prefers-color-scheme:dark){ul.tests .fail{color:#f0a0a0}}
+ul.tests li.empty{color:var(--muted);padding:12px 0}
+ol.tfeed{list-style:none;padding:0;margin:8px 0 0}ol.tfeed li{display:grid;grid-template-columns:170px 1fr;gap:6px 16px;padding:10px 0;border-top:1px solid var(--line);align-items:start}
+ol.tfeed time{color:var(--accent);font-weight:600;font-size:.9rem;font-variant-numeric:tabular-nums}ol.tfeed .arrow{display:block;color:var(--ink-2);font-size:.95rem}ol.tfeed .note{display:block;color:var(--muted);font-size:.85rem;margin-top:2px}
+ol.tfeed li.fail b{color:#9b2c2c}@media(prefers-color-scheme:dark){ol.tfeed li.fail b{color:#f0a0a0}}
+@media(max-width:560px){ol.tfeed li{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div id="dim" aria-hidden="true"></div>
+{{HEAD}}
+<main>
+  <h1>Live Test Pipeline</h1>
+  <p class="lede">The lab's tests, published as they run. Every result is here, pass and fail; a channel of passes would be a marketing feed. A failure is promoted when it is new or when its failure mode changes; a known failure stays listed with its run counter until it recovers. Identifiers are stripped before anything leaves the lab: no hostnames, addresses, paths, or figures without their baseline.</p>
+  <p class="tag" id="tests-generated"></p>
+
+  <h2 id="current">Current</h2>
+  <ul class="tests" id="tests-rows"><li class="empty">Loading…</li></ul>
+
+  <h2 id="transitions">Transitions</h2>
+  <p class="tag">Newest first. Machine-readable at <a href="/tests/feed.json">/tests/feed.json</a>; the current table at <a href="/tests.json">/tests.json</a>.</p>
+  <ol class="tfeed" id="tests-feed"><li>Loading…</li></ol>
+
+  <p class="tag">How a row gets here: a result is posted by the lab's test poster, which fans it out to the team channels and writes this page's data in the same run. The rules it follows are in the <a href="/asr">Architecture Decision Record</a>.</p>
+{{FOOT}}
+</main>
+<script src="/tests.js"></script>
+</body>
+</html>

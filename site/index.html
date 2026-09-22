@@ -11,6 +11,10 @@
 <meta property="og:url" content="https://cloudlabworks.dev/">
 <style>{{STYLE}}</style>
 <style>
+ul.tests{list-style:none;padding:0;margin:10px 0 0}ul.tests li.trow{padding:10px 0;border-top:1px solid var(--line);display:grid;gap:3px}ul.tests li.trow:first-child{border-top:0}
+ul.tests .head{display:flex;gap:10px;align-items:baseline;flex-wrap:wrap}ul.tests .st{display:inline-block;font-size:.7rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;border-radius:6px;padding:3px 8px;background:#e6f0ef;color:#0b1220}
+ul.tests .st.pass{background:#cfe9d6}ul.tests .st.fail{background:#f5c6c6}ul.tests .st.wip{background:#f3e3c3}ul.tests .st.planned{background:#e9e4f4}ul.tests .st.finished{background:#dfe7f2}
+ul.tests .meta{color:var(--muted);font-size:.85rem}ul.tests .fail{color:#9b2c2c;font-size:.95rem}@media(prefers-color-scheme:dark){ul.tests .fail{color:#f0a0a0}}ul.tests li.empty{color:var(--muted)}
 ul.projects b i.st{display:inline-block;margin-left:8px;font-style:normal;font-size:.7rem;letter-spacing:.06em;text-transform:uppercase;border-radius:6px;padding:2px 7px;background:#e6f0ef;color:#0b1220;vertical-align:middle}
 ul.projects .st.proposed,ul.projects .st.draft{background:#e9e4f4}ul.projects .st.parked{background:#eee;color:#555}ul.projects .st.decided,ul.projects .st.built{background:#f3e3c3}
 </style>
@@ -69,6 +73,10 @@ ul.projects .st.proposed,ul.projects .st.draft{background:#e9e4f4}ul.projects .s
     <li><b>Light show for Infrastructure as Music <i class="st parked">parked</i></b><span>An LED sphere driven by the same lab state as the music. Parked on purpose: the stock firmware's sync-to-music mode already does the job.</span></li>
     <li><b>Earlier, on GitHub</b><span>NC2 field tooling and study guides from the Nutanix years: <a href="https://github.com/issaquahd/nc2costexplorer" rel="noopener">nc2costexplorer</a>, <a href="https://github.com/issaquahd/nc2azureazurevm" rel="noopener">nc2azureazurevm</a>, <a href="https://github.com/issaquahd/Terraform_ERA" rel="noopener">Terraform_ERA</a> (DBaaS as code), <a href="https://github.com/issaquahd/CloudClusters" rel="noopener">CloudClusters</a>, <a href="https://github.com/issaquahd/NCP-MCI" rel="noopener">NCP-MCI</a>, <a href="https://github.com/issaquahd/home_automation_duvall" rel="noopener">home_automation_duvall</a>. Everything under <a href="https://github.com/issaquahd" rel="noopener">@issaquahd</a>.</span></li>
   </ul>
+
+  <h2 id="tests">Live Test Pipeline</h2>
+  <p class="tag">The lab's tests as they run, pass and fail alike, identifiers stripped. The full table and the transition feed are on <a href="/tests">Live Test Pipeline</a>.</p>
+  <ul class="tests" id="tests-rows" data-compact><li class="empty">Loading…</li></ul>
 
   <h2 id="support">Services</h2>
   <ul class="plain">
@@ -406,5 +414,6 @@ ul.projects .st.proposed,ul.projects .st.draft{background:#e9e4f4}ul.projects .s
   <p class="contact-links"><a href="mailto:alex@cloudlabworks.dev">alex@cloudlabworks.dev</a> · <a href="https://www.linkedin.com/in/alexalvord" rel="noopener" aria-label="Alex Alvord on LinkedIn"><svg class="social-icon" viewBox="0 0 24 24" aria-hidden="true"><rect width="24" height="24" rx="4" fill="#0A66C2"/><path fill="#fff" d="M7.12 9.4H4.4V19.6h2.72zM5.76 4.4a1.58 1.58 0 1 0 .02 3.15 1.58 1.58 0 0 0-.02-3.15zM19.6 19.6h-2.72v-5.34c0-1.27-.02-2.9-1.77-2.9-1.77 0-2.04 1.38-2.04 2.81v5.43H10.35V9.4h2.61v1.4h.04c.36-.69 1.25-1.42 2.58-1.42 2.76 0 3.27 1.82 3.27 4.19z"/></svg>LinkedIn</a> · <a href="/inquire">Inquiry form</a></p>
 </main>
 {{FOOT}}
+<script src="/tests.js"></script>
 </body>
 </html>

@@ -1,0 +1,57 @@
+{
+ "title": "Live Test Pipeline",
+ "generated": "2026-09-22T04:47:39Z",
+ "rule": "Every result is published, pass and fail. A failure is promoted on transition only: new, or a changed failure mode. A known failure repeats here with its run counter.",
+ "tests": [
+  {
+   "id": "art-method-labelling",
+   "name": "Art page labelling",
+   "check": "Every piece on the art page states how it was made: from code, from a lab signal, or by hand. The audit passes at zero occurrences of the phrase \"AI art\".",
+   "status": "wip",
+   "last_run": "2026-09-22T04:47:39Z",
+   "runs": 0,
+   "last_transition": "2026-09-22T04:47:39Z",
+   "failure": ""
+  },
+  {
+   "id": "absolute-number-lint",
+   "name": "Absolute numbers rule",
+   "check": "Every metric the lab publishes carries its absolute value and its baseline, never only the delta. A lint check fails any note that ships a bare delta.",
+   "status": "planned",
+   "last_run": "2026-09-22T04:47:39Z",
+   "runs": 0,
+   "last_transition": "2026-09-22T04:47:39Z",
+   "failure": ""
+  },
+  {
+   "id": "fdia-probe",
+   "name": "Forged health state",
+   "check": "A forged all-clear state file, written while the instrument behind it is stopped, must raise a fault from a second signal the file cannot reach. Two readers of one file is a mirror, not a check.",
+   "status": "planned",
+   "last_run": "2026-09-22T04:47:39Z",
+   "runs": 0,
+   "last_transition": "2026-09-22T04:47:39Z",
+   "failure": ""
+  },
+  {
+   "id": "trend-watchdog",
+   "name": "Trend watchdog",
+   "check": "Site health is scored over a 24 hour window of deploys, checks and events; an alert fires on a second-half collapse of activity, not on the last reading. Retention of the window starts first.",
+   "status": "planned",
+   "last_run": "2026-09-22T04:47:39Z",
+   "runs": 0,
+   "last_transition": "2026-09-22T04:47:39Z",
+   "failure": ""
+  },
+  {
+   "id": "art-watermark-inquire",
+   "name": "Watermark and inquire only",
+   "check": "Every public image is served with a baked-in watermark, originals stay off the site, and the only path to a copy is the per-piece inquiry. Ownership closes the question that framing cannot.",
+   "status": "finished",
+   "last_run": "2026-09-22T04:47:39Z",
+   "runs": 0,
+   "last_transition": "2026-09-22T04:47:39Z",
+   "failure": ""
+  }
+ ]
+}
