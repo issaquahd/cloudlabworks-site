@@ -19,13 +19,16 @@
   m.font = "700 " + Math.floor(W * 0.062) + "px 'Courier New', Courier, monospace";
   m.fillText("THE", W / 2, H * 0.34);
   var md = m.getImageData(0, 0, W, H).data;
+  m.globalCompositeOperation = "source-in"; m.fillStyle = "#39ff14"; m.fillRect(0, 0, W, H); m.globalCompositeOperation = "source-over";
   function inWord(x, y) { var px = Math.min(W - 1, Math.max(0, x | 0)), py = Math.min(H - 1, Math.max(0, y | 0)); return md[(py * W + px) * 4 + 3] > 40; }
   // cells whose centre falls inside a letter: these stay lit so the word reads at every moment
-  var wordCells = [];
-  for (var c = 0; c < cols; c++) for (var r = 0; r < rows; r++) if (inWord(c * cell + cell / 2, r * cell + cell / 2)) wordCells.push([c * cell, r * cell]);
+  var wcell = 11, wordCells = [];
+  for (var c = 0; c < Math.floor(W / wcell); c++) for (var r = 0; r < Math.floor(H / wcell); r++) if (inWord(c * wcell + wcell / 2, r * wcell + wcell / 2)) wordCells.push([c * wcell, r * wcell]);
+  var wordFont = "bold " + (wcell - 1) + "px 'Courier New', Courier, monospace";
+  var rainFont = "bold " + (cell - 4) + "px 'Courier New', Courier, monospace";
 
   ctx.fillStyle = "#000"; ctx.fillRect(0, 0, W, H);
-  ctx.font = "bold " + (cell - 4) + "px 'Courier New', Courier, monospace";
+  ctx.font = rainFont;
   ctx.textBaseline = "top";
   var reduced = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
@@ -41,12 +44,14 @@
       drops[i] += speed[i];
       if (drops[i] * cell > H && Math.random() > 0.975) drops[i] = 0;
     }
-    // the word: a third of its cells re-lit each frame with a soft glow, so it never fades out
-    ctx.shadowBlur = 10; ctx.shadowColor = "#39ff14";
+    // the word: a faint solid glow under it, then most of its fine cells re-lit each frame, so it
+    // reads at every moment and is still made of code
+    ctx.globalAlpha = 0.10; ctx.shadowBlur = 24; ctx.shadowColor = "#39ff14"; ctx.drawImage(mask, 0, 0); ctx.globalAlpha = 1;
+    ctx.font = wordFont; ctx.shadowBlur = 6;
     for (var w = 0; w < wordCells.length; w++) {
-      if (Math.random() < 0.34) { ctx.fillStyle = Math.random() < 0.15 ? "#eaffea" : "#79f28f"; ctx.fillText(GLYPHS.charAt(Math.floor(Math.random() * GLYPHS.length)), wordCells[w][0] + 2, wordCells[w][1] + 2); }
+      if (Math.random() < 0.7) { ctx.fillStyle = Math.random() < 0.12 ? "#f2fff2" : "#8cf59c"; ctx.fillText(GLYPHS.charAt(Math.floor(Math.random() * GLYPHS.length)), wordCells[w][0] + 1, wordCells[w][1] + 1); }
     }
-    ctx.shadowBlur = 0;
+    ctx.font = rainFont; ctx.shadowBlur = 0;
   }
   if (reduced) { for (var k = 0; k < 90; k++) frame(); return; }
   var running = true;
