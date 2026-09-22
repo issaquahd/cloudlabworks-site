@@ -10,7 +10,8 @@
    "tags": [
     "agents",
     "tokens",
-    "platform engineering"
+    "platform-engineering",
+    "research"
    ],
    "found": "Infer once, export the result, run it without inference. An agent that rebuilds the same table by inference every run is a cache miss on purpose; caching is the oldest idea in computing. Teams that lost unlimited tokens revolted because they had become codependent, and most infrastructure was never designed, it accreted.",
    "here": "Test planned: a ZTA audit of every recurring task here, in three buckets (inference every run, exported script, must stay inferred and why), with the top three converted (deploy verification first) and each export recording what it assumed and when it re-derives. Absolute counts before and after."
@@ -24,7 +25,9 @@
    "tags": [
     "agents",
     "search",
-    "self-improvement"
+    "self-improvement",
+    "tokens",
+    "research"
    ],
    "found": "A finished discovery run is a tree of attempts with recorded outcomes; replayed as a simulator, thousands of alternative exploration policies can be scored at zero execution cost before one is redeployed. Only the exploration-policy code changes. Reported up to 162x fewer agent calls than SimpleTES; the baselines are the authors' own.",
    "here": "History as a simulator is the same rule as the talk above, applied to search. Test planned: before any re-run of a failed recurring task, the runner reads the last five outcomes and names a checkable change (a commit, a config diff, a version bump), or refuses."
@@ -36,9 +39,11 @@
    "link": "https://arxiv.org/abs/2504.21801",
    "tier": "abstract",
    "tags": [
-    "formal methods",
-    "Lean",
-    "reasoning"
+    "formal-verification",
+    "lean",
+    "reasoning",
+    "tokens",
+    "research"
    ],
    "found": "A large general model decomposes a theorem into Lean 4 subgoals with sorry placeholders; a 7B prover solves each; the composed proofs seed reinforcement learning. 88.9% on MiniF2F-test at Pass@8192 and 47 of 658 PutnamBench problems.",
    "here": "Big model plans once, small model runs the loop: the shape of the lab's model lanes. The headline number is 8,192 attempts per problem; read the denominator."
@@ -50,9 +55,10 @@
    "link": "https://www.scientificamerican.com/article/ai-will-become-mathematicians-co-pilot/",
    "tier": "full",
    "tags": [
-    "formal methods",
-    "Lean",
-    "collaboration"
+    "formal-verification",
+    "lean",
+    "collaboration",
+    "research"
    ],
    "found": "Lean and mathlib let twenty strangers collaborate on one proof without trusting each other, because the compiler checks every contribution. Formalization costs ten times the conventional route today; AI could bring it under one. AI has shown no ability to split a problem into easier pieces, and the precious training data is the failed attempts nobody publishes.",
    "here": "The receipt ledger is the lab's Lean: trust the check, not the collaborator. Red rows in the test pipeline are the published failures."
@@ -65,7 +71,8 @@
    "tier": "abstract",
    "tags": [
     "interpretability",
-    "LLM"
+    "llm",
+    "research"
    ],
    "found": "Fewer than 5% of attention heads carry two-operand arithmetic in LLaMA2; knocking them out costs about 70% of accuracy. Fine-tuning 32 of 1,024 heads matches or beats full fine-tuning on maths without the usual regression on other tasks.",
    "here": "Targeted change over blanket change. If the local Qwen lane ever needs a tune, a narrow one is the honest option."
@@ -78,7 +85,9 @@
    "tier": "abstract",
    "tags": [
     "survey",
-    "biology"
+    "biology",
+    "fault-detection",
+    "research"
    ],
    "found": "Narrative review of AI in medicine, agriculture and industrial biotech, pre-LLM and without data of its own. The useful part is the challenges section: a chest X-ray classifier learned to detect chest tubes rather than pneumothorax, and few models reach clinical practice because data access, reproducibility and accountability block them.",
    "here": "Shortcut learning is a probe that passes on a proxy signal. Folded into the planned FDIA probe test as a case."
@@ -92,7 +101,8 @@
    "tags": [
     "agents",
     "reproducibility",
-    "MCP"
+    "mcp",
+    "research"
    ],
    "found": "A paper becomes an MCP server plus an agent; each extracted tool is validated against the paper's own reported outputs and locked. 74 of 100 computational biology papers agentified, 593 of 599 tools validated, 91.2% on tutorial questions against 80.3% for raw repository access.",
    "here": "Test planned: agentify the lab's own Infrastructure as Music repository from its README; numeric tools within 3%, audio and SVG hash-equal, no manual fixes."
@@ -106,7 +116,8 @@
    "tags": [
     "science",
     "productivity",
-    "survey"
+    "survey",
+    "research"
    ],
    "found": "637 panel-recruited scientists, 15 million Gemini interactions, 2,600 specialized models. 47% use AI daily; LLMs and specialized models are complements; the bottleneck moved downstream for 44% and 41% report a growing backlog of untested hypotheses. The time saving, just under 7 hours a week, is self-reported.",
    "here": "The test pipeline on this site is a backlog by construction; the number that matters is how fast rows move from planned to a result."
@@ -119,7 +130,8 @@
    "tier": "full",
    "tags": [
     "science",
-    "verification"
+    "verification",
+    "research"
    ],
    "found": "89% of those who save time with AI spend more than a tenth of it checking outputs, 46% more than a quarter; AI progresses where there is ground truth.",
    "here": "Verification is the tax on speed. A test without a checkable pass condition is a wish; the verification tax on this lab's own completion claims is now measured."
@@ -132,7 +144,8 @@
    "tier": "abstract",
    "tags": [
     "alignment",
-    "evaluation"
+    "evaluation",
+    "research"
    ],
    "found": "Seven of 21 are alignment and safety evaluation: scheming honeypots, sabotage auditing across 17 agentic scenarios, proactive failure discovery, red-teaming at scale. Three study agents in social and economic settings; five are essays on consciousness and AGI.",
    "here": "Evaluate propensity, not only capability. A fabricated-receipt honeypot for delegated tasks joined the test pipeline."
@@ -145,7 +158,8 @@
    "tier": "abstract",
    "tags": [
     "trust",
-    "adoption"
+    "adoption",
+    "research"
    ],
    "found": "35 countries, K-means: Digital Champions, Sceptical Pragmatists (high infrastructure, low trust) and Cautious Emergents. Usage and trust move independently.",
    "here": "Usage is not sufficient for trust; adoption copy names the job and the data boundary first."
@@ -157,7 +171,8 @@
    "link": "https://doi.org/10.1057/s41599-026-08969-0",
    "tier": "abstract",
    "tags": [
-    "labor"
+    "labor",
+    "research"
    ],
    "found": "120 sector-years, fixed effects with an instrument: routine-intensive employment down (β −0.41), demand for high-skill digital competencies up (β +0.67).",
    "here": "Held as a value rather than filed as a finding: the skill that survives is the one that operates the system."
@@ -170,7 +185,8 @@
    "tier": "abstract",
    "tags": [
     "fault-detection",
-    "resilience"
+    "resilience",
+    "research"
    ],
    "found": "An autoencoder, CNN and BiLSTM hybrid keeps accuracy and F1 under false data injection attacks where single-point benchmarks degrade.",
    "here": "A health probe that trusts its inputs is only as good as the inputs. Test planned: a forged all-clear state file must be caught by an independent second signal."
@@ -182,7 +198,8 @@
    "link": "https://doi.org/10.1057/s41599-026-08884-4",
    "tier": "abstract",
    "tags": [
-    "education"
+    "education",
+    "research"
    ],
    "found": "Argues for AI-proof assessment that protects the abilities to Discern, Engage, Evaluate and Produce. A position paper, no data.",
    "here": "Closed-book practice, explanations written by the learner, not read from the sheet."
@@ -195,7 +212,8 @@
    "tier": "abstract",
    "tags": [
     "evaluation",
-    "metrics"
+    "metrics",
+    "research"
    ],
    "found": "With 10% of labels, AUC 0.520 against 0.5225 fully supervised. The headline gain over the baseline is 3 to 6 percent at an absolute AUC near chance.",
    "here": "Publish absolute and prospective numbers, never only the delta. Now a rule for every metric this lab publishes."
@@ -208,7 +226,8 @@
    "tier": "abstract",
    "tags": [
     "time-series",
-    "monitoring"
+    "monitoring",
+    "research"
    ],
    "found": "32,593 registrations, LightGBM with temporal SHAP: AUC 0.727 before the course opens, 0.911 by day 120; the engagement persistence ratio leads and a second-half collapse of activity is the signal. Prospective figure to plan against: 0.72 to 0.75.",
    "here": "The signal lives in the relationship between measurements over time. Test planned: a trend watchdog over a 24 hour window."
@@ -221,7 +240,8 @@
    "tier": "abstract",
    "tags": [
     "art",
-    "perception"
+    "perception",
+    "research"
    ],
    "found": "19 works shown beside AI reproductions; visitors split into Traditionalists, Visualists, Skeptics and AI Enthusiasts. The co-creator framing is the curatorial problem.",
    "here": "Every piece on the art page states how it was made; ownership, not framing, closes the question."
