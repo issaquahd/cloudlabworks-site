@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>History · CloudLab Works</title>
+<meta name="description" content="The lineage behind the lab's practice: computer music from Bell Labs in 1957, live coding from a Hamburg bar in 2004, Sonic Pi in 2013, and a lab in Duvall that plays its own state in 2026.">
+<link rel="canonical" href="https://cloudlabworks.dev/history">
+<style>{{STYLE}}</style>
+<style>
+ol.timeline{list-style:none;padding:0;margin:14px 0 0}
+ol.timeline li{padding:16px 0;border-top:1px solid var(--line);display:grid;grid-template-columns:110px 1fr;gap:6px 18px;align-items:start}
+ol.timeline li:first-child{border-top:0}
+ol.timeline time{color:var(--accent);font-weight:700;font-size:.95rem;font-variant-numeric:tabular-nums;padding-top:2px}
+ol.timeline b{font-size:1.05rem;display:block}
+ol.timeline p{margin:6px 0 0;color:var(--ink-2);line-height:1.5}
+ol.timeline li.here{background:linear-gradient(90deg,rgba(168,205,202,.12),transparent);border-radius:10px;padding-left:10px;margin-left:-10px}
+ol.timeline li.here time{color:var(--ink)}
+.source{color:var(--muted);font-size:.9rem;margin-top:22px}
+@media(max-width:600px){ol.timeline li{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div id="dim" aria-hidden="true"></div>
+{{HEAD}}
+<main>
+  <h1>History</h1>
+  <p class="lede">Where the lab's practice comes from. Code as Music, the instrument on this site, is a Sonic Pi program driven by the lab's own state; Sonic Pi is a 2013 branch of live coding; live coding is a 2004 name for something that started in a laboratory in 1957. The line below is that lineage, in order, with the lab's own entries at the end. Dates and names are from the source at the bottom; the last two rows are ours.</p>
+
+  <h2 id="computer-music">Computer music</h2>
+  <ol class="timeline">
+    <li><time>1957</time><div><b>The Illiac Suite</b><p>Lejaren Hiller and Leonard Isaacson at the University of Illinois produce a string quartet composed partly by computer, the first of its kind.</p></div></li>
+    <li><time>late 1950s</time><div><b>MUSIC I, Bell Labs</b><p>Max Mathews writes the first software that generates audio digitally. His 1962 article in Science carries computer music to a scientific audience; the MUSIC-N family that follows informs nearly everything after it. Mathews is called the father of computer music.</p></div></li>
+    <li><time>1960s to 1970s</time><div><b>Synthesis in the research centres</b><p>John Chowning discovers FM synthesis; James Tenney makes noise music with computers at Bell Labs. The machines are large, the programming slow, the results more interesting to scientists than to dancers.</p></div></li>
+  </ol>
+
+  <h2 id="interactive">Interactive environments</h2>
+  <ol class="timeline">
+    <li><time>1990</time><div><b>Max</b><p>Miller Puckette's IRCAM system for building interactive performance setups without writing C is licensed and named after Max Mathews. Audio signal processing later makes it Max/MSP: boxes connected by virtual cables, a standard for experimental musicians.</p></div></li>
+    <li><time>1996</time><div><b>Pure Data and SuperCollider</b><p>Puckette releases Pure Data, an open-source version of the same ideas. James McCartney releases SuperCollider, a full text-based language for real-time audio synthesis; it becomes free software in 2002 and is still the engine under much of live coding.</p></div></li>
+  </ol>
+
+  <h2 id="live-coding">Live coding</h2>
+  <ol class="timeline">
+    <li><time>2002</time><div><b>ChucK</b><p>Ge Wang and Perry Cook at Princeton introduce "strongly timed" programming: time advances explicitly in the code, giving sample-accurate control. It powers the Princeton Laptop Orchestra.</p></div></li>
+    <li><time>Feb 2004</time><div><b>TOPLAP</b><p>At the Changing Grammars symposium in Hamburg, late on a Saturday in a bar, Alex McLean, Julian Rohrhuber, Nick Collins and others found TOPLAP, the Temporal Organisation Per Laptop And Plinth. Its "Read Me" says the code should be visible to the audience: project the screen, let the thinking and typing be part of the show. "Show us your screens."</p></div></li>
+    <li><time>2000s</time><div><b>Impromptu, Extempore, Fluxus</b><p>Andrew Sorensen's Scheme-based Impromptu and its successor Extempore for live audiovisual performance; Dave Griffiths and Gabor Papp's Fluxus, where the same commands drive 3D graphics and sound.</p></div></li>
+    <li><time>2009</time><div><b>Tidal Cycles</b><p>Alex McLean's Haskell environment, SuperCollider underneath, treats music as infinite cycles of patterns; its mini-notation expresses polyrhythms in a handful of characters. Arguably the most-used live coding environment in performance.</p></div></li>
+    <li><time>17 Mar 2012</time><div><b>The first algorave</b><p>McLean and Collins coin "algorave" on a motorway drive in 2011, algorithm plus rave. The first one is a warm-up for the SuperCollider Symposium in London; by 2013 they are in Birmingham, Karlsruhe and Sheffield, today on every continent. Code projected large, performers visibly thinking, mistakes included.</p></div></li>
+    <li><time>2013</time><div><b>Sonic Pi</b><p>Sam Aaron at the University of Cambridge, with the Raspberry Pi Foundation, builds Sonic Pi to teach programming to school children through music. Ruby syntax, approachable for beginners, deep enough to perform with. Code as pedagogy, music as the reward for understanding logic.</p></div></li>
+    <li><time>Jul 2015</time><div><b>ICLC</b><p>The first International Conference on Live Coding at the University of Leeds; the academic and artistic branches meet there every year since.</p></div></li>
+    <li><time>2022</time><div><b>Strudel</b><p>Felix Roos ports Tidal's pattern engine to the browser. No installation; the Tidal way of thinking in any tab.</p></div></li>
+    <li><time>Feb 2024</time><div><b>TOPLAP at twenty</b><p>Gatherings and performances worldwide. The community now spans composers, educators, visual artists and club performers who share one habit: writing code in public.</p></div></li>
+  </ol>
+
+  <h2 id="here">Here</h2>
+  <ol class="timeline">
+    <li class="here"><time>2026</time><div><b>Infrastructure as Music</b><p>The lab's Sonic Pi program is not played by a person. Its input is the lab's own state: every site answering or not, the last deploys, the last faults. E major and a slow arpeggio while everything answers; minor and a low tone while something is down; a rising bell when a deploy lands. The score is code in git. <a href="/live">Code as Music</a> is the instrument, <a href="/visualization">the visualization</a> is the screen, projected.</p></div></li>
+    <li class="here"><time>2026</time><div><b>Show us your screens, for infrastructure</b><p>TOPLAP's rule turned on the lab itself: the <a href="/asr">architecture decisions</a>, the <a href="/tests">test pipeline</a> and the <a href="/research">reading</a> are published while they run, mistakes included. The performer is a set of agents; the audience is whoever is reading this.</p></div></li>
+  </ol>
+
+  <p class="source">Source for the dated entries above the "Here" section: Soniare, <a href="https://www.soniare.net/blog/history-of-livecoding" rel="noopener">The History of Live Coding: From Bell Labs to the Algorave</a>. Read 2026-09-21; the lab's entries are its own.</p>
+{{FOOT}}
+</main>
+</body>
+</html>
