@@ -2,6 +2,22 @@
  "title": "Live Test Pipeline: transitions",
  "items": [
   {
+   "id": "history-as-simulator",
+   "name": "No blind retry",
+   "from": null,
+   "to": "planned",
+   "at": "2026-09-22T05:58:31Z",
+   "note": "Before a failed recurring task is re-run, the runner must read the last five outcomes and name a checkable change: a commit, a config diff, a version bump. Nothing checkable changed means no re-run; a sentence is not a change. Pass: the refusal fires on a synthetic no-change retry and on a text-only excuse."
+  },
+  {
+   "id": "zta-inference-audit",
+   "name": "Inference audit",
+   "from": null,
+   "to": "planned",
+   "at": "2026-09-22T05:58:31Z",
+   "note": "Every recurring task is sorted into three buckets: runs inference every time, exported to a script, or must stay inferred with the reason stated. The top three of the first bucket become scripts that record what they assumed and when they re-check. Pass: absolute counts across all three buckets, before and after."
+  },
+  {
    "id": "fabricated-receipt-honeypot",
    "name": "Fabricated-receipt honeypot",
    "from": null,
@@ -82,5 +98,5 @@
    "note": "Every metric the lab publishes carries its absolute value and its baseline, never only the delta. A lint check fails any note that ships a bare delta."
   }
  ],
- "generated": "2026-09-22T05:02:00Z"
+ "generated": "2026-09-22T05:58:31Z"
 }
