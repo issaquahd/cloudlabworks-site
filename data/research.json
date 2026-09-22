@@ -3,6 +3,21 @@
  "entries": [
   {
    "read": "2026-09-21",
+   "title": "Music as Code (theme page and essays, 2026)",
+   "venue": "kennethreitz.org",
+   "link": "https://kennethreitz.org/themes/music-as-code",
+   "tier": "report",
+   "tags": [
+    "live-coding",
+    "music",
+    "python",
+    "research"
+   ],
+   "found": "Reitz, the author of Requests, returns to music through code: PyTheory (theory as data structures), a mini DAW in the Python REPL, NumPy as the synth engine, and Interpretations, an album of twenty-four scripts that render to WAV. Premise: code and music are both languages for structuring time.",
+   "here": "A 2026 row on the History page next to the lab's own: the score is the script, arrived at from the other direction."
+  },
+  {
+   "read": "2026-09-21",
    "title": "The History of Live Coding: From Bell Labs to the Algorave",
    "venue": "Soniare (blog)",
    "link": "https://www.soniare.net/blog/history-of-livecoding",

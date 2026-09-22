@@ -25,6 +25,7 @@ There is a history page on this site now, under Site, and it is there because th
 | 2015 | First International Conference on Live Coding, Leeds | The academic and club branches in one room |
 | 2022 | Strudel: Tidal in the browser | No install; the pattern engine in any tab |
 | Feb 2024 | TOPLAP at twenty | A community whose one shared habit is writing code in public |
+| Mar to Jun 2026 | Kenneth Reitz, Music as Code: PyTheory, NumPy as synth engine, an album of twenty-four Python scripts | The score is the script; the same premise as this lab, arrived at from the drum stool |
 
 ## The rule
 
@@ -44,4 +45,4 @@ Projecting the screen has a price the Read Me does not mention: you have to buil
 
 The Hamburg group wrote their rule for a room with a laptop and a projector. Twenty-two years on, the room is a rack in Duvall and the projector is a website, and the rule holds: the cursor is blinking, and whatever happens next is on the screen.
 
-Source for the dated entries: Soniare, [The History of Live Coding: From Bell Labs to the Algorave](https://www.soniare.net/blog/history-of-livecoding). The lab's timeline, with these entries and its own, lives at [/history](/history).
+Sources for the dated entries: Soniare, [The History of Live Coding: From Bell Labs to the Algorave](https://www.soniare.net/blog/history-of-livecoding); Kenneth Reitz, [Music as Code](https://kennethreitz.org/themes/music-as-code). The lab's timeline, with these entries and its own, lives at [/history](/history).
