@@ -1,95 +1,476 @@
 {
-  "note": "Papers and reports read in the lab, newest first. Each entry: what it found in one line, and what it changed here in one line. Evidence tier is how far it was read: full, abstract, or report. Internal identifiers never appear here.",
-  "entries": [
-    {"read": "2026-09-21", "title": "Reimagining research papers as interactive and reliable AI agents (Paper2Agent)", "venue": "Nature", "link": "https://doi.org/10.1038/s41586-026-11044-y", "tier": "full", "tags": ["agents", "reproducibility", "MCP"],
-     "found": "A paper becomes an MCP server plus an agent; each extracted tool is validated against the paper's own reported outputs and locked. 74 of 100 computational biology papers agentified, 593 of 599 tools validated, 91.2% on tutorial questions against 80.3% for raw repository access.",
-     "here": "Test planned: agentify the lab's own Infrastructure as Music repository from its README; numeric tools within 3%, audio and SVG hash-equal, no manual fixes."},
-    {"read": "2026-09-21", "title": "AI in Science: Early Insights", "venue": "Google, Google DeepMind, MIT FutureTech (working paper, September 2026)", "link": "https://ai.google/static/documents/AI-in-Science.pdf", "tier": "report", "tags": ["science", "productivity", "survey"],
-     "found": "637 panel-recruited scientists, 15 million Gemini interactions, 2,600 specialized models. 47% use AI daily; LLMs and specialized models are complements; the bottleneck moved downstream for 44% and 41% report a growing backlog of untested hypotheses. The time saving, just under 7 hours a week, is self-reported.",
-     "here": "The test pipeline on this site is a backlog by construction; the number that matters is how fast rows move from planned to a result."},
-    {"read": "2026-09-21", "title": "Why AI is speeding up scientific research but not lab experiments", "venue": "Scientific American, 2026-09-18", "link": "https://www.scientificamerican.com/article/why-ai-is-speeding-up-scientific-research-but-not-lab-experiments/", "tier": "full", "tags": ["science", "verification"],
-     "found": "89% of those who save time with AI spend more than a tenth of it checking outputs, 46% more than a quarter; AI progresses where there is ground truth.",
-     "here": "Verification is the tax on speed. A test without a checkable pass condition is a wish; the verification tax on this lab's own completion claims is now measured."},
-    {"read": "2026-09-21", "title": "Google DeepMind publications, March to September 2026 (21 entries)", "venue": "deepmind.google/research/publications", "link": "https://deepmind.google/research/publications/", "tier": "abstract", "tags": ["alignment", "evaluation"],
-     "found": "Seven of 21 are alignment and safety evaluation: scheming honeypots, sabotage auditing across 17 agentic scenarios, proactive failure discovery, red-teaming at scale. Three study agents in social and economic settings; five are essays on consciousness and AGI.",
-     "here": "Evaluate propensity, not only capability. A fabricated-receipt honeypot for delegated tasks joined the test pipeline."},
-    {"read": "2026-09-21", "title": "Mapping trust in artificial intelligence across Europe: a cluster-based comparative analysis", "venue": "Scientific Reports", "link": "https://doi.org/10.1038/s41598-026-71572-5", "tier": "abstract", "tags": ["trust", "adoption"],
-     "found": "35 countries, K-means: Digital Champions, Sceptical Pragmatists (high infrastructure, low trust) and Cautious Emergents. Usage and trust move independently.",
-     "here": "Usage is not sufficient for trust; adoption copy names the job and the data boundary first."},
-    {"read": "2026-09-21", "title": "Artificial Intelligence and the Restructuring of Saudi Labor Markets", "venue": "Humanities and Social Sciences Communications", "link": "https://doi.org/10.1057/s41599-026-08969-0", "tier": "abstract", "tags": ["labor"],
-     "found": "120 sector-years, fixed effects with an instrument: routine-intensive employment down (β −0.41), demand for high-skill digital competencies up (β +0.67).",
-     "here": "Held as a value rather than filed as a finding: the skill that survives is the one that operates the system."},
-    {"read": "2026-09-21", "title": "Single-phase fault diagnosis in distribution networks via cyber-secure hybrid models of artificial intelligence", "venue": "Scientific Reports", "link": "https://doi.org/10.1038/s41598-026-67622-7", "tier": "abstract", "tags": ["fault-detection", "resilience"],
-     "found": "An autoencoder, CNN and BiLSTM hybrid keeps accuracy and F1 under false data injection attacks where single-point benchmarks degrade.",
-     "here": "A health probe that trusts its inputs is only as good as the inputs. Test planned: a forged all-clear state file must be caught by an independent second signal."},
-    {"read": "2026-09-21", "title": "Teaching for artificial or human intelligence? A critical perspective on assessment during the AI era", "venue": "Humanities and Social Sciences Communications", "link": "https://doi.org/10.1057/s41599-026-08884-4", "tier": "abstract", "tags": ["education"],
-     "found": "Argues for AI-proof assessment that protects the abilities to Discern, Engage, Evaluate and Produce. A position paper, no data.",
-     "here": "Closed-book practice, explanations written by the learner, not read from the sheet."},
-    {"read": "2026-09-21", "title": "Construction of self-supervised learning models for educational scenarios based on data-efficient artificial intelligence", "venue": "Scientific Reports", "link": "https://doi.org/10.1038/s41598-026-69479-2", "tier": "abstract", "tags": ["evaluation", "metrics"],
-     "found": "With 10% of labels, AUC 0.520 against 0.5225 fully supervised. The headline gain over the baseline is 3 to 6 percent at an absolute AUC near chance.",
-     "here": "Publish absolute and prospective numbers, never only the delta. Now a rule for every metric this lab publishes."},
-    {"read": "2026-09-21", "title": "Artificial intelligence-driven early warning for online learner dropout: temporal explainability and theory-grounded intervention", "venue": "Scientific Reports", "link": "https://doi.org/10.1038/s41598-026-68508-4", "tier": "abstract", "tags": ["time-series", "monitoring"],
-     "found": "32,593 registrations, LightGBM with temporal SHAP: AUC 0.727 before the course opens, 0.911 by day 120; the engagement persistence ratio leads and a second-half collapse of activity is the signal. Prospective figure to plan against: 0.72 to 0.75.",
-     "here": "The signal lives in the relationship between measurements over time. Test planned: a trend watchdog over a 24 hour window."},
-    {"read": "2026-09-21", "title": "Creativity in the age of artificial intelligence: an exploratory study segmenting perceptions of human and machine-made art", "venue": "Scientific Reports", "link": "https://doi.org/10.1038/s41598-026-64323-z", "tier": "abstract", "tags": ["art", "perception"],
-     "found": "19 works shown beside AI reproductions; visitors split into Traditionalists, Visualists, Skeptics and AI Enthusiasts. The co-creator framing is the curatorial problem.",
-     "here": "Every piece on the art page states how it was made; ownership, not framing, closes the question."},
-    {"read": "2026-09-19", "title": "AI/ML-driven polymerization in autonomous flow reactors", "venue": "Faraday Discussions 2026, 262, 478 to 499 (ORNL, CNMS)", "link": "https://doi.org/10.1039/d5fd00066a", "tier": "full", "tags": ["autonomous-labs", "materials"],
-     "found": "An autonomous flow reactor closes the loop between model and experiment for polymerization; the bottleneck is the physical cycle, not the model.",
-     "here": "The same shape as the lab's own loops: the slow step is the experiment, so instrument it."},
-    {"read": "2026-09-19", "title": "Dream-RSI: Recursive Self-Improvement through Evolving Worlds", "venue": "arXiv 2609.14858", "link": "https://arxiv.org/abs/2609.14858", "tier": "full", "tags": ["agents", "self-improvement"],
-     "found": "The exploration policy of a discovery loop can improve itself against evolving simulated worlds; results on 8 tasks in 3 domains against a frozen-policy baseline.",
-     "here": "What transfers is the mechanism, not the benchmark: replay worlds for the lab's own loops are on the project board."},
-    {"read": "2026-09-19", "title": "An Architecture for Long-Horizon Agents: Levels, Ticks and Cascaded Intelligence", "venue": "arXiv 2609.19519", "link": "https://arxiv.org/abs/2609.19519", "tier": "full", "tags": ["agents", "architecture"],
-     "found": "Judgment, labor and deterministic tiers; work moves up a tier only after review and escalation; a tick is the unit of accounting.",
-     "here": "A description of the harness this lab runs, written by someone else; the review-and-escalate cascade is held until a reviewed trigger exists."},
-    {"read": "2026-09-19", "title": "AgentPProf: Semantic Profiler for Long-Horizon AI Agents", "venue": "arXiv 2609.20301", "link": "https://arxiv.org/abs/2609.20301", "tier": "full", "tags": ["agents", "observability"],
-     "found": "Profiling rather than tracing: trajectories become operation stacks and flame graphs, so cost concentrates where it is spent.",
-     "here": "First profile of the lab's own agent runs produced the same week; per-turn evidence already existed, the flame graph made it legible."},
-    {"read": "2026-09-19", "title": "OpenAgentFlow: a system-wide safety boundary for heterogeneous agent fleets", "venue": "arXiv 2609.00015", "link": "https://arxiv.org/abs/2609.00015", "tier": "abstract", "tags": ["agents", "safety"],
-     "found": "A control-plane and action-plane split: every action, GUI, API, tool or planned, is normalized into one event stream that a policy layer can gate.",
-     "here": "Matches the lab's gate on irreversible-and-external actions; the event stream is the part still missing."},
-    {"read": "2026-09-19", "title": "ModularRSI: Modular and Generalizable Recursive Harness Self-Improvement", "venue": "arXiv 2609.14857", "link": "https://arxiv.org/abs/2609.14857", "tier": "abstract", "tags": ["agents", "harness"],
-     "found": "An evolvable harness decomposed into five modules evolved independently on benchmark-disjoint tasks; consistent gains on unseen tasks.",
-     "here": "Blueprint for the lab's own harness experiments: modular, benchmark-disjoint, so the loop does not overfit the eval at hand."},
-    {"read": "2026-09-19", "title": "Authorization Architectures for Tool-Using AI Agents", "venue": "arXiv 2609.15906", "link": "https://arxiv.org/abs/2609.15906", "tier": "abstract", "tags": ["agents", "security"],
-     "found": "Where the authorization decision sits, at the tool, the gateway or the planner, changes what a compromised component can reach.",
-     "here": "The lab's secrets sit behind an egress proxy the model never sees; the paper's map is the one used to explain why."},
-    {"read": "2026-09-19", "title": "Emergence World: Adversarial Stress-Testing of Long-Horizon Multi-Agent Systems", "venue": "arXiv 2609.17320", "link": "https://arxiv.org/abs/2609.17320", "tier": "abstract", "tags": ["agents", "evaluation"],
-     "found": "Adversarial environments that stress coordination over long horizons surface failures single-run benchmarks miss.",
-     "here": "Input to the replay-worlds plan."},
-    {"read": "2026-09-19", "title": "Red-Teaming Auto Mode: Improving Blocking Classifiers Against Malign Coding Agents", "venue": "arXiv 2609.19587", "link": "https://arxiv.org/abs/2609.19587", "tier": "abstract", "tags": ["agents", "security"],
-     "found": "Blocking classifiers for autonomous coding agents improve when red-teamed against the agent's own strategies rather than static prompts.",
-     "here": "Noted for the sandbox tier; no change yet."},
-    {"read": "2026-09-18", "title": "An Empirical Study of Harness Design for Coding Agents", "venue": "arXiv 2609.20804", "link": "https://arxiv.org/abs/2609.20804", "tier": "abstract", "tags": ["agents", "harness"],
-     "found": "176 matched settings across four models on SWE-Bench Verified and Terminal-Bench: context management and tool design move outcomes more than the model choice does.",
-     "here": "Backs the lab's lane routing and context pruning; the persona prompt budget is enforced at build time."},
-    {"read": "2026-09-18", "title": "How Do Agent Harnesses Create Value?", "venue": "arXiv 2609.20474", "link": "https://arxiv.org/abs/2609.20474", "tier": "abstract", "tags": ["agents", "harness"],
-     "found": "On τ²-bench with 265 matched cells, task-specific plans lift oracle-verified success by 7.2 points, mostly on the hard tail.",
-     "here": "Plans per task class, not per run."},
-    {"read": "2026-09-18", "title": "When AI Agents Commit: Cognitive Serializability", "venue": "arXiv 2609.20261", "link": "https://arxiv.org/abs/2609.20261", "tier": "abstract", "tags": ["agents", "verification"],
-     "found": "An agent's mutation derives from reads, evidence, policy and delegated authority that can each go stale before the commit; valid at read time is not valid at commit time.",
-     "here": "The receipt verifier now expires standing grants after thirty minutes and refuses a claim whose reads are not logged."},
-    {"read": "2026-09-18", "title": "Recursively Scaling Auto-Research Loops for Efficient Agent Harness (SoL-Pi)", "venue": "arXiv 2609.20519", "link": "https://arxiv.org/abs/2609.20519", "tier": "abstract", "tags": ["agents", "self-improvement"],
-     "found": "Auto-discovered harness mechanisms, action execution and observation handling among them, found by a research loop rather than by hand.",
-     "here": "Read with ModularRSI; the lab's harness changes stay hand-reviewed for now."},
-    {"read": "2026-09-18", "title": "RAFT: Stateful RAG for Troubleshooting Agents", "venue": "arXiv 2609.20754 (EMNLP 2026 Industry)", "link": "https://arxiv.org/abs/2609.20754", "tier": "abstract", "tags": ["agents", "memory"],
-     "found": "Closed cases become directed timelines and retrieval happens at the entry to a case, not mid-stream.",
-     "here": "The lab's incident files are one RCA per file for the same reason."},
-    {"read": "2026-09-18", "title": "The Mechanics of a Swarm", "venue": "arXiv 2609.12748", "link": "https://arxiv.org/abs/2609.12748", "tier": "abstract", "tags": ["swarms", "security"],
-     "found": "An external reconstruction of the agents-on-a-public-wiki episode of mid-2026: 14,591 revisions, coordination without a coordinator.",
-     "here": "Read with the counter-swarm paper; the lab's inbound agent stays memory-less and paired-sender only."},
-    {"read": "2026-09-18", "title": "Counter-Swarm Doctrine: Containing Coordinated Agent Intrusions", "venue": "arXiv 2609.06140", "link": "https://arxiv.org/abs/2609.06140", "tier": "abstract", "tags": ["swarms", "security"],
-     "found": "Position paper: the unit of defense is the coordination channel, not the individual agent.",
-     "here": "Candidate improvements filed for consensus; none adopted yet."},
-    {"read": "2026-09-18", "title": "Can LLMs Act as Agent Swarm Orchestrators? (SwarmBench)", "venue": "arXiv 2608.30661 (EMNLP 2026 Findings)", "link": "https://arxiv.org/abs/2608.30661", "tier": "abstract", "tags": ["swarms", "evaluation"],
-     "found": "A benchmark scoring orchestration on accuracy, efficiency and cost together; orchestrators that win on accuracy often lose on cost.",
-     "here": "Cost is a scored axis in the lab's model-lane routing."},
-    {"read": "2026-09-18", "title": "A Scalable Trust Discovery Architecture for the Internet of Agents", "venue": "arXiv 2609.20095", "link": "https://arxiv.org/abs/2609.20095", "tier": "abstract", "tags": ["agents", "trust"],
-     "found": "Three layers, root, registry and record, so an agent's identity and permissions can be discovered without a central broker.",
-     "here": "Read for the day two agents outside this lab need to trust each other; not there yet."},
-    {"read": "2026-09-14", "title": "The effects of remote work on collaboration among information workers", "venue": "Nature Human Behaviour (Yang et al.; preprint arXiv 2007.15584)", "link": "https://arxiv.org/abs/2007.15584", "tier": "abstract", "tags": ["collaboration"],
-     "found": "Firm-wide remote work made collaboration networks more static and siloed, with less synchronous communication.",
-     "here": "Read while designing how the lab's agents and people share one room; the shared channel is deliberate."}
-  ]
+ "note": "Papers and reports read in the lab, newest first. Each entry: what it found in one line, and what it changed here in one line. Evidence tier is how far it was read: full, abstract, or report. Internal identifiers never appear here.",
+ "entries": [
+  {
+   "read": "2026-09-21",
+   "title": "ZTA: Zero Token Architecture (Kelsey Hightower, PlatformCon 2026)",
+   "venue": "Talk, PlatformCon 2026 (YouTube, 29 min)",
+   "link": "https://www.youtube.com/watch?v=A7WFt2JQ5sg",
+   "tier": "full",
+   "tags": [
+    "agents",
+    "tokens",
+    "platform engineering"
+   ],
+   "found": "Infer once, export the result, run it without inference. An agent that rebuilds the same table by inference every run is a cache miss on purpose; caching is the oldest idea in computing. Teams that lost unlimited tokens revolted because they had become codependent, and most infrastructure was never designed, it accreted.",
+   "here": "Test planned: a ZTA audit of every recurring task here, marked inference-every-run or exported script, with the top three converted (deploy verification first). Absolute counts before and after."
+  },
+  {
+   "read": "2026-09-21",
+   "title": "Dream-RSI: Recursive Self-Improvement through Evolving Worlds",
+   "venue": "arXiv 2609.14858 (Google DeepMind, UVA, UMD)",
+   "link": "https://arxiv.org/abs/2609.14858",
+   "tier": "abstract",
+   "tags": [
+    "agents",
+    "search",
+    "self-improvement"
+   ],
+   "found": "A finished discovery run is a tree of attempts with recorded outcomes; replayed as a simulator, thousands of alternative exploration policies can be scored at zero execution cost before one is redeployed. Only the exploration-policy code changes. Reported up to 162x fewer agent calls than SimpleTES; the baselines are the authors' own.",
+   "here": "History as a simulator is the same rule as the talk above, applied to search. Test planned: before any re-run of a failed recurring task, the runner reads the last five outcomes and names what changed, or refuses."
+  },
+  {
+   "read": "2026-09-21",
+   "title": "DeepSeek-Prover-V2: Advancing Formal Mathematical Reasoning via Reinforcement Learning for Subgoal Decomposition",
+   "venue": "arXiv 2504.21801 (DeepSeek-AI)",
+   "link": "https://arxiv.org/abs/2504.21801",
+   "tier": "abstract",
+   "tags": [
+    "formal methods",
+    "Lean",
+    "reasoning"
+   ],
+   "found": "A large general model decomposes a theorem into Lean 4 subgoals with sorry placeholders; a 7B prover solves each; the composed proofs seed reinforcement learning. 88.9% on MiniF2F-test at Pass@8192 and 47 of 658 PutnamBench problems.",
+   "here": "Big model plans once, small model runs the loop: the shape of the lab's model lanes. The headline number is 8,192 attempts per problem; read the denominator."
+  },
+  {
+   "read": "2026-09-21",
+   "title": "AI Will Become Mathematicians' Co-Pilot (Terence Tao interview)",
+   "venue": "Scientific American, 2024-06-08 (from Spektrum der Wissenschaft)",
+   "link": "https://www.scientificamerican.com/article/ai-will-become-mathematicians-co-pilot/",
+   "tier": "full",
+   "tags": [
+    "formal methods",
+    "Lean",
+    "collaboration"
+   ],
+   "found": "Lean and mathlib let twenty strangers collaborate on one proof without trusting each other, because the compiler checks every contribution. Formalization costs ten times the conventional route today; AI could bring it under one. AI has shown no ability to split a problem into easier pieces, and the precious training data is the failed attempts nobody publishes.",
+   "here": "The receipt ledger is the lab's Lean: trust the check, not the collaborator. Red rows in the test pipeline are the published failures."
+  },
+  {
+   "read": "2026-09-21",
+   "title": "Interpreting and Improving Large Language Models in Arithmetic Calculation",
+   "venue": "ICML 2024 (Zhang, Wan et al.; arXiv 2409.01659)",
+   "link": "https://arxiv.org/abs/2409.01659",
+   "tier": "abstract",
+   "tags": [
+    "interpretability",
+    "LLM"
+   ],
+   "found": "Fewer than 5% of attention heads carry two-operand arithmetic in LLaMA2; knocking them out costs about 70% of accuracy. Fine-tuning 32 of 1,024 heads matches or beats full fine-tuning on maths without the usual regression on other tasks.",
+   "here": "Targeted change over blanket change. If the local Qwen lane ever needs a tune, a narrow one is the honest option."
+  },
+  {
+   "read": "2026-09-21",
+   "title": "Artificial Intelligence in Biological Sciences",
+   "venue": "Life 12(9):1430, MDPI, 2022 (review)",
+   "link": "https://doi.org/10.3390/life12091430",
+   "tier": "abstract",
+   "tags": [
+    "survey",
+    "biology"
+   ],
+   "found": "Narrative review of AI in medicine, agriculture and industrial biotech, pre-LLM and without data of its own. The useful part is the challenges section: a chest X-ray classifier learned to detect chest tubes rather than pneumothorax, and few models reach clinical practice because data access, reproducibility and accountability block them.",
+   "here": "Shortcut learning is a probe that passes on a proxy signal. Folded into the planned FDIA probe test as a case."
+  },
+  {
+   "read": "2026-09-21",
+   "title": "Reimagining research papers as interactive and reliable AI agents (Paper2Agent)",
+   "venue": "Nature",
+   "link": "https://doi.org/10.1038/s41586-026-11044-y",
+   "tier": "full",
+   "tags": [
+    "agents",
+    "reproducibility",
+    "MCP"
+   ],
+   "found": "A paper becomes an MCP server plus an agent; each extracted tool is validated against the paper's own reported outputs and locked. 74 of 100 computational biology papers agentified, 593 of 599 tools validated, 91.2% on tutorial questions against 80.3% for raw repository access.",
+   "here": "Test planned: agentify the lab's own Infrastructure as Music repository from its README; numeric tools within 3%, audio and SVG hash-equal, no manual fixes."
+  },
+  {
+   "read": "2026-09-21",
+   "title": "AI in Science: Early Insights",
+   "venue": "Google, Google DeepMind, MIT FutureTech (working paper, September 2026)",
+   "link": "https://ai.google/static/documents/AI-in-Science.pdf",
+   "tier": "report",
+   "tags": [
+    "science",
+    "productivity",
+    "survey"
+   ],
+   "found": "637 panel-recruited scientists, 15 million Gemini interactions, 2,600 specialized models. 47% use AI daily; LLMs and specialized models are complements; the bottleneck moved downstream for 44% and 41% report a growing backlog of untested hypotheses. The time saving, just under 7 hours a week, is self-reported.",
+   "here": "The test pipeline on this site is a backlog by construction; the number that matters is how fast rows move from planned to a result."
+  },
+  {
+   "read": "2026-09-21",
+   "title": "Why AI is speeding up scientific research but not lab experiments",
+   "venue": "Scientific American, 2026-09-18",
+   "link": "https://www.scientificamerican.com/article/why-ai-is-speeding-up-scientific-research-but-not-lab-experiments/",
+   "tier": "full",
+   "tags": [
+    "science",
+    "verification"
+   ],
+   "found": "89% of those who save time with AI spend more than a tenth of it checking outputs, 46% more than a quarter; AI progresses where there is ground truth.",
+   "here": "Verification is the tax on speed. A test without a checkable pass condition is a wish; the verification tax on this lab's own completion claims is now measured."
+  },
+  {
+   "read": "2026-09-21",
+   "title": "Google DeepMind publications, March to September 2026 (21 entries)",
+   "venue": "deepmind.google/research/publications",
+   "link": "https://deepmind.google/research/publications/",
+   "tier": "abstract",
+   "tags": [
+    "alignment",
+    "evaluation"
+   ],
+   "found": "Seven of 21 are alignment and safety evaluation: scheming honeypots, sabotage auditing across 17 agentic scenarios, proactive failure discovery, red-teaming at scale. Three study agents in social and economic settings; five are essays on consciousness and AGI.",
+   "here": "Evaluate propensity, not only capability. A fabricated-receipt honeypot for delegated tasks joined the test pipeline."
+  },
+  {
+   "read": "2026-09-21",
+   "title": "Mapping trust in artificial intelligence across Europe: a cluster-based comparative analysis",
+   "venue": "Scientific Reports",
+   "link": "https://doi.org/10.1038/s41598-026-71572-5",
+   "tier": "abstract",
+   "tags": [
+    "trust",
+    "adoption"
+   ],
+   "found": "35 countries, K-means: Digital Champions, Sceptical Pragmatists (high infrastructure, low trust) and Cautious Emergents. Usage and trust move independently.",
+   "here": "Usage is not sufficient for trust; adoption copy names the job and the data boundary first."
+  },
+  {
+   "read": "2026-09-21",
+   "title": "Artificial Intelligence and the Restructuring of Saudi Labor Markets",
+   "venue": "Humanities and Social Sciences Communications",
+   "link": "https://doi.org/10.1057/s41599-026-08969-0",
+   "tier": "abstract",
+   "tags": [
+    "labor"
+   ],
+   "found": "120 sector-years, fixed effects with an instrument: routine-intensive employment down (β −0.41), demand for high-skill digital competencies up (β +0.67).",
+   "here": "Held as a value rather than filed as a finding: the skill that survives is the one that operates the system."
+  },
+  {
+   "read": "2026-09-21",
+   "title": "Single-phase fault diagnosis in distribution networks via cyber-secure hybrid models of artificial intelligence",
+   "venue": "Scientific Reports",
+   "link": "https://doi.org/10.1038/s41598-026-67622-7",
+   "tier": "abstract",
+   "tags": [
+    "fault-detection",
+    "resilience"
+   ],
+   "found": "An autoencoder, CNN and BiLSTM hybrid keeps accuracy and F1 under false data injection attacks where single-point benchmarks degrade.",
+   "here": "A health probe that trusts its inputs is only as good as the inputs. Test planned: a forged all-clear state file must be caught by an independent second signal."
+  },
+  {
+   "read": "2026-09-21",
+   "title": "Teaching for artificial or human intelligence? A critical perspective on assessment during the AI era",
+   "venue": "Humanities and Social Sciences Communications",
+   "link": "https://doi.org/10.1057/s41599-026-08884-4",
+   "tier": "abstract",
+   "tags": [
+    "education"
+   ],
+   "found": "Argues for AI-proof assessment that protects the abilities to Discern, Engage, Evaluate and Produce. A position paper, no data.",
+   "here": "Closed-book practice, explanations written by the learner, not read from the sheet."
+  },
+  {
+   "read": "2026-09-21",
+   "title": "Construction of self-supervised learning models for educational scenarios based on data-efficient artificial intelligence",
+   "venue": "Scientific Reports",
+   "link": "https://doi.org/10.1038/s41598-026-69479-2",
+   "tier": "abstract",
+   "tags": [
+    "evaluation",
+    "metrics"
+   ],
+   "found": "With 10% of labels, AUC 0.520 against 0.5225 fully supervised. The headline gain over the baseline is 3 to 6 percent at an absolute AUC near chance.",
+   "here": "Publish absolute and prospective numbers, never only the delta. Now a rule for every metric this lab publishes."
+  },
+  {
+   "read": "2026-09-21",
+   "title": "Artificial intelligence-driven early warning for online learner dropout: temporal explainability and theory-grounded intervention",
+   "venue": "Scientific Reports",
+   "link": "https://doi.org/10.1038/s41598-026-68508-4",
+   "tier": "abstract",
+   "tags": [
+    "time-series",
+    "monitoring"
+   ],
+   "found": "32,593 registrations, LightGBM with temporal SHAP: AUC 0.727 before the course opens, 0.911 by day 120; the engagement persistence ratio leads and a second-half collapse of activity is the signal. Prospective figure to plan against: 0.72 to 0.75.",
+   "here": "The signal lives in the relationship between measurements over time. Test planned: a trend watchdog over a 24 hour window."
+  },
+  {
+   "read": "2026-09-21",
+   "title": "Creativity in the age of artificial intelligence: an exploratory study segmenting perceptions of human and machine-made art",
+   "venue": "Scientific Reports",
+   "link": "https://doi.org/10.1038/s41598-026-64323-z",
+   "tier": "abstract",
+   "tags": [
+    "art",
+    "perception"
+   ],
+   "found": "19 works shown beside AI reproductions; visitors split into Traditionalists, Visualists, Skeptics and AI Enthusiasts. The co-creator framing is the curatorial problem.",
+   "here": "Every piece on the art page states how it was made; ownership, not framing, closes the question."
+  },
+  {
+   "read": "2026-09-19",
+   "title": "AI/ML-driven polymerization in autonomous flow reactors",
+   "venue": "Faraday Discussions 2026, 262, 478 to 499 (ORNL, CNMS)",
+   "link": "https://doi.org/10.1039/d5fd00066a",
+   "tier": "full",
+   "tags": [
+    "autonomous-labs",
+    "materials"
+   ],
+   "found": "An autonomous flow reactor closes the loop between model and experiment for polymerization; the bottleneck is the physical cycle, not the model.",
+   "here": "The same shape as the lab's own loops: the slow step is the experiment, so instrument it."
+  },
+  {
+   "read": "2026-09-19",
+   "title": "Dream-RSI: Recursive Self-Improvement through Evolving Worlds",
+   "venue": "arXiv 2609.14858",
+   "link": "https://arxiv.org/abs/2609.14858",
+   "tier": "full",
+   "tags": [
+    "agents",
+    "self-improvement"
+   ],
+   "found": "The exploration policy of a discovery loop can improve itself against evolving simulated worlds; results on 8 tasks in 3 domains against a frozen-policy baseline.",
+   "here": "What transfers is the mechanism, not the benchmark: replay worlds for the lab's own loops are on the project board."
+  },
+  {
+   "read": "2026-09-19",
+   "title": "An Architecture for Long-Horizon Agents: Levels, Ticks and Cascaded Intelligence",
+   "venue": "arXiv 2609.19519",
+   "link": "https://arxiv.org/abs/2609.19519",
+   "tier": "full",
+   "tags": [
+    "agents",
+    "architecture"
+   ],
+   "found": "Judgment, labor and deterministic tiers; work moves up a tier only after review and escalation; a tick is the unit of accounting.",
+   "here": "A description of the harness this lab runs, written by someone else; the review-and-escalate cascade is held until a reviewed trigger exists."
+  },
+  {
+   "read": "2026-09-19",
+   "title": "AgentPProf: Semantic Profiler for Long-Horizon AI Agents",
+   "venue": "arXiv 2609.20301",
+   "link": "https://arxiv.org/abs/2609.20301",
+   "tier": "full",
+   "tags": [
+    "agents",
+    "observability"
+   ],
+   "found": "Profiling rather than tracing: trajectories become operation stacks and flame graphs, so cost concentrates where it is spent.",
+   "here": "First profile of the lab's own agent runs produced the same week; per-turn evidence already existed, the flame graph made it legible."
+  },
+  {
+   "read": "2026-09-19",
+   "title": "OpenAgentFlow: a system-wide safety boundary for heterogeneous agent fleets",
+   "venue": "arXiv 2609.00015",
+   "link": "https://arxiv.org/abs/2609.00015",
+   "tier": "abstract",
+   "tags": [
+    "agents",
+    "safety"
+   ],
+   "found": "A control-plane and action-plane split: every action, GUI, API, tool or planned, is normalized into one event stream that a policy layer can gate.",
+   "here": "Matches the lab's gate on irreversible-and-external actions; the event stream is the part still missing."
+  },
+  {
+   "read": "2026-09-19",
+   "title": "ModularRSI: Modular and Generalizable Recursive Harness Self-Improvement",
+   "venue": "arXiv 2609.14857",
+   "link": "https://arxiv.org/abs/2609.14857",
+   "tier": "abstract",
+   "tags": [
+    "agents",
+    "harness"
+   ],
+   "found": "An evolvable harness decomposed into five modules evolved independently on benchmark-disjoint tasks; consistent gains on unseen tasks.",
+   "here": "Blueprint for the lab's own harness experiments: modular, benchmark-disjoint, so the loop does not overfit the eval at hand."
+  },
+  {
+   "read": "2026-09-19",
+   "title": "Authorization Architectures for Tool-Using AI Agents",
+   "venue": "arXiv 2609.15906",
+   "link": "https://arxiv.org/abs/2609.15906",
+   "tier": "abstract",
+   "tags": [
+    "agents",
+    "security"
+   ],
+   "found": "Where the authorization decision sits, at the tool, the gateway or the planner, changes what a compromised component can reach.",
+   "here": "The lab's secrets sit behind an egress proxy the model never sees; the paper's map is the one used to explain why."
+  },
+  {
+   "read": "2026-09-19",
+   "title": "Emergence World: Adversarial Stress-Testing of Long-Horizon Multi-Agent Systems",
+   "venue": "arXiv 2609.17320",
+   "link": "https://arxiv.org/abs/2609.17320",
+   "tier": "abstract",
+   "tags": [
+    "agents",
+    "evaluation"
+   ],
+   "found": "Adversarial environments that stress coordination over long horizons surface failures single-run benchmarks miss.",
+   "here": "Input to the replay-worlds plan."
+  },
+  {
+   "read": "2026-09-19",
+   "title": "Red-Teaming Auto Mode: Improving Blocking Classifiers Against Malign Coding Agents",
+   "venue": "arXiv 2609.19587",
+   "link": "https://arxiv.org/abs/2609.19587",
+   "tier": "abstract",
+   "tags": [
+    "agents",
+    "security"
+   ],
+   "found": "Blocking classifiers for autonomous coding agents improve when red-teamed against the agent's own strategies rather than static prompts.",
+   "here": "Noted for the sandbox tier; no change yet."
+  },
+  {
+   "read": "2026-09-18",
+   "title": "An Empirical Study of Harness Design for Coding Agents",
+   "venue": "arXiv 2609.20804",
+   "link": "https://arxiv.org/abs/2609.20804",
+   "tier": "abstract",
+   "tags": [
+    "agents",
+    "harness"
+   ],
+   "found": "176 matched settings across four models on SWE-Bench Verified and Terminal-Bench: context management and tool design move outcomes more than the model choice does.",
+   "here": "Backs the lab's lane routing and context pruning; the persona prompt budget is enforced at build time."
+  },
+  {
+   "read": "2026-09-18",
+   "title": "How Do Agent Harnesses Create Value?",
+   "venue": "arXiv 2609.20474",
+   "link": "https://arxiv.org/abs/2609.20474",
+   "tier": "abstract",
+   "tags": [
+    "agents",
+    "harness"
+   ],
+   "found": "On τ²-bench with 265 matched cells, task-specific plans lift oracle-verified success by 7.2 points, mostly on the hard tail.",
+   "here": "Plans per task class, not per run."
+  },
+  {
+   "read": "2026-09-18",
+   "title": "When AI Agents Commit: Cognitive Serializability",
+   "venue": "arXiv 2609.20261",
+   "link": "https://arxiv.org/abs/2609.20261",
+   "tier": "abstract",
+   "tags": [
+    "agents",
+    "verification"
+   ],
+   "found": "An agent's mutation derives from reads, evidence, policy and delegated authority that can each go stale before the commit; valid at read time is not valid at commit time.",
+   "here": "The receipt verifier now expires standing grants after thirty minutes and refuses a claim whose reads are not logged."
+  },
+  {
+   "read": "2026-09-18",
+   "title": "Recursively Scaling Auto-Research Loops for Efficient Agent Harness (SoL-Pi)",
+   "venue": "arXiv 2609.20519",
+   "link": "https://arxiv.org/abs/2609.20519",
+   "tier": "abstract",
+   "tags": [
+    "agents",
+    "self-improvement"
+   ],
+   "found": "Auto-discovered harness mechanisms, action execution and observation handling among them, found by a research loop rather than by hand.",
+   "here": "Read with ModularRSI; the lab's harness changes stay hand-reviewed for now."
+  },
+  {
+   "read": "2026-09-18",
+   "title": "RAFT: Stateful RAG for Troubleshooting Agents",
+   "venue": "arXiv 2609.20754 (EMNLP 2026 Industry)",
+   "link": "https://arxiv.org/abs/2609.20754",
+   "tier": "abstract",
+   "tags": [
+    "agents",
+    "memory"
+   ],
+   "found": "Closed cases become directed timelines and retrieval happens at the entry to a case, not mid-stream.",
+   "here": "The lab's incident files are one RCA per file for the same reason."
+  },
+  {
+   "read": "2026-09-18",
+   "title": "The Mechanics of a Swarm",
+   "venue": "arXiv 2609.12748",
+   "link": "https://arxiv.org/abs/2609.12748",
+   "tier": "abstract",
+   "tags": [
+    "swarms",
+    "security"
+   ],
+   "found": "An external reconstruction of the agents-on-a-public-wiki episode of mid-2026: 14,591 revisions, coordination without a coordinator.",
+   "here": "Read with the counter-swarm paper; the lab's inbound agent stays memory-less and paired-sender only."
+  },
+  {
+   "read": "2026-09-18",
+   "title": "Counter-Swarm Doctrine: Containing Coordinated Agent Intrusions",
+   "venue": "arXiv 2609.06140",
+   "link": "https://arxiv.org/abs/2609.06140",
+   "tier": "abstract",
+   "tags": [
+    "swarms",
+    "security"
+   ],
+   "found": "Position paper: the unit of defense is the coordination channel, not the individual agent.",
+   "here": "Candidate improvements filed for consensus; none adopted yet."
+  },
+  {
+   "read": "2026-09-18",
+   "title": "Can LLMs Act as Agent Swarm Orchestrators? (SwarmBench)",
+   "venue": "arXiv 2608.30661 (EMNLP 2026 Findings)",
+   "link": "https://arxiv.org/abs/2608.30661",
+   "tier": "abstract",
+   "tags": [
+    "swarms",
+    "evaluation"
+   ],
+   "found": "A benchmark scoring orchestration on accuracy, efficiency and cost together; orchestrators that win on accuracy often lose on cost.",
+   "here": "Cost is a scored axis in the lab's model-lane routing."
+  },
+  {
+   "read": "2026-09-18",
+   "title": "A Scalable Trust Discovery Architecture for the Internet of Agents",
+   "venue": "arXiv 2609.20095",
+   "link": "https://arxiv.org/abs/2609.20095",
+   "tier": "abstract",
+   "tags": [
+    "agents",
+    "trust"
+   ],
+   "found": "Three layers, root, registry and record, so an agent's identity and permissions can be discovered without a central broker.",
+   "here": "Read for the day two agents outside this lab need to trust each other; not there yet."
+  },
+  {
+   "read": "2026-09-14",
+   "title": "The effects of remote work on collaboration among information workers",
+   "venue": "Nature Human Behaviour (Yang et al.; preprint arXiv 2007.15584)",
+   "link": "https://arxiv.org/abs/2007.15584",
+   "tier": "abstract",
+   "tags": [
+    "collaboration"
+   ],
+   "found": "Firm-wide remote work made collaboration networks more static and siloed, with less synchronous communication.",
+   "here": "Read while designing how the lab's agents and people share one room; the shared channel is deliberate."
+  }
+ ]
 }
