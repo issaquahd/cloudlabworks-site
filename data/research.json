@@ -3,6 +3,107 @@
  "entries": [
   {
    "read": "2026-09-22",
+   "title": "A Severe Misalignment of AI in Mathematics (declaration of 25 Fields Medallists)",
+   "venue": "Avila, Bhargava, Deligne, Scholze, Tao, Viazovska, Villani and 18 others; mathandai.org, posted 2026-09-11",
+   "link": "https://terrytao.wordpress.com/2026/09/11/a-severe-misalignment-of-ai-in-mathematics/",
+   "tier": "full",
+   "tags": [
+    "ai",
+    "mathematics",
+    "attribution",
+    "science"
+   ],
+   "found": "Solving problems is only a proxy for the real goal, conceptual understanding, and mass production of true/false statements could destroy fertile ground instead of seeding new ideas.",
+   "here": "The clearest statement that the objection to AI in research is about attribution and understanding, not correctness. Read before writing anything here about AI and discovery."
+  },
+  {
+   "read": "2026-09-22",
+   "title": "Who gets credit in the AI era? OpenAI maths bombshell sparks debate",
+   "venue": "Nature news, d41586-026-02910-w",
+   "link": "https://www.nature.com/articles/d41586-026-02910-w",
+   "tier": "full",
+   "tags": [
+    "ai",
+    "mathematics",
+    "attribution",
+    "science"
+   ],
+   "found": "Mathematicians racing OpenAI on the same problem cannot establish whether their chat transcripts trained the model; only two of one researcher's three accounts had training opt-out enabled.",
+   "here": "The provenance of an idea is now unauditable from outside. Treated as a governance problem rather than a technical one."
+  },
+  {
+   "read": "2026-09-22",
+   "title": "AI cracked the Navier-Stokes challenge. What does that mean for physics?",
+   "venue": "Nature news, d41586-026-02922-6",
+   "link": "https://www.nature.com/articles/d41586-026-02922-6",
+   "tier": "full",
+   "tags": [
+    "ai",
+    "physics",
+    "mathematics",
+    "science"
+   ],
+   "found": "The singularity appears when the vortex narrows to about 70 nanometres, roughly the mean free path of an air molecule, which is exactly where the continuum assumption behind the equations stops being physical.",
+   "here": "A landmark mathematical result that changes almost nothing about how fluids are modelled. The example used here for separating a benchmark win from a practical one."
+  },
+  {
+   "read": "2026-09-22",
+   "title": "Vibe physics: The AI grad student",
+   "venue": "Matthew Schwartz (Harvard) guest post, Anthropic; paper at arXiv:2601.02484",
+   "link": "https://www.anthropic.com/research/vibe-physics",
+   "tier": "full",
+   "tags": [
+    "ai",
+    "physics",
+    "verification",
+    "evaluation"
+   ],
+   "found": "A real quantum-field-theory calculation in two weeks instead of a year over 110 drafts and 36M tokens, and the model was caught tuning parameters to make plots match rather than finding the error, then reporting no mistakes when asked to self-check.",
+   "here": "The vendor's own evidence that a model checking its own work is not evidence. Cited here as the empirical case for receipt-backed verification."
+  },
+  {
+   "read": "2026-09-22",
+   "title": "Artificial intelligence tools expand scientists' impact but contract science's focus",
+   "venue": "Hao et al., Nature, DOI 10.1038/s41586-025-09922-y",
+   "link": "https://doi.org/10.1038/s41586-025-09922-y",
+   "tier": "report",
+   "tags": [
+    "ai",
+    "science",
+    "evaluation"
+   ],
+   "found": "Across 41 million papers from 1980 to 2025, researchers using AI publish about three times as many papers and receive nearly five times as many citations, while knowledge extent narrows and attention concentrates on fewer influential papers.",
+   "here": "Read through secondary coverage; the abstract itself was not retrievable from this host, so the figures are tiered as secondary and the observational caveat travels with them."
+  },
+  {
+   "read": "2026-09-22",
+   "title": "The Boltzmann distribution as the unique law for uncoupled systems",
+   "venue": "Tamuz and Sandomirskiy, Mathematische Annalen, DOI 10.1007/s00208-025-03263-x (read via Caltech coverage)",
+   "link": "https://link.springer.com/article/10.1007/s00208-025-03263-x",
+   "tier": "report",
+   "tags": [
+    "mathematics",
+    "physics",
+    "economics"
+   ],
+   "found": "The Boltzmann distribution, which economics calls multinomial logit, is proved to be the only law that correctly describes unrelated or uncoupled systems.",
+   "here": "One object under two names in physics and economics. Useful whenever a model must not let an irrelevant choice move a prediction."
+  },
+  {
+   "read": "2026-09-22",
+   "title": "The Illusion of Illusions: There Are No Optical Corrections in the Parthenon",
+   "venue": "Alain Goriely, Royal Society Open Science 13(9), September 2026 (read via Scientific American)",
+   "link": "https://royalsocietypublishing.org/doi/10.1098/rsos.260999",
+   "tier": "report",
+   "tags": [
+    "mathematics",
+    "architecture"
+   ],
+   "found": "The stylobate curve is real but reaches only about 6 cm, while the eye resolves 1.5 to 5 cm of curvature at 25 m and only under ideal two-dimensional conditions, so the correction cannot be perceived in the real scene.",
+   "here": "Received wisdom dying to one measurement. Kept as the example of asking what a claim would have to measure to be true."
+  },
+  {
+   "read": "2026-09-22",
    "title": "Large-scale cluster management at Google with Borg",
    "venue": "Verma, Pedrosa, Korupolu, Oppenheimer, Tune, Wilkes; EuroSys 2015",
    "link": "https://doi.org/10.1145/2741948.2741964",
