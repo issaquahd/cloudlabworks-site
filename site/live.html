@@ -18,7 +18,9 @@ body{background:#0b1220 url(/media/salish-sea-l79-960.jpg) left 40%/cover no-rep
 header,main,footer{position:relative;z-index:1}
 header{position:relative}header::before{content:"";position:absolute;inset:0 calc(50% - min(552px,50vw)) -14px;z-index:-1;border-radius:12px;background:rgba(11,18,32,.55);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
 header .brand,header .brand small,nav.quick a{color:#e2e8f0}nav.quick a:hover{color:#a8cdca}nav.quick .col b{color:#a8cdca}
-main{color:#e2e8f0}
+main{color:#e2e8f0;position:relative}
+.tema{position:absolute;top:0;left:50%;transform:translateX(-50%);width:min(1032px,100%);pointer-events:none;z-index:0}.tema img{display:block;width:100%;height:auto;opacity:.08;filter:invert(1)}
+main>*:not(.tema){position:relative;z-index:1}
 main h1,main h2{color:#f8fafc;text-shadow:0 2px 12px rgba(0,0,0,.6)}main .lede,main .tag,main .how{color:#e2e8f0}main .lede{text-shadow:0 1px 8px rgba(0,0,0,.7)}
 .panel{background:rgba(11,18,32,.72);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border:1px solid rgba(226,232,240,.14);border-radius:14px;padding:20px 22px;margin-top:22px}
 .credit{color:#94a3b8;font-size:.8rem;margin-top:26px}.credit a{color:#94a3b8}
@@ -50,6 +52,7 @@ footer{background:rgba(11,18,32,.55)}footer,footer a{color:#cbd5e1}
 <canvas id="sea" aria-hidden="true"></canvas>
 {{HEAD}}
 <main>
+  <div class="tema" aria-hidden="true"><img src="/media/tema-score.png" width="720" height="250" alt="" decoding="async"></div>
   <h1>Code as Music</h1>
   <p class="lede">The lab as sound, and as the Salish Sea. Every deploy, every health check, every fault in the Duvall lab drives an instrument: Sonic Pi on the machine that runs the agents. That is L79 behind this page, a Southern Resident in Haro Strait. The light on the water moves with the music; a deploy sends a ring across it.</p>
 
