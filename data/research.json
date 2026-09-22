@@ -3,6 +3,123 @@
  "entries": [
   {
    "read": "2026-09-22",
+   "title": "Large-scale cluster management at Google with Borg",
+   "venue": "Verma, Pedrosa, Korupolu, Oppenheimer, Tune, Wilkes; EuroSys 2015",
+   "link": "https://doi.org/10.1145/2741948.2741964",
+   "tier": "full",
+   "tags": [
+    "finops",
+    "cloud-native",
+    "capacity",
+    "economics"
+   ],
+   "found": "About 20 percent of the workload in a median cell runs in reclaimed resources, with a task's reservation decaying toward its usage plus a safety margin after 300 seconds.",
+   "here": "The reservation-against-usage gap is now the shape capacity work here is written against: the lever is the denominator, not a discount."
+  },
+  {
+   "read": "2026-09-22",
+   "title": "Autopilot: workload autoscaling at Google",
+   "venue": "Rzadca, Findeisen, Swiderski, Zych, Broniek, Kusmierek, Nowak, Strack, Witusowski, Hand, Wilkes; EuroSys 2020",
+   "link": "https://doi.org/10.1145/3342195.3387524",
+   "tier": "full",
+   "tags": [
+    "finops",
+    "cloud-native",
+    "autoscaling",
+    "economics"
+   ],
+   "found": "Average slack fell from 46 to 23 percent while jobs severely affected by out-of-memory kills dropped about tenfold, so tighter limits did not cost reliability.",
+   "here": "Stock Kubernetes VPA implements the moving-window recommender, so the lab plans against the 31 percent row rather than the 23."
+  },
+  {
+   "read": "2026-09-22",
+   "title": "Analysis of Large-Scale Multi-Tenant GPU Clusters for DNN Training Workloads",
+   "venue": "Jeon, Venkataraman, Phanishayee, Qian, Xiao, Yang; USENIX ATC 2019 (arXiv:1901.05758)",
+   "link": "https://arxiv.org/abs/1901.05758",
+   "tier": "full",
+   "tags": [
+    "finops",
+    "gpu",
+    "scheduling",
+    "capacity"
+   ],
+   "found": "GPUs already in use ran at 52.32 percent mean utilization, and fragmentation delay drove about 80 percent of total queueing time for the largest jobs.",
+   "here": "Named the two stacked gaps, allocation and in-use; every GPU utilization number here now carries its denominator."
+  },
+  {
+   "read": "2026-09-22",
+   "title": "Dominant Resource Fairness: Fair Allocation of Multiple Resource Types",
+   "venue": "Ghodsi, Zaharia, Hindman, Konwinski, Shenker, Stoica; NSDI 2011",
+   "link": "https://www.usenix.org/legacy/event/nsdi11/tech/full_papers/Ghodsi.pdf",
+   "tier": "full",
+   "tags": [
+    "finops",
+    "economics",
+    "cloud-native"
+   ],
+   "found": "Asset fairness, which is dollar-proportional chargeback, provably violates the sharing incentive: a well-behaved team can do better by leaving the shared cluster.",
+   "here": "Rules out the most intuitive chargeback design for any shared cluster, in the lab or in a customer's."
+  },
+  {
+   "read": "2026-09-22",
+   "title": "Resource Central: Understanding and Predicting Workloads for Improved Resource Management in Large Cloud Platforms",
+   "venue": "Cortez, Bonde, Muzio, Russinovich, Fontoura, Bianchini; SOSP 2017",
+   "link": "https://doi.org/10.1145/3132747.3132772",
+   "tier": "full",
+   "tags": [
+    "finops",
+    "capacity",
+    "cloud-native"
+   ],
+   "found": "Sixty percent of virtual machines sat below 20 percent average CPU, and oversubscription was admitted only under a prediction rule that falls back to full allocation when confidence drops.",
+   "here": "The honest form of overcommit: predict, then degrade safely, rather than assume statistical multiplexing holds across tenants."
+  },
+  {
+   "read": "2026-09-22",
+   "title": "Fast Inference from Transformers via Speculative Decoding",
+   "venue": "Leviathan, Kalman, Matias; ICML 2023 (arXiv:2211.17192)",
+   "link": "https://arxiv.org/abs/2211.17192",
+   "tier": "full",
+   "tags": [
+    "finops",
+    "inference",
+    "llm",
+    "economics"
+   ],
+   "found": "Two to three times faster on T5-XXL with identical outputs, with the gain governed by the acceptance rate and the cost ratio of the draft model.",
+   "here": "The cheapest inference lever that does not change the output distribution, so it sits above quantization in the order of operations here."
+  },
+  {
+   "read": "2026-09-22",
+   "title": "Cloud Programming Simplified: A Berkeley View on Serverless Computing",
+   "venue": "Jonas et al.; arXiv:1902.03383, 2019",
+   "link": "https://arxiv.org/abs/1902.03383",
+   "tier": "full",
+   "tags": [
+    "finops",
+    "serverless",
+    "economics",
+    "cloud-native"
+   ],
+   "found": "Roughly a twofold premium per CPU-core-second against renting the instance outright, before the cold-start and idle-hour terms are counted.",
+   "here": "Sets the break-even test for anything always-on here: elasticity is worth paying for only where it is actually exercised."
+  },
+  {
+   "read": "2026-09-22",
+   "title": "Be Wary of the Economics of Serverless Cloud Computing",
+   "venue": "Eivy and Weinman; IEEE Cloud Computing 4(2), March 2017, DOI 10.1109/MCC.2017.32",
+   "link": "https://doi.org/10.1109/MCC.2017.32",
+   "tier": "abstract",
+   "tags": [
+    "finops",
+    "serverless",
+    "economics"
+   ],
+   "found": "Serverless unit pricing is cheap at low volume and several times the price of reserved capacity at sustained load, and a usage-based bill has no ceiling, so a runaway retry loop becomes a financial incident.",
+   "here": "The full text could not be retrieved from this host, so the argument is recorded and tested against the measured papers rather than quoted."
+  },
+  {
+   "read": "2026-09-22",
    "title": "Live Code: Real-Time Visual Music Since the 1980s (panel)",
    "venue": "Museum of the Moving Image, Open Worlds 2024, 19 May 2024",
    "link": "https://movingimage.org/event/live-code/",
