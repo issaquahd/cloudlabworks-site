@@ -23,6 +23,7 @@ main{color:#e2e8f0;position:relative}
 main>*:not(.tema){position:relative;z-index:1}
 main h1,main h2{color:#f8fafc;text-shadow:0 2px 12px rgba(0,0,0,.6)}main .lede,main .tag,main .how{color:#e2e8f0}main .lede{text-shadow:0 1px 8px rgba(0,0,0,.7)}
 .panel{background:rgba(11,18,32,.72);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border:1px solid rgba(226,232,240,.14);border-radius:14px;padding:20px 22px;margin-top:22px}
+pre.score{margin:14px 0;padding:14px 16px;border-radius:10px;background:rgba(5,10,20,.55);border:1px solid rgba(226,232,240,.14);color:#f8fafc;font-size:.9rem;line-height:1.5;overflow-x:auto}pre.score code{color:inherit;background:none}
 .credit{color:#94a3b8;font-size:.8rem;margin-top:26px}.credit a{color:#94a3b8}
 .hud{color:#e2e8f0;font-size:.85rem;letter-spacing:.06em;text-transform:uppercase;opacity:.9;margin:0 0 10px}
 .hud b{color:#a8cdca}.hud.fault b{color:#f87171}
@@ -76,7 +77,18 @@ footer{background:rgba(11,18,32,.55)}footer,footer a{color:#cbd5e1}
 
   <div class="panel">
     <h2 id="reading" style="margin-top:0">Reading: music as the original programming language</h2>
-    <p class="how">Michael Mucciarone, a pipe organist turned engineer, argues in <a href="https://medium.com/capital-one-tech/music-the-original-programming-language-ca8af9c14f55" rel="noopener">Music: The Original Programming Language</a> (Capital One Tech, 2020) that sheet music is code and the musician is its interpreter: a page of Mozart runs in a trained reader's head the way a script runs in Python. The mapping holds further down. Instruments are languages, each with its own syntax and idioms (a piano's grand staff is polyphonic, a trumpet's single treble line is monophonic and transposes to B flat), and a pianist picks up the trumpet faster than a non-musician picks up either. The note is the object, with duration in powers of two, dots and accidentals as properties, ornaments as decorators. Repeat signs and first, second and third endings are loops with a branch on the iteration count; he writes the pseudo-code. This page runs the argument in reverse: the score is code in git, the browser is the interpreter, and the lab's own state is the input.</p>
+    <p class="how">Michael Mucciarone, a pipe organist turned engineer, argues in <a href="https://medium.com/capital-one-tech/music-the-original-programming-language-ca8af9c14f55" rel="noopener">Music: The Original Programming Language</a> (Capital One Tech, 2020) that sheet music is code and the musician is its interpreter: a page of Mozart runs in a trained reader's head the way a script runs in Python. The mapping holds further down. Instruments are languages, each with its own syntax and idioms (a piano's grand staff is polyphonic, a trumpet's single treble line is monophonic and transposes to B flat), and a pianist picks up the trumpet faster than a non-musician picks up either. The note is the object, with duration in powers of two, dots and accidentals as properties, ornaments as decorators. Repeat signs and first, second and third endings are loops with a branch on the iteration count. His pseudo-code for a passage with three numbered endings:</p>
+<pre class="score"><code>x = 0
+for x in range(4):
+    play measure 1
+    if x == 1:
+        play measure 2
+    elif x == 2:
+        play measure 3
+    elif x == 3:
+        play measure 4 to end
+    x += 1</code></pre>
+    <p class="how">This page runs the argument in reverse: the score is code in git, the browser is the interpreter, and the lab's own state is the input.</p>
   </div>
 
   <div class="panel">
