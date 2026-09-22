@@ -19,7 +19,10 @@ ul.plain b{display:block;color:var(--ink)}ul.plain span{color:var(--ink-2)}
 .cta:hover{background:var(--accent);color:var(--paper);text-decoration:none}
 .hero-video{margin:36px 0 0}.hero-video video{display:block;width:100%;height:auto;aspect-ratio:16/9;border-radius:12px;background:var(--line)}
 .hero-video figcaption{margin-top:10px;color:var(--muted);font-size:.95rem;font-style:italic;text-align:center}
-.portraits{display:flex;gap:18px;align-items:flex-end;margin:36px 0 0}.portraits .portrait{margin:0;width:40%}@media(max-width:560px){.portraits{flex-wrap:wrap}.portraits .portrait{width:47%}}
+.portraits{display:flex;gap:18px;align-items:flex-end;margin:36px 0 0}.portraits .portrait{margin:0;width:40%}.portraits .portrait.booth,.portraits .portrait.rain{width:28%}@media(max-width:560px){.portraits{flex-wrap:wrap}.portraits .portrait{width:47%}.portraits .portrait.booth,.portraits .portrait.rain{width:47%}}
+.booth-frame{position:relative;container-type:inline-size}.booth-frame .exit{position:absolute;left:50%;top:84.5%;transform:translate(-50%,-50%);color:#000;font-weight:800;font-size:9cqw;letter-spacing:.02em;line-height:1;white-space:nowrap;pointer-events:none}
+.portrait.booth figcaption,.portrait.rain figcaption{text-align:center}
+.portrait.rain canvas{display:block;width:100%;height:auto;aspect-ratio:3/4;border-radius:12px;background:#000;border:1px solid var(--line)}
 .portrait{margin:36px 0 0;width:40%}.portrait img{display:block;width:100%;height:auto;border-radius:12px;background:var(--line)}
 .portrait figcaption{margin-top:10px;color:var(--muted);font-size:.95rem}
 footer{margin:72px auto 40px;padding-top:20px;border-top:1px solid var(--line);color:var(--muted);font-size:.9rem;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
