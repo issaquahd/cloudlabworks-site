@@ -13,6 +13,8 @@ set -u
 API=https://api.cloudflare.com/client/v4
 SCRIPT=cloudlabworks-site
 DIR="$(cd "$(dirname "$0")" && pwd)"
+# src/worker.js is generated from site/*.html; always rebuild first or a text change ships stale (09-21 lesson).
+(cd "$DIR" && node build.mjs >/dev/null) || { echo "build.mjs failed"; exit 1; }
 AUTH="Authorization: Bearer ${CLOUDFLARE_API_TOKEN_CLOUDLABWORKS:-}"
 J='Content-Type: application/json'
 say() { printf '%s\n' "$*"; }
