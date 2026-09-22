@@ -10,7 +10,7 @@
 <meta property="og:description" content="Cloud and AI infrastructure architecture: a working lab, writing, and open collaboration.">
 <meta property="og:url" content="https://cloudlabworks.dev/">
 <style>{{STYLE}}</style>
-<style>.place{display:grid;grid-template-columns:320px 1fr;gap:18px;align-items:start;margin:14px 0 18px}.place img{width:320px;height:auto;border-radius:12px;border:1px solid var(--line);display:block}.place p{margin:0;color:#4b5563}@media(max-width:700px){.place{grid-template-columns:1fr}.place img{width:100%}}</style>
+<style>.frames{display:flex;gap:18px;align-items:flex-start;margin:6px 0 14px}.frames .headshot{width:240px;height:240px;margin:0;flex:none}.frames a{display:block;flex:none}.frames a img{width:320px;height:240px;object-fit:cover;border-radius:12px;border:1px solid var(--line);display:block}.place p{margin:0 0 18px;color:#4b5563}@media(max-width:640px){.frames{flex-wrap:wrap}.frames a img{width:100%;height:auto}}</style>
 </head>
 <body>
 <div class="salish-band salish-top" role="img" aria-label="Coast Salish design vocabulary: formline orcas, ovoids, crescents and trigons, drawn for this site"></div>
@@ -334,9 +334,11 @@
   </section>
 
   <h2 id="contact">Contact</h2>
-  <img class="headshot" src="/media/alex-headshot.jpg" width="240" height="240" alt="Alex Alvord">
-  <div class="place">
+  <div class="frames">
+    <img class="headshot" src="/media/alex-headshot.jpg" width="240" height="240" alt="Alex Alvord">
     <a href="/media/duvall-map.svg"><img src="/media/duvall-map.svg" width="320" height="240" alt="A hand-drawn map of downtown Duvall, Washington: the Snoqualmie River, Main Street, the Grateful Bread bakery, and CloudLab Works a block up the street" loading="lazy"></a>
+  </div>
+  <div class="place">
     <p><b>Place.</b> Duvall, Washington, in the Snoqualmie Valley, thirty miles east of Seattle. CloudLab Works works out of downtown, a block up Main Street from the <a href="https://gratefulbreadbaking.com/duvall/" rel="noopener">Grateful Bread</a>, which is where most first meetings happen anyway. Their mark on the map is theirs; the orca is ours.</p>
   </div>
   <p class="contact-links"><a href="mailto:alex@cloudlabworks.dev">alex@cloudlabworks.dev</a> · <a href="https://www.linkedin.com/in/alexalvord" rel="noopener" aria-label="Alex Alvord on LinkedIn"><svg class="social-icon" viewBox="0 0 24 24" aria-hidden="true"><rect width="24" height="24" rx="4" fill="#0A66C2"/><path fill="#fff" d="M7.12 9.4H4.4V19.6h2.72zM5.76 4.4a1.58 1.58 0 1 0 .02 3.15 1.58 1.58 0 0 0-.02-3.15zM19.6 19.6h-2.72v-5.34c0-1.27-.02-2.9-1.77-2.9-1.77 0-2.04 1.38-2.04 2.81v5.43H10.35V9.4h2.61v1.4h.04c.36-.69 1.25-1.42 2.58-1.42 2.76 0 3.27 1.82 3.27 4.19z"/></svg>LinkedIn</a> · <a href="/inquire">Inquiry form</a></p>
