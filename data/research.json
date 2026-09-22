@@ -3,6 +3,36 @@
  "entries": [
   {
    "read": "2026-09-22",
+   "title": "Live Code: Real-Time Visual Music Since the 1980s (panel)",
+   "venue": "Museum of the Moving Image, Open Worlds 2024, 19 May 2024",
+   "link": "https://movingimage.org/event/live-code/",
+   "tier": "report",
+   "tags": [
+    "live-coding",
+    "visual-music",
+    "performance",
+    "research"
+   ],
+   "found": "A museum panel with Char Stiles, Roxanne Harris, Anton Marini and Nick Montfort, moderated by Regina Harsanyi, framing live coding as a chapter in a century of visual music: artists generating image and sound from one running program since the mid-1980s, with the code shown on screen as part of the performance.",
+   "here": "Adds the visual half to the History page and the institutional recognition of the process, not the artifact, as the work."
+  },
+  {
+   "read": "2026-09-22",
+   "title": "CHANT source code (IRCAM Forum thread, oral history of computer music at IRCAM)",
+   "venue": "discussion.forum.ircam.fr, 2019 to 2023",
+   "link": "https://discussion.forum.ircam.fr/t/chant-source-code/20309",
+   "tier": "full",
+   "tags": [
+    "computer-music",
+    "preservation",
+    "source-code",
+    "research"
+   ],
+   "found": "A researcher asks where the source of IRCAM's CHANT synthesis program went; the public answer was that it was lost. An IRCAM staff member clarifies: the code sits on an internal server, but the surviving implementation is a decades-old C command-line tool from a discontinued environment, missing the original rule layer that controlled how synthesis parameters depend on each other and evolve over time. It runs today only as an executable inside an OpenMusic library, behind a subscription, source not public; the 1985 manual circulated as an expiring download link.",
+   "here": "The counter-example on the History page and in the draft post: a system can be important, still running, and unreadable. The reasoning goes before the sound does, which is why the lab's score is code in git and its decisions are published."
+  },
+  {
+   "read": "2026-09-22",
    "title": "The Ancient Code: How Musical Intelligence Was Born Centuries Before Computers",
    "venue": "Michael Filimowicz (Medium), July 2025",
    "link": "https://michael-filimowicz.medium.com/the-ancient-code-how-musical-intelligence-was-born-centuries-before-computers-4090bb293e3a",
