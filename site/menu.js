@@ -14,8 +14,10 @@
 
 // Footer status: the lab's own health probe, published as /media/iam-state.json by the deploy and the nightly
 // tools (state ok|fault, down[], generated). Green when ok and fresh, red on a fault, amber when the file is
-// older than a day (the probe stopped), grey when it cannot be read at all.
-(function () {
+// older than a day (the probe stopped), grey when it cannot be read at all. This script is loaded from the header,
+// before the footer is parsed, so the probe waits for DOMContentLoaded.
+(function probe() {
+  if (document.readyState === "loading") return document.addEventListener("DOMContentLoaded", probe);
   var el = document.getElementById("lab-status"); if (!el) return;
   var set = function (state, text) { el.setAttribute("data-state", state); el.lastChild.nodeValue = text; };
   fetch("/media/iam-state.json", { cache: "no-store" }).then(function (r) { return r.ok ? r.json() : null; }).then(function (s) {
