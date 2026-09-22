@@ -10,6 +10,10 @@
 <meta property="og:description" content="Cloud and AI infrastructure architecture: a working lab, writing, and open collaboration.">
 <meta property="og:url" content="https://cloudlabworks.dev/">
 <style>{{STYLE}}</style>
+<style>
+ul.projects b i.st{display:inline-block;margin-left:8px;font-style:normal;font-size:.7rem;letter-spacing:.06em;text-transform:uppercase;border-radius:6px;padding:2px 7px;background:#e6f0ef;color:#0b1220;vertical-align:middle}
+ul.projects .st.proposed,ul.projects .st.draft{background:#e9e4f4}ul.projects .st.parked{background:#eee;color:#555}ul.projects .st.decided,ul.projects .st.built{background:#f3e3c3}
+</style>
 <style>.frames{display:flex;gap:18px;align-items:flex-start;margin:6px 0 14px}.frames .headshot{width:240px;height:240px;margin:0;flex:none}.frames a{display:block;flex:none}.frames a img{width:320px;height:240px;object-fit:cover;border-radius:12px;border:1px solid var(--line);display:block}.place p{margin:0 0 18px;color:#4b5563}@media(max-width:640px){.frames{flex-wrap:wrap}.frames a img{width:100%;height:auto}}</style>
 </head>
 <body>
@@ -44,6 +48,28 @@
     <li><b>Speaking and interviews</b><span>Talks, guest lectures, and panels on hybrid multicloud, FinOps, and agentic infrastructure, for engineering teams, user groups, and students. In print: the <a href="/nutanix/authority-magazine-interview">Authority Magazine interview</a>, December 2025.</span></li>
     <li><b>Mentoring</b><span>Students, new SEs, and engineers moving into cloud architecture; see <a href="/#mentoring">Mentoring</a>.</span></li>
   </ul>
+  <h2 id="projects">Public Projects</h2>
+  <p class="tag">The lab's project board, the parts that can be shown. Status is the board's word for it; the full plans, diagrams and decision trail sit in the private back office, and the decisions themselves are public in the <a href="/asr">Architecture Decision Record</a>. Identifiers are masked the same way: no hostnames, addresses or figures.</p>
+  <ul class="plain projects">
+    <li><b>Infrastructure as Music <i class="st active">active</i></b><span>Sound generated from lab state, never a playlist: Sonic Pi phrases, a state-driven drone, a recorder and a nightly episode builder, played by agents and automations. Live on <a href="/live">Code as Music</a>; code at <a href="https://github.com/issaquahd/infrastructure-as-music" rel="noopener">issaquahd/infrastructure-as-music</a>.</span></li>
+    <li><b>cloudlabworks.dev <i class="st active">active</i></b><span>This site: one Cloudflare Worker, static build, self-hosted scripts, no third-party trackers; the blog, the art, the music and the decision record all ship from one repo. <a href="https://github.com/issaquahd/cloudlabworks-site" rel="noopener">issaquahd/cloudlabworks-site</a>.</span></li>
+    <li><b>Duvall lab, the rebuild <i class="st reviewed">reviewed</i></b><span>The plan behind everything else here: a 6U rack, UniFi routing with five VLANs and 10G to the workstation, a Turing Pi 2 cluster in a Jonsbo N4 with a mirrored storage pair, a Proxmox sandbox tier, and a Mac as the only inference host. Reviewed in the open with a peer agent, three correction passes.</span></li>
+    <li><b>Turing Pi 2 in a Jonsbo N4: storage and layout <i class="st reviewed">reviewed</i></b><span>Slot-by-slot layout for four ARM compute modules, an NVMe tier and a mirrored spinning pair; ARM-only images, so multi-arch is a build rule, not an assumption. Buy list sized against the case, not the wish.</span></li>
+    <li><b>WAN failover for live demos <i class="st decided">decided</i></b><span>A 5G backup on the gateway's second WAN so a demo survives the fiber. Cheaper routes (phone hotspot, travel router) reviewed and rejected on cutover time.</span></li>
+    <li><b>Home to lab observability, one dashboard <i class="st proposed">proposed</i></b><span>House sensors and lab health on one board, so a power blip and a failed deploy are read in the same place. First cut of the plan; the watchdog it needs is on the test list.</span></li>
+    <li><b>Closing the per-trajectory gap <i class="st active">active</i></b><span>Agents claim work is done; this makes them prove it: a per-task ledger where every "done" carries a receipt the verifier checks against the system, never against the transcript. In use for every multi-step task in this lab.</span></li>
+    <li><b>Replay worlds for our own loops <i class="st proposed">proposed</i></b><span>Rerun an agent's past trajectory against a recorded world before letting a change loose on the live one. What transfers from the research is the mechanism, not the benchmark.</span></li>
+    <li><b>AHV dev sandbox <i class="st proposed">proposed</i></b><span>A browser terminal into a per-user agent VM: untrusted skills and pipelines get a place to run that is not production. Design sketch, untested.</span></li>
+    <li><b>Draftpad sketch to infrastructure intent <i class="st proposed">proposed</i></b><span>A gridded desk mat, a phone photo, and a diagram-to-code step: draw the topology by hand, get the intent file back. Filed after a peer-agent answer on how far the recognition can be trusted.</span></li>
+    <li><b>Open WebUI as the lab's front door <i class="st built">built</i></b><span>Local models on the box behind a single sign-in, with the lab's own tools attached. The private half of the estate, described here, not shown.</span></li>
+    <li><b>Three sites, one estate <i class="st draft">draft</i></b><span>Public site, private back office, and the household frame: what each audience sees, and the one identity layer in front of the private half.</span></li>
+    <li><b>Peer-agent thinking pass <i class="st built">built</i></b><span>A skill that runs a divergent-then-convergent pass over a shared thread and reports privately to one person. Briefed to a second agent for consensus before the twenty-minute build.</span></li>
+    <li><b>Mac Studio test and staging plan <i class="st proposed">proposed</i></b><span>How the next inference host gets tested before it takes over: model lanes, local-only jobs, and what stays on the current machine.</span></li>
+    <li><b>Workflow engine fit: n8n, Open WebUI, Cloudflare <i class="st draft">draft</i></b><span>Whether a visual workflow engine beats the scheduler already running the lab. Answer so far: for the human-in-the-loop parts, maybe; for the nightly jobs, no.</span></li>
+    <li><b>Light show for Infrastructure as Music <i class="st parked">parked</i></b><span>An LED sphere driven by the same lab state as the music. Parked on purpose: the stock firmware's sync-to-music mode already does the job.</span></li>
+    <li><b>Earlier, on GitHub</b><span>NC2 field tooling and study guides from the Nutanix years: <a href="https://github.com/issaquahd/nc2costexplorer" rel="noopener">nc2costexplorer</a>, <a href="https://github.com/issaquahd/nc2azureazurevm" rel="noopener">nc2azureazurevm</a>, <a href="https://github.com/issaquahd/Terraform_ERA" rel="noopener">Terraform_ERA</a> (DBaaS as code), <a href="https://github.com/issaquahd/CloudClusters" rel="noopener">CloudClusters</a>, <a href="https://github.com/issaquahd/NCP-MCI" rel="noopener">NCP-MCI</a>, <a href="https://github.com/issaquahd/home_automation_duvall" rel="noopener">home_automation_duvall</a>. Everything under <a href="https://github.com/issaquahd" rel="noopener">@issaquahd</a>.</span></li>
+  </ul>
+
   <h2 id="support">Services</h2>
   <ul class="plain">
     <li><b>Cloud &amp; AI triage</b><span>For small cloud-native shops with something already running that no longer behaves: an agent stack with runaway tool calls or a memory that forgets, a cluster nobody wants to touch, a pipeline that fails on Fridays, a bill that doubled. Containers, Kubernetes, Workers, OpenTofu and Ansible on AWS, Azure, Google Cloud and Cloudflare. Read the current state, find the fault, fix the smallest thing, leave a runbook the team can follow next time.</span></li>
