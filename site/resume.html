@@ -84,14 +84,16 @@
         <ul>
           <li>Multi-agent system on OpenClaw with a principal agent, sub-agents and a family agent; three model lanes routed by task (hosted frontier models by subscription and API, local Qwen via Ollama), each kind of work pinned to a lane with no silent fallback.</li>
           <li>File-backed identity and memory in git; semantic memory with local embeddings (nomic-embed-text) and no egress; prompt-injection defenses (untrusted-content markers, paired senders, memory-less inbound agents); secrets that never enter model context (egress-proxy sentinels, vault-only credentials, CDP-side injection).</li>
-          <li>Agents that run infrastructure: Cloudflare Workers + Zero Trust across three domains deployed by agent, scheduled sentinels for site health, a post-to-email pipeline, and Infrastructure as Music (lab state rendered as a live instrument).</li>
-          <li>Governance as code: a constitution with gated vs. ungated action classes, prompt-budget limits with soft ceilings, a control ledger, and a persona prompt budget enforced at build time.</li>
+          <li>Agents that run infrastructure: Cloudflare Workers + Zero Trust across three domains deployed by agent, scheduled sentinels for site health, a post-to-email pipeline, and Infrastructure as Music (lab state rendered as a live instrument, with a sound graph per recording).</li>
+          <li>Governance as code: a constitution with gated vs. ungated action classes, a public <a href="/asr">Architecture Decision Record</a> (66 rows, each with its reach and its undo), a per-task ledger where every "done" carries a receipt the verifier checks against the system, and a persona prompt budget enforced at build time.</li>
+          <li>Evidence in the open: a <a href="/tests">Live Test Pipeline</a> that publishes every test result, pass and fail, with identifiers stripped by an enum-only sanitizer and a transition guard, fed by the same poster that reports to the team channels; reviewed for consensus with a peer agent before each build.</li>
+          <li>Three sites, one estate: the public site, a private back office behind Cloudflare Access (Access JWT verified in the Worker, one sign-in, per-area locks), and a household display, all deployed from git by agent.</li>
         </ul>
       </div>
       <div class="job">
-        <h3>NC2 on AWS, as code</h3><span class="when">2026</span>
-        <span class="org"><a href="/nutanix">Nutanix: Invisible Wires: Agentic Cloud</a> · v4 APIs, OpenTofu, Flow Virtual Networking</span>
-        <ul><li>End-to-end walkthrough from the NC2 console to the first VM with every block verified against the provider; the pattern used in customer PoCs and lab sessions.</li></ul>
+        <h3>NC2 on AWS and on Azure, as code</h3><span class="when">2026</span>
+        <span class="org"><a href="/nutanix">Nutanix: Invisible Wires: Agentic Cloud</a> · v4 APIs, OpenTofu, Flow Virtual Networking · Bicep, Microsoft Graph, the NC2 v2 API</span>
+        <ul><li>AWS: end-to-end from the NC2 console to the first VM with every block verified against the provider. Azure: the console taken out of the loop, Bicep for the landing zone (custom role, app registration, delegated subnets, NAT, peering, Route Server) and the NC2 v2 API for the organization, the cloud account and the cluster; the pattern used in customer PoCs and lab sessions.</li></ul>
       </div>
 
       <h2>Why these companies</h2>
@@ -190,6 +192,10 @@
       <div class="job">
         <h3>Pacific Lutheran University</h3><span class="when">2001 – 2006</span>
         <span class="org">Bachelor of Business Administration, Information Technology Management · AACSB-accredited</span>
+      </div>
+      <div class="job">
+        <h3>University of Washington</h3><span class="when">2026</span>
+        <span class="org">Business Analytics, with AWS · certificate of completion</span>
       </div>
       <div class="job">
         <h3>University of Washington</h3><span class="when">2013 – 2014</span>
