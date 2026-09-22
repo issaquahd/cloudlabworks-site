@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Research · CloudLab Works</title>
+<meta name="description" content="Papers and reports read in the lab, science, nature and technology: what each found in one line, and what it changed here.">
+<link rel="canonical" href="https://cloudlabworks.dev/research">
+<style>{{STYLE}}</style>
+<style>
+ol.research{list-style:none;padding:0;margin:14px 0 0}
+ol.research li{padding:16px 0;border-top:1px solid var(--line);display:grid;grid-template-columns:110px 1fr;gap:6px 18px;align-items:start}
+ol.research li:first-child{border-top:0}
+ol.research time{color:var(--accent);font-weight:700;font-size:.9rem;font-variant-numeric:tabular-nums;padding-top:3px}
+ol.research b{font-size:1.05rem;display:block}ol.research b a{color:var(--ink);text-decoration:none}ol.research b a:hover{color:var(--accent)}
+ol.research .venue{color:var(--muted);font-size:.9rem;display:block;margin-top:2px}
+ol.research .tier{display:inline-block;margin-left:8px;font-size:.7rem;letter-spacing:.06em;text-transform:uppercase;border-radius:6px;padding:2px 7px;background:#e6f0ef;color:#0b1220;vertical-align:middle}
+ol.research .tier.abstract{background:#e9e4f4}ol.research .tier.report{background:#f3e3c3}
+ol.research p{margin:8px 0 0;color:var(--ink-2);line-height:1.5}ol.research p.here{color:var(--ink)}ol.research p.here::before{content:"Here: ";font-weight:700}
+ol.research .tags{margin-top:8px}ol.research .tags i{display:inline-block;font-style:normal;font-size:.78rem;color:var(--accent);border:1px solid var(--line);border-radius:999px;padding:1px 9px;margin-right:6px}
+@media(max-width:600px){ol.research li{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div id="dim" aria-hidden="true"></div>
+{{HEAD}}
+<main>
+  <h1>Research</h1>
+  <p class="lede">Papers and reports read in the lab: science, nature, technology, and the agent literature the lab runs on. Newest first. Each carries what it found in one line and what it changed here in one line; the second line is the point. How far each was read is marked: full text, abstract, or report. Findings are the authors' numbers, not reproduced here.</p>
+  <p class="tag">{{RESEARCH_COUNT}} entries. Consensus on the lab-facing lines is reached with a peer agent before they are filed; the tests that fall out land on the <a href="/tests">Live Test Pipeline</a>, the decisions in the <a href="/asr">Architecture Decision Record</a>.</p>
+  <ol class="research">
+{{RESEARCH_ROWS}}
+  </ol>
+{{FOOT}}
+</main>
+</body>
+</html>

@@ -161,6 +161,12 @@ ${inSection(sec).map((p) => `<item>
 </rss>
 `;
 
+// ---------- Research: data/research.json → /research (papers read; one line found, one line changed here) ----------
+let research = { entries: [] };
+try { research = JSON.parse(readFileSync(new URL("./data/research.json", import.meta.url), "utf8")); } catch (e) { if (e.code !== "ENOENT") throw e; }
+const researchRows = research.entries.slice().sort((a, b) => b.read.localeCompare(a.read)).map((r) => `    <li><time datetime="${esc(r.read)}">${esc(r.read)}</time><div><b><a href="${esc(r.link)}" rel="noopener">${esc(r.title)}</a><span class="tier ${esc(r.tier)}">${esc(r.tier)}</span></b><span class="venue">${esc(r.venue)}</span><p>${esc(r.found)}</p><p class="here">${esc(r.here)}</p><span class="tags">${(r.tags || []).map((t) => `<i>${esc(t)}</i>`).join("")}</span></div></li>`).join("\n");
+const researchPage = () => page("research.html").replace("{{RESEARCH_ROWS}}", researchRows).replace("{{RESEARCH_COUNT}}", String(research.entries.length));
+
 // ---------- GitHub contribution graphs (data/github.json from fetch-github.mjs; no runtime requests) ----------
 let gh = {};
 try { gh = JSON.parse(readFileSync(new URL("./data/github.json", import.meta.url), "utf8")); } catch (e) { if (e.code !== "ENOENT") throw e; }
@@ -193,7 +199,7 @@ const home = page("index.html").replace("{{LATEST}}", inSection(BLOG).length ? i
 const INQUIRE = page("inquire.html");
 const CATEGORIES = ["Cloud & AI triage", "Startup advisor", "Agentic art", "Original art", "Board position", "Community give-back", "Collaborate on a project", "Writing", "Speaking and interviews", "Mentoring", "Meet at an event", "Something else"];
 
-const pages = { "/": home, "/work": page("work.html").replace("{{GITHUB}}", GITHUB), [BLOG.path]: sectionIndex(BLOG), [NUTANIX.path]: sectionIndex(NUTANIX), ...postPages, "/notes": page("notes.html"), "/privacy": page("privacy.html"), "/terms": page("terms.html"), "/card": page("card.html"), "/live": page("live.html"), "/visualization": page("visualization.html"), "/tests": page("tests.html"), "/orcas": page("orcas.html"), "/art": page("art.html"), "/diagrams": page("diagrams.html"), "/asr": page("asr.html"), "/certifications": page("certifications.html"), "/subscribe": page("subscribe.html"), "/resume": page("resume.html"), "/portfolio": page("portfolio.html"), "/stickers": page("stickers.html") };
+const pages = { "/": home, "/work": page("work.html").replace("{{GITHUB}}", GITHUB), [BLOG.path]: sectionIndex(BLOG), [NUTANIX.path]: sectionIndex(NUTANIX), ...postPages, "/notes": page("notes.html"), "/privacy": page("privacy.html"), "/terms": page("terms.html"), "/card": page("card.html"), "/live": page("live.html"), "/visualization": page("visualization.html"), "/tests": page("tests.html"), "/research": researchPage(), "/orcas": page("orcas.html"), "/art": page("art.html"), "/diagrams": page("diagrams.html"), "/asr": page("asr.html"), "/certifications": page("certifications.html"), "/subscribe": page("subscribe.html"), "/resume": page("resume.html"), "/portfolio": page("portfolio.html"), "/stickers": page("stickers.html") };
 // /card is the NFC business-card landing page; the tag on the card carries only this URL.
 const VCARD = ["BEGIN:VCARD", "VERSION:3.0", "N:Alvord;Alex;;;", "FN:Alex Alvord", "ORG:Cloud Lab Works LLC", "TITLE:Principal Architect", "EMAIL;TYPE=INTERNET,WORK:alex@cloudlabworks.dev", "URL:https://cloudlabworks.dev", "URL;TYPE=LinkedIn:https://www.linkedin.com/in/alexalvord/", "ADR;TYPE=WORK:;;;Duvall;WA;;USA", "NOTE:Hybrid multicloud and AI infrastructure. A working lab, open to collaboration on projects. cloudlabworks.dev", "END:VCARD"].join("\r\n") + "\r\n";
 // Scripts, self-hosted (CSP script-src 'self'): /live.js = the browser instrument + visualizer; /art.js = the nightly haiku on /art; /menu.js = keyboard handling for the hamburger drawer.
