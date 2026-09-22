@@ -5,6 +5,7 @@
   var STATE_URL = "/media/iam-state.json", FEED_URL = "/media/iam-feed.json";
   var hudState = document.getElementById("hud-state"), hudSince = document.getElementById("hud-since"), hud = document.getElementById("hud");
   var nowEl = document.getElementById("now"), playBtn = document.getElementById("play");
+  var VIZ = !!document.getElementById("viz");   // /visualization: same instrument and feed, a big graph per take, no sea
   var lab = { state: "ok", since: null, events: [], seen: 0 };
   var ac = null, master = null, analyser = null, playing = false, stepTimer = null, padTimer = null, source = "lab";
   var fmt = function (iso) { try { return new Date(iso).toLocaleString(undefined, { dateStyle: "medium", timeStyle: "short" }); } catch (e) { return iso || ""; } };
@@ -14,9 +15,7 @@
     var prev = lab.state;
     lab.state = s.state === "fault" ? "fault" : "ok";
     lab.since = s.since || null; lab.events = s.events || [];
-    hudState.textContent = lab.state === "ok" ? "every site answering" : "fault — " + (s.down || []).join(", ");
-    hudSince.textContent = lab.since ? "· since " + fmt(lab.since) : "";
-    hud.className = "hud" + (lab.state === "fault" ? " fault" : "");
+    if (hudState) { hudState.textContent = lab.state === "ok" ? "every site answering" : "fault — " + (s.down || []).join(", "); hudSince.textContent = lab.since ? "· since " + fmt(lab.since) : ""; hud.className = "hud" + (lab.state === "fault" ? " fault" : ""); }
     var latest = lab.events.length ? lab.events[0] : null;
     if (playing && latest && latest.at && latest.at !== lab.seen) { lab.seen = latest.at; if (latest.kind === "deploy") deployFigure(); }
     else if (latest && !lab.seen) lab.seen = latest.at;
@@ -24,8 +23,8 @@
   }
   function pollState() {
     fetch(STATE_URL, { cache: "no-store" }).then(function (r) { return r.ok ? r.json() : null; }).then(function (s) {
-      if (s) applyState(s); else { hudState.textContent = "state unavailable"; }
-    }).catch(function () { hudState.textContent = "state unavailable"; });
+      if (s) applyState(s); else if (hudState) { hudState.textContent = "state unavailable"; }
+    }).catch(function () { if (hudState) hudState.textContent = "state unavailable"; });
   }
   pollState(); setInterval(pollState, 30000);
 
@@ -86,9 +85,9 @@
   // --- the Salish Sea (visualizer) --------------------------------------------------------------
   // The photo is the sea. This canvas is a light layer over it (mix-blend-mode: screen): shimmer on the
   // water follows the highs, slow swell lines follow the lows, a deploy sends rings across the water.
-  var sea = document.getElementById("sea"), sc = sea.getContext("2d"), dim = document.getElementById("dim"), dpr = Math.min(window.devicePixelRatio || 1, 2);
+  var sea = document.getElementById("sea"), sc = sea ? sea.getContext("2d") : null, dim = document.getElementById("dim"), dpr = Math.min(window.devicePixelRatio || 1, 2);
   var W = 0, H = 0, t0 = performance.now(), raf = null, freq = null, rings = [];
-  function resize() { W = sea.clientWidth; H = sea.clientHeight; sea.width = W * dpr; sea.height = H * dpr; sc.setTransform(dpr, 0, 0, dpr, 0, 0); }
+  function resize() { if (!sea) return; W = sea.clientWidth; H = sea.clientHeight; sea.width = W * dpr; sea.height = H * dpr; sc.setTransform(dpr, 0, 0, dpr, 0, 0); }
   window.addEventListener("resize", resize); resize();
   function band(a, b) { if (!freq) return 0; var s = 0, n = 0; for (var i = a; i < b && i < freq.length; i++) { s += freq[i]; n++; } return n ? s / n / 255 : 0; }
   function frame(now) {
@@ -96,8 +95,9 @@
     var t = (now - t0) / 1000, ok = lab.state === "ok", live = !!analyser && (playing || source === "rec");
     if (live) { freq = freq || new Uint8Array(analyser.frequencyBinCount); analyser.getByteFrequencyData(freq); }
     var low = live ? band(2, 12) : 0.10 + 0.04 * Math.sin(t * 0.4), high = live ? band(60, 200) : 0.04;
-    dim.className = ok ? "" : "fault";
-    drawScope(live, ok, scope); if (activeMini) drawScope(live && source === "rec", ok, activeMini);
+    if (dim && sea) dim.className = ok ? "" : "fault";
+    drawScope(live && source === "lab", ok, scope); if (activeMini) drawScope(live && source === "rec", ok, activeMini);
+    if (!sc) return;
     sc.clearRect(0, 0, W, H);
     var water = H * 0.45;                                             // the water starts roughly mid-frame in the photo
     // swell — three translucent bands drifting across the lower half, amplitude from the low end
@@ -119,7 +119,7 @@
       sc.beginPath(); sc.ellipse(W * 0.78, water + (H - water) * 0.1, R.a, R.a * 0.28, 0, 0, 6.283); sc.strokeStyle = "rgba(226,232,240," + (R.life * 0.6) + ")"; sc.lineWidth = 2; sc.stroke(); }
   }
   // --- the sound graph (next to the play button): spectrum bars coloured by pitch, the waveform drawn over them
-  var scope = document.getElementById("scope"), wave = null, activeMini = null;   // activeMini: the graph under the recording that is playing
+  var scope = document.getElementById("scope") || document.getElementById("scope-lab"), wave = null, activeMini = null;   // activeMini: the graph under the recording that is playing
   function drawScope(live, ok, cv) {
     if (!cv) return;
     var gc = cv.getContext("2d"), w = cv.width, h = cv.height;
@@ -148,10 +148,10 @@
   draw();
 
   // --- recordings ----------------------------------------------------------------------------------
-  var list = document.getElementById("episodes");
+  var list = document.getElementById("episodes") || document.getElementById("viz");
   fetch(FEED_URL, { cache: "no-store" }).then(function (r) { return r.ok ? r.json() : { episodes: [] }; }).then(function (f) {
-    list.innerHTML = "";
-    if (!f.episodes || !f.episodes.length) { list.innerHTML = "<li><span class=\"ev\">No recordings published yet.</span></li>"; return; }
+    if (VIZ) { var ld = document.getElementById("loading"); if (ld) ld.remove(); } else list.innerHTML = "";
+    if (!f.episodes || !f.episodes.length) { var e0 = document.createElement("li"); e0.innerHTML = "<span class=\"ev\">No recordings published yet.</span>"; list.appendChild(e0); return; }
     f.episodes.forEach(function (e) {
       var li = document.createElement("li"), t = document.createElement("time"), d = document.createElement("div"), ev = document.createElement("span"), a = document.createElement("audio");
       t.dateTime = e.date; t.textContent = e.date + (e.seconds ? " · " + Math.round(e.seconds) + " s" : "");
@@ -159,11 +159,16 @@
       if (e.art) { var im = document.createElement("img"); im.className = "art"; im.draggable = false; im.src = "/media/" + e.art; im.alt = "Art drawn from this recording: " + e.date; im.loading = "lazy"; d.appendChild(im); }
       if (e.haiku && e.haiku.length) { var hk = document.createElement("p"); hk.className = "haiku"; e.haiku.forEach(function (ln, i) { if (i) hk.appendChild(document.createElement("br")); hk.appendChild(document.createTextNode(ln)); }); d.appendChild(hk); }
       a.controls = true; a.preload = "none"; a.src = "/media/" + e.m4a;
-      var cv = document.createElement("canvas"); cv.className = "scope-mini"; cv.width = 640; cv.height = 120; cv.setAttribute("aria-hidden", "true"); drawScope(false, lab.state === "ok", cv);
+      var cv = document.createElement("canvas"); cv.className = "scope-mini"; cv.width = 640; cv.height = VIZ ? 220 : 120; cv.setAttribute("aria-hidden", "true"); drawScope(false, lab.state === "ok", cv);
       a.addEventListener("pause", function () { if (activeMini === cv) { activeMini = null; drawScope(false, lab.state === "ok", cv); } });
       a.addEventListener("ended", function () { if (activeMini === cv) { activeMini = null; drawScope(false, lab.state === "ok", cv); } });
       a.addEventListener("play", function () { ensureAudio(); if (ac.state === "suspended") ac.resume(); if (playing) stop(); source = "rec"; activeMini = cv; if (!a._node) { a._node = ac.createMediaElementSource(a); a._node.connect(analyser); } draw(); nowEl.textContent = "Playing the lab's own recording from " + e.date + "."; });
+      if (VIZ) {   // big graph first, the art beside it, then the player and the haiku
+        var head = document.createElement("div"); head.className = "head"; head.appendChild(t); head.appendChild(ev); li.appendChild(head);
+        var row = document.createElement("div"); row.className = "row"; row.appendChild(cv); var art = d.querySelector("img.art"); if (art) row.appendChild(art); li.appendChild(row);
+        li.appendChild(a); var hk2 = d.querySelector("p.haiku"); if (hk2) li.appendChild(hk2); list.appendChild(li); return;
+      }
       d.appendChild(ev); d.appendChild(a); d.appendChild(cv); li.appendChild(t); li.appendChild(d); list.appendChild(li);
     });
-  }).catch(function () { list.innerHTML = "<li><span class=\"ev\">Recordings unavailable.</span></li>"; });
+  }).catch(function () { var ld = document.getElementById("loading"); if (ld) ld.remove(); var e1 = document.createElement("li"); e1.innerHTML = "<span class=\"ev\">Recordings unavailable.</span>"; list.appendChild(e1); });
 })();

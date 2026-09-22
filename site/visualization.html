@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Code as Music Visualization · CloudLab Works</title>
+<meta name="description" content="Every recording from the lab's instrument, drawn as sound: a colour spectrum and waveform per take, and the live lab instrument at the top.">
+<link rel="canonical" href="https://cloudlabworks.dev/visualization">
+<style>{{STYLE}}</style>
+<style>
+.viz{list-style:none;padding:0;margin:14px 0 0}
+.viz li{padding:18px 0 22px;border-top:1px solid var(--line)}
+.viz li:first-child{border-top:0;padding-top:4px}
+.viz .head{display:flex;flex-wrap:wrap;gap:6px 14px;align-items:baseline;margin-bottom:8px}
+.viz time{color:var(--accent);font-weight:700;font-variant-numeric:tabular-nums}
+.viz .ev{color:var(--muted);font-size:.92rem}
+.viz canvas{display:block;width:100%;height:auto;aspect-ratio:640/220;border-radius:12px;background:#0b1220;border:1px solid var(--line)}
+.viz audio{width:100%;max-width:560px;margin-top:10px;display:block}
+.viz .row{display:grid;grid-template-columns:1fr 200px;gap:14px;align-items:start}
+.viz .row img{width:100%;height:auto;border-radius:10px;border:1px solid var(--line);pointer-events:none;-webkit-user-drag:none;user-select:none}
+.viz p.haiku{margin:8px 0 0;font-style:italic;color:var(--ink-2);line-height:1.5}
+.viz .lab{margin:0 0 6px}
+.viz .lab button{font:inherit;font-weight:600;padding:9px 16px;border:1px solid var(--accent);border-radius:8px;background:none;color:var(--accent);cursor:pointer}
+.viz .lab button:hover{background:var(--accent);color:#0b1220}
+.viz .lab .now{color:var(--muted);font-size:.95rem;margin-left:10px}
+.key{color:var(--muted);font-size:.9rem;margin:6px 0 0}
+@media(max-width:640px){.viz .row{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div id="dim" aria-hidden="true"></div>
+{{HEAD}}
+<main>
+  <h1>Code as Music Visualization</h1>
+  <p class="lede">Every take from the lab's instrument, drawn as sound. The bars are the spectrum, low notes on the left in amber through to the highs in teal; the line over them is the waveform. Red means the take carries a fault. Press play on any recording and its graph moves; the first graph is the live lab, played by your browser.</p>
+  <p class="key">The recordings and the instrument itself live on <a href="/live">Code as Music</a>. The art drawn from each take is on <a href="/art">Code as Art</a>.</p>
+
+  <ol class="viz" id="viz">
+    <li>
+      <div class="head"><time>Now</time><span class="ev">the lab, live: E major while every site answers, E minor while something is down</span></div>
+      <p class="lab"><button id="play" type="button">Play the lab</button><span class="now" id="now">Nothing streams from the lab; your browser is the instrument.</span></p>
+      <canvas id="scope-lab" width="640" height="220" aria-label="Live lab sound graph"></canvas>
+    </li>
+    <li id="loading"><span class="ev">Loading recordings…</span></li>
+  </ol>
+{{FOOT}}
+</main>
+<script src="/live.js"></script>
+</body>
+</html>
