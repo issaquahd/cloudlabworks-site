@@ -97,6 +97,7 @@
     if (live) { freq = freq || new Uint8Array(analyser.frequencyBinCount); analyser.getByteFrequencyData(freq); }
     var low = live ? band(2, 12) : 0.10 + 0.04 * Math.sin(t * 0.4), high = live ? band(60, 200) : 0.04;
     dim.className = ok ? "" : "fault";
+    drawScope(live, ok);
     sc.clearRect(0, 0, W, H);
     var water = H * 0.45;                                             // the water starts roughly mid-frame in the photo
     // swell — three translucent bands drifting across the lower half, amplitude from the low end
@@ -116,6 +117,31 @@
     // rings — a deploy sends them across the water from where the dorsal fin is in the photo
     for (var r = rings.length - 1; r >= 0; r--) { var R = rings[r]; R.a += 2.6; R.life -= 0.006; if (R.life <= 0) { rings.splice(r, 1); continue; }
       sc.beginPath(); sc.ellipse(W * 0.78, water + (H - water) * 0.1, R.a, R.a * 0.28, 0, 0, 6.283); sc.strokeStyle = "rgba(226,232,240," + (R.life * 0.6) + ")"; sc.lineWidth = 2; sc.stroke(); }
+  }
+  // --- the sound graph (next to the play button): spectrum bars coloured by pitch, the waveform drawn over them
+  var scope = document.getElementById("scope"), gc = scope ? scope.getContext("2d") : null, wave = null;
+  function drawScope(live, ok) {
+    if (!gc) return;
+    var w = scope.width, h = scope.height;
+    gc.clearRect(0, 0, w, h);
+    var bars = 64, top = Math.min(freq ? freq.length : 512, 360);        // ~0 to 7.7 kHz at 44.1k / fftSize 1024
+    for (var b = 0; b < bars; b++) {
+      var i0 = Math.floor(Math.pow(b / bars, 1.6) * top), i1 = Math.max(i0 + 1, Math.floor(Math.pow((b + 1) / bars, 1.6) * top)), v = 0;
+      if (live && freq) { for (var i = i0; i < i1; i++) v = Math.max(v, freq[i]); v /= 255; }
+      else v = 0.04 + 0.03 * Math.sin(b * 0.5 + performance.now() / 900);
+      var hue = ok ? 38 + (b / bars) * 140 : 350 + (b / bars) * 30;        // amber -> teal when ok; reds when down
+      var bw = w / bars, bh = Math.max(2, v * (h - 24));
+      gc.fillStyle = "hsla(" + hue + ",85%," + (48 + v * 22) + "%," + (0.35 + v * 0.6) + ")";
+      gc.fillRect(b * bw + 1, h - 12 - bh, bw - 2, bh);
+    }
+    if (live && analyser) {
+      wave = wave || new Uint8Array(analyser.fftSize); analyser.getByteTimeDomainData(wave);
+      gc.beginPath();
+      for (var x = 0; x < w; x++) { var s = wave[Math.floor(x / w * wave.length)] / 128 - 1; var y = h * 0.42 + s * h * 0.36; x ? gc.lineTo(x, y) : gc.moveTo(x, y); }
+      gc.strokeStyle = ok ? "rgba(248,250,252,.85)" : "rgba(254,202,202,.85)"; gc.lineWidth = 1.6; gc.stroke();
+    } else {
+      gc.beginPath(); gc.moveTo(0, h * 0.42); gc.lineTo(w, h * 0.42); gc.strokeStyle = "rgba(226,232,240,.25)"; gc.lineWidth = 1; gc.stroke();
+    }
   }
   function draw() { if (!raf) raf = requestAnimationFrame(frame); }
   function breach() { rings.push({ a: 6, life: 1 }); setTimeout(function () { rings.push({ a: 6, life: 1 }); }, 350); setTimeout(function () { rings.push({ a: 6, life: 1 }); }, 700); }

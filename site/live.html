@@ -28,6 +28,10 @@ main h1,main h2{color:#f8fafc;text-shadow:0 2px 12px rgba(0,0,0,.6)}main .lede,m
 .controls button{font:inherit;font-weight:600;padding:10px 16px;border:1px solid #a8cdca;border-radius:8px;background:none;color:#a8cdca;cursor:pointer}
 .controls button:hover{background:#a8cdca;color:#0b1220}
 .controls .now{color:#cbd5e1;font-size:.95rem}
+.stage{display:grid;grid-template-columns:minmax(220px,1fr) minmax(280px,1.4fr);gap:16px 22px;align-items:center}
+.scope{margin:0}.scope canvas{display:block;width:100%;height:auto;aspect-ratio:640/220;border-radius:10px;background:rgba(5,10,20,.55);border:1px solid rgba(226,232,240,.14)}
+.scope figcaption{color:#94a3b8;font-size:.8rem;margin-top:6px}
+@media(max-width:700px){.stage{grid-template-columns:1fr}}
 ol.episodes{list-style:none;padding:0;margin:8px 0 0}
 ol.episodes li{display:grid;grid-template-columns:150px 1fr;gap:6px 18px;align-items:center;padding:14px 0;border-top:1px solid rgba(226,232,240,.14)}
 ol.episodes li:last-child{border-bottom:1px solid rgba(226,232,240,.14)}
@@ -50,9 +54,15 @@ footer{background:rgba(11,18,32,.55)}footer,footer a{color:#cbd5e1}
 
   <div class="panel">
     <p class="hud" id="hud">lab · <b id="hud-state">loading</b> <span id="hud-since"></span></p>
-    <div class="controls">
-      <button id="play" type="button">Play the lab</button>
-      <span class="now" id="now">Press play. Your browser becomes the instrument; nothing streams from the lab.</span>
+    <div class="stage">
+      <div class="controls">
+        <button id="play" type="button">Play the lab</button>
+        <span class="now" id="now">Press play. Your browser becomes the instrument; nothing streams from the lab.</span>
+      </div>
+      <figure class="scope">
+        <canvas id="scope" width="640" height="220" aria-label="Sound graph: the spectrum in colour, the waveform over it"></canvas>
+        <figcaption>Spectrum, low notes left in amber, high notes right in teal; the line is the waveform. Red when something is down. The graph follows whichever is playing: the lab or a recording.</figcaption>
+      </figure>
     </div>
   </div>
 
