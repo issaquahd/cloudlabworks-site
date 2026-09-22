@@ -5,7 +5,6 @@ time: 07:00
 by: Alex Alvord
 slug: nc2-azure-as-code-bicep-to-first-cluster
 section: nutanix
-draft: true
 summary: The Azure twin of yesterday's AWS walkthrough, with one difference that matters: on Azure the NC2 console never has to be clicked. Bicep builds the tenant side (custom role, app registration, the three VNets with their delegated subnets, NAT gateways, peering, Route Server), and the NC2 v2 API creates the organization, the cloud account and the cluster with Prism Central and Flow Gateways inside it. ASCII at every step; OpenTofu on the v4 APIs takes over where yesterday's post did.
 ---
 
