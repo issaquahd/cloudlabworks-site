@@ -1,5 +1,5 @@
-// Digital rain with the word set inside it: glyphs falling everywhere, brighter where they cross the
-// letters of MATRIX, so the mark is made of the running code rather than laid over it. Drawn here,
+// Digital rain with the words set inside it: glyphs falling everywhere, brighter where they cross the
+// letters of CLOUDLAB WORKS, so the mark is made of the running code rather than laid over it. Drawn here,
 // no film artwork used. Static single frame when the visitor prefers reduced motion.
 (function () {
   var cv = document.getElementById("matrix");
@@ -14,10 +14,9 @@
   var mask = document.createElement("canvas"); mask.width = W; mask.height = H;
   var m = mask.getContext("2d");
   m.fillStyle = "#fff"; m.textAlign = "center"; m.textBaseline = "middle";
-  m.font = "900 " + Math.floor(W * 0.235) + "px 'Courier New', Courier, monospace";
-  m.fillText("MATRIX", W / 2, H * 0.50);
-  m.font = "700 " + Math.floor(W * 0.062) + "px 'Courier New', Courier, monospace";
-  m.fillText("THE", W / 2, H * 0.34);
+  m.font = "900 " + Math.floor(W * 0.19) + "px 'Courier New', Courier, monospace";
+  m.fillText("CLOUDLAB", W / 2, H * 0.43);
+  m.fillText("WORKS", W / 2, H * 0.57);
   var md = m.getImageData(0, 0, W, H).data;
   m.globalCompositeOperation = "source-in"; m.fillStyle = "#39ff14"; m.fillRect(0, 0, W, H); m.globalCompositeOperation = "source-over";
   function inWord(x, y) { var px = Math.min(W - 1, Math.max(0, x | 0)), py = Math.min(H - 1, Math.max(0, y | 0)); return md[(py * W + px) * 4 + 3] > 40; }
