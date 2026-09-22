@@ -3,6 +3,21 @@
  "entries": [
   {
    "read": "2026-09-21",
+   "title": "The History of Live Coding: From Bell Labs to the Algorave",
+   "venue": "Soniare (blog)",
+   "link": "https://www.soniare.net/blog/history-of-livecoding",
+   "tier": "full",
+   "tags": [
+    "live-coding",
+    "music",
+    "history",
+    "research"
+   ],
+   "found": "Computer music starts with the Illiac Suite (1957) and Max Mathews' MUSIC I at Bell Labs; live coding gets its name and its one rule at TOPLAP's founding in Hamburg in February 2004 (show us your screens); Tidal Cycles (2009), the first algorave (2012), Sonic Pi (2013), ICLC (2015), Strudel (2022), TOPLAP at twenty (2024).",
+   "here": "The lab's History page and a post: Code as Music is a Sonic Pi program driven by the lab's own state, the TOPLAP rule applied to infrastructure."
+  },
+  {
+   "read": "2026-09-21",
    "title": "ZTA: Zero Token Architecture (Kelsey Hightower, PlatformCon 2026)",
    "venue": "Talk, PlatformCon 2026 (YouTube, 29 min)",
    "link": "https://www.youtube.com/watch?v=A7WFt2JQ5sg",
