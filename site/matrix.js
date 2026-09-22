@@ -20,6 +20,9 @@
   m.fillText("THE", W / 2, H * 0.34);
   var md = m.getImageData(0, 0, W, H).data;
   function inWord(x, y) { var px = Math.min(W - 1, Math.max(0, x | 0)), py = Math.min(H - 1, Math.max(0, y | 0)); return md[(py * W + px) * 4 + 3] > 40; }
+  // cells whose centre falls inside a letter: these stay lit so the word reads at every moment
+  var wordCells = [];
+  for (var c = 0; c < cols; c++) for (var r = 0; r < rows; r++) if (inWord(c * cell + cell / 2, r * cell + cell / 2)) wordCells.push([c * cell, r * cell]);
 
   ctx.fillStyle = "#000"; ctx.fillRect(0, 0, W, H);
   ctx.font = "bold " + (cell - 4) + "px 'Courier New', Courier, monospace";
@@ -35,13 +38,13 @@
       ctx.shadowBlur = hot ? 14 : 0; ctx.shadowColor = "#7dff9a";
       ctx.fillStyle = hot ? "#e8ffe8" : (Math.random() < 0.08 ? "#b6ffc6" : "#1fbf4f");
       ctx.fillText(ch, x + 2, y + 2);
-      // keep the word legible between drops: a dim glyph on every cell inside the letters, sometimes
-      if (Math.random() < 0.12) {
-        var yy = Math.floor(Math.random() * rows) * cell;
-        if (inWord(x + cell / 2, yy + cell / 2)) { ctx.shadowBlur = 6; ctx.fillStyle = "#5fe37f"; ctx.fillText(GLYPHS.charAt(Math.floor(Math.random() * GLYPHS.length)), x + 2, yy + 2); }
-      }
       drops[i] += speed[i];
       if (drops[i] * cell > H && Math.random() > 0.975) drops[i] = 0;
+    }
+    // the word: a third of its cells re-lit each frame with a soft glow, so it never fades out
+    ctx.shadowBlur = 10; ctx.shadowColor = "#39ff14";
+    for (var w = 0; w < wordCells.length; w++) {
+      if (Math.random() < 0.34) { ctx.fillStyle = Math.random() < 0.15 ? "#eaffea" : "#79f28f"; ctx.fillText(GLYPHS.charAt(Math.floor(Math.random() * GLYPHS.length)), wordCells[w][0] + 2, wordCells[w][1] + 2); }
     }
     ctx.shadowBlur = 0;
   }
