@@ -19,11 +19,11 @@
   var el = document.getElementById("lab-status"); if (!el) return;
   var set = function (state, text) { el.setAttribute("data-state", state); el.lastChild.nodeValue = text; };
   fetch("/media/iam-state.json", { cache: "no-store" }).then(function (r) { return r.ok ? r.json() : null; }).then(function (s) {
-    if (!s || !s.state) return set("unknown", "Status: unknown");
+    if (!s || !s.state) return set("unknown", "Status unknown");
     var age = (Date.now() - Date.parse(s.generated || 0)) / 36e5;
     var when = s.generated ? new Date(s.generated).toLocaleString(undefined, { month: "short", day: "numeric", hour: "2-digit", minute: "2-digit" }) : "";
-    if (s.state !== "ok") return set("fault", "Status: fault" + (s.down && s.down.length ? " (" + s.down.join(", ") + ")" : "") + (when ? " · " + when : ""));
-    if (age > 24) return set("stale", "Status: no probe since " + when);
-    set("ok", "Status: all systems operational" + (when ? " · " + when : ""));
-  }).catch(function () { set("unknown", "Status: unknown"); });
+    if (s.state !== "ok") return set("fault", "Fault" + (s.down && s.down.length ? " (" + s.down.join(", ") + ")" : "") + (when ? " · " + when : ""));
+    if (age > 24) return set("stale", "Live, unverified since " + when);
+    set("ok", "Live" + (when ? " · " + when : ""));
+  }).catch(function () { set("unknown", "Status unknown"); });
 })();
