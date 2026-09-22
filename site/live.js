@@ -80,7 +80,7 @@
     playing = true; source = "lab"; step = 0; arpTick(); airTick(); draw();
     playBtn.textContent = "Stop"; nowEl.textContent = lab.state === "ok" ? "Playing: E major, every site answering." : "Playing: E minor, something is down.";
   }
-  function stop() { playing = false; clearTimeout(stepTimer); clearTimeout(padTimer); playBtn.textContent = "Play the lab"; nowEl.textContent = "Stopped."; }
+  function stop() { playing = false; activeMini = null; clearTimeout(stepTimer); clearTimeout(padTimer); playBtn.textContent = "Play the lab"; nowEl.textContent = "Stopped."; }
   playBtn.addEventListener("click", function () { playing && source === "lab" ? stop() : start(); });
 
   // --- the Salish Sea (visualizer) --------------------------------------------------------------
@@ -97,7 +97,7 @@
     if (live) { freq = freq || new Uint8Array(analyser.frequencyBinCount); analyser.getByteFrequencyData(freq); }
     var low = live ? band(2, 12) : 0.10 + 0.04 * Math.sin(t * 0.4), high = live ? band(60, 200) : 0.04;
     dim.className = ok ? "" : "fault";
-    drawScope(live, ok);
+    drawScope(live, ok, scope); if (activeMini) drawScope(live && source === "rec", ok, activeMini);
     sc.clearRect(0, 0, W, H);
     var water = H * 0.45;                                             // the water starts roughly mid-frame in the photo
     // swell — three translucent bands drifting across the lower half, amplitude from the low end
@@ -119,10 +119,10 @@
       sc.beginPath(); sc.ellipse(W * 0.78, water + (H - water) * 0.1, R.a, R.a * 0.28, 0, 0, 6.283); sc.strokeStyle = "rgba(226,232,240," + (R.life * 0.6) + ")"; sc.lineWidth = 2; sc.stroke(); }
   }
   // --- the sound graph (next to the play button): spectrum bars coloured by pitch, the waveform drawn over them
-  var scope = document.getElementById("scope"), gc = scope ? scope.getContext("2d") : null, wave = null;
-  function drawScope(live, ok) {
-    if (!gc) return;
-    var w = scope.width, h = scope.height;
+  var scope = document.getElementById("scope"), wave = null, activeMini = null;   // activeMini: the graph under the recording that is playing
+  function drawScope(live, ok, cv) {
+    if (!cv) return;
+    var gc = cv.getContext("2d"), w = cv.width, h = cv.height;
     gc.clearRect(0, 0, w, h);
     var bars = 64, top = Math.min(freq ? freq.length : 512, 360);        // ~0 to 7.7 kHz at 44.1k / fftSize 1024
     for (var b = 0; b < bars; b++) {
@@ -159,8 +159,11 @@
       if (e.art) { var im = document.createElement("img"); im.className = "art"; im.draggable = false; im.src = "/media/" + e.art; im.alt = "Art drawn from this recording: " + e.date; im.loading = "lazy"; d.appendChild(im); }
       if (e.haiku && e.haiku.length) { var hk = document.createElement("p"); hk.className = "haiku"; e.haiku.forEach(function (ln, i) { if (i) hk.appendChild(document.createElement("br")); hk.appendChild(document.createTextNode(ln)); }); d.appendChild(hk); }
       a.controls = true; a.preload = "none"; a.src = "/media/" + e.m4a;
-      a.addEventListener("play", function () { ensureAudio(); if (ac.state === "suspended") ac.resume(); if (playing) stop(); source = "rec"; if (!a._node) { a._node = ac.createMediaElementSource(a); a._node.connect(analyser); } draw(); nowEl.textContent = "Playing the lab's own recording from " + e.date + "."; });
-      d.appendChild(ev); d.appendChild(a); li.appendChild(t); li.appendChild(d); list.appendChild(li);
+      var cv = document.createElement("canvas"); cv.className = "scope-mini"; cv.width = 640; cv.height = 120; cv.setAttribute("aria-hidden", "true"); drawScope(false, lab.state === "ok", cv);
+      a.addEventListener("pause", function () { if (activeMini === cv) { activeMini = null; drawScope(false, lab.state === "ok", cv); } });
+      a.addEventListener("ended", function () { if (activeMini === cv) { activeMini = null; drawScope(false, lab.state === "ok", cv); } });
+      a.addEventListener("play", function () { ensureAudio(); if (ac.state === "suspended") ac.resume(); if (playing) stop(); source = "rec"; activeMini = cv; if (!a._node) { a._node = ac.createMediaElementSource(a); a._node.connect(analyser); } draw(); nowEl.textContent = "Playing the lab's own recording from " + e.date + "."; });
+      d.appendChild(ev); d.appendChild(a); d.appendChild(cv); li.appendChild(t); li.appendChild(d); list.appendChild(li);
     });
   }).catch(function () { list.innerHTML = "<li><span class=\"ev\">Recordings unavailable.</span></li>"; });
 })();
