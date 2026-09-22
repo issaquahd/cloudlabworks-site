@@ -11,7 +11,7 @@ render() { # render SRC OUT [width]
   if [ ! -f "$out" ] || [ "$src" -nt "$out" ] || [ "$WM" -nt "$out" ]; then "$WM" "$src" "$out" --width "$w"; else echo "$2 up to date"; fi
 }
 # Made here: photographs of the work as it hangs and sits (served originals moved to src/art/served/).
-for n in hands-canvas pour-red-drips pour-multicolor fan-and-canvas glass-bowl glass-shelf raku-shelf kabuki-1 kabuki-2 revolutionnaire; do
+for n in hands-canvas pour-red-drips pour-multicolor fan-and-canvas glass-bowl glass-shelf raku-shelf kabuki-1 kabuki-2 revolutionnaire kimono-scroll; do
   render "$S/art/served/art-$n.jpg" "art-wm-$n.jpg" 1200
 done
 # Waku art: the Salish Sea set.
