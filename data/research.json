@@ -2,6 +2,22 @@
  "note": "Papers and reports read in the lab, newest first. Each entry: what it found in one line, and what it changed here in one line. Evidence tier is how far it was read: full, abstract, or report. Internal identifiers never appear here.",
  "entries": [
   {
+   "read": "2026-09-22",
+   "title": "The Ancient Code: How Musical Intelligence Was Born Centuries Before Computers",
+   "venue": "Michael Filimowicz (Medium), July 2025",
+   "link": "https://michael-filimowicz.medium.com/the-ancient-code-how-musical-intelligence-was-born-centuries-before-computers-4090bb293e3a",
+   "tier": "full",
+   "tags": [
+    "live-coding",
+    "music",
+    "history",
+    "algorithmic-composition",
+    "research"
+   ],
+   "found": "Algorithmic composition predates computers by a millennium: Guido d'Arezzo's staff notation around 1025 and his table-lookup procedure for turning text into melody; the 18th-century musical dice game, where 176 fragments recombine and the musical knowledge lives in the constraint rather than the dice; programmable carillons and pneumatic orchestrions. The 1957 Illiac Suite is the next link in that chain, not its start; what changed since is scale and visibility, not philosophy.",
+   "here": "Opens the History page with a Before computers section, and reframes the lab's own instrument: Infrastructure as Music is a constraint system with a state file for input, closer to the dice game than to a generative model."
+  },
+  {
    "read": "2026-09-21",
    "title": "Music as Code (theme page and essays, 2026)",
    "venue": "kennethreitz.org",

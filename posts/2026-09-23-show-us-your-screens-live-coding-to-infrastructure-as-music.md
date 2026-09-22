@@ -6,15 +6,18 @@ by: Alex Alvord
 slug: show-us-your-screens-live-coding-to-infrastructure-as-music
 section: blog
 draft: true
-summary: Live coding has a founding document with one rule in it, written in a Hamburg bar in 2004. The rule applies to infrastructure better than anyone at the time could have known. The lineage from the Illiac Suite to Sonic Pi, and what it looks like when the performer is a set of agents and the input is a lab's own health.
+summary: Live coding has a founding document with one rule in it, written in a Hamburg bar in 2004. The rule applies to infrastructure better than anyone at the time could have known. The lineage from a monk with a four-line staff to Sonic Pi, and what it looks like when the performer is a set of agents and the input is a lab's own health.
 ---
 
-There is a history page on this site now, under Site, and it is there because the lab's strangest feature has a family tree. Code as Music, the instrument at the top of `/live`, is a Sonic Pi program. Sonic Pi is a 2013 branch of live coding. Live coding got its name in 2004. The thing it names began in 1957. The dates below come from Soniare's history of live coding; the argument at the end is mine.
+There is a history page on this site now, under Site, and it is there because the lab's strangest feature has a family tree. Code as Music, the instrument at the top of `/live`, is a Sonic Pi program. Sonic Pi is a 2013 branch of live coding. Live coding got its name in 2004. The thing it names reached a computer in 1957, and a monastery around 1025. The dates below come from the three sources at the end; the argument is mine.
 
-## Seventy years, in one column
+## A thousand years, in one column
 
 | Year | What happened | Why it is on this page |
 |---|---|---|
+| c. 1025 | Guido d'Arezzo encodes music on a four-line staff, and describes a table-lookup procedure for turning text into melody | Notation is the first musical programming language; text to music by rule is not a 2020s idea |
+| 18th century | The musical dice game: 176 fragments, dice for selection, every combination harmonically coherent by design | The constraint is the intelligence, not the randomness |
+| 19th century | Programmable carillons, pneumatic orchestrions playing dozens of instruments from perforated rolls | Automated performance with expression, written into the roll |
 | 1957 | Hiller and Isaacson's Illiac Suite: a string quartet composed partly by computer | Music from logic, before anyone could hear a computer speak |
 | late 1950s | Max Mathews writes MUSIC I at Bell Labs; the 1962 Science article follows | The first program that made sound itself; the MUSIC-N family underlies everything after |
 | 1990, 1996 | Max, then Pure Data and SuperCollider | The tools become playable in real time; SuperCollider goes free in 2002 and is still the engine under much of the field |
@@ -45,4 +48,4 @@ Projecting the screen has a price the Read Me does not mention: you have to buil
 
 The Hamburg group wrote their rule for a room with a laptop and a projector. Twenty-two years on, the room is a rack in Duvall and the projector is a website, and the rule holds: the cursor is blinking, and whatever happens next is on the screen.
 
-Sources for the dated entries: Soniare, [The History of Live Coding: From Bell Labs to the Algorave](https://www.soniare.net/blog/history-of-livecoding); Kenneth Reitz, [Music as Code](https://kennethreitz.org/themes/music-as-code). The lab's timeline, with these entries and its own, lives at [/history](/history).
+Sources for the dated entries: Michael Filimowicz, [The Ancient Code: How Musical Intelligence Was Born Centuries Before Computers](https://michael-filimowicz.medium.com/the-ancient-code-how-musical-intelligence-was-born-centuries-before-computers-4090bb293e3a); Soniare, [The History of Live Coding: From Bell Labs to the Algorave](https://www.soniare.net/blog/history-of-livecoding); Kenneth Reitz, [Music as Code](https://kennethreitz.org/themes/music-as-code). The lab's timeline, with these entries and its own, lives at [/history](/history).
