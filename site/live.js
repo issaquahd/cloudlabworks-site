@@ -156,6 +156,8 @@
       var li = document.createElement("li"), t = document.createElement("time"), d = document.createElement("div"), ev = document.createElement("span"), a = document.createElement("audio");
       t.dateTime = e.date; t.textContent = e.date + (e.seconds ? " · " + Math.round(e.seconds) + " s" : "");
       ev.className = "ev"; ev.textContent = (e.title ? e.title + " · " : "") + ((e.events || []).map(function (x) { return x.replace(/^\d{6}-/, ""); }).join(" · ") || "lab");
+      // the idiom, when a take has one: these are compositions, not all of them ambient
+      if (e.style) { var st = document.createElement("span"); st.className = "style"; st.textContent = e.style; d.appendChild(st); }
       if (e.art) { var im = document.createElement("img"); im.className = "art"; im.draggable = false; im.src = "/media/" + e.art; im.alt = "Art drawn from this recording: " + e.date; im.loading = "lazy"; d.appendChild(im); }
       if (e.haiku && e.haiku.length) { var hk = document.createElement("p"); hk.className = "haiku"; e.haiku.forEach(function (ln, i) { if (i) hk.appendChild(document.createElement("br")); hk.appendChild(document.createTextNode(ln)); }); d.appendChild(hk); }
       a.controls = true; a.preload = "none"; a.src = "/media/" + e.m4a;
