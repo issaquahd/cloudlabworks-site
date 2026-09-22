@@ -2,6 +2,14 @@
  "title": "Live Test Pipeline: transitions",
  "items": [
   {
+   "id": "sanitizer-deny-check",
+   "name": "Public feed sanitizer",
+   "from": null,
+   "to": "pass",
+   "at": "2026-09-22T04:51:01Z",
+   "note": "The published test data is swept for addresses, hostnames, paths, tokens, ids, channel names and internal service names before it is written. A hit withholds the field and fails this test."
+  },
+  {
    "id": "art-watermark-inquire",
    "name": "Watermark and inquire only",
    "from": null,
@@ -42,5 +50,5 @@
    "note": "Every metric the lab publishes carries its absolute value and its baseline, never only the delta. A lint check fails any note that ships a bare delta."
   }
  ],
- "generated": "2026-09-22T04:47:39Z"
+ "generated": "2026-09-22T04:51:19Z"
 }
