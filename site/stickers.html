@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>New &amp; Vintage Stickers · CloudLab Works</title>
+<meta name="description" content="The laptop stickers, cut from photographs by the lab's own pipeline: RightScale, CloudFront and INAP from the early cloud years; CNCF, Docker, Hugging Face, TensorFlow, Claude and the Nutanix unicorn from now.">
+<link rel="canonical" href="https://cloudlabworks.dev/stickers">
+<style>{{STYLE}}</style>
+<style>
+.board{background:#d9b98a;background-image:radial-gradient(rgba(0,0,0,.08) 1px,transparent 1.2px);background-size:9px 9px;border:10px solid #7a5230;border-radius:12px;padding:22px 18px 8px;margin:14px 0 26px;box-shadow:inset 0 0 40px rgba(0,0,0,.18)}
+.stk-grid{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:18px 14px}
+.stk-card{display:flex;flex-direction:column;align-items:center;text-align:center;gap:4px;padding:0 4px 14px}
+.stk-pin{position:relative;height:150px;width:100%;display:flex;align-items:center;justify-content:center}
+.stk-pin::before{content:"";position:absolute;top:6px;left:50%;width:14px;height:14px;margin-left:-7px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#ff8a80,#b71c1c);box-shadow:0 2px 3px rgba(0,0,0,.4);z-index:2}
+.stk-pin img{max-width:160px;max-height:130px;width:auto;height:auto;filter:drop-shadow(0 3px 4px rgba(0,0,0,.35))}
+.stk-card:nth-child(3n+1) .stk-pin img{transform:rotate(-6deg)}.stk-card:nth-child(3n+2) .stk-pin img{transform:rotate(4deg)}.stk-card:nth-child(3n) .stk-pin img{transform:rotate(-2deg)}
+.stk-card b{font-size:15px;line-height:1.25;color:#2a1a0e}
+.stk-card .era{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#7a5230;font-weight:800}
+.stk-card span:not(.era){font-size:13.5px;color:#4a3a2a;line-height:1.4}
+h2{margin-top:28px}
+</style>
+</head>
+<body>
+<div id="dim" aria-hidden="true"></div>
+{{HEAD}}
+<main>
+  <h1>New &amp; Vintage Stickers</h1>
+  <p class="lede">Twenty-four laptop stickers, photographed and cut out by the lab's own pipeline (Apple Vision for the outline, a colour mask where Vision gave up, a taper correction for the ones shot at an angle, grey-world white balance for the one the camera turned blue). The old ones are from the early cloud years; the new ones are from the bench this month. Pinned to a cork board because that is where stickers go when they are not on a laptop.</p>
+  <p class="tag">Marks belong to their owners; these are photographs of Alex's own stickers. The cut-outs also appear beside the work they came from on <a href="/work">Work</a> and <a href="/certifications">Certifications</a>.</p>
+
+  <h2 id="vintage">Vintage</h2>
+  <div class="board"><ul class="stk-grid">
+    <li class="stk-card vintage"><div class="stk-pin"><img src="/media/sticker-rightscale-belong.png" srcset="/media/sticker-rightscale-belong@2x.png 2x" alt="RightScale: All your cloud are belong to us. sticker" loading="lazy" draggable="false"></div><b>RightScale: All your cloud are belong to us.</b><span class="era">Vintage</span><span>The card from RightScale, 2013: Alex's first cloud-era role, at a company doing multi-cloud orchestration before the word multicloud existed. The joke was already old; it still lands.</span></li>
+    <li class="stk-card vintage"><div class="stk-pin"><img src="/media/sticker-rightscale-laptop.png" srcset="/media/sticker-rightscale-laptop@2x.png 2x" alt="RightScale: My laptop scales more servers than yours. sticker" loading="lazy" draggable="false"></div><b>RightScale: My laptop scales more servers than yours.</b><span class="era">Vintage</span><span>Laptop sticker from the same year. The boast was the whole pitch.</span></li>
+    <li class="stk-card vintage"><div class="stk-pin"><img src="/media/sticker-rightscale-size.png" srcset="/media/sticker-rightscale-size@2x.png 2x" alt="RightScale: When size matters. sticker" loading="lazy" draggable="false"></div><b>RightScale: When size matters.</b><span class="era">Vintage</span><span>The third of the set. Subtlety was not the house style.</span></li>
+    <li class="stk-card vintage"><div class="stk-pin"><img src="/media/sticker-cloudfront-a.png" srcset="/media/sticker-cloudfront-a@2x.png 2x" alt="Amazon CloudFront: Your content, delivered. Fast. sticker" loading="lazy" draggable="false"></div><b>Amazon CloudFront: Your content, delivered. Fast.</b><span class="era">Vintage</span><span>An early CDN card from the years CloudFront was new and re:Invent was small.</span></li>
+    <li class="stk-card vintage"><div class="stk-pin"><img src="/media/sticker-cloudfront-b.png" srcset="/media/sticker-cloudfront-b@2x.png 2x" alt="Amazon CloudFront: Take it to the edge. sticker" loading="lazy" draggable="false"></div><b>Amazon CloudFront: Take it to the edge.</b><span class="era">Vintage</span><span>Its sibling. The edge meant something smaller then.</span></li>
+    <li class="stk-card vintage"><div class="stk-pin"><img src="/media/sticker-inap.png" srcset="/media/sticker-inap@2x.png 2x" alt="Internap (INAP) sticker" loading="lazy" draggable="false"></div><b>Internap (INAP)</b><span class="era">Vintage</span><span>Cloud Solutions Architect there, 2015 to 2018: private cloud, bare metal, hybrid, OpenStack.</span></li>
+    <li class="stk-card vintage"><div class="stk-pin"><img src="/media/sticker-rubrik.png" srcset="/media/sticker-rubrik@2x.png 2x" alt="Rubrik robot sticker" loading="lazy" draggable="false"></div><b>Rubrik robot</b><span class="era">Vintage</span><span>The backup robot from the Rubrik year, 2018 to 2019, Systems Engineer for the Pacific Northwest channel.</span></li>
+    <li class="stk-card vintage"><div class="stk-pin"><img src="/media/sticker-seattle-nug.png" srcset="/media/sticker-seattle-nug@2x.png 2x" alt="Seattle Nutanix User Group sticker" loading="lazy" draggable="false"></div><b>Seattle Nutanix User Group</b><span class="era">Vintage</span><span>The user group Alex founded, running for more than five years; the sticker went on every laptop in the room.</span></li>
+    <li class="stk-card vintage"><div class="stk-pin"><img src="/media/sticker-aws-saa.png" srcset="/media/sticker-aws-saa@2x.png 2x" alt="AWS Certified Solutions Architect Associate sticker" loading="lazy" draggable="false"></div><b>AWS Certified Solutions Architect Associate</b><span class="era">Vintage</span><span>The associate credential. The sticker has outlived more than one exam version.</span></li>
+    <li class="stk-card vintage"><div class="stk-pin"><img src="/media/sticker-aws-sap.png" srcset="/media/sticker-aws-sap@2x.png 2x" alt="AWS Certified Solutions Architect Professional sticker" loading="lazy" draggable="false"></div><b>AWS Certified Solutions Architect Professional</b><span class="era">Vintage</span><span>The second. Harder exam, same sticker size.</span></li>
+    <li class="stk-card vintage"><div class="stk-pin"><img src="/media/sticker-unikitty.png" srcset="/media/sticker-unikitty@2x.png 2x" alt="Unikitty: THE CLOUD sticker" loading="lazy" draggable="false"></div><b>Unikitty: THE CLOUD</b><span class="era">Vintage</span><span>A LEGO Movie sticker that says THE CLOUD, kept for the right reasons. It sits on the home page beside the real ones.</span></li>
+  </ul></div>
+
+  <h2 id="new">New</h2>
+  <div class="board"><ul class="stk-grid">
+    <li class="stk-card new"><div class="stk-pin"><img src="/media/sticker-nutanix-unicorn.png" srcset="/media/sticker-nutanix-unicorn@2x.png 2x" alt="Nutanix: Simply Magic sticker" loading="lazy" draggable="false"></div><b>Nutanix: Simply Magic</b><span class="era">New</span><span>The unicorn. Every Nutanix certification on this site wears it.</span></li>
+    <li class="stk-card new"><div class="stk-pin"><img src="/media/sticker-cncf.png" srcset="/media/sticker-cncf@2x.png 2x" alt="Cloud Native Computing Foundation sticker" loading="lazy" draggable="false"></div><b>Cloud Native Computing Foundation</b><span class="era">New</span><span>Membership, and the Kubernetes years that came with it.</span></li>
+    <li class="stk-card new"><div class="stk-pin"><img src="/media/sticker-docker.png" srcset="/media/sticker-docker@2x.png 2x" alt="Docker sticker" loading="lazy" draggable="false"></div><b>Docker</b><span class="era">New</span><span>The whale. It went on the laptop the week containers stopped being optional.</span></li>
+    <li class="stk-card new"><div class="stk-pin"><img src="/media/sticker-prometheus.png" srcset="/media/sticker-prometheus@2x.png 2x" alt="Prometheus sticker" loading="lazy" draggable="false"></div><b>Prometheus</b><span class="era">New</span><span>The torch; the monitoring that watches the lab.</span></li>
+    <li class="stk-card new"><div class="stk-pin"><img src="/media/sticker-serverless-workflow.png" srcset="/media/sticker-serverless-workflow@2x.png 2x" alt="Serverless Workflow Specification sticker" loading="lazy" draggable="false"></div><b>Serverless Workflow Specification</b><span class="era">New</span><span>The CNCF spec sticker, tall and narrow, cut at its real angle.</span></li>
+    <li class="stk-card new"><div class="stk-pin"><img src="/media/sticker-acorn.png" srcset="/media/sticker-acorn@2x.png 2x" alt="Acorn sticker" loading="lazy" draggable="false"></div><b>Acorn</b><span class="era">New</span><span>The app-packaging project; the sticker needed a colour mask to cut, the acorn is the same brown as its shadow.</span></li>
+    <li class="stk-card new"><div class="stk-pin"><img src="/media/sticker-pinecone.png" srcset="/media/sticker-pinecone@2x.png 2x" alt="Pinecone sticker" loading="lazy" draggable="false"></div><b>Pinecone</b><span class="era">New</span><span>The vector database behind the lab&#x27;s memory experiments.</span></li>
+    <li class="stk-card new"><div class="stk-pin"><img src="/media/sticker-huggingface.png" srcset="/media/sticker-huggingface@2x.png 2x" alt="Hugging Face sticker" loading="lazy" draggable="false"></div><b>Hugging Face</b><span class="era">New</span><span>The model hub. The last letter fell off the first cut and had to be recovered.</span></li>
+    <li class="stk-card new"><div class="stk-pin"><img src="/media/sticker-tensorflow.png" srcset="/media/sticker-tensorflow@2x.png 2x" alt="TensorFlow sticker" loading="lazy" draggable="false"></div><b>TensorFlow</b><span class="era">New</span><span>The orange TF; the photo&#x27;s white balance had turned it blue and grey-world brought it back.</span></li>
+    <li class="stk-card new"><div class="stk-pin"><img src="/media/sticker-claude.png" srcset="/media/sticker-claude@2x.png 2x" alt="Claude sticker" loading="lazy" draggable="false"></div><b>Claude</b><span class="era">New</span><span>The wordmark of the model that runs Waku.</span></li>
+    <li class="stk-card new"><div class="stk-pin"><img src="/media/sticker-opencv-aikit.png" srcset="/media/sticker-opencv-aikit@2x.png 2x" alt="OpenCV AI Kit sticker" loading="lazy" draggable="false"></div><b>OpenCV AI Kit</b><span class="era">New</span><span>The vision kit on the AI bench.</span></li>
+    <li class="stk-card new"><div class="stk-pin"><img src="/media/sticker-zimaboard.png" srcset="/media/sticker-zimaboard@2x.png 2x" alt="ZimaBoard sticker" loading="lazy" draggable="false"></div><b>ZimaBoard</b><span class="era">New</span><span>The single-board router that became the mesh-network subnet router.</span></li>
+    <li class="stk-card new"><div class="stk-pin"><img src="/media/sticker-finops4life.png" srcset="/media/sticker-finops4life@2x.png 2x" alt="FinOps 4 Life sticker" loading="lazy" draggable="false"></div><b>FinOps 4 Life</b><span class="era">New</span><span>The anchor; the discipline that pays for the rest of the lab.</span></li>
+  </ul></div>
+</main>
+{{FOOT}}
+</body>
+</html>
