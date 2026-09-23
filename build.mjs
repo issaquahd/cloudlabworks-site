@@ -52,6 +52,14 @@ function markdown(src) {
     if (/^(-{3,}|\*{3,})\s*$/.test(l)) { flush(); out.push("<hr>"); i++; continue; }
     const im = /^!\[([^\]]*)\]\(([^)\s]+)\)\s*$/.exec(l);
     if (im) { flush(); const cap = im[1] ? `<figcaption>${inline(im[1])}</figcaption>` : ""; out.push(`<figure><img src="${im[2]}" alt="${esc(im[1])}" loading="lazy" decoding="async">${cap}</figure>`); i++; continue; }
+    if (/^\|/.test(l) && i + 1 < lines.length && /^\|?\s*:?-{3,}/.test(lines[i + 1])) {
+      flush();
+      const cells = (row) => row.trim().replace(/^\||\|$/g, "").split("|").map((c) => inline(c.trim()));
+      const head = cells(l); i += 2; const rows = [];
+      while (i < lines.length && /^\|/.test(lines[i])) rows.push(cells(lines[i++]));
+      out.push(`<table><thead><tr>${head.map((c) => `<th>${c}</th>`).join("")}</tr></thead><tbody>${rows.map((r) => `<tr>${r.map((c) => `<td>${c}</td>`).join("")}</tr>`).join("")}</tbody></table>`);
+      continue;
+    }
     if (/^>\s?/.test(l)) { flush(); const buf = []; while (i < lines.length && /^>\s?/.test(lines[i])) buf.push(lines[i++].replace(/^>\s?/, "")); out.push(`<blockquote>${markdown(buf.join("\n"))}</blockquote>`); continue; }
     if (/^\s*[-*]\s+/.test(l)) { flush(); const buf = []; while (i < lines.length && /^\s*[-*]\s+/.test(lines[i])) buf.push(`<li>${inline(lines[i++].replace(/^\s*[-*]\s+/, ""))}</li>`); out.push(`<ul>${buf.join("")}</ul>`); continue; }
     if (/^\s*\d+\.\s+/.test(l)) { flush(); const buf = []; while (i < lines.length && /^\s*\d+\.\s+/.test(lines[i])) buf.push(`<li>${inline(lines[i++].replace(/^\s*\d+\.\s+/, ""))}</li>`); out.push(`<ol>${buf.join("")}</ol>`); continue; }
@@ -125,7 +133,7 @@ const sectionIndex = (sec) => shell({
   title: `${sec.title} · CloudLab Works`, desc: sec.desc, path: sec.path, cls: "blog",
   body: `  <h1>${esc(sec.h1)}<small>${esc(sec.sub)}</small></h1>
   <p class="lede">${esc(sec.desc)}</p>
-  ${sec.disclaimer ? `<p class="tag">${esc(sec.disclaimer)}</p>\n  ` : ""}<p class="tag"><a href="${sec.path}/feed.xml">RSS feed</a> · <a href="/subscribe">Subscribe by email</a></p>
+  ${sec.disclaimer ? `<p class="tag">${esc(sec.disclaimer)}</p>\n  ` : ""}${sec.key === "nutanix" ? `<p class="tag"><b><a href="/nutanix/kb">Nutanix Knowledge Base</a></b>: sourced, dated reference pages. v4 API for the whole estate, NC2 on AWS, Azure and Google Cloud.</p>\n  ` : ""}<p class="tag"><a href="${sec.path}/feed.xml">RSS feed</a> · <a href="/subscribe">Subscribe by email</a></p>
   <ul class="plain posts">
 ${inSection(sec).length ? inSection(sec).map(postItem).join("\n") : emptyItem(sec)}
   </ul>`,
@@ -242,7 +250,43 @@ const home = page("index.html").replace("{{LATEST}}", inSection(BLOG).length ? i
 const INQUIRE = page("inquire.html");
 const CATEGORIES = ["Cloud & AI triage", "Startup advisor", "Agentic art", "Original art", "Board position", "Community give-back", "Collaborate on a project", "Writing", "Speaking and interviews", "Mentoring", "Meet at an event", "Something else"];
 
-const pages = { "/": home, "/work": page("work.html").replace("{{GITHUB}}", GITHUB), [BLOG.path]: sectionIndex(BLOG), [NUTANIX.path]: sectionIndex(NUTANIX), ...postPages, "/notes": page("notes.html"), "/bloggy-notes": bloggyNotesPage(), "/privacy": page("privacy.html"), "/terms": page("terms.html"), "/card": page("card.html"), "/live": page("live.html"), "/visualization": page("visualization.html"), "/tests": page("tests.html"), "/research": researchPage(), "/history": page("history.html"), "/orcas": page("orcas.html"), "/podcast": page("podcast.html"), "/art": page("art.html"), "/diagrams": page("diagrams.html"), "/asr": page("asr.html"), "/certifications": page("certifications.html"), "/subscribe": page("subscribe.html"), "/resume": page("resume.html"), "/portfolio": page("portfolio.html"), "/stickers": page("stickers.html"), "/koi": page("koi.html"), "/pagoda": page("pagoda.html"), "/pod": page("pod.html"), "/samurai": page("samurai.html"), "/gas": page("gas.html"), "/games": page("games.html"), "/world": worldPage() };
+// ---------- Nutanix knowledge base: kb/*.md, verified pages only, under /nutanix/kb ----------
+// Every page carries status/verified in frontmatter and a Sources section in the body. status !== "verified" keeps it out of the build.
+const KB = { path: "/nutanix/kb", title: "Nutanix Knowledge Base", desc: "Public, verifiable Nutanix facts: v4 API for the whole estate, NC2 on AWS, Azure and Google Cloud, and where every fact comes from. Each page cites its sources with the date they were read." };
+const kbDir = new URL("./kb/", import.meta.url);
+let kbPages = [];
+try {
+  kbPages = readdirSync(kbDir).filter((f) => f.endsWith(".md")).map((f) => {
+    const [meta, body] = frontmatter(readFileSync(new URL(f, kbDir), "utf8"));
+    if (!meta.title) throw new Error(`kb/${f}: missing title`);
+    if (!meta.verified) throw new Error(`kb/${f}: missing verified date`);
+    return { slug: meta.slug || f.replace(/\.md$/, ""), title: meta.title, summary: meta.summary || "", product: meta.product || "", verified: meta.verified, updated: meta.updated || meta.verified, status: meta.status || "draft", html: markdown(body) };
+  }).filter((p) => p.status === "verified").sort((a, b) => (a.slug === "one-api-for-the-estate" ? -1 : b.slug === "one-api-for-the-estate" ? 1 : a.title.localeCompare(b.title)));
+} catch (e) { if (e.code !== "ENOENT") throw e; }
+const kbItem = (p) => `    <li><time datetime="${p.verified}">verified ${fmtDate(p.verified)}</time><b><a href="${KB.path}/${p.slug}">${esc(p.title)}</a></b><span>${esc(p.summary)}</span><span class="by">${esc(p.product)}</span></li>`;
+const kbIndex = shell({
+  title: `${KB.title} · CloudLab Works`, desc: KB.desc, path: KB.path, cls: "blog",
+  body: `  <p class="tag crumb"><a href="${NUTANIX.path}">${esc(NUTANIX.title)}</a></p>
+  <h1>${esc(KB.title)}<small>public, sourced, dated</small></h1>
+  <p class="lede">${esc(KB.desc)}</p>
+  <p class="tag">Source hierarchy: product documentation on portal.nutanix.com first, then nutanix.dev, then the Nutanix Bible, then Nutanix University, launch blogs last. A page publishes only after every number on it has been read from one of those. ${esc(NUTANIX.disclaimer)}</p>
+  <ul class="plain posts">
+${kbPages.map(kbItem).join("\n")}
+  </ul>`,
+});
+const kbPagesOut = Object.fromEntries(kbPages.map((p) => [`${KB.path}/${p.slug}`, shell({
+  title: `${p.title} · ${KB.title}`, desc: p.summary || KB.desc, path: `${KB.path}/${p.slug}`,
+  extraHead: `<meta property="og:type" content="article"><meta property="article:modified_time" content="${p.updated}">`,
+  body: `  <p class="tag crumb"><a href="${NUTANIX.path}">${esc(NUTANIX.title)}</a> · <a href="${KB.path}">${esc(KB.title)}</a></p>
+  <h1>${esc(p.title)}</h1>
+  <p class="meta">${esc(p.product)} · verified against the sources below on <time datetime="${p.verified}">${fmtDate(p.verified)}</time></p>
+  <article>
+${p.html}
+  </article>
+  <p class="tag">Facts here move. The sources listed above win over this page on any day after the verified date. ${esc(NUTANIX.disclaimer)}</p>`,
+})]));
+
+const pages = { "/": home, "/work": page("work.html").replace("{{GITHUB}}", GITHUB), [BLOG.path]: sectionIndex(BLOG), [NUTANIX.path]: sectionIndex(NUTANIX), [KB.path]: kbIndex, ...kbPagesOut, ...postPages, "/notes": page("notes.html"), "/bloggy-notes": bloggyNotesPage(), "/privacy": page("privacy.html"), "/terms": page("terms.html"), "/card": page("card.html"), "/live": page("live.html"), "/visualization": page("visualization.html"), "/tests": page("tests.html"), "/research": researchPage(), "/history": page("history.html"), "/orcas": page("orcas.html"), "/podcast": page("podcast.html"), "/art": page("art.html"), "/diagrams": page("diagrams.html"), "/asr": page("asr.html"), "/certifications": page("certifications.html"), "/subscribe": page("subscribe.html"), "/resume": page("resume.html"), "/portfolio": page("portfolio.html"), "/stickers": page("stickers.html"), "/koi": page("koi.html"), "/pagoda": page("pagoda.html"), "/pod": page("pod.html"), "/samurai": page("samurai.html"), "/gas": page("gas.html"), "/games": page("games.html"), "/world": worldPage() };
 // /card is the NFC business-card landing page; the tag on the card carries only this URL.
 const VCARD = ["BEGIN:VCARD", "VERSION:3.0", "N:Alvord;Alex;;;", "FN:Alex Alvord", "ORG:Cloud Lab Works LLC", "TITLE:Principal Architect", "EMAIL;TYPE=INTERNET,WORK:alex@cloudlabworks.dev", "URL:https://cloudlabworks.dev", "URL;TYPE=LinkedIn:https://www.linkedin.com/in/alexalvord/", "ADR;TYPE=WORK:;;;Duvall;WA;;USA", "NOTE:Hybrid multicloud and AI infrastructure. A working lab, open to collaboration on projects. cloudlabworks.dev", "END:VCARD"].join("\r\n") + "\r\n";
 // Scripts, self-hosted (CSP script-src 'self'): /live.js = the browser instrument + visualizer; /art.js = the nightly haiku on /art; /menu.js = keyboard handling for the hamburger drawer.
