@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Our Connected Universe · CloudLab Works</title>
+<meta name="description" content="Nassim Haramein's Connected Universe theory, stated fairly, then checked with fifteen lines of code and the proton's own measured mass.">
+<link rel="canonical" href="https://cloudlabworks.dev/connected-universe">
+<style>{{STYLE}}</style>
+<style>
+.claims{list-style:none;padding:0;margin:16px 0 24px;display:grid;gap:14px}
+.claims li{border:1px solid var(--line);border-radius:12px;padding:16px 18px;background:var(--paper)}
+.claims li b{display:block;margin-bottom:4px}
+.check{border:1px solid var(--line);border-radius:12px;padding:22px 24px;background:var(--paper);margin:0 0 24px}
+.check pre{margin:14px 0;overflow-x:auto;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:.88rem;line-height:1.6;background:var(--ink,#1f2937);color:#e7f0ea;padding:16px;border-radius:8px}
+.check table{width:100%;border-collapse:collapse;margin:10px 0}
+.check td,.check th{padding:6px 10px;border-bottom:1px solid var(--line);text-align:left;font-size:.92rem}
+.verdict{border-left:4px solid #b4674d;padding:4px 0 4px 18px}
+</style>
+</head>
+<body>
+{{HEAD}}
+<main>
+<h1>Our Connected Universe</h1>
+<p class="lede">Nassim Haramein's framework, stated on its own terms, then run through the same discipline this site applies everywhere else on the "Code as" pages: the language's real behavior does the talking, not decoration. Here the language is arithmetic, and it settles the central claim in fifteen lines.</p>
+
+<h2>The claims, as Haramein states them</h2>
+<ul class="claims">
+  <li><b>The Connected Universe</b><span>Space is not empty; a web of spacetime geometry links everything from atoms to galaxies through a unified quantum-vacuum field.</span></li>
+  <li><b>The Schwarzschild proton</b><span>A proton behaves like a miniature black hole; black-hole mathematics explains its density and what holds it together.</span></li>
+  <li><b>Zero-point energy</b><span>A hidden "ocean" of quantum-vacuum background energy generates particle mass and drives gravity.</span></li>
+  <li><b>Fractal geometry and spin</b><span>Geometric forms (tetrahedra) repeat at every scale; mass makes space spin and twist rather than simply curve.</span></li>
+  <li><b>Information network and consciousness</b><span>The quantum vacuum acts as an information network; consciousness is an emergent property of matter and energy interacting within it.</span></li>
+</ul>
+
+<h2>The check</h2>
+<div class="check">
+<p>The Schwarzschild-proton claim is the one with a number attached, which means it's the one that can be checked without appeal to anyone's authority &mdash; including this site's. A Schwarzschild radius is the radius at which an object's escape velocity equals the speed of light &mdash; the definition of a black hole's event horizon: <code>r_s = 2GM / c&sup2;</code>. Two independently measured, uncontested numbers go in: the proton's mass and its charge radius.</p>
+<pre>G = 6.67430e-11        # m^3 kg^-1 s^-2, CODATA
+c = 299792458.0        # m/s, exact by SI definition
+m_p = 1.67262192369e-27  # kg, CODATA proton mass
+r_p = 0.8409e-15       # m, proton charge radius
+                       # (muonic hydrogen spectroscopy, Pohl et al. 2010, Nature)
+
+r_s_actual = 2 * G * m_p / c**2
+m_needed   = r_p * c**2 / (2 * G)</pre>
+<table>
+  <tr><th></th><th>Computed</th><th>Measured</th><th>Ratio</th></tr>
+  <tr><td>Schwarzschild radius implied by the proton's real mass</td><td>2.484 &times; 10<sup>&minus;54</sup> m</td><td>proton radius: 8.409 &times; 10<sup>&minus;16</sup> m</td><td>off by 3.4 &times; 10<sup>38</sup></td></tr>
+  <tr><td>Mass a black hole would need to have the proton's radius</td><td>5.662 &times; 10<sup>11</sup> kg (about a mountain)</td><td>proton mass: 1.673 &times; 10<sup>&minus;27</sup> kg</td><td>off by 3.0 &times; 10<sup>&minus;39</sup></td></tr>
+</table>
+<p>Run it and the two numbers that are supposed to coincide &mdash; the proton's real mass and the mass required for it to be a black hole of its own measured size &mdash; differ by roughly 39 orders of magnitude. That is not a rounding error in anyone's model; it is the actual physical claim, checked against the actual measured constants. Haramein's own 2010 paper, "The Schwarzschild Proton," states the same gap directly: it finds the real proton mass to be "~10<sup>&minus;39</sup>%" of the mass his model requires &mdash; matching this calculation to the order of magnitude, from the source itself.</p>
+<p class="verdict">It is on this page the way the Anunnaki-as-astronauts entry is on <a href="/history">the History page</a>: a named claim, fairly stated, checked against measurable evidence, and found not to hold &mdash; a counter-example, not a fact. The proton is not a black hole; nothing in mainstream physics treats it as one, and the arithmetic above is why.</p>
+</div>
+
+<p class="source">Sources: core claims summarized from public statements of Nassim Haramein's Connected Universe / Resonance Science framework. Physical constants: CODATA recommended values (gravitational constant, proton mass); speed of light exact by SI definition since 2019. Proton charge radius: R. Pohl et al., "The size of the proton," Nature 466, 213&ndash;216 (2010), muonic hydrogen Lamb-shift measurement. Haramein's own stated result ("~10<sup>&minus;39</sup>%"): N. Haramein, "The Schwarzschild Proton," Resonance Project Foundation (2010). Calculation run and verified on this box, 2026-09-23.</p>
+</main>
+{{FOOT}}
+</body>
+</html>
