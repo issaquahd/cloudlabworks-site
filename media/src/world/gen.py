@@ -22,13 +22,36 @@ def snapshot(state):
                 orca_surfaced=world.get(state, "orca")["surfaced"], heron_x=round(world.get(state, "heron")["pos"][0], 1))
 
 
+def check(state, prev_orca_x):
+    """Per-tick invariants. Checked on every tick, not on the three published frames:
+    a discontinuity between samples is invisible to a frame-by-frame look, which is how
+    the orca's modular wrap sat between frames 2 and 3 on the live page for a week.
+
+    1. the heron's feet stay above the water line (it is standing on a rock, not wading)
+    2. the orca moves at most its swim speed per tick (a wrap or a teleport fails here)
+    """
+    heron, orca = world.get(state, "heron"), world.get(state, "orca")
+    clearance = state["water_y"] - heron["pos"][1]
+    if clearance < 0:
+        raise SystemExit(f"INVARIANT: heron underwater at tick {state['tick']}, "
+                         f"clearance {clearance:.1f} px. Raise the rock or lower the tide.")
+    step_px = abs(orca["pos"][0] - prev_orca_x)
+    if step_px > orca["swim_px_per_h"] * state["dt"] + 1e-6:
+        raise SystemExit(f"INVARIANT: orca moved {step_px:.1f} px in one tick at "
+                         f"tick {state['tick']}, above its swim speed. That is a teleport.")
+    return clearance
+
+
 def main():
     state = world.compose(SEED)
     composition = copy.deepcopy(state["entities"])   # the world as composed, before any tick
     snaps, pieces = {}, []
+    min_clearance, prev_orca_x = float("inf"), world.get(state, "orca")["pos"][0]
     for tick in range(TICKS + 1):
         if tick:
             world.step(state, DT)
+            min_clearance = min(min_clearance, check(state, prev_orca_x))
+            prev_orca_x = world.get(state, "orca")["pos"][0]
         if tick in FRAMES:
             name, title = FRAMES[tick]
             open(os.path.join(HERE, f"{name}.svg"), "w").write(world.render(state))
@@ -51,6 +74,7 @@ def main():
     for tick, s in snaps.items():
         print(f"tick {tick:3d}: t {s['t_h']:.2f} h  tide {s['tide_m']:+.3f} m  water_y {s['water_y']:.1f}  sun {s['sun_angle_deg']:.2f} deg  canoe x {s['canoe_x']:.1f} (drift {s['canoe_drift_px']:+.1f} px)  orca x {s['orca_x']:.1f} depth {s['orca_depth_m']:.2f} m surfaced={s['orca_surfaced']}  heron x {s['heron_x']:.1f}")
     print(f"final: tide {state['tide_m']:+.3f} m (rose {state['tide_m'] - first['tide_m']:.3f} m), sun {state['sun_angle_deg']:.2f} deg, canoe drift {world.get(state, 'canoe')['drift_px']:+.1f} px")
+    print(f"invariants: {TICKS} ticks checked, tightest heron clearance {min_clearance:.1f} px above the water line")
 
 
 if __name__ == "__main__":
