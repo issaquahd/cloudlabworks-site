@@ -45,3 +45,8 @@ render "$M/waku-orca-pale.svg" art-wm-orca-mark.jpg 1024
 render "$M/cloudlabworks-banner-salish.jpg" art-wm-salish-band.jpg 1600
 render "$M/salish-pattern-alpha.svg" art-wm-watermark-tile.jpg 1024
 render "$M/waku-orca-og.png" art-wm-share-card.jpg 1200
+# Waku art: pop art (Japanese pop-art register: Warhol repetition, Ben-day dots, rising sun,
+# ukiyo-e wave, kumadori face paint; gen.py writes set.json and popart-NAME.svg).
+for n in $(python3 -c 'import json;print(" ".join(x["name"] for x in json.load(open("'"$S"'/popart/set.json"))))'); do
+  render "$S/popart/popart-$n.svg" "art-wm-popart-$n.jpg" 1600
+done
