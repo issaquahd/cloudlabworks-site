@@ -166,6 +166,113 @@ fn encounter(state: Destiny) {
     _ => println!("We handle the rest together."),
   }
 }</pre></li>
+  <li><b>Poem VIII</b><span class="lang">Go</span><pre>package main
+
+import "errors"
+
+// I hate and I love.
+// Why do I do this, perhaps you ask?
+func odiEtAmo() error {
+  hate := true
+  love := true
+
+  if hate && love {
+    // I do not know, but I feel it happening
+    // and I am crucified.
+    return errors.New("excrucior")
+  }
+
+  return nil
+}</pre></li>
+  <li><b>Poem IX</b><span class="lang">Go</span><pre>package main
+
+import "fmt"
+
+func main() {
+  // Let us live, my Lesbia, and let us love
+  kisses := make(chan int)
+
+  go func() {
+    for i := 1; ; i++ {
+      // Give me a thousand kisses, then a hundred,
+      // then another thousand, then a second hundred...
+      kisses &lt;- i
+    }
+  }()
+
+  // When we have mixed them all together, we will confuse the count
+  // so that no evil person can cast an envious eye knowing the total.
+  for total := range kisses {
+    if total > 3300 {
+      fmt.Println("Conturbabimus illa: The count is lost to the dark.")
+      break
+    }
+  }
+}</pre></li>
+  <li><b>Poem X</b><span class="lang">Go</span><pre>package main
+
+type Mind struct {
+  Obstinate bool
+}
+
+func (m *Mind) resolve() {
+  // Wretched Catullus, cease to play the fool
+  // and what you see is lost, consider lost.
+  m.Obstinate = true
+}
+
+func main() {
+  catullus := &amp;Mind{Obstinate: false}
+
+  // She does not want you.
+  // Do not chase what flees, nor live in misery.
+  for sheWoos := false; sheWoos; {
+    // This block never executes again
+  }
+
+  catullus.resolve() // Obdura: stand firm, steel yourself.
+}</pre></li>
+  <li><b>Poem XI</b><span class="lang">Go</span><pre>package main
+
+type Woman struct{}
+
+func (w *Woman) Promise() string {
+  // What a woman says to an eager lover
+  return "I love no one more than you"
+}
+
+func main() {
+  lesbia := Woman{}
+  words := lesbia.Promise()
+
+  // ...should be written in the wind
+  var wind string = words
+  // ...and running water.
+  var rapidWater []byte = []byte(wind)
+
+  // Mutable, transient, washed away instantly
+  rapidWater = nil
+}</pre></li>
+  <li><b>Poem XII</b><span class="lang">Go</span><pre>package main
+
+type Soul struct {
+  Vulnerability int
+}
+
+type Alliance struct {
+  // Go uses composition instead of traditional inheritance.
+  // We embed our structures directly into one another.
+  Me  Soul
+  You Soul
+}
+
+func connect() *Alliance {
+  // Explicit initialization, no hidden magic
+  return &amp;Alliance{
+    Me:  Soul{Vulnerability: 100},
+    You: Soul{Vulnerability: 100},
+  }
+}</pre></li>
 </ul>
 </main>
 {{FOOT}}
