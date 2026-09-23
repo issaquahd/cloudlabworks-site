@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Code as World · CloudLab Works</title>
+<meta name="description" content="One Salish Sea scene represented as executable code: composition, dynamics and appearance in a small Python module, stepped through its own rules and rendered to three frames from one seed. First run, v0.1.">
+<link rel="canonical" href="https://cloudlabworks.dev/world">
+<meta property="og:title" content="Code as World · CloudLab Works">
+<meta property="og:description" content="One world as code, three frames from one seed. Composition, dynamics and appearance as a small state module, scripted and rendered by the lab's own coding agent.">
+<meta property="og:url" content="https://cloudlabworks.dev/world">
+<meta property="og:image" content="https://cloudlabworks.dev/media/art-wm-world-03-end.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="900">
+<meta name="twitter:card" content="summary_large_image">
+<style>{{STYLE}}</style>
+<style>
+.pieces{list-style:none;padding:0;margin:16px 0 0;display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px}
+.pieces li{border:1px solid var(--line);border-radius:12px;padding:12px 14px;display:flex;flex-direction:column;gap:6px}
+.pieces li img{width:100%;height:auto;border-radius:8px;display:block;margin-bottom:4px;pointer-events:none;-webkit-user-drag:none;user-drag:none;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
+.pieces .medium{color:var(--accent);font-size:.78rem;font-weight:600;letter-spacing:.04em;text-transform:uppercase}
+.pieces b{color:var(--ink);font-size:1rem}
+.pieces span{color:var(--ink-2);font-size:.92rem}
+.pieces a.inquire{display:inline-block;margin-top:auto;align-self:flex-start;padding:4px 9px;font-size:.78rem;line-height:1.2;border:1px solid var(--badge-2);border-radius:999px;color:#0b1220;background:var(--badge-2);font-weight:700;text-decoration:none}
+.pieces a.inquire:hover{background:var(--badge)}
+pre{font-size:.82rem;max-height:34rem;overflow:auto}
+.run{border-left:3px solid var(--accent);padding:8px 14px;margin:14px 0;color:var(--ink-2)}
+.run code{color:var(--ink)}
+.origin{display:flex;gap:18px;align-items:flex-start;flex-wrap:wrap;margin-top:8px}
+.origin .stake{flex:none}
+.origin p{margin:0;flex:1 1 320px}
+h2{margin-top:40px}
+</style>
+</head>
+<body>
+{{HEAD}}
+<main>
+  <h1>Code as World</h1>
+  <p class="lede">A world represented as code, not just pixels: its composition, its dynamics and its appearance live in one small Python module, and the lab's own coding agent writes, steps and renders it locally. This is the first run, v0.1: one world, one seed, three frames. The dynamics are a script, not a solver. Every rule is a line you can read. A physical-simulation backend (MuJoCo) stays in reserve for the one scene that actually needs a solver instead of a script; this one does not.</p>
+  <p class="tag">Source: <code>media/src/world/world.py</code> (composition, <code>step</code>, <code>render</code>) and <code>gen.py</code> (seed it, run it, write the frames). Stdlib only, no model in the loop at render time. Same seed, same world, same frames.</p>
+
+  <h2 id="code">The world, as code</h2>
+  <p>Three parts, named the way the Code-as-World paper names them. The <b>composition</b> is a list of entities: a sun, the water with its tide and current, a headland and an island, a canoe (mass, floats, the one loud colour), an orca (mass, neutrally buoyant, a swim speed and a dive cycle), a heron, three clouds. The <b>dynamics</b> are the <code>step</code> function below: a sinusoidal tide on the water level, a sun arc, a current that follows the tide and drifts the canoe, an orca that swims and rides a dive cycle, a heron that stays put. The <b>appearance</b> is <code>render</code>: the state as flat shapes, 1200 by 900, earth tones first and one loud colour against them.</p>
+  <div class="run">{{WORLD_RUN}}</div>
+  <p class="tag">The <code>step</code> function, read from <code>world.py</code> when the site was built:</p>
+  <pre><code class="lang-python">{{WORLD_STEP}}</code></pre>
+  <p class="tag"><code>state.json</code> as <code>gen.py</code> wrote it: the composition first, then the state at the end of the run.</p>
+  <pre><code class="lang-json">{{WORLD_STATE}}</code></pre>
+
+  <h2 id="frames">Three frames from one seed</h2>
+  <p>The same world at tick 0, at the midpoint and at the end. Nothing is drawn by hand between frames; each is <code>render(state)</code> after that many calls to <code>step</code>. The captions are the program's own numbers.</p>
+  <ul class="pieces">
+{{WORLD_CARDS}}
+  </ul>
+  <p class="tag">Watermarked like everything on <a href="/art">Code as Art</a>; the SVG originals stay in the repo's source tree. Inquire for a print or the source of a frame.</p>
+
+  <h2 id="origin">Where it came from</h2>
+  <div class="origin">
+    <svg class="stake" viewBox="0 0 120 150" width="80" height="100" role="img" aria-labelledby="stakeTitle">
+      <title id="stakeTitle">The hand-lettered Coming Soon stake sign that stood on the Work page before this first run</title>
+      <ellipse cx="60" cy="139" rx="48" ry="7" fill="var(--line)"></ellipse>
+      <path d="M39 138 q4 -6 10 -2 q6 -8 12 -1 q5 -7 11 0 q6 -6 11 0 q5 -5 10 1" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" opacity=".55"></path>
+      <rect x="55" y="58" width="10" height="80" rx="2" fill="#8a5a34"></rect>
+      <rect x="55" y="58" width="10" height="80" rx="2" fill="none" stroke="#5c3a20" stroke-width="1"></rect>
+      <g transform="rotate(-4 60 45)">
+        <rect x="9" y="12" width="102" height="64" rx="6" fill="#fbf3df" stroke="#5c3a20" stroke-width="3"></rect>
+        <rect x="9" y="12" width="102" height="64" rx="6" fill="none" stroke="var(--accent)" stroke-width="1.5"></rect>
+        <text x="60" y="38" text-anchor="middle" font-family="ui-sans-serif,system-ui,sans-serif" font-size="15" font-weight="800" letter-spacing="1" fill="#0b1220">COMING</text>
+        <text x="60" y="62" text-anchor="middle" font-family="ui-sans-serif,system-ui,sans-serif" font-size="17" font-weight="800" letter-spacing="1" fill="var(--accent)">SOON!</text>
+      </g>
+    </svg>
+    <p>How it started: a stake sign on the <a href="/work">Work</a> page while the idea was scoped. Two papers set the shape. <a href="https://arxiv.org/html/2608.27549v1" rel="noopener">Code-as-World</a> (MirroS Lab, "Agentic Discovery of Executable World Representations for Physical Reasoning") gave the three-part split, composition, dynamic evolution and visual appearance as executable code, and the loop of propose, execute, render, verify, refine that produced this run. <a href="https://buaacyw.github.io/cwm/" rel="noopener">Code World Model</a> (Westlake AGI Lab / NTU, "Coding Agent as World Brain") gave the framing that the coding agent itself keeps the persistent world state and re-renders it, which is why <code>state.json</code> is on this page and not only the pictures. Reviewed with Pickles before ground was broken.</p>
+  </div>
+  <p class="tag">Next: a second world, and the first scene that needs something to fall, bounce or stack, which is the one MuJoCo is reserved for.</p>
+</main>
+{{FOOT}}
+</body>
+</html>

@@ -1,0 +1,20 @@
+[
+{
+"name": "world-01-t0",
+"title": "Frame 1, tick 0",
+"tick": 0,
+"text": "t = 0.0 h, tick 0 of 120. Low water: tide -1.60 m, sun on the horizon at 0.0 degrees, the canoe at x = 246 px before any drift, the orca surfaced, the heron on the rock."
+},
+{
+"name": "world-02-mid",
+"title": "Frame 2, mid run",
+"tick": 60,
+"text": "t = 3.0 h, tick 60 of 120. The tide rose 1.52 m to -0.09 m, the sun reached 43.2 degrees, the canoe drifted 171 px east on the flood, the orca is surfaced, the heron has not moved."
+},
+{
+"name": "world-03-end",
+"title": "Frame 3, end of run",
+"tick": 120,
+"text": "t = 6.0 h, tick 120 of 120. The tide rose 3.19 m to +1.59 m, the sun reached 86.4 degrees, the canoe drifted 355 px east on the flood, the orca is 3.5 m down, the heron has not moved."
+}
+]

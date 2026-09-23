@@ -167,6 +167,26 @@ try { research = JSON.parse(readFileSync(new URL("./data/research.json", import.
 const researchRows = research.entries.slice().sort((a, b) => b.read.localeCompare(a.read)).map((r) => `    <li><time datetime="${esc(r.read)}">${esc(r.read)}</time><div><b><a href="${esc(r.link)}" rel="noopener">${esc(r.title)}</a><span class="tier ${esc(r.tier)}">${esc(r.tier)}</span></b><span class="venue">${esc(r.venue)}</span><p>${esc(r.found)}</p><p class="here">${esc(r.here)}</p><span class="tags">${(r.tags || []).map((t) => `<i>${esc(t)}</i>`).join("")}</span></div></li>`).join("\n");
 const researchPage = () => page("research.html").replace("{{RESEARCH_ROWS}}", researchRows).replace("{{RESEARCH_COUNT}}", String(research.entries.length));
 
+// ---------- Code as World: /world shows media/src/world as gen.py left it (state.json, set.json) and the step function read out of world.py; every number on the page is program output. ----------
+const WORLD = new URL("./media/src/world/", import.meta.url);
+function worldPage() {
+  const st = JSON.parse(readFileSync(new URL("state.json", WORLD), "utf8"));
+  const set = JSON.parse(readFileSync(new URL("set.json", WORLD), "utf8"));
+  const py = readFileSync(new URL("world.py", WORLD), "utf8");
+  const step = /\ndef step\([\s\S]*?\n    return state\n/.exec(py);
+  if (!step) throw new Error("world.py: step() not found");
+  const f = st.final_state, t0 = st.frames["0"];
+  const n = (x, d = 2) => Number(x).toFixed(d);
+  const run = `Run: seed <code>${st.seed}</code>, <code>${st.ticks}</code> ticks of <code>dt = ${st.dt_h} h</code> (${n(st.ticks * st.dt_h, 1)} h of world time). Tide <code>${n(t0.tide_m)} m</code> at tick 0 to <code>${f.tide_m > 0 ? "+" : ""}${n(f.tide_m)} m</code> at tick ${f.tick}, a rise of <code>${n(f.tide_m - t0.tide_m)} m</code>. Sun angle <code>${n(t0.sun_angle_deg, 1)}</code> to <code>${n(f.sun_angle_deg, 1)} degrees</code>. Canoe drift <code>${n(f.canoe_drift_px, 0)} px</code> east. Orca at <code>${n(f.orca_depth_m, 1)} m</code> depth at the end, ${f.orca_surfaced ? "surfaced" : "diving"}. Heron at x = ${n(f.heron_x, 0)} in every frame.`;
+  const cards = set.map((p) => {
+    const alt = `${p.title}: a flat Salish Sea scene, canoe, orca, heron on a rock, rendered from the world's state at tick ${p.tick}`;
+    const ctx = encodeURIComponent(`Piece: Code as World, ${p.title} (SVG · rendered state). I am interested in: original / print / source.`);
+    return `    <li><img src="/media/art-wm-${p.name}.jpg" draggable="false" width="1200" height="900" alt="${esc(alt)}" loading="lazy"><span class="medium">SVG · rendered state · tick ${p.tick}</span><b>${esc(p.title)}</b><span>${esc(p.text)}</span><a class="go inquire" href="/inquire?category=Original%20art&context=${ctx}">Inquire</a></li>`;
+  }).join("\n");
+  const shown = JSON.stringify({ seed: st.seed, ticks: st.ticks, dt_h: st.dt_h, composition: st.composition, final_state: st.final_state }, null, 2);
+  return page("world.html").replace("{{WORLD_RUN}}", run).replace("{{WORLD_STEP}}", esc(step[0].trim())).replace("{{WORLD_STATE}}", esc(shown)).replace("{{WORLD_CARDS}}", cards);
+}
+
 // ---------- Bloggy Notes: /bloggy-notes combines the Blog index and the Notes list on one page, as two separate sections. /blog and /notes keep working (permalinks, RSS, old links); this is the new nav landing spot. ----------
 const bloggyNotesPage = () => page("bloggy-notes.html").replace("{{BLOG_ROWS}}", inSection(BLOG).length ? inSection(BLOG).map(postItem).join("\n") : emptyItem(BLOG));
 
@@ -202,7 +222,7 @@ const home = page("index.html").replace("{{LATEST}}", inSection(BLOG).length ? i
 const INQUIRE = page("inquire.html");
 const CATEGORIES = ["Cloud & AI triage", "Startup advisor", "Agentic art", "Original art", "Board position", "Community give-back", "Collaborate on a project", "Writing", "Speaking and interviews", "Mentoring", "Meet at an event", "Something else"];
 
-const pages = { "/": home, "/work": page("work.html").replace("{{GITHUB}}", GITHUB), [BLOG.path]: sectionIndex(BLOG), [NUTANIX.path]: sectionIndex(NUTANIX), ...postPages, "/notes": page("notes.html"), "/bloggy-notes": bloggyNotesPage(), "/privacy": page("privacy.html"), "/terms": page("terms.html"), "/card": page("card.html"), "/live": page("live.html"), "/tracks": page("tracks.html"), "/visualization": page("visualization.html"), "/tests": page("tests.html"), "/research": researchPage(), "/history": page("history.html"), "/orcas": page("orcas.html"), "/art": page("art.html"), "/diagrams": page("diagrams.html"), "/asr": page("asr.html"), "/certifications": page("certifications.html"), "/subscribe": page("subscribe.html"), "/resume": page("resume.html"), "/portfolio": page("portfolio.html"), "/stickers": page("stickers.html"), "/koi": page("koi.html"), "/pagoda": page("pagoda.html"), "/pod": page("pod.html"), "/games": page("games.html") };
+const pages = { "/": home, "/work": page("work.html").replace("{{GITHUB}}", GITHUB), [BLOG.path]: sectionIndex(BLOG), [NUTANIX.path]: sectionIndex(NUTANIX), ...postPages, "/notes": page("notes.html"), "/bloggy-notes": bloggyNotesPage(), "/privacy": page("privacy.html"), "/terms": page("terms.html"), "/card": page("card.html"), "/live": page("live.html"), "/tracks": page("tracks.html"), "/visualization": page("visualization.html"), "/tests": page("tests.html"), "/research": researchPage(), "/history": page("history.html"), "/orcas": page("orcas.html"), "/art": page("art.html"), "/diagrams": page("diagrams.html"), "/asr": page("asr.html"), "/certifications": page("certifications.html"), "/subscribe": page("subscribe.html"), "/resume": page("resume.html"), "/portfolio": page("portfolio.html"), "/stickers": page("stickers.html"), "/koi": page("koi.html"), "/pagoda": page("pagoda.html"), "/pod": page("pod.html"), "/games": page("games.html"), "/world": worldPage() };
 // /card is the NFC business-card landing page; the tag on the card carries only this URL.
 const VCARD = ["BEGIN:VCARD", "VERSION:3.0", "N:Alvord;Alex;;;", "FN:Alex Alvord", "ORG:Cloud Lab Works LLC", "TITLE:Principal Architect", "EMAIL;TYPE=INTERNET,WORK:alex@cloudlabworks.dev", "URL:https://cloudlabworks.dev", "URL;TYPE=LinkedIn:https://www.linkedin.com/in/alexalvord/", "ADR;TYPE=WORK:;;;Duvall;WA;;USA", "NOTE:Hybrid multicloud and AI infrastructure. A working lab, open to collaboration on projects. cloudlabworks.dev", "END:VCARD"].join("\r\n") + "\r\n";
 // Scripts, self-hosted (CSP script-src 'self'): /live.js = the browser instrument + visualizer; /art.js = the nightly haiku on /art; /menu.js = keyboard handling for the hamburger drawer.

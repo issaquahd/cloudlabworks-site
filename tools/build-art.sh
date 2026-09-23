@@ -50,3 +50,7 @@ render "$M/waku-orca-og.png" art-wm-share-card.jpg 1200
 for n in $(python3 -c 'import json;print(" ".join(x["name"] for x in json.load(open("'"$S"'/popart/set.json"))))'); do
   render "$S/popart/popart-$n.svg" "art-wm-popart-$n.jpg" 1600
 done
+# Code as World: one world as code, three frames from one seed (gen.py writes set.json, state.json and world-NN-*.svg).
+for n in $(python3 -c 'import json;print(" ".join(x["name"] for x in json.load(open("'"$S"'/world/set.json"))))'); do
+  render "$S/world/$n.svg" "art-wm-$n.jpg" 1200
+done

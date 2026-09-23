@@ -1,0 +1,274 @@
+{
+  "seed": 7,
+  "ticks": 120,
+  "dt_h": 0.05,
+  "composition": [
+    {
+      "id": "sun",
+      "kind": "sun",
+      "pos": [
+        80,
+        440
+      ],
+      "size": 44,
+      "arc": {
+        "cx": 600,
+        "cy": 440,
+        "rx": 520,
+        "ry": 340
+      },
+      "day_length_h": 12.5,
+      "angle_deg": 0.0,
+      "palette": "earth"
+    },
+    {
+      "id": "water",
+      "kind": "water",
+      "pos": [
+        0,
+        520
+      ],
+      "size": [
+        1200,
+        380
+      ],
+      "tide": {
+        "amplitude_m": 1.6,
+        "period_h": 12.42
+      },
+      "tide_m": -1.6,
+      "current": {
+        "max_px_per_h": 90.0
+      },
+      "current_px_per_h": 0.0,
+      "palette": "earth"
+    },
+    {
+      "id": "headland",
+      "kind": "land",
+      "pos": [
+        0,
+        380
+      ],
+      "size": [
+        1200,
+        220
+      ],
+      "shape": [
+        [
+          0,
+          600
+        ],
+        [
+          0,
+          470
+        ],
+        [
+          140,
+          430
+        ],
+        [
+          330,
+          400
+        ],
+        [
+          520,
+          420
+        ],
+        [
+          640,
+          450
+        ],
+        [
+          700,
+          600
+        ]
+      ],
+      "palette": "earth"
+    },
+    {
+      "id": "island",
+      "kind": "land",
+      "pos": [
+        700,
+        440
+      ],
+      "size": [
+        300,
+        180
+      ],
+      "shape": [
+        [
+          700,
+          620
+        ],
+        [
+          720,
+          500
+        ],
+        [
+          780,
+          460
+        ],
+        [
+          860,
+          440
+        ],
+        [
+          960,
+          470
+        ],
+        [
+          1000,
+          620
+        ]
+      ],
+      "palette": "earth"
+    },
+    {
+      "id": "canoe",
+      "kind": "canoe",
+      "pos": [
+        245.90662118665298,
+        584.0
+      ],
+      "size": [
+        130,
+        26
+      ],
+      "mass_kg": 55.0,
+      "buoyancy": "floats",
+      "drift_px": 0.0,
+      "palette": "loud"
+    },
+    {
+      "id": "orca",
+      "kind": "orca",
+      "pos": [
+        435.08491739245017,
+        584.0
+      ],
+      "size": [
+        220,
+        70
+      ],
+      "mass_kg": 4000.0,
+      "buoyancy": "neutral",
+      "swim_px_per_h": 110.0,
+      "dive": {
+        "depth_m": 4.0,
+        "cycle_h": 0.45
+      },
+      "depth_m": 0.0,
+      "surfaced": true,
+      "palette": "earth"
+    },
+    {
+      "id": "heron",
+      "kind": "heron",
+      "pos": [
+        882.5467236519927,
+        440
+      ],
+      "size": [
+        34,
+        96
+      ],
+      "mass_kg": 2.3,
+      "palette": "earth"
+    },
+    {
+      "id": "cloud-0",
+      "kind": "cloud",
+      "pos": [
+        172.43628666754276,
+        181.09994073213716
+      ],
+      "size": [
+        183.88267002951028,
+        27.04398064594472
+      ],
+      "palette": "earth"
+    },
+    {
+      "id": "cloud-1",
+      "kind": "cloud",
+      "pos": [
+        607.4357331894203,
+        96.37426193513743
+      ],
+      "size": [
+        192.0374820394863,
+        27.25739762434314
+      ],
+      "palette": "earth"
+    },
+    {
+      "id": "cloud-2",
+      "kind": "cloud",
+      "pos": [
+        190.71301334386504,
+        162.16826215422736
+      ],
+      "size": [
+        239.22225496064456,
+        28.22843530069362
+      ],
+      "palette": "earth"
+    }
+  ],
+  "frames": {
+    "0": {
+      "tick": 0,
+      "t_h": 0.0,
+      "tide_m": -1.6,
+      "water_y": 584.0,
+      "sun_angle_deg": 0.0,
+      "canoe_x": 245.9,
+      "canoe_drift_px": 0.0,
+      "orca_x": 435.1,
+      "orca_depth_m": 0.0,
+      "orca_surfaced": true,
+      "heron_x": 882.5
+    },
+    "60": {
+      "tick": 60,
+      "t_h": 3.0,
+      "tide_m": -0.085,
+      "water_y": 523.4,
+      "sun_angle_deg": 43.2,
+      "canoe_x": 416.6,
+      "canoe_drift_px": 170.7,
+      "orca_x": 765.1,
+      "orca_depth_m": 0.0,
+      "orca_surfaced": true,
+      "heron_x": 882.5
+    },
+    "120": {
+      "tick": 120,
+      "t_h": 6.0,
+      "tide_m": 1.591,
+      "water_y": 456.4,
+      "sun_angle_deg": 86.4,
+      "canoe_x": 600.9,
+      "canoe_drift_px": 355.0,
+      "orca_x": 115.1,
+      "orca_depth_m": 3.46,
+      "orca_surfaced": false,
+      "heron_x": 882.5
+    }
+  },
+  "final_state": {
+    "tick": 120,
+    "t_h": 6.0,
+    "tide_m": 1.591,
+    "water_y": 456.4,
+    "sun_angle_deg": 86.4,
+    "canoe_x": 600.9,
+    "canoe_drift_px": 355.0,
+    "orca_x": 115.1,
+    "orca_depth_m": 3.46,
+    "orca_surfaced": false,
+    "heron_x": 882.5
+  }
+}
