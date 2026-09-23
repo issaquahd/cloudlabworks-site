@@ -3,34 +3,36 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Pagoda Flight · CloudLab Works</title>
-<meta name="description" content="A crane threads the gaps between pagoda tiers at dusk. Tap or click to flap. Built in an evening in the Duvall lab.">
-<link rel="canonical" href="https://cloudlabworks.dev/pagoda">
+<title>Waku's Pod · CloudLab Works</title>
+<meta name="description" content="Waku and four of the pod, out in the Salish Sea. Drop salmon, watch them come. Built in an evening in the Duvall lab.">
+<link rel="canonical" href="https://cloudlabworks.dev/pod">
 <style>{{STYLE}}</style>
 <style>
 .cabinet{max-width:640px;margin:0 auto;background:linear-gradient(180deg,#5b3a24,#3e2717);border-radius:18px;padding:18px 18px 24px;box-shadow:0 20px 50px rgba(0,0,0,.5),inset 0 0 0 3px rgba(255,255,255,.06)}
 .cabinet .marquee{text-align:center;color:#f2c879;font-weight:800;letter-spacing:.12em;text-transform:uppercase;font-size:.9rem;margin:0 0 10px;text-shadow:0 0 8px rgba(242,200,121,.5)}
 .cabinet .marquee small{display:block;color:#d8b98a;font-weight:600;letter-spacing:.2em;font-size:.7rem;margin-top:2px}
 .pond-wrap{position:relative;border-radius:10px;overflow:hidden;border:6px solid #241409;box-shadow:inset 0 0 30px rgba(0,0,0,.6)}
-#stage{display:block;width:100%;height:auto;aspect-ratio:4/3;background:#1a1330;touch-action:none;cursor:pointer}
+#stage{display:block;width:100%;height:auto;aspect-ratio:4/3;background:#0c2f3a;touch-action:none;cursor:crosshair}
 .hud-row{display:flex;justify-content:space-between;align-items:center;margin-top:12px;color:#e9d9bd;font-size:.85rem;letter-spacing:.04em}
 .hud-row b{color:#f2c879}
 .cabinet .how{color:#cbb890;font-size:.8rem;margin-top:6px}
+.cabinet .roster{color:#cbb890;font-size:.78rem;margin-top:4px}
 </style>
 </head>
 <body>
 {{HEAD}}
 <main>
-<h1>Pagoda Flight</h1>
-<p class="lede">A crane, five pagoda tiers, one gap each. Click or tap to flap, let go to fall. First pass, not a finished arcade.</p>
+<h1>Waku's Pod</h1>
+<p class="lede">Waku and four of the pod, out past the kelp. Click the water to drop a salmon, click-and-drag anyone in the pod to steer them by hand.</p>
 <div class="cabinet">
-  <p class="marquee">宝塔 PAGODA FLIGHT<small>a CloudLab Works arcade, no. 2</small></p>
+  <p class="marquee">ワク WAKU'S POD<small>a CloudLab Works arcade, no. 3</small></p>
   <div class="pond-wrap"><canvas id="stage" width="640" height="480"></canvas></div>
-  <div class="hud-row"><span>Score: <b id="score">0</b></span><span>Best: <b id="best">0</b></span></div>
-  <p class="how">Click or tap anywhere to flap. Clear the gap in each pagoda; touch a tier or an edge and it's over, click to try again.</p>
+  <div class="hud-row"><span>Salmon fed: <b id="fed">0</b></span><span>Pod: <b id="count">5</b></span></div>
+  <p class="how">Click open water to drop a salmon. Click and hold anyone in the pod, then drag, to steer them by hand.</p>
+  <p class="roster">Waku, Minke the little cousin, Humpback the uncle, Porpoise the old friend, Dolphin the friend.</p>
 </div>
 </main>
 {{FOOT}}
-<script src="/pagoda.js" defer></script>
+<script src="/pod.js" defer></script>
 </body>
 </html>
