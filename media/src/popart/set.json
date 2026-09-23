@@ -18,5 +18,135 @@
 "name": "kabuki",
 "title": "Waku, kabuki paint",
 "text": "Kumadori face-paint stripes borrowed for the mask, not the man: red courage-lines on black, magenta ground, the Ben-day dot standing in for woodblock grain."
+},
+{
+"name": "nine-up",
+"title": "Waku, nine ways",
+"text": "A 3x3 grid instead of the tetraptych's 2x2: the same Warhol repetition pushed one step further, nine flat hues cycling warm to cool, newsprint dot screen under each cell."
+},
+{
+"name": "strip-four",
+"title": "Waku, four in a row",
+"text": "A 1x4 strip of vertical bands, not a square grid: four duotone panels, cream line holding each apart, the repetition read left to right instead of in a block."
+},
+{
+"name": "sixpack",
+"title": "Waku, six up",
+"text": "A 2x3 grid, six panels: a pastel half-step away from the tetraptych's primaries, checkerboard ground standing in for the print screen this time instead of dots."
+},
+{
+"name": "diptych",
+"title": "Waku, two ways",
+"text": "One canvas split down the middle, day against night: the smallest repetition grid in the set, a single hard edge instead of a ruled line between panels."
+},
+{
+"name": "tri-panel",
+"title": "Waku, three ways",
+"text": "A vertical triptych, dawn to dusk: three flat sky tones in sequence rather than a gradient doing the work, the orca held identically in each panel."
+},
+{
+"name": "pod-formation",
+"title": "Waku, the pod",
+"text": "Not a grid: one large orca and four small ones in loose formation, the Warhol repetition broken into a scatter instead of a block, Ben-day dots for water texture."
+},
+{
+"name": "seigaiha-field",
+"title": "Waku, wave scales",
+"text": "Seigaiha, the nested-arc wave-scale field, behind the orca instead of a plain ground: four rings per tile, a simplification of the traditional hand-overlapped version."
+},
+{
+"name": "asanoha-field",
+"title": "Waku, hemp leaf",
+"text": "Asanoha, the hemp-leaf geometric field, worn thin behind the orca: one six-line star repeated per tile, a simplification of the full interlocking lattice, indigo on gold."
+},
+{
+"name": "ichimatsu-field",
+"title": "Waku, checkerboard",
+"text": "Ichimatsu, the two-tone checkerboard, full bleed: the orca in flat red on top of the field instead of inside a panel of it, the field doing the pop-art repetition instead of a grid of orcas."
+},
+{
+"name": "newsprint",
+"title": "Waku, newsprint",
+"text": "A halftone dot screen in three offset plates, cyan, magenta, black, like a misregistered comic print: bolder and coarser than the Ben-day dots used elsewhere in the set."
+},
+{
+"name": "red-fuji",
+"title": "Waku, red Fuji",
+"text": "A homage to Hokusai's Red Fuji, not a copy: the mountain reduced to one flat red triangle and a white snow-cap wedge, Waku breaching where the print has only sky."
+},
+{
+"name": "evening-rain",
+"title": "Waku, evening rain",
+"text": "A homage to Hiroshige's rain-streak woodblocks, simplified to a field of straight diagonal lines over a dark indigo ground, the orca surfacing through them."
+},
+{
+"name": "villain-paint",
+"title": "Waku, blue paint",
+"text": "A second kumadori palette: blue and indigo stripes, the color kabuki convention reads as menace rather than the red courage-lines used for the hero role in the first piece."
+},
+{
+"name": "sorrow-lines",
+"title": "Waku, sorrow lines",
+"text": "A third kumadori palette: purple, downward-sweeping lines instead of the upward courage-lines, the convention for grief or nobility rather than heroism or menace."
+},
+{
+"name": "sakura-shower",
+"title": "Waku, cherry blossom",
+"text": "A sakura shower: simplified five-petal blossoms scattered at three sizes over the orca, the petals rendered as plain ellipses rather than the notched botanical form."
+},
+{
+"name": "indigo-sun",
+"title": "Waku, indigo sun",
+"text": "The rising-sun composition again, split-complementary this time: indigo field and gold rays instead of red and white, the same radiating field-treatment logic."
+},
+{
+"name": "gold-leaf",
+"title": "Waku, gold leaf",
+"text": "Mostly negative space: one flat gold disc, an ink outline of the orca and nothing else, the minimal end of the register against the busiest pieces in the set."
+},
+{
+"name": "gold-tide",
+"title": "Waku, gold tide",
+"text": "A sibling to the gold-leaf piece with one shape added: a single flat indigo wave under the same ink-line orca, on a gold ground instead of cream."
+},
+{
+"name": "umi-stamp",
+"title": "Waku, umi",
+"text": "The kanji stamp enlarged from a corner seal to the whole ground: 海, umi, sea, filling the field the orca sits on instead of marking a signature in the corner."
+},
+{
+"name": "deep-stamp",
+"title": "Waku, deep",
+"text": "The same enlarged-glyph treatment as the umi piece, a different word: 深, deep, dark navy ground standing for the water the orca is under rather than on."
+},
+{
+"name": "noren",
+"title": "Waku, noren",
+"text": "A shop-curtain (noren) treatment: two panels hung from a header bar with a slit between them, the orca's head passing through the gap as if walking under it."
+},
+{
+"name": "inverse-wave",
+"title": "Waku, the wave, inverted",
+"text": "A literal color inversion of the great wave piece: gold ground, indigo where the foam was, a straight negative read of the same three flat shapes."
+},
+{
+"name": "inverse-kabuki",
+"title": "Waku, kabuki paint, inverted",
+"text": "A literal color inversion of the kabuki piece: cream ground, black courage-lines, the magenta pushed down to the eye patches instead of filling the field."
+},
+{
+"name": "moonlit",
+"title": "Waku, moonlit",
+"text": "The rising-sun field at night: a pale moon instead of a red sun, moonbeam wedges confined to the upper half instead of a full radiating circle, silver-grey orca."
+},
+{
+"name": "rough-water",
+"title": "Waku, rough water",
+"text": "An original storm composition, not a print homage: bold black wave-crests on indigo, high contrast, the orca breaching through rather than riding a named crest."
+},
+{
+"name": "horizon-bands",
+"title": "Waku, horizon bands",
+"text": "A leaping pose against flat horizon bands instead of a sky gradient: five discrete warm tones stacked like a Rothko field standing in for a sunset."
 }
 ]
