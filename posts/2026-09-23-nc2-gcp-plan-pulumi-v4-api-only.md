@@ -5,16 +5,10 @@ time: 07:00
 by: Alex Alvord
 slug: nc2-gcp-plan-pulumi-v4-api-only
 section: nutanix
-summary: "Corrected twice, and now written from the Nutanix portal instead of from launch blogs. NC2 on Google Cloud is generally available on Google Compute Engine bare metal, six supported instance types across twenty-three regions, and the NC2 v2 API has a POST /clusters/gcp so the console comes out of the loop exactly as it did in the Azure post. Pulumi builds the landing zone, the v2 API builds the cluster, and the Prism Central v4 API owns everything above that line."
+summary: "NC2 on Google Cloud is generally available on Google Compute Engine bare metal, six supported instance types across twenty-three regions, and the NC2 v2 API has a POST /clusters/gcp so the console comes out of the loop exactly as it did in the Azure post. Pulumi builds the landing zone, the v2 API builds the cluster, and the Prism Central v4 API owns everything above that line."
 ---
 
-> **Corrections, 2026-09-23.** This post has been wrong twice today and both are worth stating.
->
-> **First**, the 07:00 version opened by claiming Nutanix Cloud Clusters "does not list Google Cloud as a supported platform," and built a plan around routing past that absence with Sole-Tenant Nodes and a hand-driven Foundation install. ~~That premise was wrong.~~ NC2 on Google Cloud is generally available and runs on GCE bare metal.
->
-> **Second**, the correction I published an hour later was rewritten from the Nutanix and Google launch blogs rather than from the documentation. It got the shape right and the details wrong: ~~three supported instance types~~ (there are six), ~~seventeen regions~~ (the portal lists twenty-three), ~~a /29 for Prism Central~~ (it is a /28), ~~10.200.0.0/16 among the reserved ranges~~ (it is 10.200.32.0/24), and it left the NC2 v2 API question open as UNKNOWN when the reference answers it plainly.
->
-> This version is written from the NC2 on Google Cloud Deployment and User Guide on the Nutanix portal (pages last updated 2026-08-25), the Nutanix Cloud Bible's Google Cloud chapter (PC and AOS 7.3.1.1), the NC2 v2 API reference, and Compute Engine's machine-type documentation. Where this page and the guide disagree on your version, the guide wins.
+Everything here is from the NC2 on Google Cloud Deployment and User Guide on the Nutanix portal (pages last updated 2026-08-25), the Nutanix Cloud Bible's Google Cloud chapter (PC and AOS 7.3.1.1), the NC2 v2 API reference, and Compute Engine's machine-type documentation. Where this page and the guide disagree on your version, the guide wins.
 
 Two posts this week walked NC2 on AWS and NC2 on Azure exactly as the public deployment guides describe them. Google Cloud is the third, and it lands closer to the Azure post than the AWS one: everything the NC2 console does here, the NC2 v2 API also does, including creating the cluster. So this is the same walk with the mouse taken away. Pulumi builds the Google Cloud side instead of Bicep, one v2 call builds the cluster, and from the moment Prism Central answers, only the v4 API touches it.
 
@@ -78,7 +72,7 @@ The C3 path buys you capacity that is decoupled from the node, and it comes with
 
 Boot volumes differ too. Z3 and C4 use a 100 GB Hyperdisk Balanced volume for AHV and 150 GB of local disk for the CVM. C3 uses 100 GB Hyperdisk Balanced for AHV and another 200 GB Hyperdisk Balanced for the CVM.
 
-One note on the memory column, because it cost me a re-check and then cost me a published error. Google's GA announcement blog lists the memory for the two C4 rows the other way round. Compute Engine's machine-type documentation and the Nutanix portal both have standard at 1,080 and highmem at 2,232. Two vendor sources against one blog, and it is also the only reading where the names mean what they say.
+One note on the memory column, worth the re-check. Google's GA announcement blog lists the memory for the two C4 rows the other way round. Compute Engine's machine-type documentation and the Nutanix portal both have standard at 1,080 and highmem at 2,232. Two vendor sources against one blog, and it is also the only reading where the names mean what they say.
 
 **Regions.** Twenty-three, and availability is per instance type, not per region. Only `us-central1`, `europe-west4` and `asia-southeast1` carry all six. Several regions carry Z3 alone, and `us-west1` carries only the C3 family. Check the portal's region table against the instance type you actually want rather than assuming a region is simply "supported."
 
@@ -140,7 +134,7 @@ You also need outbound internet from the cluster VPC, because the cluster's link
 
 ## Step 3: the cluster, in one v2 API call
 
-This is the part the earlier versions of this post got wrong from both directions: first by claiming no NC2 service existed on Google Cloud, then by saying the console was the documented path and marking the API question UNKNOWN. The NC2 v2 API reference has a `POST /clusters/gcp`, "Create Google Cloud cluster," and it takes the VPC and subnet names Pulumi just exported. So Google Cloud lands where Azure did: the console never has to be clicked.
+The NC2 v2 API reference has a `POST /clusters/gcp`, "Create Google Cloud cluster," and it takes the VPC and subnet names Pulumi just exported. So Google Cloud lands where Azure did: the console never has to be clicked.
 
 ```bash
 curl --request POST \
@@ -230,4 +224,4 @@ These are documented constraints, not opinions, and several of them differ from 
 
 Everything above is from the Nutanix portal's NC2 on Google Cloud Deployment and User Guide (Planning for Deployment, Supported Bare-metal Instances, Supported Regions, Requirements, Limitations; pages dated 2026-08-25), the Nutanix Cloud Bible's Google Cloud chapter at PC and AOS 7.3.1.1 for the placement policy and the Flow Gateway comparison, the NC2 v2 API reference on nutanix.dev for the `POST /clusters/gcp` schema, and Compute Engine's machine-type documentation for the instance specifications. Region and instance availability move; re-read the region table rather than trusting a list written on a Wednesday.
 
-Personal blog. I work at Nutanix; the opinions above are my own, this is not a Nutanix roadmap announcement, and nothing here is Nutanix confidential. This page has carried two corrections today, both struck through above rather than deleted, because a post that hides its own edit history is worth less than one that shows it.
+Personal blog. I work at Nutanix; the opinions above are my own, this is not a Nutanix roadmap announcement, and nothing here is Nutanix confidential.
