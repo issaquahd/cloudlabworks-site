@@ -1,17 +1,17 @@
- The line: v4 API only
- =====================
+ The line: one v2 call, then v4 only
+ ===================================
 
- Below the line   NC2 console builds the cluster
-                  (Google Cloud says ~2 hours)
- ------------------------------------------------------
+ Below the line   POST /clusters/gcp
+                  cloud.nutanix.com/api/v2
+                  cluster + Prism Central, returns a task
+                  the console never has to be clicked
+ ---------------------------------------------------------
  Above the line   only the v4 API touches it
 
    pulumi package add terraform-provider nutanix/nutanix
-
    ntnx.VpcV2(...)      Flow VPC
    ntnx.SubnetV2(...)   overlay subnet
-                        images, VMs, the rest
 
- Same v4 surface as the AWS and Azure posts.
- Same ETag safety against a colleague's console click.
- Different tool: Pulumi here, OpenTofu there.
+ Not supported on Google Cloud, unlike AWS:
+   hibernate and resume, IPv6, PC backup to GCS,
+   fewer than 3 or more than 28 nodes

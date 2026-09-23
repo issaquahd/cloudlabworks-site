@@ -1,130 +1,197 @@
 ---
-title: "NC2 on Google Cloud, as code: the console builds the cluster, Pulumi and the v4 API do the rest"
+title: "NC2 on Google Cloud, as code: Pulumi for the landing zone, the NC2 v2 API for the cluster, the v4 API for everything above"
 date: 2026-09-23
 time: 07:00
 by: Alex Alvord
 slug: nc2-gcp-plan-pulumi-v4-api-only
 section: nutanix
-summary: "Corrected and rewritten. The first version of this post said Nutanix Cloud Clusters does not support Google Cloud. That was wrong: NC2 on Google Cloud is generally available, running the full Nutanix stack on Google Compute Engine bare metal instances in your own project and VPC. This is the third walkthrough in the series, on the same terms as the AWS and Azure posts: Pulumi for the landing zone, the NC2 console for the cluster, and the Prism Central v4 API for everything above that line."
+summary: "Corrected twice, and now written from the Nutanix portal instead of from launch blogs. NC2 on Google Cloud is generally available on Google Compute Engine bare metal, six supported instance types across twenty-three regions, and the NC2 v2 API has a POST /clusters/gcp so the console comes out of the loop exactly as it did in the Azure post. Pulumi builds the landing zone, the v2 API builds the cluster, and the Prism Central v4 API owns everything above that line."
 ---
 
-> **Correction, 2026-09-23.** The version of this post published at 07:00 opened by saying Nutanix Cloud Clusters "does not list Google Cloud as a supported platform," and built an architecture plan around working around that absence with Sole-Tenant Nodes and a hand-driven Foundation install. ~~That premise was wrong.~~ NC2 on Google Cloud is generally available. It runs on Google Compute Engine bare metal instances, it is provisioned by the same NC2 console as AWS and Azure, and Sole-Tenant Nodes have nothing to do with it. The whole post below is rewritten against the shipping product. What survives from the first version is the last section, the v4-API-only discipline, which was the only part that did not depend on the bad premise. Sources for every claim are listed at the end.
+> **Corrections, 2026-09-23.** This post has been wrong twice today and both are worth stating.
+>
+> **First**, the 07:00 version opened by claiming Nutanix Cloud Clusters "does not list Google Cloud as a supported platform," and built a plan around routing past that absence with Sole-Tenant Nodes and a hand-driven Foundation install. ~~That premise was wrong.~~ NC2 on Google Cloud is generally available and runs on GCE bare metal.
+>
+> **Second**, the correction I published an hour later was rewritten from the Nutanix and Google launch blogs rather than from the documentation. It got the shape right and the details wrong: ~~three supported instance types~~ (there are six), ~~seventeen regions~~ (the portal lists twenty-three), ~~a /29 for Prism Central~~ (it is a /28), ~~10.200.0.0/16 among the reserved ranges~~ (it is 10.200.32.0/24), and it left the NC2 v2 API question open as UNKNOWN when the reference answers it plainly.
+>
+> This version is written from the NC2 on Google Cloud Deployment and User Guide on the Nutanix portal (pages last updated 2026-08-25), the Nutanix Cloud Bible's Google Cloud chapter (PC and AOS 7.3.1.1), the NC2 v2 API reference, and Compute Engine's machine-type documentation. Where this page and the guide disagree on your version, the guide wins.
 
-Two posts this week walked NC2 on AWS and NC2 on Azure exactly as the public deployment guides describe them. Google Cloud gets the same walk, because it is the same product: the NC2 console provisions and manages the cluster lifecycle, Prism Central runs day two, and the Nutanix software stack on the nodes is the stack you already run on-premises. The two constraints handed to the lab for this one are Pulumi as the infrastructure-as-code tool instead of Bicep or OpenTofu, and, once Prism Central answers, only the v4 API touches it.
+Two posts this week walked NC2 on AWS and NC2 on Azure exactly as the public deployment guides describe them. Google Cloud is the third, and it lands closer to the Azure post than the AWS one: everything the NC2 console does here, the NC2 v2 API also does, including creating the cluster. So this is the same walk with the mouse taken away. Pulumi builds the Google Cloud side instead of Bicep, one v2 call builds the cluster, and from the moment Prism Central answers, only the v4 API touches it.
 
 ## The map
 
 ```text
- ┌─ NC2 console (SaaS, my.nutanix.com) ────────────────────────────────────────────────┐
- │  multicloud control plane: obtains bare-metal instances, sets the IAM roles it      │
- │  needs, writes VPC firewall rules, monitors hardware, replaces failed nodes         │
+ ┌─ your Google Cloud project (Pulumi) ─────────────────────────────────────────────────┐
+ │  APIs + org policy: Compute Engine API, IP forwarding allowed, trusted image         │
+ │  projects not blocked, VPC Service Controls not in the way, vCPU and LSSD quota      │
+ │  cluster VPC, MTU >= 2000:                                                           │
+ │    management subnet  /24 minimum  (nodes; a /28 for Prism Central is carved from it)│
+ │    FVN NAT subnet     /27 minimum                                                    │
+ │    FVN no-NAT subnet  /27 minimum                                                    │
+ │    Cloud Router + Cloud NAT (BYO gateway: dynamic port allocation, not static)       │
+ │  two service accounts: one for the NC2 console, one for the cluster nodes            │
  └────────────────────────────────────────┬─────────────────────────────────────────────┘
-                                          │ Compute Engine API, via two service accounts
+                                          │ vpc / subnet names, cloud account id
                                           ▼
- ┌─ your Google Cloud project · your VPC ───────────────────────────────────────────────┐
- │  cluster (management) subnet:                                                        │
- │    GCE bare-metal nodes (C4 or Z3, -metal) ── AHV ── CVM ── AOS on local Titanium SSD │
- │    Prism Central /29 inside it   ◀── you talk to this, :9440                          │
- │    NAT range (secondary range)  ─┐                                                    │
- │    no-NAT subnet                ─┴── Flow Virtual Networking transit, mandatory here  │
- │  Cloud Router + Cloud NAT ── egress, including the cluster's link to the NC2 console  │
+ ┌─ NC2 v2 API (cloud.nutanix.com/api/v2), JWT from a My Nutanix key ───────────────────┐
+ │  POST /clusters/gcp   cluster + Prism Central, one task; poll /tasks/{id}            │
+ └────────────────────────────────────────┬─────────────────────────────────────────────┘
+                                          │
+                                          ▼
+ ┌─ Google Cloud · region ──────────────────────────────────────────────────────────────┐
+ │  GCE bare-metal nodes, 3 to 28 ── AHV ── CVM ── AOS                                  │
+ │    Z3 / C4 metal: AOS on local Titanium SSD                                          │
+ │    C3 metal:      no local storage, AOS on Hyperdisk Balanced                        │
+ │  Prism Central in its /28   ◀── you talk to this, :9440                              │
+ │  Flow Virtual Networking overlay, mandatory, and no Flow Gateway VMs unlike Azure    │
  └────────────────────────────────────────┬─────────────────────────────────────────────┘
                                           │ v4 APIs
                                           ▼
  ┌─ laptop ─ Pulumi (Nutanix provider, bridged from the Terraform provider) ─ Prism ────┐
- │  Central v4 REST ── Flow VPCs, subnets, images, VMs: the same resources the AWS and  │
- │  Azure posts built with OpenTofu, same v4 surface, different tool                    │
+ │  Central v4 REST ── Flow VPCs, subnets, images, VMs                                  │
  └──────────────────────────────────────────────────────────────────────────────────────┘
 ```
 
-The shape is the AWS and Azure shape. What differs on Google Cloud is the substrate underneath and one hard requirement in the middle, and those are the two sections worth your time.
+## Step 1: the substrate, and the choice the other two clouds do not make you make
 
-## Step 1: the substrate is GCE bare metal, not a VM and not Bare Metal Solution
+AHV runs directly on Google Compute Engine bare metal instances: ordinary GCE instances with `-metal` in the machine type, in your own project and VPC, appearing in the Google Cloud console like any other instance. They are explicitly distinct from Google Bare Metal Solution, which is not supported with NC2. There is no nested virtualization and no Sole-Tenant Node group anywhere in this.
 
-AHV runs directly on Compute Engine bare metal instances. These are ordinary GCE instances with `-metal` in the machine type: they appear in the Google Cloud console like any other instance, they live in your project and your VPC, and they are a different product from Google Bare Metal Solution, which is the older colocated offering and is not what NC2 uses. There is no nested virtualization involved and no Sole-Tenant Node group to build. Workload storage comes from the locally attached Titanium SSD on the node, which the CVM claims for the AOS storage layer, and each node also gets a Hyperdisk volume that AHV itself boots from.
+Six instance types are supported, and they split into two storage architectures. That split is the first real design decision, and it has no equivalent on AWS or Azure.
 
-The qualified machine types at GA:
+**Local SSD instances.** AOS storage comes from the node's local Titanium SSD, passed to the CVM the way local devices are on any Nutanix cluster.
 
-| Machine type | vCPUs | Memory | Local Titanium SSD | Family |
+| Instance type | vCPUs | Memory | Local NVMe | Processor |
 |---|---|---|---|---|
-| `z3-highmem-192-highlssd-metal` | 192 | 1,536 GB | 72,000 GiB | Z3, storage optimized |
-| `c4-standard-288-lssd-metal` | 288 | 1,080 GB | 18,000 GiB | C4, general purpose |
-| `c4-highmem-288-lssd-metal` | 288 | 2,232 GB | 18,000 GiB | C4, general purpose |
+| `z3-highmem-192-highlssd-metal` | 192 | 1,536 GB | 12 x 6 TB, 72,000 GB | Sapphire Rapids 8481C |
+| `c4-standard-288-lssd-metal` | 288 | 1,080 GB | 6 x 3 TB, 18,000 GB | Granite Rapids 6985P-C |
+| `c4-highmem-288-lssd-metal` | 288 | 2,232 GB | 6 x 3 TB, 18,000 GB | Granite Rapids 6985P-C |
 
-One note on that table, because it cost me a re-check. Google's own GA announcement blog lists the memory for the two C4 rows the other way round, 1,080 GB against `c4-highmem` and 2,232 GB against `c4-standard`. The Compute Engine machine-type documentation has standard at 1,080 and highmem at 2,232, which is also the only reading where the names mean what they say. The docs win. If you are sizing from the blog post, you are sizing backwards.
+**Hyperdisk Balanced instances.** No local storage at all. C3 metal nodes take configurable remote NVMe, 15 to 120 TB per host, 30,000 IOPS and 1,400 MB/s per host, four data disks.
 
-Nodes are placed across Availability Domains inside a Google Cloud zone, which maps onto Nutanix rack awareness, so replica placement survives a physical failure at both RF2 and RF3. Size n+1 for RF2 and n+2 for RF3, the same as anywhere else. If a node dies, NC2 provisions a replacement from Google Cloud and rebuilds resilience without you filing a hardware ticket.
+| Instance type | vCPUs | Memory |
+|---|---|---|
+| `c3-standard-192-metal` | 192 | 768 GB |
+| `c3-highcpu-192-metal` | 192 | 512 GB |
+| `c3-highmem-192-metal` | 192 | 1,536 GB |
+
+The C3 path buys you capacity that is decoupled from the node, and it comes with rules worth knowing before you pick it: you cannot change a Hyperdisk volume's capacity or performance from the Google Cloud console, you cannot add or remove disks on an existing node, growing an existing cluster means adding a node, a single volume failure replaces the whole node rather than the disk, and every C3 node in a cluster shares one storage profile.
+
+Boot volumes differ too. Z3 and C4 use a 100 GB Hyperdisk Balanced volume for AHV and 150 GB of local disk for the CVM. C3 uses 100 GB Hyperdisk Balanced for AHV and another 200 GB Hyperdisk Balanced for the CVM.
+
+One note on the memory column, because it cost me a re-check and then cost me a published error. Google's GA announcement blog lists the memory for the two C4 rows the other way round. Compute Engine's machine-type documentation and the Nutanix portal both have standard at 1,080 and highmem at 2,232. Two vendor sources against one blog, and it is also the only reading where the names mean what they say.
+
+**Regions.** Twenty-three, and availability is per instance type, not per region. Only `us-central1`, `europe-west4` and `asia-southeast1` carry all six. Several regions carry Z3 alone, and `us-west1` carries only the C3 family. Check the portal's region table against the instance type you actually want rather than assuming a region is simply "supported."
+
+**Placement.** Nutanix uses a partition placement policy with seven partitions, striping hosts across them so the partitions behave like racks on-premises. That gives you one full rack failure, or two in a 2N/2D configuration, without losing availability.
 
 ## Step 2: the landing zone, in Pulumi
 
-You can let the NC2 console create the VPC and subnets for you at deployment. This post does not, because the point of the series is that the network is code you own. Deploying into an existing VPC means the NAT range and the no-NAT subnet have to exist before the console asks for them, so they are in the program below.
+You can let the NC2 console create the VPC and subnets at deployment. This series does not, because the point is that the network is code you own. The documented minimums are a /24 cluster subnet, with the Prism Central /28 carved out of it, and /27 for each of the two Flow Virtual Networking subnets.
 
-What the cluster VPC needs: a management subnet wide enough for the bare-metal nodes, Prism Central and the NAT range; a /29 inside it reserved for the Prism Central VMs and VIP; a secondary range used by Flow Virtual Networking to hand out SNAT addresses and floating IPs; a no-NAT range for the Flow transit VPC; and Cloud NAT for egress, which is also how the cluster keeps its required link to the NC2 console.
+Three requirements sit outside the resource graph and break deployments quietly if you miss them: the VPC needs an MTU of at least 2,000 bytes, IP forwarding must not be blocked by the `Restrict VM IP Forwarding` organization policy, and `constraints/compute.trustedImageProjects` must not block the `nc2-mcm-img-mgmt-prod` project, which is where the AHV, CVM and Prism Central images come from. VPC Service Controls must not be restricting the services either.
 
 ```python
 # __main__.py (Pulumi, Python)
 import pulumi
 import pulumi_gcp as gcp
 
-region, zone = "us-west1", "us-west1-a"
+region, zone = "us-central1", "us-central1-a"   # all six instance types available here
 
-cluster_net = gcp.compute.Network("nc2-cluster-vpc", auto_create_subnetworks=False)
+cluster_net = gcp.compute.Network("nc2-cluster-vpc",
+    auto_create_subnetworks=False,
+    mtu=8896)   # documented minimum is 2000; take the jumbo option while you are here
 
-# Management subnet: nodes, Prism Central (/29 inside this range), and the FVN NAT range
-# as a secondary range on the same subnet.
 mgmt = gcp.compute.Subnetwork("nc2-mgmt-subnet",
-    network=cluster_net.id, region=region, ip_cidr_range="10.20.0.0/22",
-    private_ip_google_access=True,
-    secondary_ip_ranges=[{
-        "range_name": "fvn-nat-range",
-        "ip_cidr_range": "10.21.0.0/24",
-    }])
+    network=cluster_net.id, region=region,
+    ip_cidr_range="10.20.0.0/22",   # /24 is the documented minimum; PC's /28 comes out of this
+    private_ip_google_access=True)
 
-# Flow Virtual Networking transit, no-NAT side.
-no_nat = gcp.compute.Subnetwork("nc2-no-nat-subnet",
-    network=cluster_net.id, region=region, ip_cidr_range="10.22.0.0/24")
+fvn_nat = gcp.compute.Subnetwork("nc2-fvn-nat-subnet",
+    network=cluster_net.id, region=region, ip_cidr_range="10.21.0.0/24")   # /27 minimum
+
+fvn_no_nat = gcp.compute.Subnetwork("nc2-fvn-no-nat-subnet",
+    network=cluster_net.id, region=region, ip_cidr_range="10.22.0.0/24")   # /27 minimum
 
 router = gcp.compute.Router("nc2-router", network=cluster_net.id, region=region)
+
+# Bring-your-own Cloud NAT must use dynamic port allocation. The gateway NC2 creates for
+# itself already does; a static-allocation gateway you hand it is a documented failure.
 nat = gcp.compute.RouterNat("nc2-nat", router=router.name, region=region,
     nat_ip_allocate_option="AUTO_ONLY",
-    source_subnetwork_ip_ranges_to_nat="ALL_SUBNETWORKS_ALL_IP_RANGES")
+    source_subnetwork_ip_ranges_to_nat="ALL_SUBNETWORKS_ALL_IP_RANGES",
+    enable_dynamic_port_allocation=True,
+    min_ports_per_vm=32, max_ports_per_vm=4096)
 
-# Two service accounts: one the NC2 console assumes to orchestrate the build,
-# one the bare-metal instances run as. Roles are bound separately; see the
-# deployment guide for the exact permission sets, which change between releases.
+# Two service accounts: the NC2 console uses one (and needs a key for it), the
+# bare-metal nodes run as the other. Bind the documented custom roles separately.
 sa_nc2 = gcp.serviceaccount.Account("nc2-console-sa",
     account_id="nc2-console", display_name="NC2 console orchestration")
 sa_node = gcp.serviceaccount.Account("nc2-node-sa",
     account_id="nc2-node", display_name="NC2 bare-metal node identity")
 
-pulumi.export("cluster_vpc", cluster_net.name)
-pulumi.export("mgmt_subnet", mgmt.self_link)
-pulumi.export("no_nat_subnet", no_nat.self_link)
+pulumi.export("vpc", cluster_net.name)
+pulumi.export("mgmt_subnet", mgmt.name)
+pulumi.export("no_nat_subnet", fvn_no_nat.name)
 ```
 
-Do not use `192.168.5.0/24`, `10.100.0.0/16`, `10.200.0.0/16`, `10.200.0.0/22` or `100.64.1.0/24` for any of these ranges. Those are reserved for AHV-to-CVM traffic, the VTEP subnet and CSMP. This is the kind of constraint that does not fail at `pulumi up`, it fails an hour into a cluster build, which is the expensive place to find it.
+Five ranges are reserved for AHV-to-CVM traffic, the VTEP subnet and CSMP, and must not appear anywhere in the above: `192.168.5.0/24`, `10.100.0.0/16`, `10.200.32.0/24`, `10.200.0.0/22` and `100.64.1.0/24`. Using one does not fail at `pulumi up`. It fails partway into a cluster build, which is the expensive place to find it.
 
-Three APIs have to be enabled on the project before any of this is useful: Compute Engine, IAM, and Service Usage or Quotas for the console's capacity checks. Check your quota for `-metal` instances in the target region too. Bare-metal quota is not granted by default and it is the single most common reason a first deployment stalls.
+You also need outbound internet from the cluster VPC, because the cluster's link to the NC2 console is not optional plumbing, it is a dependency, and DNS that can resolve public names. Nutanix recommends two servers from different providers.
 
-## Step 3: the cluster, from the NC2 console
+## Step 3: the cluster, in one v2 API call
 
-This is the step the first version of this post got most wrong, so it is worth being plain about what actually happens. You do not run Foundation. You do not image anything. In the NC2 console you add your Google Cloud account to an organization, point a new cluster at the project, region, VPC and management subnet built above, give it the NAT and no-NAT ranges, choose a machine type and a node count, and the console does the rest: it obtains the bare-metal instances, installs the stack, forms the cluster, and deploys Prism Central onto it unless another Prism Central in the region is already available to adopt it. The advertised figure is a full cluster in about a couple of hours.
+This is the part the earlier versions of this post got wrong from both directions: first by claiming no NC2 service existed on Google Cloud, then by saying the console was the documented path and marking the API question UNKNOWN. The NC2 v2 API reference has a `POST /clusters/gcp`, "Create Google Cloud cluster," and it takes the VPC and subnet names Pulumi just exported. So Google Cloud lands where Azure did: the console never has to be clicked.
 
-Two things that are easy to skip past. The cluster must keep its connectivity to the NC2 console for normal operation, so the Cloud NAT path above is not optional plumbing, it is a dependency. And Prism Central is not per-cluster by default: the first cluster in a region stands one up, later clusters can adopt it or run their own.
+```bash
+curl --request POST \
+  --url https://cloud.nutanix.com/api/v2/clusters/gcp \
+  --header 'Authorization: Bearer '"$JWT" \
+  --header 'Content-Type: application/json' \
+  --data '{
+    "name": "nc2-gcp-lab",
+    "organization_id": "'"$ORG_ID"'",
+    "cloud_account_id": "'"$CLOUD_ACCOUNT_ID"'",
+    "region": "us-central1",
+    "aos_version": "7.3",
+    "license": "nci",
+    "software_tier": "pro",
+    "use_case": "general",
+    "cluster_fault_tolerance": { "factor": "1N/1D" },
+    "capacity": [
+      { "instance_type": "z3-highmem-192-highlssd-metal", "nodes_count": 3 }
+    ],
+    "network": {
+      "mode": "existing",
+      "availability_zone": "us-central1-a",
+      "vpc": "nc2-cluster-vpc",
+      "management_subnet": "nc2-mgmt-subnet",
+      "dns_servers": ["8.8.8.8", "1.0.0.1"],
+      "fvn_config": {
+        "nat_ip_ranges": [{ "name": "nc2-fvn-nat-subnet" }],
+        "no_nat": { "name": "nc2-fvn-no-nat-subnet" }
+      }
+    },
+    "prism_central": { "mode": "new", "vm_size": "small" }
+  }'
+```
 
-**UNKNOWN, and I am not going to guess at it:** whether the NC2 v2 API has a create-cluster endpoint for Google Cloud the way it does for AWS and Azure. The Azure post used `POST /clusters/azure` to take the mouse out of the loop entirely. The nutanix.dev v2 reference renders its endpoint list client-side and its worked example is the AWS one, so I could not confirm a Google Cloud equivalent from the public documentation without an account against it. If it exists, this step collapses into one more API call and the console never has to be opened. Treat the console path above as the documented one and check the v2 reference yourself before assuming either way.
+Like every long-running v2 operation, this returns a task. Poll `/tasks/{id}` until it reaches a terminal state, the same loop the Azure post used. `license` takes `nci` or `aos`, where `aos` needs the legacy portfolio feature enabled, and `software_tier` takes `pro` or `ultimate`.
 
-## Step 4: Flow Virtual Networking is mandatory here
+Node count is 3 to 28. Single-node clusters are not recommended in production and two-node clusters are not supported at all, so three is the floor rather than a suggestion.
 
-On AWS and Azure, Flow Virtual Networking is a choice. On Google Cloud it is a requirement: NC2 does not support VLAN-type networking there at all. Every user VM lives on a Flow overlay subnet inside a Flow VPC, with Geneve encapsulation between hosts, and Prism Central is the control plane for all of it. That has one practical consequence worth designing around early: the network your VMs see is not the Google Cloud network, it is the overlay, and reaching a native Google Cloud service such as BigQuery or GKE from a VM goes out through the transit VPC using the NAT range, or over Private Google Access, Private Service Access or Private Service Connect from the cluster VPC.
+## Step 4: Flow Virtual Networking, mandatory, and lighter than Azure
 
-For anyone coming from the AWS post, this is the one place where the muscle memory does not transfer.
+Flow Virtual Networking is required on Google Cloud. There is no VLAN-type networking option. Every user VM sits on an overlay subnet inside a Flow VPC, Geneve carries traffic between hosts, and Prism Central is the control plane. You create the virtual networks, subnets, DHCP, NAT, routing and security policy in Prism Central, in any address range you like including RFC1918, independent of the Google Cloud topology underneath.
+
+The good news relative to the Azure post: NC2 on Google Cloud does not require Flow Gateway VMs. Azure needs them, Google Cloud does not, which removes a VNet, a pair of VMs and the BGP plumbing that went with them.
+
+The constraint to design around: the network your VMs see is not the Google Cloud network. Reaching BigQuery, GKE or the internet goes through the overlay's NAT path, with floating IPs for inbound, or through Private Google Access, Private Service Access or Private Service Connect from the cluster VPC. Do not create Google Cloud entities inside the Flow external NAT subnet.
 
 ## Step 5: Pulumi against the v4 API
 
-From the moment Prism Central answers on 9440, this post converges on exactly what the AWS and Azure posts already practice: every Flow VPC, subnet, image and VM is a v4 resource, managed as code, with no console clicks recorded as the real state.
+From the moment Prism Central answers on 9440, this converges on what the AWS and Azure posts already practice: every Flow VPC, subnet, image and VM is a v4 resource under code, with no console clicks recorded as the real state.
 
-Nutanix ships an official Terraform and OpenTofu provider (`nutanix/nutanix`, v2.x), which is the one both prior posts used against the v4 API. Pulumi's Terraform bridge turns it into a native Pulumi SDK without Nutanix having to publish a first-party Pulumi package:
+Nutanix ships an official Terraform and OpenTofu provider (`nutanix/nutanix`, v2.x), the one both prior posts used. Pulumi's Terraform bridge turns it into a native Pulumi SDK:
 
 ```bash
 pulumi package add terraform-provider nutanix/nutanix
@@ -135,7 +202,7 @@ pulumi package add terraform-provider nutanix/nutanix
 import pulumi
 import pulumi_nutanix as ntnx
 
-provider = ntnx.Provider("pc", endpoint="10.20.0.10", port=9440,
+provider = ntnx.Provider("pc", endpoint=prism_central_ip, port=9440,
     username=nutanix_username, password=nutanix_password, insecure=False)
 
 overlay_vpc = ntnx.VpcV2("nc2-gcp-overlay",
@@ -147,15 +214,20 @@ overlay_subnet = ntnx.SubnetV2("nc2-gcp-overlay-subnet",
     opts=pulumi.ResourceOptions(provider=provider))
 ```
 
-The `V2` suffixes are the provider's own naming for its v4-backed resources, as distinct from the older v1 and v2 console-era ones. That naming has moved between provider releases, so check it against the provider's current documentation rather than against this page. I have run the bridge mechanism as documented by Pulumi; I have not run this exact program end to end against a live Google Cloud cluster, and I am not going to write it as though I had.
+The `V2` suffixes are the provider's naming for v4-backed resources, as distinct from the older console-era ones, and that naming has moved between provider releases. Check it against the provider's current docs, not against this page. I have run the bridge as Pulumi documents it; I have not run this exact program end to end against a live Google Cloud cluster, and I will not write it as though I had.
 
-## What is verified here, and what is not
+## Limits worth knowing before you design around them
 
-- **Verified against vendor documentation:** GA status and the 17-region starting footprint, GCE bare metal as the substrate, the three qualified machine types and their specifications, the NC2 console as the provisioning control plane, the two service accounts, the mandatory Flow Virtual Networking, the network layout including the Prism Central /29 and the NAT and no-NAT ranges, node placement across Availability Domains, license portability and Marketplace availability.
-- **Corroborative only, confirm before you build:** the reserved CIDR list, which comes from a community landing-zone repository rather than from the deployment guide's own text. It matches what those ranges are used for, but check the guide.
-- **UNKNOWN:** whether an NC2 v2 API create-cluster endpoint exists for Google Cloud, and the exact current IAM permission sets for the two service accounts, which change between releases and belong in the guide, not in a blog post.
-- **Region and instance availability move.** Seventeen regions at GA is more by next quarter, by Nutanix's own statement. Check the portal's region page and Compute Engine's bare-metal regional availability rather than trusting any list written on a Wednesday.
+These are documented constraints, not opinions, and several of them differ from AWS and Azure:
 
-Sources: the Nutanix GA announcement for NC2 on Google Cloud; Google Cloud's GA announcement; Google Cloud's own NC2 on Google Cloud solution document; Compute Engine bare metal instance and general-purpose machine family documentation; the Nutanix Cloud Clusters on Google Cloud Deployment and User Guide on the Nutanix portal; the NC2 v2 API reference on nutanix.dev; Pulumi's Terraform bridge documentation.
+- **Hibernate and resume are not supported** on Google Cloud. If your cost model for AWS assumed parking a cluster overnight, it does not port.
+- **Three to twenty-eight nodes.** No two-node clusters.
+- **No IPv6**, and no Prism Central backup or restore to Google Cloud Storage.
+- **No cross-registration**: an on-premises Prism Element cannot register to an NC2 Prism Central, or the reverse.
+- **No SPDK**, no renaming the CVM, and no reconfiguring Prism Central VM IP addresses once deployed.
 
-Personal blog. I work at Nutanix; the opinions above are my own, this is not a Nutanix roadmap announcement, and nothing here is Nutanix confidential. Everything checkable is checked against public documentation, the one thing I could not check is marked UNKNOWN, and the thing I got wrong this morning is struck through at the top rather than quietly deleted.
+## What is sourced from where
+
+Everything above is from the Nutanix portal's NC2 on Google Cloud Deployment and User Guide (Planning for Deployment, Supported Bare-metal Instances, Supported Regions, Requirements, Limitations; pages dated 2026-08-25), the Nutanix Cloud Bible's Google Cloud chapter at PC and AOS 7.3.1.1 for the placement policy and the Flow Gateway comparison, the NC2 v2 API reference on nutanix.dev for the `POST /clusters/gcp` schema, and Compute Engine's machine-type documentation for the instance specifications. Region and instance availability move; re-read the region table rather than trusting a list written on a Wednesday.
+
+Personal blog. I work at Nutanix; the opinions above are my own, this is not a Nutanix roadmap announcement, and nothing here is Nutanix confidential. This page has carried two corrections today, both struck through above rather than deleted, because a post that hides its own edit history is worth less than one that shows it.

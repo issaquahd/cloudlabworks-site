@@ -8,3 +8,4 @@ agentic-cloud-introduction
 hello-world
 nc2-aws-as-code-nc2-console-to-first-vm
 nc2-azure-as-code-bicep-to-first-cluster
+nc2-gcp-plan-pulumi-v4-api-only

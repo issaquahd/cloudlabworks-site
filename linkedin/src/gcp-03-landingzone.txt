@@ -1,22 +1,22 @@
  The landing zone, in Pulumi
  ===========================
 
- cluster VPC
+ cluster VPC          MTU >= 2000 bytes
    |
-   +-- management subnet        10.20.0.0/22
+   +-- management subnet     /24 minimum
    |     +-- bare-metal nodes
-   |     +-- Prism Central           /29 inside it
-   |     +-- NAT range (secondary)   10.21.0.0/24
-   |
-   +-- no-NAT subnet            10.22.0.0/24
-   |
-   +-- Cloud Router + Cloud NAT      egress + console link
-   |
-   +-- service account: NC2 console orchestration
-   +-- service account: bare-metal node identity
+   |     +-- Prism Central        /28 carved out of it
+   +-- FVN NAT subnet        /27 minimum
+   +-- FVN no-NAT subnet     /27 minimum
+   +-- Cloud Router + Cloud NAT   BYO: dynamic port allocation
+   +-- service account: NC2 console (needs a key)
+   +-- service account: cluster nodes
 
- Reserved, never use for any of these:
-   192.168.5.0/24  10.100.0.0/16  10.200.0.0/16
-   10.200.0.0/22   100.64.1.0/24
+ Reserved, never use:
+   192.168.5.0/24   10.100.0.0/16   10.200.32.0/24
+   10.200.0.0/22    100.64.1.0/24
 
- Enable first: Compute Engine API, IAM API, quota for -metal.
+ Breaks quietly if missed:
+   Restrict VM IP Forwarding org policy
+   compute.trustedImageProjects blocking nc2-mcm-img-mgmt-prod
+   VPC Service Controls in the way

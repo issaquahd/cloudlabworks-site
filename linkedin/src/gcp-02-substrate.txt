@@ -1,18 +1,23 @@
- The substrate: GCE bare metal
- =============================
+ Six instance types, two storage architectures
+ =============================================
 
- Not a VM. Not nested virtualization. Not Bare Metal Solution.
- Ordinary GCE instances with -metal in the machine type,
- in your project, in your VPC.
+ Not a VM. Not nested virtualization.
+ Not Google Bare Metal Solution (explicitly unsupported).
 
- machine type                     vCPU   memory     local SSD
- ------------------------------   ----   --------   ---------
- z3-highmem-192-highlssd-metal     192   1,536 GB   72,000 GiB
- c4-standard-288-lssd-metal        288   1,080 GB   18,000 GiB
- c4-highmem-288-lssd-metal         288   2,232 GB   18,000 GiB
+ LOCAL SSD: AOS on the node's own Titanium NVMe
+   instance                        vCPU   memory     NVMe
+   -----------------------------   ----   --------   ----------
+   z3-highmem-192-highlssd-metal    192   1,536 GB   12 x 6 TB
+   c4-standard-288-lssd-metal       288   1,080 GB    6 x 3 TB
+   c4-highmem-288-lssd-metal        288   2,232 GB    6 x 3 TB
 
- Note: Google's GA blog swaps the memory on the two C4 rows.
- The Compute Engine docs above are the ones that are right.
+ HYPERDISK BALANCED: no local storage, remote NVMe
+   c3-standard-192-metal            192     768 GB   15-120 TB
+   c3-highcpu-192-metal             192     512 GB   15-120 TB
+   c3-highmem-192-metal             192   1,536 GB   15-120 TB
 
- Nodes spread across Availability Domains in a zone, which maps
- to Nutanix rack awareness. Size n+1 for RF2, n+2 for RF3.
+ C3 rules: no resize from the GCP console, no adding disks
+ to a node, one volume fails and the whole node is replaced.
+
+ 23 regions, but availability is PER INSTANCE TYPE.
+ Only us-central1, europe-west4 and asia-southeast1 have all six.
