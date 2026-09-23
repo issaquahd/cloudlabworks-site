@@ -1,3 +1,14 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="-52 -52 104 104" width="104" height="104" role="img" aria-label="Crossed wrenches">
-<g transform="translate(0 4)"><g transform="rotate(42)"><rect x="-5" y="-16" width="10" height="56" rx="5" fill="#0b1220"/><path fill-rule="evenodd" fill="#0b1220" d="M0 -46 a17 17 0 1 0 0.01 0 Z M-6 -50 h12 v20 h-12 Z"/></g><g transform="rotate(-42)"><rect x="-5" y="-16" width="10" height="56" rx="5" fill="#0b1220"/><path fill-rule="evenodd" fill="#0b1220" d="M0 -46 a17 17 0 1 0 0.01 0 Z M-6 -50 h12 v20 h-12 Z"/></g></g>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-52 -52 104 104" width="104" height="104" role="img" aria-label="Crossed whale bones with a wrench on one end">
+<g transform="translate(0 4)">
+<g transform="rotate(42)">
+<rect x="-5" y="-16" width="10" height="56" rx="5" fill="#0b1220"/>
+<path fill-rule="evenodd" fill="#0b1220" d="M0 -46 a17 17 0 1 0 0.01 0 Z M-6 -50 h12 v20 h-12 Z"/>
+<g fill="#0b1220"><circle cx="-9" cy="40" r="9"/><circle cx="9" cy="40" r="9"/><rect x="-9" y="34" width="18" height="12" rx="6"/></g>
+</g>
+<g transform="rotate(-42)">
+<rect x="-5" y="-16" width="10" height="56" rx="5" fill="#0b1220"/>
+<g fill="#0b1220"><circle cx="-9" cy="-46" r="9"/><circle cx="9" cy="-46" r="9"/><rect x="-9" y="-52" width="18" height="12" rx="6"/></g>
+<g fill="#0b1220"><circle cx="-9" cy="40" r="9"/><circle cx="9" cy="40" r="9"/><rect x="-9" y="34" width="18" height="12" rx="6"/></g>
+</g>
+</g>
 </svg>
