@@ -167,8 +167,9 @@ try { research = JSON.parse(readFileSync(new URL("./data/research.json", import.
 const researchRows = research.entries.slice().sort((a, b) => b.read.localeCompare(a.read)).map((r) => `    <li><time datetime="${esc(r.read)}">${esc(r.read)}</time><div><b><a href="${esc(r.link)}" rel="noopener">${esc(r.title)}</a><span class="tier ${esc(r.tier)}">${esc(r.tier)}</span></b><span class="venue">${esc(r.venue)}</span><p>${esc(r.found)}</p><p class="here">${esc(r.here)}</p><span class="tags">${(r.tags || []).map((t) => `<i>${esc(t)}</i>`).join("")}</span></div></li>`).join("\n");
 const researchPage = () => page("research.html").replace("{{RESEARCH_ROWS}}", researchRows).replace("{{RESEARCH_COUNT}}", String(research.entries.length));
 
-// ---------- Code as World: /world shows media/src/world as gen.py left it (state.json, set.json) and the step function read out of world.py; every number on the page is program output. ----------
+// ---------- Code as World: /world shows media/src/world (and media/src/world-kyoto) as gen.py left them (state.json, set.json) and the step function read out of world.py; every number on the page is program output. ----------
 const WORLD = new URL("./media/src/world/", import.meta.url);
+const WORLD_KYOTO = new URL("./media/src/world-kyoto/", import.meta.url);
 function worldPage() {
   const st = JSON.parse(readFileSync(new URL("state.json", WORLD), "utf8"));
   const set = JSON.parse(readFileSync(new URL("set.json", WORLD), "utf8"));
@@ -184,7 +185,23 @@ function worldPage() {
     return `    <li><img src="/media/art-wm-${p.name}.jpg" draggable="false" width="1200" height="900" alt="${esc(alt)}" loading="lazy"><span class="medium">SVG · rendered state · tick ${p.tick}</span><b>${esc(p.title)}</b><span>${esc(p.text)}</span><a class="go inquire" href="/inquire?category=Original%20art&context=${ctx}">Inquire</a></li>`;
   }).join("\n");
   const shown = JSON.stringify({ seed: st.seed, ticks: st.ticks, dt_h: st.dt_h, composition: st.composition, final_state: st.final_state }, null, 2);
-  return page("world.html").replace("{{WORLD_RUN}}", run).replace("{{WORLD_STEP}}", esc(step[0].trim())).replace("{{WORLD_STATE}}", esc(shown)).replace("{{WORLD_CARDS}}", cards);
+
+  const kst = JSON.parse(readFileSync(new URL("state.json", WORLD_KYOTO), "utf8"));
+  const kset = JSON.parse(readFileSync(new URL("set.json", WORLD_KYOTO), "utf8"));
+  const kpy = readFileSync(new URL("kyoto.py", WORLD_KYOTO), "utf8");
+  const kstep = /\ndef step\([\s\S]*?\n    return state\n/.exec(kpy);
+  if (!kstep) throw new Error("kyoto.py: step() not found");
+  const kf = kst.final_state, kt0 = kst.frames["0"];
+  const krun = `Run: seed <code>${kst.seed}</code>, <code>${kst.ticks}</code> ticks of <code>dt = ${kst.dt_h} h</code> (${n(kst.ticks * kst.dt_h, 1)} h of world time). Sun angle <code>${n(kt0.sun_angle_deg, 1)}</code> to <code>${n(kf.sun_angle_deg, 1)} degrees</code>. Lantern <code>${kt0.lantern_lit ? "lit" : "unlit"}</code> at tick 0, <code>${kf.lantern_lit ? "lit" : "unlit"}</code> at tick ${kf.tick}. Koi at x = <code>${n(kf.koi_x, 0)} px</code> at the end, ripple <code>${n(kf.ripple_amp, 1)} px</code>.`;
+  const kcards = kset.map((p) => {
+    const alt = `${p.title}: a flat Kyoto temple-garden scene, torii gate, cherry tree, koi pond, stone lantern, rendered from the world's state at tick ${p.tick}`;
+    const ctx = encodeURIComponent(`Piece: Code as World, ${p.title} (SVG · rendered state). I am interested in: original / print / source.`);
+    return `    <li><img src="/media/art-wm-${p.name}.jpg" draggable="false" width="1200" height="900" alt="${esc(alt)}" loading="lazy"><span class="medium">SVG · rendered state · tick ${p.tick}</span><b>${esc(p.title)}</b><span>${esc(p.text)}</span><a class="go inquire" href="/inquire?category=Original%20art&context=${ctx}">Inquire</a></li>`;
+  }).join("\n");
+  const kshown = JSON.stringify({ seed: kst.seed, ticks: kst.ticks, dt_h: kst.dt_h, composition: kst.composition, final_state: kst.final_state }, null, 2);
+
+  return page("world.html").replace("{{WORLD_RUN}}", run).replace("{{WORLD_STEP}}", esc(step[0].trim())).replace("{{WORLD_STATE}}", esc(shown)).replace("{{WORLD_CARDS}}", cards)
+    .replace("{{KYOTO_RUN}}", krun).replace("{{KYOTO_STEP}}", esc(kstep[0].trim())).replace("{{KYOTO_STATE}}", esc(kshown)).replace("{{KYOTO_CARDS}}", kcards);
 }
 
 // ---------- Bloggy Notes: /bloggy-notes combines the Blog index and the Notes list on one page, as two separate sections. /blog and /notes keep working (permalinks, RSS, old links); this is the new nav landing spot. ----------

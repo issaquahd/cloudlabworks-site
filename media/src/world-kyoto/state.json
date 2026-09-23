@@ -1,0 +1,543 @@
+{
+  "seed": 11,
+  "ticks": 140,
+  "dt_h": 0.05,
+  "composition": [
+    {
+      "id": "sun",
+      "kind": "sun",
+      "pos": [
+        80,
+        420
+      ],
+      "size": 40,
+      "arc": {
+        "cx": 600,
+        "cy": 420,
+        "rx": 520,
+        "ry": 330
+      },
+      "day_length_h": 7.0,
+      "angle_deg": 0.0,
+      "palette": "earth"
+    },
+    {
+      "id": "hill",
+      "kind": "land",
+      "pos": [
+        0,
+        300
+      ],
+      "size": [
+        1200,
+        260
+      ],
+      "shape": [
+        [
+          0,
+          560
+        ],
+        [
+          0,
+          420
+        ],
+        [
+          180,
+          370
+        ],
+        [
+          420,
+          340
+        ],
+        [
+          650,
+          365
+        ],
+        [
+          900,
+          335
+        ],
+        [
+          1200,
+          400
+        ],
+        [
+          1200,
+          560
+        ]
+      ],
+      "palette": "earth"
+    },
+    {
+      "id": "pond",
+      "kind": "water",
+      "pos": [
+        140,
+        560
+      ],
+      "size": [
+        840,
+        220
+      ],
+      "palette": "earth",
+      "ripple_amp": 0.0
+    },
+    {
+      "id": "cherry",
+      "kind": "tree",
+      "pos": [
+        260,
+        560
+      ],
+      "size": [
+        220,
+        180
+      ],
+      "canopy": {
+        "cx": 260,
+        "cy": 430,
+        "rx": 150,
+        "ry": 95
+      },
+      "trunk_w": 16,
+      "palette": "earth"
+    },
+    {
+      "id": "torii",
+      "kind": "torii",
+      "pos": [
+        800,
+        560
+      ],
+      "size": [
+        150,
+        240
+      ],
+      "palette": "loud"
+    },
+    {
+      "id": "lantern",
+      "kind": "lantern",
+      "pos": [
+        1090,
+        560
+      ],
+      "size": [
+        42,
+        92
+      ],
+      "lit": false,
+      "palette": "earth"
+    },
+    {
+      "id": "koi",
+      "kind": "koi",
+      "pos": [
+        490.4759107019637,
+        700
+      ],
+      "size": [
+        74,
+        24
+      ],
+      "swim": {
+        "amp_px": 230,
+        "period_h": 2.6,
+        "center_x": 560,
+        "base_y": 700
+      },
+      "palette": "earth"
+    },
+    {
+      "id": "pine-0",
+      "kind": "pine",
+      "pos": [
+        113.58634316482976,
+        412.72631752071186
+      ],
+      "size": [
+        59.45040112159637,
+        90.15682546124542
+      ],
+      "palette": "earth"
+    },
+    {
+      "id": "pine-1",
+      "kind": "pine",
+      "pos": [
+        585.2430897309938,
+        390.5398103156463
+      ],
+      "size": [
+        60.190538224668884,
+        92.59765440433604
+      ],
+      "palette": "earth"
+    },
+    {
+      "id": "pine-2",
+      "kind": "pine",
+      "pos": [
+        1067.578612351197,
+        387.82370368687657
+      ],
+      "size": [
+        56.85442020199241,
+        81.81341074983679
+      ],
+      "palette": "earth"
+    },
+    {
+      "id": "cloud-0",
+      "kind": "cloud",
+      "pos": [
+        897.2587529924905,
+        177.08138755577346
+      ],
+      "size": [
+        153.76923027328615,
+        37.7507078911829
+      ],
+      "palette": "earth"
+    },
+    {
+      "id": "cloud-1",
+      "kind": "cloud",
+      "pos": [
+        1046.167469880544,
+        171.54915469473767
+      ],
+      "size": [
+        205.40064341207136,
+        26.204917331962275
+      ],
+      "palette": "earth"
+    },
+    {
+      "id": "petal-0",
+      "kind": "petal",
+      "pos": [
+        177.92514370517296,
+        419.0609696393763
+      ],
+      "spawn": [
+        177.92514370517296,
+        419.0609696393763
+      ],
+      "size": [
+        11,
+        7
+      ],
+      "fall_speed_px_h": 130.0,
+      "drift_speed_px_h": 22.0,
+      "flutter_amp_px": 15.0,
+      "flutter_period_h": 0.5,
+      "phase": 0.37417062902325593,
+      "t0_h": 0.5281045072374094,
+      "cycle_h": 2.776454079697105,
+      "palette": "earth"
+    },
+    {
+      "id": "petal-1",
+      "kind": "petal",
+      "pos": [
+        222.17888766471688,
+        391.65454240736335
+      ],
+      "spawn": [
+        222.17888766471688,
+        391.65454240736335
+      ],
+      "size": [
+        11,
+        7
+      ],
+      "fall_speed_px_h": 130.0,
+      "drift_speed_px_h": 22.0,
+      "flutter_amp_px": 15.0,
+      "flutter_period_h": 0.5,
+      "phase": 2.914986190252419,
+      "t0_h": 1.3159866006294199,
+      "cycle_h": 2.98727275071259,
+      "palette": "earth"
+    },
+    {
+      "id": "petal-2",
+      "kind": "petal",
+      "pos": [
+        339.2732900611137,
+        418.5518263120242
+      ],
+      "spawn": [
+        339.2732900611137,
+        418.5518263120242
+      ],
+      "size": [
+        11,
+        7
+      ],
+      "fall_speed_px_h": 130.0,
+      "drift_speed_px_h": 22.0,
+      "flutter_amp_px": 15.0,
+      "flutter_period_h": 0.5,
+      "phase": 4.023071451506697,
+      "t0_h": 1.3895545624879044,
+      "cycle_h": 2.780370566830583,
+      "palette": "earth"
+    },
+    {
+      "id": "petal-3",
+      "kind": "petal",
+      "pos": [
+        304.1776587186218,
+        415.1531434879757
+      ],
+      "spawn": [
+        304.1776587186218,
+        415.1531434879757
+      ],
+      "size": [
+        11,
+        7
+      ],
+      "fall_speed_px_h": 130.0,
+      "drift_speed_px_h": 22.0,
+      "flutter_amp_px": 15.0,
+      "flutter_period_h": 0.5,
+      "phase": 1.747749044170597,
+      "t0_h": 2.7999363739898944,
+      "cycle_h": 2.8065142808617254,
+      "palette": "earth"
+    },
+    {
+      "id": "petal-4",
+      "kind": "petal",
+      "pos": [
+        369.15987012295886,
+        436.2118552221074
+      ],
+      "spawn": [
+        369.15987012295886,
+        436.2118552221074
+      ],
+      "size": [
+        11,
+        7
+      ],
+      "fall_speed_px_h": 130.0,
+      "drift_speed_px_h": 22.0,
+      "flutter_amp_px": 15.0,
+      "flutter_period_h": 0.5,
+      "phase": 4.44729901407626,
+      "t0_h": 0.8337582271424072,
+      "cycle_h": 2.644524190599174,
+      "palette": "earth"
+    },
+    {
+      "id": "petal-5",
+      "kind": "petal",
+      "pos": [
+        219.7848508135416,
+        405.8971971022811
+      ],
+      "spawn": [
+        219.7848508135416,
+        405.8971971022811
+      ],
+      "size": [
+        11,
+        7
+      ],
+      "fall_speed_px_h": 130.0,
+      "drift_speed_px_h": 22.0,
+      "flutter_amp_px": 15.0,
+      "flutter_period_h": 0.5,
+      "phase": 0.4412272606536586,
+      "t0_h": 2.2051572779438624,
+      "cycle_h": 2.8777138684439914,
+      "palette": "earth"
+    },
+    {
+      "id": "petal-6",
+      "kind": "petal",
+      "pos": [
+        253.07796195910575,
+        436.5620992034648
+      ],
+      "spawn": [
+        253.07796195910575,
+        436.5620992034648
+      ],
+      "size": [
+        11,
+        7
+      ],
+      "fall_speed_px_h": 130.0,
+      "drift_speed_px_h": 22.0,
+      "flutter_amp_px": 15.0,
+      "flutter_period_h": 0.5,
+      "phase": 2.4285361434408186,
+      "t0_h": 2.530985115395894,
+      "cycle_h": 2.6418300061271935,
+      "palette": "earth"
+    },
+    {
+      "id": "petal-7",
+      "kind": "petal",
+      "pos": [
+        340.2254057940469,
+        390.0299715380564
+      ],
+      "spawn": [
+        340.2254057940469,
+        390.0299715380564
+      ],
+      "size": [
+        11,
+        7
+      ],
+      "fall_speed_px_h": 130.0,
+      "drift_speed_px_h": 22.0,
+      "flutter_amp_px": 15.0,
+      "flutter_period_h": 0.5,
+      "phase": 1.3176933788887804,
+      "t0_h": 2.7306059208530455,
+      "cycle_h": 2.9997694497072587,
+      "palette": "earth"
+    },
+    {
+      "id": "petal-8",
+      "kind": "petal",
+      "pos": [
+        266.64751882266495,
+        443.9197417645861
+      ],
+      "spawn": [
+        266.64751882266495,
+        443.9197417645861
+      ],
+      "size": [
+        11,
+        7
+      ],
+      "fall_speed_px_h": 130.0,
+      "drift_speed_px_h": 22.0,
+      "flutter_amp_px": 15.0,
+      "flutter_period_h": 0.5,
+      "phase": 2.4970910758945775,
+      "t0_h": 0.18882111889781647,
+      "cycle_h": 2.5852327556570303,
+      "palette": "earth"
+    },
+    {
+      "id": "petal-9",
+      "kind": "petal",
+      "pos": [
+        297.7437078856347,
+        432.8180972272158
+      ],
+      "spawn": [
+        297.7437078856347,
+        432.8180972272158
+      ],
+      "size": [
+        11,
+        7
+      ],
+      "fall_speed_px_h": 130.0,
+      "drift_speed_px_h": 22.0,
+      "flutter_amp_px": 15.0,
+      "flutter_period_h": 0.5,
+      "phase": 1.6950500035325669,
+      "t0_h": 0.23272991230396425,
+      "cycle_h": 2.670630021329109,
+      "palette": "earth"
+    },
+    {
+      "id": "petal-10",
+      "kind": "petal",
+      "pos": [
+        239.85419696535286,
+        443.02419191265705
+      ],
+      "spawn": [
+        239.85419696535286,
+        443.02419191265705
+      ],
+      "size": [
+        11,
+        7
+      ],
+      "fall_speed_px_h": 130.0,
+      "drift_speed_px_h": 22.0,
+      "flutter_amp_px": 15.0,
+      "flutter_period_h": 0.5,
+      "phase": 4.762909038622003,
+      "t0_h": 0.305848780922968,
+      "cycle_h": 2.592121600671869,
+      "palette": "earth"
+    },
+    {
+      "id": "petal-11",
+      "kind": "petal",
+      "pos": [
+        223.04565003416036,
+        395.55754699261877
+      ],
+      "spawn": [
+        223.04565003416036,
+        395.55754699261877
+      ],
+      "size": [
+        11,
+        7
+      ],
+      "fall_speed_px_h": 130.0,
+      "drift_speed_px_h": 22.0,
+      "flutter_amp_px": 15.0,
+      "flutter_period_h": 0.5,
+      "phase": 0.37632134935635975,
+      "t0_h": 2.356991577791915,
+      "cycle_h": 2.9572496385183173,
+      "palette": "earth"
+    }
+  ],
+  "frames": {
+    "0": {
+      "tick": 0,
+      "t_h": 0.0,
+      "sun_angle_deg": 0.0,
+      "lantern_lit": false,
+      "koi_x": 490.5,
+      "koi_y": 700,
+      "ripple_amp": 0.0
+    },
+    "70": {
+      "tick": 70,
+      "t_h": 3.5,
+      "sun_angle_deg": 90.0,
+      "lantern_lit": false,
+      "koi_x": 749.3,
+      "koi_y": 693.5,
+      "ripple_amp": 7.38
+    },
+    "140": {
+      "tick": 140,
+      "t_h": 7.0,
+      "sun_angle_deg": 180.0,
+      "lantern_lit": true,
+      "koi_x": 344.9,
+      "koi_y": 704.6,
+      "ripple_amp": 4.61
+    }
+  },
+  "final_state": {
+    "tick": 140,
+    "t_h": 7.0,
+    "sun_angle_deg": 180.0,
+    "lantern_lit": true,
+    "koi_x": 344.9,
+    "koi_y": 704.6,
+    "ripple_amp": 4.61
+  }
+}

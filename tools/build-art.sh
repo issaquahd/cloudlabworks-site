@@ -54,3 +54,7 @@ done
 for n in $(python3 -c 'import json;print(" ".join(x["name"] for x in json.load(open("'"$S"'/world/set.json"))))'); do
   render "$S/world/$n.svg" "art-wm-$n.jpg" 1200
 done
+# Code as World, Kyoto: the second world (gen.py writes set.json, state.json and kyoto-NN-*.svg).
+for n in $(python3 -c 'import json;print(" ".join(x["name"] for x in json.load(open("'"$S"'/world-kyoto/set.json"))))'); do
+  render "$S/world-kyoto/$n.svg" "art-wm-$n.jpg" 1200
+done
