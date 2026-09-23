@@ -2,6 +2,21 @@
  "title": "Code as Music",
  "episodes": [
   {
+   "slug": "day-2026-09-21",
+   "date": "2026-09-21",
+   "title": "The Day as Music: 21 September, one drop",
+   "seconds": 262.1,
+   "events": [],
+   "style": "Reggae idiom, 82 BPM one drop in A, original",
+   "m4a": "iam-day-2026-09-21.m4a",
+   "art": "iam-art-day-2026-09-21.jpg",
+   "haiku": [
+    "the drone finds its pitch",
+    "nothing fired; the drone held on",
+    "then the long quiet"
+   ]
+  },
+  {
    "slug": "asr-2026-09-21",
    "date": "2026-09-21",
    "title": "ASR as Music: the register, one drop",
@@ -19,19 +34,20 @@
    ]
   },
   {
-   "slug": "2026-09-20",
+   "slug": "day-2026-09-20",
    "date": "2026-09-20",
-   "title": null,
-   "seconds": 469.8,
+   "title": "The Day as Music: 20 September, one drop",
+   "seconds": 262.1,
    "events": [
     "150526-deploy"
    ],
-   "m4a": "iam-2026-09-20.m4a",
-   "art": "iam-art-2026-09-20.jpg",
+   "style": "Reggae idiom, 82 BPM one drop in B flat, original",
+   "m4a": "iam-day-2026-09-20.m4a",
+   "art": "iam-art-day-2026-09-20.jpg",
    "haiku": [
-    "orca fin, then light",
-    "two chords resolve, the build lands",
-    "and the night goes soft"
+    "one lamp in the lab",
+    "commit, push, the chord goes home",
+    "a swell, then the ebb"
    ]
   },
   {
@@ -45,12 +61,30 @@
     "deploy",
     "recover"
    ],
+   "style": null,
    "m4a": "iam-2026-09-20-ep0.m4a",
    "art": "iam-art-2026-09-20-ep0.jpg",
    "haiku": [
     "slack tide in the rack",
     "hello, and the lab wakes up",
     "it ends on a rise"
+   ]
+  },
+  {
+   "slug": "2026-09-20",
+   "date": "2026-09-20",
+   "title": null,
+   "seconds": 469.8,
+   "events": [
+    "150526-deploy"
+   ],
+   "style": null,
+   "m4a": "iam-2026-09-20.m4a",
+   "art": "iam-art-2026-09-20.jpg",
+   "haiku": [
+    "orca fin, then light",
+    "two chords resolve, the build lands",
+    "and the night goes soft"
    ]
   }
  ]
