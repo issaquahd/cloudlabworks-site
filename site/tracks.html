@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Tracks · CloudLab Works</title>
+<meta name="description" content="Original tracks from the Duvall lab, written as code. First up: Three Little Birds, Alex's own Sonic Pi arrangement of the Bob Marley song, rendered headless from the script.">
+<link rel="canonical" href="https://cloudlabworks.dev/tracks">
+<style>{{STYLE}}</style>
+<style>
+ol.tracks{list-style:none;margin:18px 0 0;padding:0}
+ol.tracks li{padding:16px 0 20px;border-top:1px solid var(--line)}
+ol.tracks li:last-child{border-bottom:1px solid var(--line)}
+ol.tracks h2{margin:0 0 4px;font-size:1.25rem}
+ol.tracks .meta{color:var(--muted);font-size:.9rem;font-variant-numeric:tabular-nums;margin:0 0 8px}
+ol.tracks audio{width:100%;max-width:520px;margin-top:6px}
+ol.tracks ul.loops{margin:10px 0 0;padding-left:20px}
+ol.tracks ul.loops li{padding:2px 0;border:0}
+</style>
+</head>
+<body>
+{{HEAD}}
+<main>
+<h1>Tracks</h1>
+<p class="lede">Music written as code and rendered from the script. Each track on this page is an original arrangement by Alex, built in <a href="https://sonic-pi.net/" rel="noopener">Sonic Pi</a>, the live-coding synth, and bounced to audio without a keyboard, a microphone, or anyone else's recording in the chain.</p>
+<p class="tag">These are arrangements, not reproductions. The songs belong to their writers; the code and the render are Alex's.</p>
+
+<ol class="tracks">
+  <li id="three-little-birds">
+    <h2>Three Little Birds</h2>
+    <p class="meta">Sonic Pi arrangement of the Bob Marley song · 74 bpm · 130 s · MP3, 192 kbps</p>
+    <audio controls preload="metadata" src="/media/track-three-little-birds.mp3"></audio>
+    <p>This is Alex's own arrangement, not Bob Marley's recording and not a sample of it. It is a Sonic Pi script: four live loops running against each other at 74 bpm, the classic reggae tempo. The script is what was rendered, headless, through Sonic Pi's engine, for 130 seconds.</p>
+    <ul class="loops">
+      <li><strong>Piano skank</strong>: A major and D major chords on the off-beat, the "and" of every beat.</li>
+      <li><strong>Lead melody</strong>: the chorus line, played on a synth lead.</li>
+      <li><strong>Drums</strong>: a one-drop reggae pattern, bass drum on the one, snare on two and four.</li>
+      <li><strong>Hi-hat</strong>: closed hi-hat on steady eighths.</li>
+    </ul>
+    <p>Sonic Pi has no arrangement view and no timeline; the loops are the arrangement. The same script played longer would be the same song, longer. Where the lab's <a href="/live">instrument</a> turns infrastructure state into sound, this is the plainer case: a score in a text file, and an engine that plays it.</p>
+  </li>
+</ol>
+</main>
+{{FOOT}}
+</body>
+</html>

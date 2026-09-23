@@ -21,7 +21,7 @@ say() { printf '%s\n' "$*"; }
 cf() { curl -s --max-time 120 -H "$AUTH" "$@"; }
 hash_of() { shasum -a 256 "$1" | cut -c1-32; }
 file_of() { for F in "$DIR"/media/*; do [ -f "$F" ] && [ "$(hash_of "$F")" = "$1" ] && { echo "$F"; return; }; done; }
-mime() { case "$1" in *.mp4) echo video/mp4;; *.webm) echo video/webm;; *.jpg|*.jpeg) echo image/jpeg;; *.png) echo image/png;; *.svg) echo image/svg+xml;; *.gif) echo image/gif;; *.m4a) echo audio/mp4;; *.json) echo application/json;; *) echo application/octet-stream;; esac; }
+mime() { case "$1" in *.mp4) echo video/mp4;; *.webm) echo video/webm;; *.jpg|*.jpeg) echo image/jpeg;; *.png) echo image/png;; *.svg) echo image/svg+xml;; *.gif) echo image/gif;; *.m4a) echo audio/mp4;; *.mp3) echo audio/mpeg;; *.json) echo application/json;; *) echo application/octet-stream;; esac; }
 
 say "== 1. account"
 ACCT=$(cf "$API/accounts?per_page=5" | python3 -c 'import sys,json;d=json.load(sys.stdin);r=d.get("result") or [];print(r[0]["id"] if r else "")')
