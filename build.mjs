@@ -15,7 +15,10 @@ const OG_IMAGE = `<meta property="og:image" content="https://cloudlabworks.dev/m
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">`;
-const fill = (html) => html.replace("<style>{{STYLE}}</style>", ICONS + "\n" + (html.includes('property="og:image"') ? "" : OG_IMAGE + "\n") + "<style>" + style + "</style>").replace("{{HEAD}}", head).replace("{{FOOT}}", foot);
+// Crayon lettering: {{CRAYON:text}} → one span per letter, each a crayon colour with a small tilt, in a kid's handwriting face the OS ships (no web fonts: the site's no-third-party rule). The "a" in Kidcast is mirrored on purpose (Alex, 2026-09-23: "Put the a backwards").
+const CRAYONS = ["#ee204d", "#ff7538", "#f5c400", "#1cac78", "#1f75fe", "#926eae", "#ff5ea0", "#b4674d"];
+const crayon = (t) => { let i = -1; return `<span class="crayon" aria-label="${esc(t)}">` + t.split(" ").map((word) => `<span class="w">` + [...word].map((ch) => { i++; return `<i style="--c:${CRAYONS[i % CRAYONS.length]};--r:${((i * 7) % 9) - 4}deg"${ch === "a" && word === "Kidcast" ? ' class="flip"' : ""}>${esc(ch)}</i>`; }).join("") + `</span>`).join(" ") + "</span>"; };
+const fill = (html) => html.replace("<style>{{STYLE}}</style>", ICONS + "\n" + (html.includes('property="og:image"') ? "" : OG_IMAGE + "\n") + "<style>" + style + "</style>").replace("{{HEAD}}", head).replace("{{FOOT}}", foot).replace(/\{\{CRAYON:([^}]+)\}\}/g, (_, t) => crayon(t));
 // Feed autodiscovery on every page, not only the blog: a reader pointed at cloudlabworks.dev finds the feed.
 const FEED_LINK = `<link rel="alternate" type="application/rss+xml" title="Invisible Wires: Agentic Cloud" href="/blog/feed.xml">`;
 const page = (f) => fill(r(f).replace("</head>", `${FEED_LINK}\n</head>`));
