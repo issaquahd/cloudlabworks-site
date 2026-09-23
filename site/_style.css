@@ -17,7 +17,7 @@ ul.plain{list-style:none;padding:0;margin:0}ul.plain li{padding:12px 0;border-to
 ul.plain b{display:block;color:var(--ink)}ul.plain span{color:var(--ink-2)}
 .cta{display:inline-block;margin-top:14px;padding:10px 16px;border:1px solid var(--accent);border-radius:8px;color:var(--accent);font-weight:600}
 .cta:hover{background:var(--accent);color:var(--paper);text-decoration:none}
-.hero-video{margin:36px auto 0;width:80%}.hero-video video{display:block;width:100%;height:auto;aspect-ratio:16/9;border-radius:12px;background:var(--line)}
+.hero-video{margin:36px auto 0;width:64%}.hero-video video{display:block;width:100%;height:auto;aspect-ratio:16/9;border-radius:12px;background:var(--line)}
 .hero-video figcaption{margin-top:10px;color:var(--muted);font-size:.95rem;font-style:italic;text-align:center}
 .portraits{display:flex;gap:18px;align-items:flex-start;margin:36px 0 0}.portraits .portrait{margin:0;width:calc((100% - 36px)/3)}@media(max-width:560px){.portraits{flex-wrap:wrap}.portraits .portrait{width:47%}}
 .booth-frame{container-type:inline-size;position:relative}.booth-frame .exit{position:absolute;top:10px;left:8%;right:8%;text-align:center;color:#000;font-weight:800;font-size:9cqw;letter-spacing:.02em;line-height:1.1;background:rgba(255,255,255,.82);border-radius:6px;padding:3px 6px;margin:0}
