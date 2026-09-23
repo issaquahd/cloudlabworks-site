@@ -138,5 +138,26 @@
   "city": "Tokyo",
   "title": "Sumida, fireworks",
   "text": "The river festival: one burst over the skyline, the whole city looking up, the water taking the copy."
+ },
+ {
+  "name": "matrix-21",
+  "scene": "kyoto-nijo",
+  "city": "Kyoto",
+  "title": "Nijō, the moat gate",
+  "text": "The castle's karamon gate across still water, its ridge gilded, the banks in blossom on both sides."
+ },
+ {
+  "name": "matrix-22",
+  "scene": "fukuoka-hakata",
+  "city": "Fukuoka",
+  "title": "Hakata, the yatai row",
+  "text": "A line of yatai stalls by the canal, steam over each counter, Fukuoka Tower's diamond skin catching the little light there is."
+ },
+ {
+  "name": "matrix-23",
+  "scene": "hokkaido-noboribetsu",
+  "city": "Hokkaido",
+  "title": "Noboribetsu, Jigokudani",
+  "text": "Hell Valley by night: steam standing over sulphur ground, an oni's red eyes on the ridge above the onsen roofs, snow keeping everything else quiet."
  }
 ]

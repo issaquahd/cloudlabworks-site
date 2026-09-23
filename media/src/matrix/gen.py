@@ -282,6 +282,63 @@ def _(im):
     d.ellipse([cx - 30, cy - 30, cx + 30, cy + 30], fill=(255, 255, 0))
     water(im, int(H * 0.6))
 
+@scene("kyoto-nijo", "Kyoto", "Nijō, the moat gate", "The castle's karamon gate across still water, its ridge gilded, the banks in blossom on both sides.")
+def _(im):
+    sky(im, 16, 50, 0.6); stars(im, 91); hills(im, int(H * 0.56), 40, 45, 90)
+    base = int(H * 0.68)
+    for i, x in enumerate((150, 330, 920, 1080)):
+        tree(im, x, base + (i % 2) * 16, 120 + (i % 2) * 20, 235, 90 + i, blossom=True)
+    rect(im, W // 2 - 230, base - 130, W // 2 + 230, base, 95); roof(im, W // 2, base - 130, 270, 40, 220)
+    rect(im, W // 2 - 46, base - 88, W // 2 + 46, base, 32)
+    rect(im, W // 2 - 46, base - 100, W // 2 + 46, base - 88, 235, red=210)
+    water(im, base + 4, v=24)
+
+@scene("fukuoka-hakata", "Fukuoka", "Hakata, the yatai row", "A line of yatai stalls by the canal, steam over each counter, Fukuoka Tower's diamond skin catching the little light there is.")
+def _(im):
+    sky(im, 8, 26, 0.4); cx, base = 940, int(H * 0.46)
+    poly(im, [(cx - 130, base), (cx + 130, base), (cx + 26, 130), (cx - 26, 130)], 200)
+    d = ImageDraw.Draw(im)
+    for y in range(170, base, 46):
+        hw = 30 + (y - 130) / (base - 130) * 100
+        d.line([(cx - hw, y), (cx + hw, y)], fill=(0, 150, 0), width=4)
+        d.line([(cx - hw, y), (cx + hw, y - 46)], fill=(0, 120, 0), width=2)
+    rect(im, 0, int(H * 0.68), W, H, 45)
+    rnd = random.Random(93)
+    for i, x in enumerate(range(50, 820, 150)):
+        rect(im, x, int(H * 0.68) - 90, x + 130, int(H * 0.68), 95)
+        roof(im, x + 65, int(H * 0.68) - 90, 80, 20, 140)
+        sign(im, x + 14, int(H * 0.68) - 46, 100, 34, 180, 94 + i)
+        lantern(im, x + 65, int(H * 0.68) - 60, 15, red=200)
+        for _ in range(4):
+            sx = x + rnd.randint(20, 110); sy = int(H * 0.68) - rnd.randint(10, 30)
+            d.line([(sx, sy), (sx - 4, sy - 40)], fill=(0, 70, 0), width=3)
+    water(im, int(H * 0.86), v=22)
+
+@scene("hokkaido-noboribetsu", "Hokkaido", "Noboribetsu, Jigokudani", "Hell Valley by night: steam standing over sulphur ground, an oni's red eyes on the ridge above the onsen roofs, snow keeping everything else quiet.")
+def _(im):
+    sky(im, 6, 22, 0.42); moon(im, 220, 190, 58)
+    hills(im, int(H * 0.5), 70, 190, 200); hills(im, int(H * 0.58), 40, 140, 201)
+    ground(im, int(H * 0.68), 210)
+    d = ImageDraw.Draw(im); rnd = random.Random(202)
+    for _ in range(9):
+        x = rnd.randint(200, 980); y = int(H * 0.68) - rnd.randint(0, 30)
+        for j in range(6):
+            d.ellipse([x - 18 + j * 3, y - 26 - j * 20, x + 18 + j * 3, y - 8 - j * 20], outline=(0, 70 + j * 8, 0), width=3)
+    ox, oy = 940, int(H * 0.56)
+    poly(im, [(ox - 46, oy), (ox + 46, oy), (ox + 30, oy - 150), (ox - 30, oy - 150)], 40)
+    poly(im, [(ox - 30, oy - 150), (ox - 10, oy - 210), (ox - 2, oy - 150)], 60, red=180)
+    poly(im, [(ox + 30, oy - 150), (ox + 10, oy - 210), (ox + 2, oy - 150)], 60, red=180)
+    d.ellipse([ox - 22, oy - 150, ox + 22, oy - 108], fill=(0, 70, 0))
+    d.ellipse([ox - 14, oy - 138, ox - 4, oy - 128], fill=(230, 30, 0)); d.ellipse([ox + 4, oy - 138, ox + 14, oy - 128], fill=(230, 30, 0))
+    base = int(H * 0.82)
+    rect(im, 120, base - 70, 700, base, 130); roof(im, 410, base - 70, 300, 34, 175)
+    windows(im, 160, base - 60, 660, base - 6, 203, pitch=(40, 40), lit=0.7, v=(160, 230))
+    water(im, base + 6, v=30)
+    for _ in range(60):
+        x = rnd.randint(0, W); y = rnd.randint(0, int(H * 0.68))
+        d.ellipse([x - 2, y - 2, x + 2, y + 2], fill=(0, 235, 0))
+
+
 # ---------- the matrix render ----------
 def matrix(lightmap, path, seed):
     rnd = random.Random(seed)
