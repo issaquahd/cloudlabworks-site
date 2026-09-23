@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Code as Poetry · CloudLab Works</title>
+<meta name="description" content="Poems written in the syntax of the languages the lab runs on: control flow, guard clauses, comments, as verse.">
+<link rel="canonical" href="https://cloudlabworks.dev/poetry">
+<style>{{STYLE}}</style>
+<style>
+ul.poems{list-style:none;padding:0;margin:16px 0 0;display:grid;gap:22px}
+ul.poems li{border:1px solid var(--line);border-radius:12px;padding:22px 24px;background:var(--paper)}
+ul.poems li b{display:block;font-size:1.05rem;margin-bottom:2px}
+ul.poems li span.lang{color:var(--ink-2);font-size:.85rem;display:block;margin-bottom:14px;text-transform:uppercase;letter-spacing:.04em}
+ul.poems li pre{margin:0;overflow-x:auto;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:.95rem;line-height:1.75;white-space:pre-wrap}
+.worked{border:1px solid var(--line);border-radius:12px;padding:22px 24px;background:var(--paper);margin:22px 0 30px;display:grid;grid-template-columns:1fr 1fr;gap:0}
+.worked h2{grid-column:1/-1;margin:0 0 6px}
+.worked p.intro{grid-column:1/-1;margin:0 0 16px;color:var(--ink-2)}
+.worked pre{margin:0;padding:16px;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:.92rem;line-height:2.05;border-right:1px solid var(--line)}
+.worked ol{margin:0;padding:16px 16px 16px 34px;line-height:2.05;font-size:.92rem}
+.worked ol li{margin-bottom:0}
+@media (max-width:720px){.worked{grid-template-columns:1fr}.worked pre{border-right:none;border-bottom:1px solid var(--line)}}
+</style>
+</head>
+<body>
+{{HEAD}}
+<main>
+<h1>Code as Poetry</h1>
+<p class="lede">Verse in the syntax of the languages the lab actually runs: a loop, a guard clause, a comment doing the work a line break would elsewhere. None of it compiles &mdash; that was never the point.</p>
+
+<div class="worked">
+  <h2>Worked example: Poem IV, line by line</h2>
+  <p class="intro">The form's whole method is here in five lines: pick a language feature that already has a meaning, and don't translate it &mdash; let it stand for itself. Rust's borrow checker distinguishes owning a value from merely referencing it; that distinction, and only that one, is the entire poem.</p>
+  <pre>struct Heart;
+
+fn devotion(mine: &amp;Heart) {
+  // I do not need to consume you to know you
+  // Immutably borrowed, completely safe
+  let _view = mine;
+}
+
+fn main() {
+  let my_heart = Heart;
+
+  devotion(&amp;my_heart);
+
+  // Because I only borrowed your presence,
+  // you remain entirely whole when I leave
+  let _stills_yours = my_heart;
+}</pre>
+  <ol>
+    <li><code>struct Heart;</code> &mdash; a unit struct: no fields, nothing to extract or spend. The heart isn't data to be read out; it's just a thing that exists.</li>
+    <li><code>fn devotion(mine: &amp;Heart)</code> &mdash; the function signature takes a <em>reference</em> to a Heart, not the Heart itself. In Rust this is a real, load-bearing distinction: a reference borrows; only a bare <code>Heart</code> parameter would take ownership.</li>
+    <li>The two comments inside <code>devotion</code> state the poem's claim directly, and the code backs it: <code>let _view = mine</code> binds a look at the value, never the value.</li>
+    <li><code>devotion(&amp;my_heart)</code> in <code>main</code> passes a borrow across the call. Ownership of <code>my_heart</code> never leaves the caller's scope &mdash; the compiler enforces this; a version that instead moved the value would fail to compile if <code>main</code> tried to use <code>my_heart</code> again afterward.</li>
+    <li><code>let _stills_yours = my_heart</code> is only legal because nothing upstream ever took ownership. The line that proves the poem's argument and the line that would fail to compile if the argument were false are the same line.</li>
+  </ol>
+</div>
+
+<ul class="poems">
+  <li><b>Poem I</b><span class="lang">Ruby</span><pre>loop do
+  me.yield_to(you)
+  break if eternity
+
+
+  # A rhythm clean enough
+
+
+  # to leave no traces behind
+
+
+ensure
+  me.love(you)
+end</pre></li>
+  <li><b>Poem II</b><span class="lang">Swift</span><pre>func protect(relationship: Bond?) {
+  guard let activeBond = relationship else {
+    // If the connection drops, we return early;
+    // we cannot run on hollow terms
+    return
+  }
+
+
+  // Safe unboxing of the future
+  print("Cherishing \(activeBond.depth)")
+}</pre></li>
+  <li><b>Poem III</b><span class="lang">Rust</span><pre>fn main() {
+  // A love that cannot be corrupted from the outside
+  let my_word: &'static str = "Unconditional";
+
+
+  {
+    // Even when scoped inside the briefest moment,
+    // it outlives the frame that created it
+    let _moment = &my_word;
+  }
+
+
+  // Static lifetimes survive the closing of any door
+  println!("Still here: {}", my_word);
+}</pre></li>
+  <li><b>Poem IV</b><span class="lang">Rust</span><pre>struct Heart;
+
+fn devotion(mine: &Heart) {
+  // I do not need to consume you to know you
+  // Immutably borrowed, completely safe
+  let _view = mine;
+}
+
+fn main() {
+  let my_heart = Heart;
+
+  devotion(&my_heart);
+
+  // Because I only borrowed your presence,
+  // you remain entirely whole when I leave
+  let _stills_yours = my_heart;
+}</pre></li>
+  <li><b>Poem V</b><span class="lang">Rust</span><pre>use std::cell::RefCell;
+
+struct Anchor {
+  // To the world, we look quiet and unchanged
+  core: RefCell&lt;String&gt;,
+}
+
+fn main() {
+  let bond = Anchor {
+    core: RefCell::new(String::from("Quiet")),
+  };
+
+  // But internally, deep down,
+  // we are constantly growing and rearranging
+  *bond.core.borrow_mut() = String::from("Transformed");
+}</pre></li>
+  <li><b>Poem VI</b><span class="lang">Rust</span><pre>use std::sync::Mutex;
+
+struct Focus {
+  vision: String,
+}
+
+fn main() {
+  // Protected against data races and chaos,
+  // we share a single constant truth
+  let NorthStar = Mutex::new(Focus {
+    vision: String::from("Home"),
+  });
+
+  {
+    let mut guard = NorthStar.lock().unwrap();
+    // The rest of the universe must wait;
+    // right now, we are perfectly locked in step
+    guard.vision = String::from("Sustained");
+  }
+}</pre></li>
+  <li><b>Poem VII</b><span class="lang">Rust</span><pre>enum Destiny {
+  Distance(u32),
+  Presence,
+  Chaos,
+}
+
+fn encounter(state: Destiny) {
+  match state {
+    Destiny::Presence => println!("Silence drops its guard."),
+    Destiny::Distance(miles) => println!("The thread holds across {} miles.", miles),
+    // The compiler forces us to handle every possibility;
+    // love leaves no loose ends to crash the system
+    _ => println!("We handle the rest together."),
+  }
+}</pre></li>
+</ul>
+</main>
+{{FOOT}}
+</body>
+</html>
