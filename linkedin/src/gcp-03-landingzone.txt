@@ -1,0 +1,22 @@
+ The landing zone, in Pulumi
+ ===========================
+
+ cluster VPC
+   |
+   +-- management subnet        10.20.0.0/22
+   |     +-- bare-metal nodes
+   |     +-- Prism Central           /29 inside it
+   |     +-- NAT range (secondary)   10.21.0.0/24
+   |
+   +-- no-NAT subnet            10.22.0.0/24
+   |
+   +-- Cloud Router + Cloud NAT      egress + console link
+   |
+   +-- service account: NC2 console orchestration
+   +-- service account: bare-metal node identity
+
+ Reserved, never use for any of these:
+   192.168.5.0/24  10.100.0.0/16  10.200.0.0/16
+   10.200.0.0/22   100.64.1.0/24
+
+ Enable first: Compute Engine API, IAM API, quota for -metal.

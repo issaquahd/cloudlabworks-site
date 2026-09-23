@@ -1,0 +1,18 @@
+ Flow Virtual Networking is mandatory here
+ =========================================
+
+ On AWS and Azure:     Flow is a choice.
+ On Google Cloud:      Flow is the only option.
+                       No VLAN-type networking at all.
+
+   user VM --- Flow overlay subnet --- Flow VPC
+                     |
+                     |  Geneve between hosts
+                     |  Prism Central is the control plane
+                     v
+              transit VPC --- NAT range --- Google Cloud network
+                                            BigQuery, GKE, internet
+                                            or PGA / PSA / PSC
+
+ The network your VMs see is not the Google Cloud network.
+ This is the one place the AWS muscle memory does not transfer.

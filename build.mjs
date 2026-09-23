@@ -35,6 +35,7 @@ function inline(s) {
   s = esc(s)
     .replace(/\[([^\]]+)\]\(([^)\s]+)\)/g, (_, t, u) => `<a href="${u}"${/^https?:/.test(u) ? ' rel="noopener"' : ""}>${t}</a>`)
     .replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>")
+    .replace(/~~([^~]+)~~/g, "<del>$1</del>")
     .replace(/(^|[^*\w])\*([^*\n]+)\*(?!\w)/g, "$1<em>$2</em>");
   return s.replace(/\u0000(\d+)\u0000/g, (_, i) => codes[+i]);
 }

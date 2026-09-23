@@ -1,0 +1,20 @@
+ NC2 on Google Cloud: who does what
+ ==================================
+
+ NC2 console (SaaS)
+   obtains bare-metal instances, sets IAM, writes VPC firewall
+   rules, watches hardware, replaces failed nodes
+        |
+        |  Compute Engine API, two service accounts
+        v
+ your project, your VPC
+   management subnet:  GCE bare-metal nodes (C4 / Z3, -metal)
+                       AHV + CVM + AOS on local Titanium SSD
+                       Prism Central /29   <-- you talk to this
+                       NAT range (secondary)  \  Flow Virtual
+                       no-NAT subnet          /  Networking transit
+   Cloud Router + Cloud NAT: egress, and the console link
+        |
+        |  v4 API
+        v
+ laptop: Pulumi -> Prism Central v4 -> Flow VPCs, subnets, VMs
