@@ -44,6 +44,14 @@ ol.episodes time{color:#a8cdca;font-weight:600;font-size:.9rem;font-variant-nume
 ol.episodes .ev{color:#94a3b8;font-size:.9rem;display:block}
 ol.episodes .style{display:inline-block;margin-top:6px;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:#0b1220;background:#a8cdca;border-radius:999px;padding:3px 10px;font-weight:700}
 ol.episodes audio{width:100%;max-width:520px;margin-top:6px}
+ol.tracks{list-style:none;margin:14px 0 0;padding:0}
+ol.tracks>li{padding:14px 0 18px;border-top:1px solid rgba(226,232,240,.14)}
+ol.tracks>li:last-child{border-bottom:1px solid rgba(226,232,240,.14)}
+ol.tracks h3{margin:0 0 4px;font-size:1.15rem;color:#f8fafc}
+ol.tracks .meta{color:#a8cdca;font-size:.9rem;font-variant-numeric:tabular-nums;margin:0 0 8px}
+ol.tracks audio{width:100%;max-width:520px;margin:6px 0 8px}
+ol.tracks ul.loops{margin:8px 0 0;padding-left:20px;color:#cbd5e1}
+ol.tracks ul.loops li{padding:2px 0;border:0}
 ol.episodes canvas.scope-mini{display:block;width:100%;max-width:520px;height:auto;aspect-ratio:640/120;margin-top:6px;border-radius:8px;background:rgba(5,10,20,.55);border:1px solid rgba(226,232,240,.14)}
 footer{background:rgba(11,18,32,.55)}footer,footer a{color:#cbd5e1}
 @media(max-width:560px){ol.episodes li{grid-template-columns:1fr}}
@@ -96,6 +104,41 @@ for x in range(4):
     <h2 id="recordings" style="margin-top:0">Recordings, by date</h2>
     <p class="tag">Recorded from the lab's own instrument: twenty seconds around each fault, recovery and deploy, assembled nightly into one take per day.</p>
     <ol class="episodes" id="episodes"><li><span class="ev">Loading…</span></li></ol>
+  </div>
+
+  <div class="panel">
+    <h2 id="tracks" style="margin-top:0">Tracks</h2>
+    <p class="tag">Music written as code and rendered from the script. Each track is an original arrangement by Alex, built in <a href="https://sonic-pi.net/" rel="noopener">Sonic Pi</a> and bounced to audio without a keyboard, a microphone, or anyone else's recording in the chain. Arrangements, not reproductions: the songs belong to their writers; the code and the render are Alex's.</p>
+    <ol class="tracks">
+      <li id="three-little-birds">
+        <h3>Three Little Birds</h3>
+        <p class="meta">Sonic Pi arrangement of the Bob Marley song · 74 bpm · 130 s · MP3, 192 kbps</p>
+        <audio controls preload="metadata" src="/media/track-three-little-birds.mp3"></audio>
+        <p class="how">Alex's own arrangement, not Bob Marley's recording and not a sample of it. Four live loops running against each other at 74 bpm, the classic reggae tempo, rendered headless through Sonic Pi's engine for 130 seconds.</p>
+        <ul class="loops">
+          <li><strong>Piano skank</strong>: A major and D major chords on the off-beat, the "and" of every beat.</li>
+          <li><strong>Lead melody</strong>: the chorus line, played on a synth lead.</li>
+          <li><strong>Drums</strong>: a one-drop reggae pattern, bass drum on the one, snare on two and four.</li>
+          <li><strong>Hi-hat</strong>: closed hi-hat on steady eighths.</li>
+        </ul>
+        <p class="how">Sonic Pi has no arrangement view and no timeline; the loops are the arrangement. The same script played longer would be the same song, longer. Where the instrument above turns infrastructure state into sound, this is the plainer case: a score in a text file, and an engine that plays it.</p>
+      </li>
+      <li id="is-this-love">
+        <h3>Is This Love</h3>
+        <p class="meta">Sonic Pi arrangement of the Bob Marley song · 122 bpm · 142 s · seed 7 · MP3, 192 kbps</p>
+        <audio controls preload="metadata" src="/media/track-is-this-love.mp3"></audio>
+        <p class="how">Alex's own arrangement, not Bob Marley's recording and not a sample of it. Six live loops at 122 bpm, and this one has a structure: an arrangement director cycles the song through verse and chorus, pre-chorus, and solo, switching every 16 beats, and the other loops read which section is current and play their part for it. Rendered headless for 142 seconds, six full passes through the cycle, from random seed 7, so the solo comes out the same every time it is bounced.</p>
+        <ul class="loops">
+          <li><strong>Arrangement director</strong>: sets the section, verse and chorus, then pre-chorus, then solo, 16 beats each, and repeats.</li>
+          <li><strong>FM bassline</strong>: F-sharp minor to D under the verse, chorus, and solo; a G-sharp minor to C-sharp minor walk under the pre-chorus.</li>
+          <li><strong>Piano skank</strong>: the chords on the off-beat, following the same section changes.</li>
+          <li><strong>Lead line</strong>: switches synths per section. A saw lead carries the chorus melody, blade pads sustain through the pre-chorus, and the solo is a plucked F-sharp minor pentatonic line, notes and timing picked at random from the fixed seed, panned across the stereo field.</li>
+          <li><strong>Drums</strong>: a one-drop pattern, bass drum on the one, snare on two and four, steady through every section.</li>
+          <li><strong>Hi-hat</strong>: a closed hi-hat shuffle on eighths, pitched up slightly.</li>
+        </ul>
+        <p class="how">The director is the whole trick. Each loop keeps its own time and only asks one question at the top of each pass through its pattern: which section are we in. That is enough to turn six independent loops into a song with a shape.</p>
+      </li>
+    </ol>
   </div>
 
   <p class="credit">Background: L79, a Southern Resident male of L pod, just south of Turn Point, Stuart Island, in Haro Strait, in the Salish Sea. Photo by Erik Stockdale, <a href="https://commons.wikimedia.org/wiki/File:Male_orca_whale_L79_southern_resident_puget_sound.jpg" rel="noopener">Wikimedia Commons</a>, CC0.</p>
