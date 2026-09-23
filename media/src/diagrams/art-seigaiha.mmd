@@ -1,0 +1,6 @@
+%%{init: {'theme':'base','themeVariables':{'primaryColor':'#fbf7ef','primaryTextColor':'#1f3a3a','primaryBorderColor':'#1f3a3a','lineColor':'#1f3a3a','secondaryColor':'#f1e3c3','tertiaryColor':'#f1e3c3','fontFamily':'sans-serif','fontSize':'16px'}}}%%
+flowchart LR
+  A["one arc"] --> B["rank of arcs<br/>drawn edge to edge"]
+  B --> C["next rank<br/>offset by half a wave"]
+  C --> D["overlap<br/>each arc covers the joins below"]
+  D --> B

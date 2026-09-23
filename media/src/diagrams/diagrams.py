@@ -124,7 +124,71 @@ ART = [
 """),
 ]
 
-MERMAID_INIT = "%%{init: {'theme':'base','themeVariables':{'primaryColor':'#fbf7ef','primaryTextColor':'#1f3a3a','primaryBorderColor':'#1f3a3a','lineColor':'#1f3a3a','secondaryColor':'#f1e3c3','tertiaryColor':'#f1e3c3','fontFamily':'sans-serif','fontSize':'16px'}}}%%"
+# Orca set (Alex, 2026-09-23: "Japanese and orca inspired ascii art ... and the mermaid diagram
+# equivalent too"). Each of these carries a Mermaid version of the same subject, so the piece is
+# drawn twice: once as a picture, once as a graph. ART entries below are 5-tuples; the eight above
+# are 4-tuples and render as a single image, as they always have.
+ART_MMD = [
+("shachi", "Shachi", "An orca surfacing: the back breaks first, then the fin, and that is the whole of what the water gives you. Japanese writes the animal 鯱, the fish radical beside the tiger, a tiger being the nearest thing they had to compare it to.", r"""
+                                     /|
+                                    / |
+                                   /  |
+                                  /   |
+                                 /    |
+                                /     |
+                               /      |
+                  ____________/       |___________
+             ____/                                \____
+        ____/                                          \____
+   ,.--'                                                     `--.,
+  '                                                               `
+  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+""", r"""
+flowchart TD
+  A["breach<br/>fin clears first"] --> B["arc<br/>the whole body leaves"]
+  B --> C["fall<br/>flank meets water"]
+  C --> D["report<br/>heard a mile down the channel"]
+  D --> E["dive<br/>five to fifteen minutes"]
+  E --> A
+"""),
+("pod", "The pod", "Four dorsal fins at the surface and nothing else showing. Tallest is a bull, the straight blades are cows and a calf tucked beside one of them. This is the whole of what you see from a beach.", r"""
+                 /|
+                / |
+               /  |                /|
+              /   |               / |            /|
+             /    |              /  |           / |        /|
+            /     |             /   |          /  |       / |
+       ____/      |________ ___/    |______ __/   |_____ /  |____
+   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+""", r"""
+flowchart TD
+  G["grandmother<br/>post-reproductive, leads"] --> M1["daughter"]
+  G --> M2["daughter"]
+  G --> S["son<br/>stays in the matriline for life"]
+  M1 --> C1["calf"]
+  M1 --> C2["calf"]
+  M2 --> C3["calf"]
+"""),
+("seigaiha", "Seigaiha", "Blue sea waves. Concentric arcs, each rank offset by half a wave, repeating until the eye gives up and reads it as water. The oldest pattern here and the only one that tiles.", r"""
+     .-""-.     .-""-.     .-""-.     .-""-.     .-""-.     .-""-.
+    /  .-. \   /  .-. \   /  .-. \   /  .-. \   /  .-. \   /  .-. \
+   |  /   \ | |  /   \ | |  /   \ | |  /   \ | |  /   \ | |  /   \ |
+  .-""-.   .-""-.   .-""-.   .-""-.   .-""-.   .-""-.   .-""-.
+ /  .-. \ /  .-. \ /  .-. \ /  .-. \ /  .-. \ /  .-. \ /  .-. \
+|  /   \ |  /   \ |  /   \ |  /   \ |  /   \ |  /   \ |  /   \ |
+ \ .-""-. \ .-""-. \ .-""-. \ .-""-. \ .-""-. \ .-""-. \ .-""-.
+  /  .-. \ /  .-. \ /  .-. \ /  .-. \ /  .-. \ /  .-. \ /  .-. \
+ |  /   \ |  /   \ |  /   \ |  /   \ |  /   \ |  /   \ |  /   \ |
+""", r"""
+flowchart LR
+  A["one arc"] --> B["rank of arcs<br/>drawn edge to edge"]
+  B --> C["next rank<br/>offset by half a wave"]
+  C --> D["overlap<br/>each arc covers the joins below"]
+  D --> B
+"""),
+]
+
+MERMAID_INIT ="%%{init: {'theme':'base','themeVariables':{'primaryColor':'#fbf7ef','primaryTextColor':'#1f3a3a','primaryBorderColor':'#1f3a3a','lineColor':'#1f3a3a','secondaryColor':'#f1e3c3','tertiaryColor':'#f1e3c3','fontFamily':'sans-serif','fontSize':'16px'}}}%%"
 
 BLUEPRINTS = [
 ("estate", "The estate", "Public site at the edge, a private portal behind an identity gate, the lab at home behind a tunnel. Nothing at home listens to the internet.", r"""
@@ -322,6 +386,9 @@ def check_widths(limit=90):
     for name, _, _, body in ART:
         w = max(len(l) for l in body.splitlines())
         if w > limit: bad.append((name, w))
+    for name, _, _, body, _ in ART_MMD:
+        w = max(len(l) for l in body.splitlines())
+        if w > limit: bad.append((name, w))
     for name, _, _, ascii_, _ in BLUEPRINTS:
         w = max(len(l) for l in ascii_.splitlines())
         if w > limit: bad.append((name, w))
@@ -334,10 +401,14 @@ if __name__ == "__main__":
     if bad: sys.exit("too wide: " + str(bad))
     for name, title, text, body in ART:
         open(os.path.join(here, f"art-{name}.txt"), "w").write(body.strip("\n") + "\n")
+    for name, title, text, body, mmd in ART_MMD:
+        open(os.path.join(here, f"art-{name}.txt"), "w").write(body.strip("\n") + "\n")
+        open(os.path.join(here, f"art-{name}.mmd"), "w").write(MERMAID_INIT + "\n" + mmd.strip("\n") + "\n")
     for name, title, text, ascii_, mmd in BLUEPRINTS:
         open(os.path.join(here, f"bp-{name}.txt"), "w").write(ascii_.strip("\n") + "\n")
         open(os.path.join(here, f"bp-{name}.mmd"), "w").write(mmd.strip("\n") + "\n")
-    json.dump({"art": [{"name": n, "title": t, "text": x} for n, t, x, _ in ART],
+    json.dump({"art": [{"name": n, "title": t, "text": x} for n, t, x, _ in ART]
+                      + [{"name": n, "title": t, "text": x, "mermaid": True} for n, t, x, _, _ in ART_MMD],
                "blueprints": [{"name": n, "title": t, "text": x} for n, t, x, _, _ in BLUEPRINTS]},
               open(os.path.join(here, "set.json"), "w"), indent=1, ensure_ascii=False)
-    print(len(ART), "art,", len(BLUEPRINTS), "blueprints")
+    print(len(ART) + len(ART_MMD), "art (", len(ART_MMD), "with mermaid ),", len(BLUEPRINTS), "blueprints")

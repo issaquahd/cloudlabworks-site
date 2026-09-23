@@ -39,6 +39,24 @@
    "name": "bamboo",
    "title": "Take",
    "text": "Three culms, the nodes as double bars, leaves as slashes. Bends in wind; drawn straight because ASCII does not bend."
+  },
+  {
+   "name": "shachi",
+   "title": "Shachi",
+   "text": "An orca surfacing: the back breaks first, then the fin, and that is the whole of what the water gives you. Japanese writes the animal 鯱, the fish radical beside the tiger, a tiger being the nearest thing they had to compare it to.",
+   "mermaid": true
+  },
+  {
+   "name": "pod",
+   "title": "The pod",
+   "text": "Four dorsal fins at the surface and nothing else showing. Tallest is a bull, the straight blades are cows and a calf tucked beside one of them. This is the whole of what you see from a beach.",
+   "mermaid": true
+  },
+  {
+   "name": "seigaiha",
+   "title": "Seigaiha",
+   "text": "Blue sea waves. Concentric arcs, each rank offset by half a wave, repeating until the eye gives up and reads it as water. The oldest pattern here and the only one that tiles.",
+   "mermaid": true
   }
  ],
  "blueprints": [
