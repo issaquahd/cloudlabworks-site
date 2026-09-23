@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>PNW-Native (Podcast) · CloudLab Works</title>
+<meta name="description" content="A cartoon podcast from the Duvall lab. Waku the orca explains one cloud-native or AI concept per episode, two to five minutes, through a character built from the thing's own shape.">
+<link rel="canonical" href="https://cloudlabworks.dev/podcast">
+<meta property="og:title" content="PNW-Native (Podcast) · Episode 1: ConfigMap vs Secret">
+<meta property="og:description" content="Two identical objects, one wearing a mask. Waku takes the mask off and shows what actually protects a Kubernetes Secret.">
+<meta property="og:image" content="https://cloudlabworks.dev/media/podcast-ep01-og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<style>{{STYLE}}</style>
+<style>
+body{background:#0b1220 url(/media/salish-sea-l79-960.jpg) left 40%/cover no-repeat fixed}
+#dim{position:fixed;inset:0;z-index:0;background:rgba(11,18,32,.62)}
+header,main,footer{position:relative;z-index:1}
+header{position:relative}header::before{content:"";position:absolute;inset:0 calc(50% - min(552px,50vw)) -14px;z-index:-1;border-radius:12px;background:rgba(11,18,32,.6);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+header .brand,header .brand small,nav.quick a{color:#e2e8f0}nav.quick a:hover{color:#a8cdca}nav.quick .col b{color:#a8cdca}
+main{color:#e2e8f0}main h1,main h2,main h3{color:#f8fafc;text-shadow:0 2px 12px rgba(0,0,0,.7)}main .lede,main .tag{color:#e2e8f0;text-shadow:0 1px 8px rgba(0,0,0,.7)}
+.panel{background:rgba(11,18,32,.74);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border:1px solid rgba(226,232,240,.14);border-radius:14px;padding:20px 22px;margin-top:22px}
+.panel h2{margin-top:0}
+.panel .meta{color:#a8cdca;font-size:.9rem;letter-spacing:.03em;margin:0 0 12px}
+.panel video{display:block;width:100%;height:auto;border-radius:10px;background:#0b1220}
+.panel audio{display:block;width:100%;margin-top:14px}
+.panel p{color:#cbd5e1}.panel a{color:#cae0df}
+.panel details{margin-top:14px;border-top:1px solid rgba(226,232,240,.14);padding-top:10px}
+.panel summary{cursor:pointer;color:#f8fafc;font-weight:600}
+.panel details p{margin:10px 0 0}
+.modes{list-style:none;padding:0;margin:12px 0 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px}
+.modes li{background:rgba(11,18,32,.5);border:1px solid rgba(226,232,240,.12);border-radius:10px;padding:12px 14px;color:#cbd5e1}
+.modes b{color:#f8fafc;display:block;margin-bottom:4px}
+.next{color:#94a3b8;font-size:.9rem}
+footer{background:rgba(11,18,32,.6)}footer,footer a{color:#cbd5e1}
+</style>
+</head>
+<body>
+<div id="dim" aria-hidden="true"></div>
+{{HEAD}}
+<main>
+  <h1>PNW-Native (Podcast)</h1>
+  <p class="lede">A cartoon podcast from the Duvall lab. Waku the orca hosts. One cloud-native or AI concept per episode, two to five minutes, explained through a character built from the thing's own shape. Literalism, not decoration.</p>
+  <p class="tag">Made entirely on the lab's own machines: the rig is Python and Pillow, the narration is the Mac's own voice, the cut is ffmpeg. No studio, no stock footage, no third-party player. Waku is drawn in curves; everything he explains is drawn in facets, so you always know who is narrating and who is being narrated about.</p>
+
+  <section class="panel" id="ep01">
+    <h2>Episode 1: ConfigMap vs Secret</h2>
+    <p class="meta">2026-09-23 · 2:38 · Kubernetes · a room-episode</p>
+    <video src="/media/podcast-ep01.mp4" poster="/media/podcast-ep01-poster.jpg" width="1280" height="720" controls playsinline preload="metadata" controlsList="nodownload noremoteplayback" disablePictureInPicture aria-label="Episode 1: Waku the orca beside two identical faceted twins, ConfigMap and Secret; Secret wears a domino mask" oncontextmenu="return false" draggable="false"></video>
+    <audio controls preload="metadata" src="/media/podcast-ep01.mp3" aria-label="Episode 1, audio only"></audio>
+    <p>Two identical objects, same shape, same place in the cluster. One is called a ConfigMap and reads its own contents out loud, because that is the job. The other is called a Secret and wears a mask. Waku takes the mask off with one command and reads the password out loud. Then the room does what the mask could not: encryption at rest, RBAC, and a lid on the logs. Nothing about the Secret changes. The only thing that moved was the building.</p>
+    <p>The costume matters. A lockbox or a redacted face would teach the exact falsehood the episode exists to kill. From the Kubernetes documentation, checked the day this was made: Secrets are, by default, stored unencrypted in etcd, and anyone with API access can retrieve or modify one. Base64 is a disguise anybody can take off, so the costume is a mask.</p>
+    <details>
+      <summary>Transcript</summary>
+      <p>These two are the same object.</p>
+      <p>Same shape, same size, same place in the cluster. One of them is called a ConfigMap. The other one is called a Secret. That is very nearly the whole difference, and the rest of this is about the word "nearly."</p>
+      <p>Here is the ConfigMap. It will tell you what it holds if you ask. Database host, postgres dot prod. Log level, info. Feature flag, on. It is not being careless. That is the job. A ConfigMap exists so that configuration lives outside your container image, where you can change it without rebuilding anything.</p>
+      <p>Here is the Secret. Same body. It is wearing a mask.</p>
+      <p>The mask is the interesting part, so let us take it off.</p>
+      <p>That is it. That is the whole mask. kubectl get secret, dash o yaml, and the value comes back as base64. One more command and it is a password again, out loud, in your terminal, in your shell history.</p>
+      <p>Base64 is not encryption. It is not a lock, it is not a safe, it is not a vault. It is an encoding, and it exists so that binary data survives being written into a text file. Anyone can undo it. Everyone can undo it. There is no key.</p>
+      <p>And the Secret is fine with this, because the Secret was never the security. Read the Kubernetes documentation and it says so in a warning box: Secrets are, by default, stored unencrypted in the API server's underlying data store. Anyone with API access can retrieve or modify a Secret. Anyone who can create a pod in a namespace can read every Secret in that namespace.</p>
+      <p>So what actually protects it?</p>
+      <p>Not the object. The room.</p>
+      <p>Turn on encryption at rest, and the floor under etcd goes solid, so a stolen disk is no longer a stolen password. Write RBAC rules, and the doorway narrows, so most of the things that could have asked can no longer ask. Keep Secrets out of your logs and out of environment variables where a crash dump will find them, and put a lid on it.</p>
+      <p>None of that changes the Secret. The Secret is identical at the end of this. Still the same body, still wearing the mask, still perfectly readable to anyone standing close enough.</p>
+      <p>The only thing that moved was the building.</p>
+      <p>So use a Secret, because it is the right object and it signals intent to every human who reads your manifests. Just do not mistake the label for the protection. A Secret tells the cluster this value is sensitive. It does not tell the cluster to keep it.</p>
+    </details>
+    <details>
+      <summary>How it was made</summary>
+      <p>The script was written first and measured against a narration pace, not guessed. Each paragraph is narrated separately so every beat has an exact start time, and the RMS envelope of the finished track drives Waku's jaw, so the mouth closes between syllables instead of gaping. The characters are parts, not poses: a pose is a dictionary of numbers, and the same eight orca parts from the first probe draw every frame here. The twins, the mask, the doorway, the floor, and the lid are polygons on the same canvas. Frames are piped straight into ffmpeg; nothing touches a disk until the mp4 does.</p>
+    </details>
+  </section>
+
+  <section class="panel">
+    <h2>Two kinds of episode</h2>
+    <ul class="modes">
+      <li><b>Thing-episode</b>The character is the concept itself, and the teaching comes from the character changing shape. Pod, HelmChart, Service Mesh.</li>
+      <li><b>Room-episode</b>The character is static and honest about it. The teaching comes from the environment changing around it. ConfigMap vs Secret, Ingress.</li>
+    </ul>
+    <p class="next" style="margin-top:14px">Next up, in this order: Pod, HelmChart, Ingress, Service Mesh. The expensive resource is rigs, not frames, so thing-episodes are rationed. Want a concept explained this way? <a href="/inquire?category=Something+else&amp;context=PNW-Native+podcast+episode+request+%E2%80%94+">Ask for it.</a></p>
+  </section>
+
+{{FOOT}}
+</main>
+</body>
+</html>
