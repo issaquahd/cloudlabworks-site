@@ -45,11 +45,16 @@ def compose(seed=7):
         dict(id="canoe", kind="canoe", pos=[rng.uniform(220, 300), water_y], size=[130, 26],
              mass_kg=55.0, buoyancy="floats", drift_px=0.0, palette="loud"),
         dict(id="orca", kind="orca", pos=[rng.uniform(420, 520), water_y], size=[220, 70],
-             mass_kg=4000.0, buoyancy="neutral", swim_px_per_h=110.0,
+             mass_kg=4000.0, buoyancy="neutral", swim_px_per_h=110.0, heading=1,
              dive=dict(depth_m=4.0, cycle_h=0.45), depth_m=0.0, surfaced=True, palette="earth"),
-        dict(id="heron", kind="heron", pos=[rng.uniform(850, 900), 440], size=[34, 96],
-             mass_kg=2.3, palette="earth"),
+        dict(id="heron", kind="heron", pos=[rng.uniform(850, 900), None], size=[34, 96],
+             mass_kg=2.3, stands_on="island", palette="earth"),
     ]
+    # the heron stands on the rock, so its feet are the island's surface at its own x,
+    # not a number typed next to one
+    island = next(e for e in entities if e["id"] == "island")
+    heron = next(e for e in entities if e["id"] == "heron")
+    heron["pos"][1] = surface_y(island["shape"], heron["pos"][0])
     for i in range(3):
         entities.append(dict(id=f"cloud-{i}", kind="cloud",
                              pos=[rng.uniform(100, 1100), rng.uniform(90, 260)],
@@ -59,6 +64,19 @@ def compose(seed=7):
 
 def get(state, id_):
     return next(e for e in state["entities"] if e["id"] == id_)
+
+
+def surface_y(shape, x):
+    """The top of a land polygon at a given x: the smallest y on any edge spanning x.
+    Used so a standing bird rests on the rock rather than near it."""
+    tops = []
+    for (x0, y0), (x1, y1) in zip(shape, shape[1:]):
+        if x0 == x1:
+            continue
+        lo, hi = (x0, x1) if x0 < x1 else (x1, x0)
+        if lo <= x <= hi:
+            tops.append(y0 + (x - x0) * (y1 - y0) / (x1 - x0))
+    return min(tops) if tops else None
 
 
 # ---------------------------------------------------------------- dynamics
@@ -85,10 +103,16 @@ def step(state, dt):
     canoe["drift_px"] += water["current_px_per_h"] * dt
     canoe["pos"][1] = state["water_y"]          # it floats: the hull sits on whatever the water line is
 
-    # orca: swims east at a steady pace, wraps at the frame edge, and rides a dive cycle;
+    # orca: swims at a steady pace and turns at the frame edge rather than wrapping, because a
+    # body that leaves one side and reappears at the other is not a persistent world;
     # neutrally buoyant, so depth is set by the breath cycle rather than by weight
     half = orca["size"][0] / 2
-    orca["pos"][0] = half + (orca["pos"][0] - half + orca["swim_px_per_h"] * dt) % (W - 2 * half)
+    x = orca["pos"][0] + orca["heading"] * orca["swim_px_per_h"] * dt
+    if x > W - half:
+        x, orca["heading"] = 2 * (W - half) - x, -1      # reflect off the east edge
+    elif x < half:
+        x, orca["heading"] = 2 * half - x, 1             # reflect off the west edge
+    orca["pos"][0] = x
     orca["depth_m"] = orca["dive"]["depth_m"] * max(0.0, math.sin(2 * math.pi * t / orca["dive"]["cycle_h"]))
     orca["surfaced"] = orca["depth_m"] < 0.2
     orca["pos"][1] = state["water_y"] + orca["depth_m"] * PX_PER_M

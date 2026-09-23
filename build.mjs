@@ -177,8 +177,10 @@ function worldPage() {
   const step = /\ndef step\([\s\S]*?\n    return state\n/.exec(py);
   if (!step) throw new Error("world.py: step() not found");
   const f = st.final_state, t0 = st.frames["0"];
+  const midKey = Object.keys(st.frames).map(Number).sort((a, b) => a - b)[1];
+  const mid = st.frames[String(midKey)];
   const n = (x, d = 2) => Number(x).toFixed(d);
-  const run = `Run: seed <code>${st.seed}</code>, <code>${st.ticks}</code> ticks of <code>dt = ${st.dt_h} h</code> (${n(st.ticks * st.dt_h, 1)} h of world time). Tide <code>${n(t0.tide_m)} m</code> at tick 0 to <code>${f.tide_m > 0 ? "+" : ""}${n(f.tide_m)} m</code> at tick ${f.tick}, a rise of <code>${n(f.tide_m - t0.tide_m)} m</code>. Sun angle <code>${n(t0.sun_angle_deg, 1)}</code> to <code>${n(f.sun_angle_deg, 1)} degrees</code>. Canoe drift <code>${n(f.canoe_drift_px, 0)} px</code> east. Orca at <code>${n(f.orca_depth_m, 1)} m</code> depth at the end, ${f.orca_surfaced ? "surfaced" : "diving"}. Heron at x = ${n(f.heron_x, 0)} in every frame.`;
+  const run = `Run: seed <code>${st.seed}</code>, <code>${st.ticks}</code> ticks of <code>dt = ${st.dt_h} h</code> (${n(st.ticks * st.dt_h, 1)} h of world time). Tide <code>${n(t0.tide_m)} m</code> at tick 0 to <code>${f.tide_m > 0 ? "+" : ""}${n(f.tide_m)} m</code> at tick ${f.tick}, a rise of <code>${n(f.tide_m - t0.tide_m)} m</code>. Sun angle <code>${n(t0.sun_angle_deg, 1)}</code> to <code>${n(f.sun_angle_deg, 1)} degrees</code>. The run crosses the turn of the tide at 6.21 h, so the current reverses inside it: the canoe drifts east to <code>${n(mid.canoe_x, 0)} px</code> at the midpoint and is carried back west to <code>${n(f.canoe_x, 0)} px</code> by the end, a net <code>${n(f.canoe_drift_px, 0)} px</code> east of where it started. Orca at <code>${n(f.orca_depth_m, 1)} m</code> depth at the end, ${f.orca_surfaced ? "surfaced" : "diving"}, swimming ${f.orca_x < mid.orca_x ? "west after turning at the frame edge" : "east"}. Heron at x = ${n(f.heron_x, 0)} in every frame, feet on the island's surface at that x.`;
   const cards = set.map((p) => {
     const alt = `${p.title}: a flat Salish Sea scene, canoe, orca, heron on a rock, rendered from the world's state at tick ${p.tick}`;
     const ctx = encodeURIComponent(`Piece: Code as World, ${p.title} (SVG · rendered state). I am interested in: original / print / source.`);

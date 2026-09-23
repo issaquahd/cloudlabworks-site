@@ -1,6 +1,6 @@
 {
   "seed": 7,
-  "ticks": 120,
+  "ticks": 180,
   "dt_h": 0.05,
   "composition": [
     {
@@ -155,6 +155,7 @@
       "mass_kg": 4000.0,
       "buoyancy": "neutral",
       "swim_px_per_h": 110.0,
+      "heading": 1,
       "dive": {
         "depth_m": 4.0,
         "cycle_h": 0.45
@@ -168,13 +169,14 @@
       "kind": "heron",
       "pos": [
         882.5467236519927,
-        440
+        446.7640170955978
       ],
       "size": [
         34,
         96
       ],
       "mass_kg": 2.3,
+      "stands_on": "island",
       "palette": "earth"
     },
     {
@@ -231,44 +233,44 @@
       "orca_surfaced": true,
       "heron_x": 882.5
     },
-    "60": {
-      "tick": 60,
-      "t_h": 3.0,
-      "tide_m": -0.085,
-      "water_y": 523.4,
-      "sun_angle_deg": 43.2,
-      "canoe_x": 416.6,
-      "canoe_drift_px": 170.7,
-      "orca_x": 765.1,
+    "90": {
+      "tick": 90,
+      "t_h": 4.5,
+      "tide_m": 1.038,
+      "water_y": 478.5,
+      "sun_angle_deg": 64.8,
+      "canoe_x": 540.9,
+      "canoe_drift_px": 295.0,
+      "orca_x": 930.1,
       "orca_depth_m": 0.0,
       "orca_surfaced": true,
       "heron_x": 882.5
     },
-    "120": {
-      "tick": 120,
-      "t_h": 6.0,
-      "tide_m": 1.591,
-      "water_y": 456.4,
-      "sun_angle_deg": 86.4,
-      "canoe_x": 600.9,
-      "canoe_drift_px": 355.0,
-      "orca_x": 115.1,
-      "orca_depth_m": 3.46,
-      "orca_surfaced": false,
+    "180": {
+      "tick": 180,
+      "t_h": 9.0,
+      "tide_m": 0.254,
+      "water_y": 509.8,
+      "sun_angle_deg": 129.6,
+      "canoe_x": 449.8,
+      "canoe_drift_px": 203.9,
+      "orca_x": 754.9,
+      "orca_depth_m": 0.0,
+      "orca_surfaced": true,
       "heron_x": 882.5
     }
   },
   "final_state": {
-    "tick": 120,
-    "t_h": 6.0,
-    "tide_m": 1.591,
-    "water_y": 456.4,
-    "sun_angle_deg": 86.4,
-    "canoe_x": 600.9,
-    "canoe_drift_px": 355.0,
-    "orca_x": 115.1,
-    "orca_depth_m": 3.46,
-    "orca_surfaced": false,
+    "tick": 180,
+    "t_h": 9.0,
+    "tide_m": 0.254,
+    "water_y": 509.8,
+    "sun_angle_deg": 129.6,
+    "canoe_x": 449.8,
+    "canoe_drift_px": 203.9,
+    "orca_x": 754.9,
+    "orca_depth_m": 0.0,
+    "orca_surfaced": true,
     "heron_x": 882.5
   }
 }

@@ -9,7 +9,8 @@ import copy, json, os
 import world
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-SEED, TICKS, DT = 7, 120, 0.05        # 120 ticks of 3 minutes: six hours, sunrise to about noon
+SEED, TICKS, DT = 7, 180, 0.05        # 180 ticks of 3 minutes: nine hours, which runs past the
+                                      # 6.21 h tide turn so the current reverses inside the run
 FRAMES = {0: ("world-01-t0", "Frame 1, tick 0"), TICKS // 2: ("world-02-mid", "Frame 2, mid run"), TICKS: ("world-03-end", "Frame 3, end of run")}
 
 
