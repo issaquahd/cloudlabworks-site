@@ -1,0 +1,177 @@
+[
+ {
+  "name": "ronin-01",
+  "scene": "rain-bridge",
+  "city": "Ronin",
+  "title": "Ronin on the bridge, rain",
+  "text": "A masterless swordsman stops halfway across. The rain is already in the glyphs, so the weather and the medium are the same thing."
+ },
+ {
+  "name": "ronin-02",
+  "scene": "iai-dawn",
+  "city": "Samurai",
+  "title": "Iai, first light",
+  "text": "The draw and the cut are one motion. The blade is the brightest thing in the frame because at this distance it is the only thing that moves."
+ },
+ {
+  "name": "ronin-03",
+  "scene": "beach-duel",
+  "city": "Ronin",
+  "title": "Two on the sand at dawn",
+  "text": "Ganryujima weather. Both figures are the same brightness, which is the only comment the set makes on who was right."
+ },
+ {
+  "name": "ronin-04",
+  "scene": "torii-sleep",
+  "city": "Ronin",
+  "title": "Asleep against the gate",
+  "text": "No lord, no barracks, no watch to stand. The vermilion of the torii is the warm thing; the man is not."
+ },
+ {
+  "name": "ronin-05",
+  "scene": "bamboo-walk",
+  "city": "Samurai",
+  "title": "Through the bamboo",
+  "text": "Vertical grain everywhere, and one vertical thing that is walking. The grove and the rain columns run the same direction on purpose."
+ },
+ {
+  "name": "ronin-06",
+  "scene": "seiza-audience",
+  "city": "Samurai",
+  "title": "Seiza, before the dais",
+  "text": "Kneeling, blade laid to the right where it cannot be drawn quickly. The posture is the message and the room is dark enough to make it the only one."
+ },
+ {
+  "name": "ronin-07",
+  "scene": "mountain-pass",
+  "city": "Ronin",
+  "title": "The pass, alone",
+  "text": "Small figure, large country. The hills carry most of the light and the man carries almost none, which is the correct ratio for the situation."
+ },
+ {
+  "name": "ronin-08",
+  "scene": "yabusame",
+  "city": "Samurai",
+  "title": "Yabusame, the third target",
+  "text": "Mounted archery at a gallop. The horse is drawn flat and fast; the rider is a wedge."
+ },
+ {
+  "name": "ronin-09",
+  "scene": "snow-stand",
+  "city": "Ronin",
+  "title": "Standing in snow",
+  "text": "Snow in the light map and rain in the glyphs, two weathers in one frame. The figure is the only warm-edged shape and even that is cold."
+ },
+ {
+  "name": "ronin-10",
+  "scene": "noodle-stall",
+  "city": "Ronin",
+  "title": "The stall at the roadside",
+  "text": "A paper lantern, a bowl, a sword laid across the knees. The one warm thing is the food."
+ },
+ {
+  "name": "ronin-11",
+  "scene": "rice-field",
+  "city": "Ronin",
+  "title": "Duel in the paddy",
+  "text": "Flooded field, two men, no ground worth the name. The water takes the light and gives back two silhouettes."
+ },
+ {
+  "name": "ronin-12",
+  "scene": "river-ford",
+  "city": "Samurai",
+  "title": "The ford",
+  "text": "Crossing at the shallow place, blade held clear of the water. Everything below the knee is light with a current in it."
+ },
+ {
+  "name": "ronin-13",
+  "scene": "seven-ridge",
+  "city": "Ronin",
+  "title": "Seven on the ridge",
+  "text": "Seven silhouettes on a skyline, unevenly spaced because a line of men never is."
+ },
+ {
+  "name": "ronin-14",
+  "scene": "temple-gate",
+  "city": "Samurai",
+  "title": "The gate at night",
+  "text": "A two-storey gate, a lantern under it, a man who has stopped just short of the light."
+ },
+ {
+  "name": "ronin-15",
+  "scene": "whetstone",
+  "city": "Ronin",
+  "title": "Sharpening, by the fire",
+  "text": "The only scene in the set where the blade is not a threat. It is a chore, and the fire is doing the talking."
+ },
+ {
+  "name": "ronin-16",
+  "scene": "charge",
+  "city": "Samurai",
+  "title": "The charge",
+  "text": "Three riders abreast. At this size a horse is a wedge and a rider is a smaller wedge on top of it, and that is enough."
+ },
+ {
+  "name": "ronin-17",
+  "scene": "blossom",
+  "city": "Samurai",
+  "title": "Under the falling blossom",
+  "text": "The one scene that borrows the cliche on purpose. Petals are warm-channel, the man is not, and the contrast is the whole point."
+ },
+ {
+  "name": "ronin-18",
+  "scene": "burning-village",
+  "city": "Ronin",
+  "title": "Walking out of the village",
+  "text": "The warm channel is doing something it does nowhere else in the set: it is behind him, and he is not looking at it."
+ },
+ {
+  "name": "ronin-19",
+  "scene": "waterfall",
+  "city": "Samurai",
+  "title": "Under the fall",
+  "text": "Misogi: standing under cold water on purpose. The column of the fall and the column of the man are the same width, which is not an accident."
+ },
+ {
+  "name": "ronin-20",
+  "scene": "castle-wall",
+  "city": "Samurai",
+  "title": "On the wall",
+  "text": "A sloped stone base, a white keep behind, one sentry. The keep has the light; the sentry has the job."
+ },
+ {
+  "name": "ronin-21",
+  "scene": "teahouse-door",
+  "city": "Ronin",
+  "title": "In the doorway",
+  "text": "Framed by a doorway he has not decided to walk through. The frame is brighter than either side of it."
+ },
+ {
+  "name": "ronin-22",
+  "scene": "fog-duel",
+  "city": "Ronin",
+  "title": "Fog, and someone else in it",
+  "text": "One figure resolved, one barely. The set's quietest frame: most of the glyphs here are carrying almost no light at all."
+ },
+ {
+  "name": "ronin-23",
+  "scene": "lantern-forest",
+  "city": "Ronin",
+  "title": "Carrying the light",
+  "text": "A hand lantern in a cryptomeria wood. The warm circle travels with him and nothing else in the frame is lit at all."
+ },
+ {
+  "name": "ronin-24",
+  "scene": "grave-marker",
+  "city": "Ronin",
+  "title": "At the marker",
+  "text": "Kneeling at a stone. The sword is on the ground, which in this set happens exactly twice and means the same thing both times."
+ },
+ {
+  "name": "ronin-25",
+  "scene": "into-the-rain",
+  "city": "Ronin",
+  "title": "Walking into it",
+  "text": "The last frame of the set, and the only one shot from behind. Everything ahead of him is rain, which here is also the material the picture is made of."
+ }
+]
