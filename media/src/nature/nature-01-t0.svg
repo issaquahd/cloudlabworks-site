@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900">
+<defs><linearGradient id="col" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#4a6b63"/><stop offset="1" stop-color="#1a2c29"/></linearGradient></defs>
+<rect width="1200" height="900" fill="url(#col)"/>
+<polyline points="0,900 0,834 60,803 120,806 180,829 240,818 300,820 360,811 420,805 480,836 540,839 600,803 660,821 720,806 780,840 840,820 900,808 960,830 1020,798 1080,800 1140,839 1200,839 1200,900" fill="#6b4f36" opacity="0.75"/>
+<circle cx="600" cy="378" r="40" fill="none" stroke="#f2ebdc" stroke-width="2" opacity="0.50"/>
+<g transform="translate(380.6,554.2) rotate(-42.9)" opacity="0.95"><ellipse rx="26.0" ry="11.4" fill="#141414"/><ellipse cx="-2.6" cy="4.2" rx="16.1" ry="4.4" fill="#f2ebdc"/><path d="M-26.0,0 L-39.0,-7.6 L-39.0,8.0 Z" fill="#141414"/><circle cx="14.3" cy="-2.6" r="2.3" fill="#f2ebdc"/></g>
+<g transform="translate(569.7,495.5) rotate(-54.6)" opacity="0.95"><ellipse rx="26.0" ry="11.4" fill="#141414"/><ellipse cx="-2.6" cy="4.2" rx="16.1" ry="4.4" fill="#f2ebdc"/><path d="M-26.0,0 L-39.0,-6.3 L-39.0,9.3 Z" fill="#141414"/><circle cx="14.3" cy="-2.6" r="2.3" fill="#f2ebdc"/></g>
+<text x="28" y="872" font-family="Helvetica,Arial,sans-serif" font-size="22" fill="#f2ebdc" opacity="0.8">Frame 1, tick 0</text>
+<text x="1172" y="872" text-anchor="end" font-family="Helvetica,Arial,sans-serif" font-size="22" fill="#f2ebdc" opacity="0.6">2 answering, 0 not</text>
+</svg>

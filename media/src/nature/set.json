@@ -1,0 +1,20 @@
+[
+  {
+    "name": "nature-01-t0",
+    "title": "Frame 1, tick 0",
+    "tick": 0,
+    "text": "t = 0.0 s, tick 0 of 240. 2 answering, 0 not. Mean distance from the healthy centroid 99.0 px: closing."
+  },
+  {
+    "name": "nature-02-mid",
+    "title": "Frame 2, mid run",
+    "tick": 120,
+    "text": "t = 9.6 s, tick 120 of 240. 2 answering, 0 not. Mean distance from the healthy centroid 40.3 px: together."
+  },
+  {
+    "name": "nature-03-end",
+    "title": "Frame 3, end of run",
+    "tick": 240,
+    "text": "t = 19.2 s, tick 240 of 240. 2 answering, 0 not. Mean distance from the healthy centroid 37.7 px: together."
+  }
+]

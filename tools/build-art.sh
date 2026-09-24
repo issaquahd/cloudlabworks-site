@@ -58,3 +58,8 @@ done
 for n in $(python3 -c 'import json;print(" ".join(x["name"] for x in json.load(open("'"$S"'/world-kyoto/set.json"))))'); do
   render "$S/world-kyoto/$n.svg" "art-wm-$n.jpg" 1200
 done
+# Code as Nature: the estate as a pod, Reynolds steering over the published roster
+# (gen.py writes set.json, state.json and nature-NN-*.svg).
+for n in $(python3 -c 'import json;print(" ".join(x["name"] for x in json.load(open("'"$S"'/nature/set.json"))))'); do
+  render "$S/nature/$n.svg" "art-wm-$n.jpg" 1200
+done

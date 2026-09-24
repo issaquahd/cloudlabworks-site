@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Code as Nature · CloudLab Works</title>
+<meta name="description" content="The lab's own service roster as a living pod: one organism per probe row, steered by Reynolds' three rules, rendered to three frames from one seed. Healthy services flock; a fault comes apart. First run, v0.1.">
+<link rel="canonical" href="https://cloudlabworks.dev/nature">
+<meta property="og:title" content="Code as Nature · CloudLab Works">
+<meta property="og:description" content="Infrastructure as Music gave the lab a voice. This gives it a body: the estate as a pod, separation, alignment and cohesion over the same published feed.">
+<meta property="og:url" content="https://cloudlabworks.dev/nature">
+<meta property="og:image" content="https://cloudlabworks.dev/media/art-wm-nature-03-end.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="900">
+<meta name="twitter:card" content="summary_large_image">
+<style>{{STYLE}}</style>
+<style>
+.pieces{list-style:none;padding:0;margin:16px 0 0;display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px}
+.pieces li{border:1px solid var(--line);border-radius:12px;padding:12px 14px;display:flex;flex-direction:column;gap:6px}
+.pieces li img{width:100%;height:auto;border-radius:8px;display:block;margin-bottom:4px;pointer-events:none;-webkit-user-drag:none;user-drag:none;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
+.pieces .medium{color:var(--muted);font-size:.8rem;letter-spacing:.04em;text-transform:uppercase}
+.run{border-left:3px solid var(--accent);padding:10px 0 10px 14px;margin:14px 0;color:var(--ink-2)}
+</style>
+</head>
+<body>
+<div class="salish-band salish-top" role="img" aria-label="Coast Salish design vocabulary: formline orcas, ovoids, crescents and trigons, drawn for this site" oncontextmenu="return false" style="-webkit-user-select:none;user-select:none;-webkit-touch-callout:none"></div>
+{{HEAD}}
+<main>
+  <h1>Code as Nature</h1>
+  <p class="lede"><a href="/live">Code as Music</a> gave the lab a voice. This gives it a body. The same published feed that drives the music drives a pod of organisms here: one for every service the health probe watches. They steer by Craig Reynolds' three rules, separation, alignment and cohesion, and that is the whole of the physics. A service answering swims with the others. A service that stops answering keeps its separation and loses everything else, so a fault reads as the pod coming apart rather than as a red light.</p>
+  <p class="tag">Source: <code>media/src/nature/nature.py</code> (composition, <code>step</code>, <code>render</code>) and <code>gen.py</code> (read the feed, run it, write the frames). Stdlib only, no model in the loop, no network at render time. Same seed and same feed, same frames.</p>
+
+  <h2 id="population">The population is the estate</h2>
+  <p>This is the part worth being blunt about. The pod is not sized for the picture: there is exactly one organism per row in the roster the lab publishes at <code>/media/iam-state.json</code>, and sub-checks on a host swim as juveniles beside it. Today that is a very small pod, because the estate is small. Nothing is added to make the frame look busier than the lab actually is, and the pod grows when the estate grows.</p>
+  <p>Hosts that are not public appear in the roster anonymised, so they swim here under a label rather than a name. The organism is real; the hostname is nobody's business.</p>
+  <div class="run">{{NATURE_RUN}}</div>
+
+  <h2 id="code">The creature, as code</h2>
+  <p>Three parts, split the way <a href="/world">Code as World</a> splits them. The <b>composition</b> is the roster turned into bodies: position, velocity, a size, a phase for the tail. The <b>dynamics</b> are the <code>step</code> function below: separation always, alignment and cohesion only while healthy, a downward drift when not, and a steer away from the glass before reaching it. The <b>appearance</b> is <code>render</code>: flat shapes, 1200 by 900, earth tones first and one loud colour reserved for a sick organism.</p>
+  <p class="tag">The <code>step</code> function, read from <code>nature.py</code> when the site was built:</p>
+  <pre><code class="lang-python">{{NATURE_STEP}}</code></pre>
+  <p class="tag"><code>state.json</code> as <code>gen.py</code> wrote it: the roster it read, the composition, then the state at the end of the run.</p>
+  <pre><code class="lang-json">{{NATURE_STATE}}</code></pre>
+
+  <h2 id="frames">Three frames from one seed</h2>
+  <p>The same pod at tick 0, at the midpoint and at the end. Nothing is drawn by hand between frames; each is <code>render(state)</code> after that many calls to <code>step</code>. The captions are the program's own numbers, including the mean distance from the healthy centroid, which is how "together" is measured rather than asserted.</p>
+  <ul class="pieces">
+{{NATURE_CARDS}}
+  </ul>
+  <p class="tag">Watermarked like everything on <a href="/art">Code as Art</a>; the SVG originals stay in the repo's source tree. Inquire for a print or the source of a frame.</p>
+
+  <h2 id="lineage">Where it came from</h2>
+  <p>Three ancestors, and the piece is honest about owing them. <a href="https://www.red3d.com/cwr/boids/" rel="noopener">Craig Reynolds' Boids</a> (SIGGRAPH '87) is the direct parent: three local rules per agent, and flocking that nobody wrote. Valentino Braitenberg's <i>Vehicles</i> (MIT Press, 1984) is why four thin signals are enough, since two sensors wired to two motors already read as fear or purpose to anyone watching. Tom Ray's <a href="http://tomray.me/tierra/" rel="noopener">Tierra</a> (1991) is the closest structural relative: a world whose ecology <i>is</i> the machine's own resources, which is exactly what it means to let uptime be the environment.</p>
+  <p>The route is <a href="https://natureofcode.com/" rel="noopener">The Nature of Code</a>, chapters 1, 2 and 5 so far. The book is CC BY-NC-SA, so nothing here is copied from it: the rules are implemented from the concepts against this lab's own data, which is the only version worth publishing anyway.</p>
+  <p class="tag">Next rungs, in order: chapter 9 to evolve the steering weights against an uptime fitness function, then chapters 10 and 11 to give each organism a small network and let the pod neuroevolve. One honest problem stands in the way and is not solved yet: evolution needs generations and a page visit is thirty seconds, so a visitor would watch noise and be told it was art. That gets answered before any of it goes live.</p>
+</main>
+{{FOOT}}
+</body>
+</html>

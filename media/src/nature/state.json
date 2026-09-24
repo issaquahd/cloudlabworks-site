@@ -1,0 +1,144 @@
+{
+  "seed": 1,
+  "ticks": 240,
+  "dt_s": 0.08,
+  "feed_generated": "2026-09-24T01:54:35Z",
+  "feed_state": "ok",
+  "roster": [
+    {
+      "name": "private-1",
+      "ok": true
+    },
+    {
+      "name": "cloudlabworks.dev",
+      "ok": true,
+      "code": 200
+    }
+  ],
+  "composition": [
+    {
+      "id": "private-1",
+      "kind": "adult",
+      "ok": true,
+      "pos": [
+        380.61854646744075,
+        554.2301210811698
+      ],
+      "vel": [
+        15.826477138596843,
+        -14.6958584556347
+      ],
+      "size": 26.0,
+      "phase": 3.112910459877322
+    },
+    {
+      "id": "cloudlabworks.dev",
+      "kind": "adult",
+      "ok": true,
+      "pos": [
+        569.6946388732429,
+        495.4778918168289
+      ],
+      "vel": [
+        17.323401068130792,
+        -24.368424793545906
+      ],
+      "size": 26.0,
+      "phase": 0.17811244797868833
+    }
+  ],
+  "frames": {
+    "0": {
+      "tick": 0,
+      "t_s": 0.0,
+      "cohesion_px": 99.0,
+      "organisms": [
+        {
+          "id": "private-1",
+          "kind": "adult",
+          "ok": true,
+          "x": 380.6,
+          "y": 554.2,
+          "speed": 21.6
+        },
+        {
+          "id": "cloudlabworks.dev",
+          "kind": "adult",
+          "ok": true,
+          "x": 569.7,
+          "y": 495.5,
+          "speed": 29.9
+        }
+      ]
+    },
+    "120": {
+      "tick": 120,
+      "t_s": 9.6,
+      "cohesion_px": 40.3,
+      "organisms": [
+        {
+          "id": "private-1",
+          "kind": "adult",
+          "ok": true,
+          "x": 945.8,
+          "y": 336.9,
+          "speed": 63.3
+        },
+        {
+          "id": "cloudlabworks.dev",
+          "kind": "adult",
+          "ok": true,
+          "x": 1025.4,
+          "y": 323.4,
+          "speed": 63.5
+        }
+      ]
+    },
+    "240": {
+      "tick": 240,
+      "t_s": 19.2,
+      "cohesion_px": 37.7,
+      "organisms": [
+        {
+          "id": "private-1",
+          "kind": "adult",
+          "ok": true,
+          "x": 585.4,
+          "y": 361.4,
+          "speed": 63.5
+        },
+        {
+          "id": "cloudlabworks.dev",
+          "kind": "adult",
+          "ok": true,
+          "x": 659.9,
+          "y": 350.0,
+          "speed": 63.8
+        }
+      ]
+    }
+  },
+  "final_state": {
+    "tick": 240,
+    "t_s": 19.2,
+    "cohesion_px": 37.7,
+    "organisms": [
+      {
+        "id": "private-1",
+        "kind": "adult",
+        "ok": true,
+        "x": 585.4,
+        "y": 361.4,
+        "speed": 63.5
+      },
+      {
+        "id": "cloudlabworks.dev",
+        "kind": "adult",
+        "ok": true,
+        "x": 659.9,
+        "y": 350.0,
+        "speed": 63.8
+      }
+    ]
+  }
+}
