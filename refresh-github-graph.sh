@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
-# Weekly refresh: re-fetch GitHub contribution data, rebuild, upload the Worker only.
+# Daily refresh (12am PT via automation 62f1d1ab-…, cron 0 0 * * * America/Los_Angeles):
+# re-fetch GitHub contribution data, rebuild, upload the Worker only.
 # Does NOT touch DNS, custom domains, or Email Routing (deploy.sh steps 3-4) — those are
 # one-time config, not part of a routine content refresh.
 # Runs on the OpenClaw gateway host; CLOUDFLARE_API_TOKEN_CLOUDLABWORKS is an opaque
