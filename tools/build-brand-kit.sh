@@ -28,6 +28,9 @@ for c in "$HOME/.local/share/imgtools/bin/python" python3; do
 done
 [ -n "$PY_BIN" ] || { echo "need a python with Pillow + numpy"; exit 1; }
 
+CHROME="/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
+[ -x "$CHROME" ] || { echo "need Google Chrome (renders SVG textPath; librsvg does not)"; exit 1; }
+
 
 
 mkdir -p "$KIT/vector" "$KIT/emblem" "$KIT/icon" "$KIT/orca" "$KIT/pattern" "$KIT/print"
@@ -41,6 +44,52 @@ cp "$MEDIA/cloudlabworks-icon.svg"    "$KIT/vector/"
 cp "$SRC/waku-orca.svg"               "$KIT/vector/"
 cp "$SRC/waku-orca-plain.svg"         "$KIT/vector/"
 cp "$MEDIA/salish-pattern.svg" "$KIT/vector/"
+cp "$MEDIA/wrench-cross.svg" "$KIT/vector/"
+
+# ---- the homepage banner, saved as an actual asset ---------------------------------------
+# There is no banner file in the repo: the header lockup is assembled in HTML from the emblem
+# SVG, the wrench-cross SVG and LIVE TEXT for "CLOUDLAB WORKS" and the tagline. That is fine
+# for a web page and useless for a vendor, who needs one image. Rendered here from the site's
+# own _style.css so the spacing and weight match the header rather than being re-guessed.
+#
+# Chrome headless defaults to dark mode, and _style.css redefines --ink inside a
+# prefers-color-scheme:dark block, so the wordmark comes out near-white and invisible on
+# light ground unless the variables are pinned. Both inks are produced on purpose: dark for
+# light garments, light for dark garments.
+say "homepage banner lockup"
+mkdir -p "$KIT/banner"
+lockup() {  # lockup <ink> <muted> <tagline|""> <out>
+  cat > "$OUT/lockup.html" <<EOF
+<!doctype html><meta charset="utf-8">
+<link rel="stylesheet" href="file://$DIR/site/_style.css">
+<style>
+  :root{--ink:$1;--muted:$2}
+  html,body{margin:0;padding:0;background:transparent}
+  #wrap{display:inline-block;padding:48px 64px}
+  .brand{text-decoration:none}
+</style>
+<div id="wrap"><a class="brand" href="/"><img class="mark"
+ src="file://$MEDIA/cloudlabworks-emblem.svg" width="128" height="128"><span><span
+ class="brand-name">CLOUDLAB WORKS<img class="wx" src="file://$MEDIA/wrench-cross.svg"
+ width="44" height="44"></span>${3:+<small>$3</small>}</span></a></div>
+EOF
+  "$CHROME" --headless --disable-gpu --hide-scrollbars \
+    --default-background-color=00000000 --window-size=2400,600 --force-device-scale-factor=6 \
+    --screenshot="$OUT/raw.png" "file://$OUT/lockup.html" >/dev/null 2>&1
+  "$PY_BIN" - "$OUT/raw.png" "$4" <<'PY'
+import sys
+from PIL import Image
+im = Image.open(sys.argv[1]).convert("RGBA")
+bb = im.split()[3].getbbox()          # trim to ink, vendors want no dead margin
+im.crop(bb).save(sys.argv[2])
+print(f"    {sys.argv[2].split('/')[-1]} {im.crop(bb).size}")
+PY
+}
+TAG="$(grep -o '<small>[^<]*</small>' "$DIR/site/_head.html" | head -1 | sed 's/<[^>]*>//g')"
+lockup "#0f172a" "#64748b" "$TAG" "$KIT/banner/cloudlabworks-banner-dark-ink.png"
+lockup "#e2e8f0" "#94a3b8" "$TAG" "$KIT/banner/cloudlabworks-banner-light-ink.png"
+lockup "#0f172a" "#64748b" ""     "$KIT/banner/cloudlabworks-banner-dark-ink-notagline.png"
+lockup "#e2e8f0" "#94a3b8" ""     "$KIT/banner/cloudlabworks-banner-light-ink-notagline.png"
 
 # ---- print-resolution renders, transparent ----------------------------------------------
 # Rendered by headless Chrome, NOT rsvg-convert. The emblem sets CLOUDLAB/WORKS on a
@@ -48,8 +97,6 @@ cp "$MEDIA/salish-pattern.svg" "$KIT/vector/"
 # lettering at all. That failure is invisible unless you look at the output, which is exactly
 # how a titleless logo reaches a print shop. Chrome renders textPath correctly.
 say "print renders (4096 px, headless Chrome)"
-CHROME="/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
-[ -x "$CHROME" ] || { echo "need Google Chrome for textPath rendering"; exit 1; }
 render() {  # render <svg> <px> <out>
   cat > "$OUT/wrap.html" <<EOF
 <!doctype html><meta charset="utf-8">
@@ -121,6 +168,11 @@ WHAT TO SEND A PRINTER
             those fonts will substitute one. If the vendor's proof comes back with no title,
             or with the title in the wrong face, send print/ instead.
   print/    4096 px PNG, transparent, ~13.6 inches at 300 dpi. Use when SVG is refused.
+  banner/   THE HOMEPAGE LOCKUP, saved as an image. The site header has no banner file:
+            it is built in HTML from two SVGs plus live text, so this is rendered from the
+            site's own stylesheet. dark-ink for light garments, light-ink for dark ones,
+            and -notagline variants, which are usually what you want on a hat or a pocket.
+            ~10 in wide at 300 dpi.
   print/cloudlabworks-emblem-1color-*.png
             Single-ink silhouette for embroidery and one-screen printing. Use these rather
             than letting a vendor redraw the mark themselves.
