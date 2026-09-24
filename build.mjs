@@ -326,7 +326,24 @@ const POD_JS = readFileSync(new URL("./site/pod.js", import.meta.url), "utf8");
 const SAMURAI_JS = readFileSync(new URL("./site/samurai.js", import.meta.url), "utf8");
 const GAS_JS = readFileSync(new URL("./site/gas.js", import.meta.url), "utf8");
 const TESTS_JS = readFileSync(new URL("./site/tests.js", import.meta.url), "utf8");
-const files = { [`${BLOG.path}/feed.xml`]: { body: sectionFeed(BLOG), type: "application/rss+xml; charset=utf-8" }, [`${NUTANIX.path}/feed.xml`]: { body: sectionFeed(NUTANIX), type: "application/rss+xml; charset=utf-8" }, "/alex-alvord.vcf": { body: VCARD, type: "text/vcard; charset=utf-8" }, "/live.js": { body: LIVE_JS, type: "text/javascript; charset=utf-8" }, "/art.js": { body: ART_JS, type: "text/javascript; charset=utf-8" }, "/menu.js": { body: MENU_JS, type: "text/javascript; charset=utf-8" }, "/matrix.js": { body: MATRIX_JS, type: "text/javascript; charset=utf-8" }, "/koi.js": { body: KOI_JS, type: "text/javascript; charset=utf-8" }, "/pagoda.js": { body: PAGODA_JS, type: "text/javascript; charset=utf-8" }, "/pod.js": { body: POD_JS, type: "text/javascript; charset=utf-8" }, "/samurai.js": { body: SAMURAI_JS, type: "text/javascript; charset=utf-8" }, "/gas.js": { body: GAS_JS, type: "text/javascript; charset=utf-8" }, "/tests.js": { body: TESTS_JS, type: "text/javascript; charset=utf-8" }, "/site.webmanifest": { body: JSON.stringify({ name: "CloudLab Works", short_name: "CloudLab Works", description: "Cloud and AI infrastructure, designed to be run.", start_url: "/", display: "standalone", background_color: "#0b1220", theme_color: "#0b1220", icons: [{ src: "/media/cloudlabworks-emblem-192.png", sizes: "192x192", type: "image/png" }, { src: "/media/cloudlabworks-emblem-512.png", sizes: "512x512", type: "image/png" }, { src: "/media/cloudlabworks-emblem-maskable-512.png", sizes: "512x512", type: "image/png", purpose: "maskable" }] }), type: "application/manifest+json; charset=utf-8" } };
+// ---------- security.txt (RFC 9116). Served at the well-known path, with the legacy root path
+// kept as an alias because some scanners still check it. NOTE: Expires is REQUIRED by the RFC and
+// an EXPIRED file is worse than none at all -- scanners report it as stale rather than ignoring it.
+// It is hardcoded rather than generated at build time on purpose, so that `node build.mjs` stays
+// byte-reproducible and "rebuild produces no diff" remains a usable check before deploying.
+// RENEW BEFORE 2027-09-01. ----------
+const SECURITY_TXT = [
+  "# CloudLab Works security contact (RFC 9116)",
+  "# Cloud Lab Works LLC, Duvall, Washington",
+  "",
+  "Contact: mailto:alex@cloudlabworks.dev",
+  "Expires: 2027-09-01T00:00:00.000Z",
+  "Preferred-Languages: en",
+  "Canonical: https://cloudlabworks.dev/.well-known/security.txt",
+  "",
+].join("\n");
+
+const files = { [`${BLOG.path}/feed.xml`]: { body: sectionFeed(BLOG), type: "application/rss+xml; charset=utf-8" }, [`${NUTANIX.path}/feed.xml`]: { body: sectionFeed(NUTANIX), type: "application/rss+xml; charset=utf-8" }, "/alex-alvord.vcf": { body: VCARD, type: "text/vcard; charset=utf-8" }, "/live.js": { body: LIVE_JS, type: "text/javascript; charset=utf-8" }, "/art.js": { body: ART_JS, type: "text/javascript; charset=utf-8" }, "/menu.js": { body: MENU_JS, type: "text/javascript; charset=utf-8" }, "/matrix.js": { body: MATRIX_JS, type: "text/javascript; charset=utf-8" }, "/koi.js": { body: KOI_JS, type: "text/javascript; charset=utf-8" }, "/pagoda.js": { body: PAGODA_JS, type: "text/javascript; charset=utf-8" }, "/pod.js": { body: POD_JS, type: "text/javascript; charset=utf-8" }, "/samurai.js": { body: SAMURAI_JS, type: "text/javascript; charset=utf-8" }, "/gas.js": { body: GAS_JS, type: "text/javascript; charset=utf-8" }, "/tests.js": { body: TESTS_JS, type: "text/javascript; charset=utf-8" }, "/.well-known/security.txt": { body: SECURITY_TXT, type: "text/plain; charset=utf-8" }, "/security.txt": { body: SECURITY_TXT, type: "text/plain; charset=utf-8" }, "/site.webmanifest": { body: JSON.stringify({ name: "CloudLab Works", short_name: "CloudLab Works", description: "Cloud and AI infrastructure, designed to be run.", start_url: "/", display: "standalone", background_color: "#0b1220", theme_color: "#0b1220", icons: [{ src: "/media/cloudlabworks-emblem-192.png", sizes: "192x192", type: "image/png" }, { src: "/media/cloudlabworks-emblem-512.png", sizes: "512x512", type: "image/png" }, { src: "/media/cloudlabworks-emblem-maskable-512.png", sizes: "512x512", type: "image/png", purpose: "maskable" }] }), type: "application/manifest+json; charset=utf-8" } };
 // Root-level icon names that browsers, crawlers and link unfurlers request without reading the page.
 const ICON_ALIASES = { "/tests/feed.json": "/media/tests-feed.json", "/tests.json": "/media/tests.json", "/favicon.ico": "/media/favicon.ico", "/favicon.svg": "/media/cloudlabworks-icon.svg", "/favicon.png": "/media/cloudlabworks-icon-32.png", "/apple-touch-icon.png": "/media/cloudlabworks-emblem-180.png", "/apple-touch-icon-precomposed.png": "/media/cloudlabworks-emblem-180.png" };
 
