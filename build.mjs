@@ -274,7 +274,7 @@ const home = page("index.html").replace("{{LATEST}}", inSection(BLOG).length ? i
 
 // Inquiry form (/inquire): rendered at runtime from this template so it can echo values back on a validation error.
 const INQUIRE = page("inquire.html");
-const CATEGORIES = ["Cloud & AI triage", "Startup advisor", "Agentic art", "Original art", "Board position", "Community give-back", "Collaborate on a project", "Writing", "Speaking and interviews", "Mentoring", "Meet at an event", "Something else"];
+const CATEGORIES = ["Cloud & AI triage", "Startup advisor", "Agentic art", "Original art", "Board position", "Community give-back", "Collaborate on a project", "Writing", "Speaking and interviews", "Mentoring", "Meet at an event", "Report a bug", "Something else"];
 
 // ---------- Nutanix knowledge base: kb/*.md, verified pages only, under /nutanix/kb ----------
 // Every page carries status/verified in frontmatter and a Sources section in the body. status !== "verified" keeps it out of the build.
