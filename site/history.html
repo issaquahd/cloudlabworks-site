@@ -18,6 +18,9 @@ ol.timeline li.here{background:linear-gradient(90deg,rgba(168,205,202,.12),trans
 ol.timeline li.here time{color:var(--ink)}
 .source{color:var(--muted);font-size:.9rem;margin-top:22px}
 @media(max-width:600px){ol.timeline li{grid-template-columns:1fr}}
+ul.family{list-style:none;padding:0;margin:14px 0 0;display:grid;gap:10px}
+ul.family li{border-left:3px solid var(--line);padding:6px 0 6px 14px;color:var(--ink-2)}
+ul.family li b{display:block;margin-bottom:2px}
 </style>
 </head>
 <body>
@@ -74,11 +77,51 @@ ol.timeline li.here time{color:var(--ink)}
   </ol>
 
   <h2 id="here">Here</h2>
+  <p>The lab's own entries. They are all one habit worn eight ways: take something the lab already
+  produces, and render it in a medium that makes it legible to a person rather than to a monitor.
+  Nothing on this list is a mock-up. Each one runs, and each one is reachable from the <b>Code as</b>
+  column in the menu.</p>
+  <ul class="family">
+    <li><b><a href="/live">Code as Music</a></b> The instrument. A Sonic Pi program whose input is
+      the lab's own state: a drone that holds while every site answers and turns when one stops,
+      phrases for deploy, fault and recover, and a nightly episode built from the day.</li>
+    <li><b><a href="/visualization">Code as Music Visualization</a></b> The same takes, drawn as
+      sound. Spectrum bars from amber in the low notes to teal in the highs, the waveform laid over
+      them, red when the take carries a fault. The first graph is the live lab, drawn by your own
+      browser.</li>
+    <li><b><a href="/art">Art as Code as Art</a></b> Two shelves. Work made here by hand, Raku-fired
+      ceramics, blown glass, thrown pots, acrylic and watercolor, metal and driftwood mixed in; and
+      the artists and single pieces that feed it. Earth tones first, then the loud colour against
+      them, which is the rule every generated piece on this site inherits.</li>
+    <li><b><a href="/diagrams">Diagram as Code &amp; Diagram as Art</a></b> The lab's architecture
+      drawn twice from the same keyboard: once as an ASCII box map that survives a terminal, a
+      ticket and an email, once as a Mermaid flowchart a browser renders from ten lines of text.
+      Then the same trick turned to play, in Japanese motifs and an orca set.</li>
+    <li><b><a href="/games">Code as Games</a></b> The arcade. Small, playable, no dependencies, no
+      account, no score sent anywhere. Each one a first pass built in an evening.</li>
+    <li><b><a href="/poetry">Code as Poetry</a></b> Older than most of this list if you count from
+      the contest circuit: source that reads as verse and still compiles. The poems here are Alex's,
+      run through the lab's formatting rather than its authorship.</li>
+    <li><b><a href="/world">Code as World</a></b> A world represented as executable code rather than
+      as pixels: composition, dynamics and appearance in one small Python module, stepped by its own
+      rules, three frames from one seed, no model in the loop at render time.</li>
+    <li><b><a href="/nature">Code as Nature</a></b> The newest, and the closest to the instrument.
+      The same published feed that drives the music drives a pod of organisms, one per service the
+      health probe watches, steering by Reynolds' three rules. A fault reads as the pod coming apart
+      rather than as a red light.</li>
+  </ul>
+  <p class="tag">Two threads run through all eight. The input is always something the lab actually
+  produced, never a sample chosen to look good. And the output is always inspectable: the state file,
+  the seed, the source function, printed on the page beside the picture it made.</p>
   <ol class="timeline">
     <li class="here"><time>2026</time><div><b>Infrastructure as Music</b><p>The lab's Sonic Pi program is not played by a person. Its input is the lab's own state: every site answering or not, the last deploys, the last faults. E major and a slow arpeggio while everything answers; minor and a low tone while something is down; a rising bell when a deploy lands. The score is code in git. <a href="/live">Code as Music</a> is the instrument, <a href="/visualization">the visualization</a> is the screen, projected.</p></div></li>
+    <li class="here"><time>2026</time><div><b><a href="/visualization">Code as Music Visualization</a></b><p>The instrument, drawn. Every take the lab records gets a graph: spectrum bars running amber in the low notes through to teal in the highs, the waveform laid over them, and red when the take carries a fault. The first graph on the page is not a recording at all, it is the live lab, analysed in the visitor's own browser by the same self-hosted script that reproduces the drone. Sound and picture come from one source, so the picture cannot flatter the sound.</p></div></li>
     <li class="here"><time>2026</time><div><b>Show us your screens, for infrastructure</b><p>TOPLAP's rule turned on the lab itself: the <a href="/asr">architecture decisions</a>, the <a href="/tests">test pipeline</a> and the <a href="/research">reading</a> are published while they run, mistakes included. The performer is a set of agents; the audience is whoever is reading this.</p></div></li>
     <li class="here"><time>2026</time><div><b><a href="/world">Code as World</a></b><p>The same idea one layer down: not a program that plays music from state, but a world represented as code in the first place. Composition, dynamics and appearance live in one small Python module, stepped through its own rules and rendered to flat SVG frames, no model in the loop at render time, same seed always giving the same world. First run, v0.1: a Salish Sea scene, canoe, orca, heron, tide and sun as a script, not a solver. Second run: a Kyoto temple-garden pond, torii gate, cherry tree, koi, twelve petals each falling on its own closed-form cycle. The three-part split and the propose/execute/render/verify/refine loop come from Code-as-World (MirroS Lab, 2026); the idea that the coding agent itself keeps the persistent world state comes from Code World Model (Westlake AGI Lab / NTU, 2026). A third world, the first one MuJoCo is reserved for, is next: something that has to fall, bounce or stack for real.</p></div></li>
     <li class="here"><time>2026</time><div><b><a href="/nature">Code as Nature</a></b><p>The same feed again, given a body instead of a voice. <a href="/live">Code as Music</a> turns the lab's state into sound; this turns it into a pod of organisms, one for every service the health probe watches, steering by Craig Reynolds' three rules from <a href="https://www.red3d.com/cwr/boids/" rel="noopener">Boids</a> (SIGGRAPH 1987): separation, alignment, cohesion, and nothing else. A service that answers swims with the others; a service that stops keeps its separation and loses the rest, so an outage reads as the pod coming apart rather than as a red light on a dashboard. The population is not chosen for the picture: it is exactly the roster the lab publishes, which today is very small, and it grows when the estate grows. Two older ancestors stand behind it. Valentino Braitenberg's <i>Vehicles</i> (1984) is why so few signals are enough, since two sensors wired to two motors already read as intent to anyone watching. Tom Ray's <a href="http://tomray.me/tierra/" rel="noopener">Tierra</a> (1991) is the closest relative of all: a world whose ecology is the machine's own resources, which is what it means here to let uptime be the weather. The route is <a href="https://natureofcode.com/" rel="noopener">The Nature of Code</a>, chapters 1, 2 and 5 so far; the book is CC BY-NC-SA, so the rules are implemented from the concepts against this lab's data rather than copied. Chapters 9, 10 and 11, evolving the steering and then giving each organism a small neural network, are the next rungs and are not built yet.</p></div></li>
+    <li class="here"><time>2026</time><div><b><a href="/art">Art as Code as Art</a></b><p>The shelf the rest of this list borrows from. Raku-fired ceramics, blown glass, thrown pots, acrylic and watercolor, metal and driftwood mixed in, beside the artists and single pieces that feed the habit. The house rule that every generated piece on this site obeys is set here and not in code: earth tones first, then one loud colour placed against them. <a href="/world">Code as World</a> and <a href="/nature">Code as Nature</a> both inherit it, and both store it in their state files rather than trusting anyone to remember.</p></div></li>
+    <li class="here"><time>2026</time><div><b><a href="/diagrams">Diagram as Code &amp; Diagram as Art</a></b><p>The lab's own architecture drawn twice from one keyboard: an ASCII box map that survives a terminal, a ticket and an email unchanged, and a Mermaid flowchart a browser renders from ten lines of text. Both are text under version control, so the drawing cannot drift from the thing it draws. Then the same constraint turned to play, in Japanese motifs held to eighty columns and an orca set that borrows the blueprint's trick of showing one subject two ways.</p></div></li>
+    <li class="here"><time>2026</time><div><b><a href="/games">Code as Games</a></b><p>The arcade, and the strictest constraint on the list: small, playable, no dependencies, no account, no score sent anywhere. Each one a first pass built in an evening. It belongs in this lineage because it is the oldest form of showing your screen, a program you hand someone and watch them use, with nothing between them and it.</p></div></li>
     <li class="here"><time>2026</time><div><b><a href="/poetry">Code as Poetry</a></b><p>Older than any of the entries above it, if you count from the contest circuit rather than the lab's own page: the International Obfuscated C Code Contest launched in 1984 (Landon Curt Noll and Larry Bassel), rewarding C that is both legal and unreadable on purpose &mdash; obfuscation as a craft, not a bug. Perl took the same instinct toward literal verse: "Black Perl," a thirteen-line program posted anonymously to Usenet on April&nbsp;1, 1990, parses as valid Perl and reads as an incantation, and it seeded PerlMonks' long-running Perl Poetry section. Stanford's Code Poetry Slam, running since at least 2016, put the form on a stage as spoken word. None of it has to run to count &mdash; a code poem's compiler is optional; its only hard requirement is that the syntax of the language carry the sense of the line. <a href="/poetry">Code as Poetry</a> takes the same brief the lab uses everywhere else &mdash; the target language's real control flow and idiom, not decoration &mdash; and turns it toward verse: a Ruby <code>loop</code>/<code>ensure</code> as a vow that outlasts the loop, a Swift <code>guard let</code> as the refusal to run on a broken optional, Rust's borrow checker turned into a definition of a love that does not consume what it holds.</p></div></li>
   </ol>
 
