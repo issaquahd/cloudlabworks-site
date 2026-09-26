@@ -104,13 +104,88 @@ footer{background:rgba(11,18,32,.6)}footer,footer a{color:#cbd5e1}
     </details>
   </section>
 
+  <section class="panel" id="ep03">
+    <h2>Episode 3: Mesh</h2>
+    <p class="meta">2026-09-26 · 6:17 · service mesh, Knative, agents · a thing-episode</p>
+    <video src="/media/podcast-ep03.mp4" poster="/media/podcast-ep03-poster.jpg" width="1280" height="720" controls playsinline preload="metadata" controlsList="nodownload noremoteplayback" disablePictureInPicture aria-label="Episode 3: Waku the orca in a water tank beside a service and the small proxy standing next to it, every call passing through the proxy" oncontextmenu="return false" draggable="false"></video>
+    <audio controls preload="metadata" src="/media/podcast-ep03.mp3" aria-label="Episode 3, audio only"></audio>
+    <p>Episode 2 named the sidecar and walked straight past it. This one goes back for it. A service calls another service, the second one dies, Kubernetes builds a fresh one somewhere else with a new address, and the first is left calling a house that is not there. Do that a hundred times an hour and you have a volatile environment — not broken, working exactly as designed.</p>
+    <p>The old answer is that every service learns to cope: each one retries, each one keeps a list, the same logic written a hundred times in nine languages, slightly differently every time. The other answer is to take it out of the service and put it <em>next</em> to the service. A small proxy beside every service, nothing in or out except through it, and the proxies talking to each other. That is a mesh — not a new network, the same network with a layer of doormen laid over it. Then Knative, which scales to zero and makes addresses change constantly by design, and finally agents, which are services that improvise. An agent is unreliable on purpose. Put the retry in the doorman, not in the improviser. And because every call went through a proxy, every call was recorded: you get a map of who actually asked whom, not what an agent said it did.</p>
+    <details>
+      <summary>Transcript</summary>
+      <p>Last time we opened a Pod. Inside were containers, sharing one address, sharing storage, sharing a fate.</p>
+      <p>One thing in there we named and walked straight past. The sidecar. The second container, riding along, doing a job for the first one.</p>
+      <p>Today the sidecar does the whole episode.</p>
+      <p>Start with the problem, because the problem is the interesting part.</p>
+      <p>A service is a program that sits there, waiting to be asked something.</p>
+      <p>It runs in a container, inside a Pod, like everything else we have met.</p>
+      <p>Here is a service. Here is another one. The first needs to ask the second a question.</p>
+      <p>Easy. It knows where the second one lives. It calls the address. Done.</p>
+      <p>Now watch what actually happens.</p>
+      <p>The second one dies. Kubernetes builds a fresh one somewhere else, with a new address.</p>
+      <p>The first one is still holding the old address. It is calling a house that is not there.</p>
+      <p>Now do that a hundred times an hour. Things starting. Things stopping. Things moving between machines because a machine got busy.</p>
+      <p>That is a volatile environment. Not broken. Working exactly as designed. Nothing stays where you left it.</p>
+      <p>So how does anything find anything?</p>
+      <p>Here is the old answer. Every service learns to handle it. Each one retries. Each one keeps a list. Each one carries its own map.</p>
+      <p>That works, and it is a quiet disaster. The same logic, written a hundred times, by a hundred people, in nine languages, slightly differently every time.</p>
+      <p>And on the day the rule changes, you change it in a hundred places.</p>
+      <p>Here is the other answer.</p>
+      <p>Take it out of the service. Put it next to the service.</p>
+      <p>Every service gets a small proxy standing beside it. A sidecar. Nothing goes in or out except through that proxy.</p>
+      <p>The service does not know it is there. It thinks it is calling the address directly. It is calling its own doorman.</p>
+      <p>Now do that everywhere. Every service, its own proxy.</p>
+      <p>And the proxies talk to each other.</p>
+      <p>That is a mesh. Not a new network. The same network, with a layer of doormen laid over it.</p>
+      <p>Now look at what the doormen can do, since every conversation goes through them.</p>
+      <p>Nobody talks to an address anymore. They talk to a name. The proxy knows where that name lives right now.</p>
+      <p>The house moved? The proxy already knows. The service never noticed.</p>
+      <p>Something failed? The proxy retries, and gives up on a clock, so one slow thing cannot pile up behind it and take everything down.</p>
+      <p>And every proxy knows exactly who it is. Every conversation is encrypted and identified at both ends.</p>
+      <p>Not &quot;I trust you because you are inside the building.&quot; Trust because you proved who you are, on every single call.</p>
+      <p>There is one more piece, and it is the one that makes it a system instead of a pile of proxies.</p>
+      <p>The proxies do not decide the rules. There is a control plane. One place where you say what the rules are.</p>
+      <p>You say it once. Every doorman hears it. That is the whole difference between a mesh and a hundred sidecars.</p>
+      <p>Now bring in the part that moves fastest.</p>
+      <p>Knative. Three pieces sitting on top of Kubernetes. Serving, which starts a thing when a request arrives. Eventing, which routes events between them. And functions.</p>
+      <p>Serving does something that sounds impossible until you see it. It scales to zero.</p>
+      <p>No traffic, nothing running, nothing costing anything. A request arrives, and the thing comes up to answer it.</p>
+      <p>Every version is a revision, and a revision is frozen. You never edit one. You make a new one and move traffic to it.</p>
+      <p>Which means the addresses are not just changing sometimes. They are changing constantly, by design. Things vanish when nobody is asking.</p>
+      <p>A mesh does not merely tolerate that. That is the environment it was built for.</p>
+      <p>Network as a service. You stop building the network and start asking for it.</p>
+      <p>Names, rules, identity, and a record of every call. Handed to you as a thing you request.</p>
+      <p>And now the part that is actually new.</p>
+      <p>An agent is a service. It runs somewhere, it answers requests. So far, nothing special.</p>
+      <p>But agents call other agents. One asks a second to do a piece of work, which asks a third.</p>
+      <p>And none of them were told the shape of that conversation in advance.</p>
+      <p>That is a volatile environment made of software that improvises.</p>
+      <p>Here is why the mesh matters more there than anywhere.</p>
+      <p>An agent is unreliable on purpose. Allowed to be slow. Allowed to fail. Allowed to change its mind.</p>
+      <p>If you write the retry logic inside the agent, you are asking the improviser to also be the safety system.</p>
+      <p>Put it in the doorman instead. The agent improvises. The proxy enforces the timeout, the retry, the limit.</p>
+      <p>And identity stops being a nicety.</p>
+      <p>When an agent asks another agent for something, you want to know exactly which one asked. On that exact call. Proved.</p>
+      <p>Then the last thing, and it is the best one. Every call went through a proxy, so every call was recorded.</p>
+      <p>You get a map of who asked whom. Not what an agent said it did. What it actually did.</p>
+      <p>Cloud native spent fifteen years learning how to run things that will not hold still.</p>
+      <p>Then we built something that will not hold still and argues back.</p>
+      <p>The strange part is that the answer was already sitting there. It was the second container, riding along, that we walked straight past.</p>
+    </details>
+    <details>
+      <summary>How it was made</summary>
+      <p>Four times the beat count of anything before it — 58 staged beats across six minutes, against 14 in Episode 2 — because at this length an audience notices repetition long before it notices frame rate. Twenty new part functions were needed: the service, the proxy, the empty lot, the control plane, the revisions, the call graph. Pickles' standing note from Episode 2 is finally settled: the hard line dividing the host's panel from the scene is gone, replaced by an actual water tank, so the boundary is a breathing curve with a rim, a specular streak and bubbles climbing the inside rather than a drawn edge.</p>
+      <p>The series gate cleared on every animation axis — motion up 7% overall against Episode 2, and the useful part is where it came from: character motion up 15% and the host panel up 84% while <em>background</em> motion fell 19%. Episode 2 left an open question about whether whole-frame motion was just rewarding a busy background; this answers it with the split. Thirty probe stills were rendered and inspected before the full render, which caught five faults invisible in the source — the worst being the sidecar sliding behind the Pod husk on the first and last beats, the callback that opens the episode and the payoff that closes it. Every metric was green while that image was broken.</p>
+    </details>
+  </section>
+
   <section class="panel">
     <h2>Two kinds of episode</h2>
     <ul class="modes">
       <li><b>Thing-episode</b>The character is the concept itself, and the teaching comes from the character changing shape. Pod, HelmChart, Service Mesh.</li>
       <li><b>Room-episode</b>The character is static and honest about it. The teaching comes from the environment changing around it. ConfigMap vs Secret, Ingress.</li>
     </ul>
-    <p class="next" style="margin-top:14px">Next up, in this order: Pod, HelmChart, Ingress, Service Mesh. The expensive resource is rigs, not frames, so thing-episodes are rationed. Want a concept explained this way? <a href="/inquire?category=Something+else&amp;context=KidsCast+Native+episode+request+%E2%80%94+">Ask for it.</a></p>
+    <p class="next" style="margin-top:14px">Pod and Service Mesh have aired. Next up, in this order: Deployment, Service, Ingress, HelmChart. The expensive resource is rigs, not frames, so thing-episodes are rationed. Want a concept explained this way? <a href="/inquire?category=Something+else&amp;context=KidsCast+Native+episode+request+%E2%80%94+">Ask for it.</a></p>
   </section>
 
 {{FOOT}}
