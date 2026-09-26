@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900">
+<defs><linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#456a71"/><stop offset="1" stop-color="#16262b"/></linearGradient></defs>
+<rect width="1200" height="900" fill="url(#bg)"/>
+<text x="40" y="70" font-family="Helvetica,Arial,sans-serif" font-size="34" font-weight="bold" fill="#f2ebdc">Who uses which type</text>
+<text x="40" y="104" font-family="Helvetica,Arial,sans-serif" font-size="21" fill="#f2ebdc" opacity="0.75">overlapping but distinct repertoires</text>
+<text x="390.0" y="178" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="21" fill="#f2ebdc" opacity="0.8">type-1</text>
+<text x="570.0" y="178" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="21" fill="#f2ebdc" opacity="0.8">type-2</text>
+<text x="750.0" y="178" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="21" fill="#f2ebdc" opacity="0.8">type-3</text>
+<text x="930.0" y="178" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="21" fill="#f2ebdc" opacity="0.8">type-4</text>
+<text x="272" y="263.0" text-anchor="end" font-family="Helvetica,Arial,sans-serif" font-size="21" fill="#f2ebdc" opacity="0.8">group-A</text>
+<rect x="306" y="206" width="168" height="98" fill="#f2ebdc" opacity="0.9" stroke="#7f918f" stroke-width="2"/>
+<rect x="486" y="206" width="168" height="98" fill="#16262b" opacity="0.4" stroke="#7f918f" stroke-width="2"/>
+<rect x="666" y="206" width="168" height="98" fill="#f2ebdc" opacity="0.9" stroke="#7f918f" stroke-width="2"/>
+<rect x="846" y="206" width="168" height="98" fill="#16262b" opacity="0.4" stroke="#7f918f" stroke-width="2"/>
+<text x="272" y="373.0" text-anchor="end" font-family="Helvetica,Arial,sans-serif" font-size="21" fill="#f2ebdc" opacity="0.8">group-B</text>
+<rect x="306" y="316" width="168" height="98" fill="#f2ebdc" opacity="0.9" stroke="#7f918f" stroke-width="2"/>
+<rect x="486" y="316" width="168" height="98" fill="#f2ebdc" opacity="0.9" stroke="#7f918f" stroke-width="2"/>
+<rect x="666" y="316" width="168" height="98" fill="#16262b" opacity="0.4" stroke="#7f918f" stroke-width="2"/>
+<rect x="846" y="316" width="168" height="98" fill="#f2ebdc" opacity="0.9" stroke="#7f918f" stroke-width="2"/>
+<text x="272" y="483.0" text-anchor="end" font-family="Helvetica,Arial,sans-serif" font-size="21" fill="#f2ebdc" opacity="0.8">group-C</text>
+<rect x="306" y="426" width="168" height="98" fill="#f2ebdc" opacity="0.9" stroke="#7f918f" stroke-width="2"/>
+<rect x="486" y="426" width="168" height="98" fill="#f2ebdc" opacity="0.9" stroke="#7f918f" stroke-width="2"/>
+<rect x="666" y="426" width="168" height="98" fill="#16262b" opacity="0.4" stroke="#7f918f" stroke-width="2"/>
+<rect x="846" y="426" width="168" height="98" fill="#16262b" opacity="0.4" stroke="#7f918f" stroke-width="2"/>
+<text x="40" y="606" font-family="Helvetica,Arial,sans-serif" font-size="22" fill="#f2ebdc" opacity="0.9">1 type(s) shared by every group, 2 held by one only</text>
+<rect x="34" y="748" width="726" height="92" fill="#141414" opacity="0.78" stroke="#8a7357" stroke-width="3"/>
+<text x="52" y="782" font-family="Helvetica,Arial,sans-serif" font-size="19" fill="#f2ebdc" opacity="0.95">Repertoire structure after Ford's catalogue of resident killer whale</text>
+<text x="52" y="808" font-family="Helvetica,Arial,sans-serif" font-size="19" fill="#f2ebdc" opacity="0.95">call types. This matrix is synthesised. Not affiliated with SFU or HALLO.</text>
+<rect x="10" y="10" width="1180" height="880" fill="none" stroke="#8a7357" stroke-width="10"/>
+</svg>

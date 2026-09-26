@@ -1,0 +1,72 @@
+[
+  {
+    "name": "orca-01-call-contour",
+    "title": "One call, drawn as a contour",
+    "group": "Call catalogue",
+    "treatment": "illustrative",
+    "text": "Onset 891 Hz, plateau 1261 Hz with a 8.5 Hz wobble at 4.3% depth, terminal 895 Hz, over 1.6 s. Synthesised from seed 101; a real catalogued type is defined by a shape like this one, not by this one."
+  },
+  {
+    "name": "orca-02-call-family",
+    "title": "Four types, side by side",
+    "group": "Call catalogue",
+    "treatment": "illustrative",
+    "text": "Four contours from seeds 101\u2013104. Plateau-to-terminal drop ranges 366\u2013775 Hz across the set. Discreteness is the claim worth keeping: types are countable, which is what makes acoustic identification possible at all."
+  },
+  {
+    "name": "orca-03-repertoire",
+    "title": "Who uses which type",
+    "group": "Call catalogue",
+    "treatment": "sourced",
+    "text": "3 groups \u00d7 4 types, seed 7: 1 type(s) used by every group, 2 held by exactly one. The idea that pods hold overlapping-but-distinct repertoires is Ford\u2019s and is credited on the card; this particular matrix is program output."
+  },
+  {
+    "name": "orca-04-call-match",
+    "title": "Same type, or not?",
+    "group": "Call catalogue",
+    "treatment": "illustrative",
+    "text": "Contour 101 against contour 102: 0.142 octaves mean separation, against 0.000 for a contour matched with itself. A real classifier does far more than this \u2014 HALLO\u2019s is a neural one \u2014 but this is the quantity the intuition is reaching for."
+  },
+  {
+    "name": "orca-05-forecast-t0",
+    "title": "Tick 0: everything starts in one place",
+    "group": "Forecast",
+    "treatment": "illustrative",
+    "text": "t = 0.0 s, tick 0 of 300. Ensemble spread 0.0 px around a centroid at (230, 560). \u03b8 = 0.55, \u03c3 = 14.0, preferred cruise 42.0 px/s, heading blend 0.72/0.28."
+  },
+  {
+    "name": "orca-06-forecast-mid",
+    "title": "Tick 150: mid run",
+    "group": "Forecast",
+    "treatment": "illustrative",
+    "text": "t = 15.0 s, tick 150 of 300. Ensemble spread 184.0 px around a centroid at (797, 484). \u03b8 = 0.55, \u03c3 = 14.0, preferred cruise 42.0 px/s, heading blend 0.72/0.28."
+  },
+  {
+    "name": "orca-07-forecast-end",
+    "title": "Tick 300: end of run",
+    "group": "Forecast",
+    "treatment": "illustrative",
+    "text": "t = 30.0 s, tick 300 of 300. Ensemble spread 220.9 px around a centroid at (1014, 329). \u03b8 = 0.55, \u03c3 = 14.0, preferred cruise 42.0 px/s, heading blend 0.72/0.28."
+  },
+  {
+    "name": "orca-08-ship-strike",
+    "title": "The same ensemble, against a hazard band",
+    "group": "Forecast",
+    "treatment": "illustrative",
+    "text": "2 of 24 paths end inside the band at t = 30.0 s. The band is a circle on an empty field on purpose: it is not a channel, not a shipping lane, not a map of anywhere. The output of a real system is a probability over a real place, and this is not one."
+  },
+  {
+    "name": "orca-09-sound-families",
+    "title": "Three families of sound",
+    "group": "Bioacoustics",
+    "treatment": "sourced",
+    "text": "Clicks for echolocation, whistles for tonal contact, pulsed calls for the catalogued repertoire. Standard taxonomy, credited on the card; the drawings are schematic, and the source-identification framing is HALLO\u2019s. Not affiliated with SFU or HALLO."
+  },
+  {
+    "name": "orca-10-false-positive",
+    "title": "The rule that looked fine",
+    "group": "Bioacoustics",
+    "treatment": "illustrative",
+    "text": "160 synthetic events at threshold 0.62: 33 calls caught, 30 false alarms of which 30 are boats, 8 calls missed. A boat is loud in band too. This is the card that replaced a confusion matrix, because a matrix reads as a result no matter what the caption underneath it says."
+  }
+]

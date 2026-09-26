@@ -74,3 +74,10 @@ done
 for n in $(python3 -c 'import json;print(" ".join(x["name"] for x in json.load(open("'"$S"'/nature/set.json"))))'); do
   render "$S/nature/$n.svg" "art-wm-$n.jpg" 1200
 done
+# Code as Bioacoustics: what a call is, and where the pod goes next (gen.py writes set.json,
+# state.json and orca-NN-*.svg). Two treatments, both drawn INTO the SVG: a solid sand edge on
+# the two SOURCED cards, a loud dashed edge plus the ILLUSTRATIVE badge on the other eight. The
+# badge has to survive a crop and a repost, so it is rendered, never captioned.
+for n in $(python3 -c 'import json;print(" ".join(x["name"] for x in json.load(open("'"$S"'/orca/set.json"))))'); do
+  render "$S/orca/$n.svg" "art-wm-$n.jpg" 1200
+done

@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900">
+<defs><linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#456a71"/><stop offset="1" stop-color="#16262b"/></linearGradient></defs>
+<rect width="1200" height="900" fill="url(#bg)"/>
+<text x="40" y="70" font-family="Helvetica,Arial,sans-serif" font-size="34" font-weight="bold" fill="#f2ebdc">Tick 0: everything starts in one place</text>
+<text x="40" y="104" font-family="Helvetica,Arial,sans-serif" font-size="21" fill="#f2ebdc" opacity="0.75">24 paths, identical initial condition</text>
+<circle cx="230.0" cy="560.0" r="0.0" fill="#f2ebdc" opacity="0.12" stroke="#f2ebdc" stroke-width="2" stroke-dasharray="8 8"/>
+<polyline points="230.0,560.0" fill="none" stroke="#f2ebdc" stroke-width="2" opacity="0.45"/>
+<circle cx="230.0" cy="560.0" r="5" fill="#f2ebdc" opacity="0.9"/>
+<polyline points="230.0,560.0" fill="none" stroke="#f2ebdc" stroke-width="2" opacity="0.45"/>
+<circle cx="230.0" cy="560.0" r="5" fill="#f2ebdc" opacity="0.9"/>
+<polyline points="230.0,560.0" fill="none" stroke="#f2ebdc" stroke-width="2" opacity="0.45"/>
+<circle cx="230.0" cy="560.0" r="5" fill="#f2ebdc" opacity="0.9"/>
+<polyline points="230.0,560.0" fill="none" stroke="#f2ebdc" stroke-width="2" opacity="0.45"/>
+<circle cx="230.0" cy="560.0" r="5" fill="#f2ebdc" opacity="0.9"/>
+<polyline points="230.0,560.0" fill="none" stroke="#f2ebdc" stroke-width="2" opacity="0.45"/>
+<circle cx="230.0" cy="560.0" r="5" fill="#f2ebdc" opacity="0.9"/>
+<polyline points="230.0,560.0" fill="none" stroke="#f2ebdc" stroke-width="2" opacity="0.45"/>
+<circle cx="230.0" cy="560.0" r="5" fill="#f2ebdc" opacity="0.9"/>
+<polyline points="230.0,560.0" fill="none" stroke="#f2ebdc" stroke-width="2" opacity="0.45"/>
+<circle cx="230.0" cy="560.0" r="5" fill="#f2ebdc" opacity="0.9"/>
+<polyline points="230.0,560.0" fill="none" stroke="#f2ebdc" stroke-width="2" opacity="0.45"/>
+<circle cx="230.0" cy="560.0" r="5" fill="#f2ebdc" opacity="0.9"/>
+<polyline points="230.0,560.0" fill="none" stroke="#f2ebdc" stroke-width="2" opacity="0.45"/>
+<circle cx="230.0" cy="560.0" r="5" fill="#f2ebdc" opacity="0.9"/>
+<polyline points="230.0,560.0" fill="none" stroke="#f2ebdc" stroke-width="2" opacity="0.45"/>
+<circle cx="230.0" cy="560.0" r="5" fill="#f2ebdc" opacity="0.9"/>
+<polyline points="230.0,560.0" fill="none" stroke="#f2ebdc" stroke-width="2" opacity="0.45"/>
+<circle cx="230.0" cy="560.0" r="5" fill="#f2ebdc" opacity="0.9"/>
+<polyline points="230.0,560.0" fill="none" stroke="#f2ebdc" stroke-width="2" opacity="0.45"/>
+<circle cx="230.0" cy="560.0" r="5" fill="#f2ebdc" opacity="0.9"/>
+<polyline points="230.0,560.0" fill="none" stroke="#f2ebdc" stroke-width="2" opacity="0.45"/>
+<circle cx="230.0" cy="560.0" r="5" fill="#f2ebdc" opacity="0.9"/>
+<polyline points="230.0,560.0" fill="none" stroke="#f2ebdc" stroke-width="2" opacity="0.45"/>
+<circle cx="230.0" cy="560.0" r="5" fill="#f2ebdc" opacity="0.9"/>
+<polyline points="230.0,560.0" fill="none" stroke="#f2ebdc" stroke-width="2" opacity="0.45"/>
+<circle cx="230.0" cy="560.0" r="5" fill="#f2ebdc" opacity="0.9"/>
+<polyline points="230.0,560.0" fill="none" stroke="#f2ebdc" stroke-width="2" opacity="0.45"/>
+<circle cx="230.0" cy="560.0" r="5" fill="#f2ebdc" opacity="0.9"/>
+<polyline points="230.0,560.0" fill="none" stroke="#f2ebdc" stroke-width="2" opacity="0.45"/>
+<circle cx="230.0" cy="560.0" r="5" fill="#f2ebdc" opacity="0.9"/>
+<polyline points="230.0,560.0" fill="none" stroke="#f2ebdc" stroke-width="2" opacity="0.45"/>
+<circle cx="230.0" cy="560.0" r="5" fill="#f2ebdc" opacity="0.9"/>
+<polyline points="230.0,560.0" fill="none" stroke="#f2ebdc" stroke-width="2" opacity="0.45"/>
+<circle cx="230.0" cy="560.0" r="5" fill="#f2ebdc" opacity="0.9"/>
+<polyline points="230.0,560.0" fill="none" stroke="#f2ebdc" stroke-width="2" opacity="0.45"/>
+<circle cx="230.0" cy="560.0" r="5" fill="#f2ebdc" opacity="0.9"/>
+<polyline points="230.0,560.0" fill="none" stroke="#f2ebdc" stroke-width="2" opacity="0.45"/>
+<circle cx="230.0" cy="560.0" r="5" fill="#f2ebdc" opacity="0.9"/>
+<polyline points="230.0,560.0" fill="none" stroke="#f2ebdc" stroke-width="2" opacity="0.45"/>
+<circle cx="230.0" cy="560.0" r="5" fill="#f2ebdc" opacity="0.9"/>
+<polyline points="230.0,560.0" fill="none" stroke="#f2ebdc" stroke-width="2" opacity="0.45"/>
+<circle cx="230.0" cy="560.0" r="5" fill="#f2ebdc" opacity="0.9"/>
+<polyline points="230.0,560.0" fill="none" stroke="#f2ebdc" stroke-width="2" opacity="0.45"/>
+<circle cx="230.0" cy="560.0" r="5" fill="#f2ebdc" opacity="0.9"/>
+<text x="40" y="728" font-family="Helvetica,Arial,sans-serif" font-size="21" fill="#f2ebdc" opacity="0.9">t = 0.0 s, 24 paths, spread 0.0 px</text>
+<rect x="34" y="750" width="726" height="116" fill="#141414" opacity="0.82" stroke="#e0472c" stroke-width="3"/>
+<text x="52" y="784" font-family="Helvetica,Arial,sans-serif" font-size="22" font-weight="bold" fill="#e0472c" letter-spacing="1.5">ILLUSTRATIVE — concept only</text>
+<text x="52" y="812" font-family="Helvetica,Arial,sans-serif" font-size="18" fill="#f2ebdc" opacity="0.92">Based on the idea in Lin (2023, SFU): an Ornstein-Uhlenbeck velocity process</text>
+<text x="52" y="838" font-family="Helvetica,Arial,sans-serif" font-size="18" fill="#f2ebdc" opacity="0.92">with direction blending. Not HALLO's fitted model, not real whale data.</text>
+<rect x="10" y="10" width="1180" height="880" fill="none" stroke="#e0472c" stroke-width="10" stroke-dasharray="26 14"/>
+</svg>

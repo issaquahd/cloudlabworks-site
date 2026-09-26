@@ -1,0 +1,171 @@
+{
+  "calls": {
+    "contours": {
+      "seed-101": {
+        "seed": 101,
+        "dur_s": 1.6,
+        "f_onset": 890.5760662522823,
+        "f_plateau": 1260.6472214554312,
+        "f_terminal": 894.5241708482918,
+        "wobble_hz": 8.543858410060766,
+        "wobble_frac": 0.0433569339098487
+      },
+      "seed-102": {
+        "seed": 102,
+        "dur_s": 1.6,
+        "f_onset": 674.0856031935418,
+        "f_plateau": 1195.5383362642276,
+        "f_terminal": 562.9858729657519,
+        "wobble_hz": 7.275041684251246,
+        "wobble_frac": 0.05039162463787357
+      },
+      "seed-103": {
+        "seed": 103,
+        "dur_s": 1.6,
+        "f_onset": 1089.5250600363872,
+        "f_plateau": 1784.4824708861536,
+        "f_terminal": 1134.3136172522964,
+        "wobble_hz": 7.409317455512037,
+        "wobble_frac": 0.03074508342485317
+      },
+      "seed-104": {
+        "seed": 104,
+        "dur_s": 1.6,
+        "f_onset": 1079.9804650974777,
+        "f_plateau": 2150.331969052251,
+        "f_terminal": 1375.291233079216,
+        "wobble_hz": 4.365734445647711,
+        "wobble_frac": 0.03653211638582625
+      }
+    },
+    "distance_101_102_octaves": 0.1418,
+    "distance_self_octaves": 0.0,
+    "repertoire": {
+      "seed": 7,
+      "labels": [
+        "group-A",
+        "group-B",
+        "group-C"
+      ],
+      "names": [
+        "type-1",
+        "type-2",
+        "type-3",
+        "type-4"
+      ],
+      "grid": [
+        [
+          true,
+          false,
+          true,
+          false
+        ],
+        [
+          true,
+          true,
+          false,
+          true
+        ],
+        [
+          true,
+          true,
+          false,
+          false
+        ]
+      ],
+      "shared": 1,
+      "unique": 2
+    }
+  },
+  "forecast": {
+    "theta": 0.55,
+    "sigma": 14.0,
+    "mu_speed": 42.0,
+    "w_persist": 0.72,
+    "w_prefer": 0.28,
+    "seed": 3,
+    "n_paths": 24,
+    "ticks": 300,
+    "dt_s": 0.1,
+    "hazard": {
+      "x": 860.0,
+      "y": 360.0,
+      "r": 150.0
+    },
+    "frames": {
+      "0": {
+        "tick": 0,
+        "t_s": 0.0,
+        "spread_px": 0.0,
+        "centroid": [
+          230.0,
+          560.0
+        ],
+        "in_hazard": 0
+      },
+      "150": {
+        "tick": 150,
+        "t_s": 15.0,
+        "spread_px": 184.0,
+        "centroid": [
+          796.6,
+          483.9
+        ],
+        "in_hazard": 12
+      },
+      "300": {
+        "tick": 300,
+        "t_s": 30.0,
+        "spread_px": 220.9,
+        "centroid": [
+          1014.3,
+          329.1
+        ],
+        "in_hazard": 2
+      }
+    },
+    "final_state": {
+      "tick": 300,
+      "t_s": 30.0,
+      "spread_px": 220.9,
+      "centroid": [
+        1014.3,
+        329.1
+      ],
+      "in_hazard": 2
+    }
+  },
+  "detector": {
+    "seed": 5,
+    "n": 160,
+    "threshold": 0.62,
+    "true_positive": 33,
+    "false_positive": 30,
+    "false_negative": 8,
+    "boat_fires": 30
+  },
+  "badges": {
+    "forecast": [
+      "ILLUSTRATIVE \u2014 concept only",
+      "Based on the idea in Lin (2023, SFU): an Ornstein-Uhlenbeck velocity process",
+      "with direction blending. Not HALLO's fitted model, not real whale data."
+    ],
+    "synthetic": [
+      "ILLUSTRATIVE \u2014 concept only",
+      "Synthesised by this program from a fixed seed. Not a recording, not a",
+      "measurement, not real whale data."
+    ]
+  },
+  "credits": {
+    "ford": "Repertoire structure after Ford's catalogue of resident killer whale call types. This matrix is synthesised. Not affiliated with SFU or HALLO.",
+    "families": "Standard bioacoustic taxonomy; the source-identification framing is HALLO's (orca.research.sfu.ca). Drawings schematic. Not affiliated."
+  },
+  "counts": {
+    "total": 10,
+    "call_catalogue": 4,
+    "forecast": 4,
+    "bioacoustics": 2,
+    "sourced": 2,
+    "illustrative": 8
+  }
+}

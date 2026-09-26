@@ -241,6 +241,31 @@ function naturePage() {
   return page("nature.html").replace("{{NATURE_RUN}}", run).replace("{{NATURE_STEP}}", esc(step[0].trim())).replace("{{NATURE_STATE}}", esc(shown)).replace("{{NATURE_CARDS}}", cards);
 }
 
+// ---------- Code as Orca (Code as Bioacoustics): /orca shows media/src/orca as gen.py left it (state.json, set.json) and the step function read out of orca.py. Nothing on the page is a recording; the two visual treatments (sourced edge vs illustrative badge) are drawn into the SVGs by orca.py, not added here, so they survive a crop. ----------
+const ORCA = new URL("./media/src/orca/", import.meta.url);
+function orcaPage() {
+  const st = JSON.parse(readFileSync(new URL("state.json", ORCA), "utf8"));
+  const set = JSON.parse(readFileSync(new URL("set.json", ORCA), "utf8"));
+  const py = readFileSync(new URL("orca.py", ORCA), "utf8");
+  const step = /\ndef step\([\s\S]*?\n    return state\n/.exec(py);
+  if (!step) throw new Error("orca.py: step() not found");
+  const c = st.counts;
+  // the card count is asserted in gen.py and asserted again here: the plan said "11 examples:
+  // 4 + 4 + 2" for a week before anyone added it up, so the total is derived, never typed.
+  if (c.total !== c.call_catalogue + c.forecast + c.bioacoustics) throw new Error(`orca counts do not add up: ${JSON.stringify(c)}`);
+  if (c.total !== set.length) throw new Error(`orca set.json has ${set.length} cards, counts say ${c.total}`);
+  const f = st.forecast, t0 = f.frames["0"], fin = f.final_state, d = st.detector, rep = st.calls.repertoire;
+  const run = `Run: <code>${c.total}</code> cards — <code>${c.call_catalogue}</code> call catalogue, <code>${c.forecast}</code> forecast, <code>${c.bioacoustics}</code> bioacoustics; <code>${c.sourced}</code> carrying a credited source, <code>${c.illustrative}</code> carrying the illustrative badge. Forecast: seed <code>${f.seed}</code>, <code>${f.n_paths}</code> paths, <code>${f.ticks}</code> ticks of <code>dt = ${f.dt_s} s</code> (${(f.ticks * f.dt_s).toFixed(0)} s), <code>θ = ${f.theta}</code>, <code>σ = ${f.sigma}</code>, preferred cruise <code>${f.mu_speed} px/s</code>, heading blend <code>${f.w_persist}/${f.w_prefer}</code>. Ensemble spread <code>${t0.spread_px} px</code> at tick 0, <code>${fin.spread_px} px</code> at tick ${fin.tick}, with <code>${fin.in_hazard}</code> of <code>${f.n_paths}</code> paths ending inside the abstract hazard band. Calls: contour 101 against 102 at <code>${st.calls.distance_101_102_octaves}</code> octaves, against <code>${st.calls.distance_self_octaves}</code> for a contour matched with itself; repertoire seed <code>${rep.seed}</code> gives <code>${rep.shared}</code> type shared by every group and <code>${rep.unique}</code> held by one. Naive detector: <code>${d.true_positive}</code> calls caught, <code>${d.false_positive}</code> false alarms of which <code>${d.boat_fires}</code> are boats, <code>${d.false_negative}</code> missed, at threshold <code>${d.threshold}</code> over <code>${d.n}</code> synthetic events.`;
+  const cards = set.map((p) => {
+    const sourced = p.treatment === "sourced";
+    const alt = `${p.title}: a flat 1200 by 900 card in earth tones, ${sourced ? "bordered in solid sand with a credit strip naming its published source" : "bordered in a loud dashed line with an ILLUSTRATIVE badge burned into the frame"}`;
+    const ctx = encodeURIComponent(`Piece: Code as Orca, ${p.title} (SVG · rendered state). I am interested in: original / print / source.`);
+    return `    <li><img src="/media/art-wm-${p.name}.jpg" draggable="false" width="1200" height="900" alt="${esc(alt)}" loading="lazy"><span class="medium">SVG · ${esc(p.group)} · ${sourced ? "sourced" : "illustrative"}</span><b>${esc(p.title)}</b><span>${esc(p.text)}</span><a class="go inquire" href="/inquire?category=Original%20art&context=${ctx}">Inquire</a></li>`;
+  }).join("\n");
+  const shown = JSON.stringify(st, null, 2);
+  return page("orca.html").replace("{{ORCA_RUN}}", run).replace("{{ORCA_STEP}}", esc(step[0].trim())).replace("{{ORCA_STATE}}", esc(shown)).replace("{{ORCA_CARDS}}", cards);
+}
+
 // ---------- Bloggy Notes: /bloggy-notes combines the Blog index and the Notes list on one page, as two separate sections. /blog and /notes keep working (permalinks, RSS, old links); this is the new nav landing spot. ----------
 const bloggyNotesPage = () => page("bloggy-notes.html").replace("{{BLOG_ROWS}}", inSection(BLOG).length ? inSection(BLOG).map(postItem).join("\n") : emptyItem(BLOG));
 
@@ -312,7 +337,7 @@ ${p.html}
   <p class="tag">Facts here move. The sources listed above win over this page on any day after the verified date. ${esc(NUTANIX.disclaimer)}</p>`,
 })]));
 
-const pages = { "/": home, "/work": page("work.html").replace("{{GITHUB}}", GITHUB), [BLOG.path]: sectionIndex(BLOG), [NUTANIX.path]: sectionIndex(NUTANIX), [KB.path]: kbIndex, ...kbPagesOut, ...postPages, "/notes": page("notes.html"), "/bloggy-notes": bloggyNotesPage(), "/privacy": page("privacy.html"), "/terms": page("terms.html"), "/card": page("card.html"), "/live": page("live.html"), "/visualization": page("visualization.html"), "/tests": page("tests.html"), "/research": researchPage(), "/history": page("history.html"), "/orcas": page("orcas.html"), "/podcast": page("podcast.html"), "/art": page("art.html"), "/diagrams": page("diagrams.html"), "/asr": page("asr.html"), "/certifications": page("certifications.html"), "/subscribe": page("subscribe.html"), "/resume": page("resume.html"), "/portfolio": page("portfolio.html").replace("{{GITHUB}}", GITHUB), "/stickers": page("stickers.html"), "/koi": page("koi.html"), "/pagoda": page("pagoda.html"), "/pod": page("pod.html"), "/samurai": page("samurai.html"), "/gas": page("gas.html"), "/games": page("games.html"), "/poetry": page("poetry.html"), "/world": worldPage(), "/nature": naturePage() };
+const pages = { "/": home, "/work": page("work.html").replace("{{GITHUB}}", GITHUB), [BLOG.path]: sectionIndex(BLOG), [NUTANIX.path]: sectionIndex(NUTANIX), [KB.path]: kbIndex, ...kbPagesOut, ...postPages, "/notes": page("notes.html"), "/bloggy-notes": bloggyNotesPage(), "/privacy": page("privacy.html"), "/terms": page("terms.html"), "/card": page("card.html"), "/live": page("live.html"), "/visualization": page("visualization.html"), "/tests": page("tests.html"), "/research": researchPage(), "/history": page("history.html"), "/orcas": page("orcas.html"), "/podcast": page("podcast.html"), "/art": page("art.html"), "/diagrams": page("diagrams.html"), "/asr": page("asr.html"), "/certifications": page("certifications.html"), "/subscribe": page("subscribe.html"), "/resume": page("resume.html"), "/portfolio": page("portfolio.html").replace("{{GITHUB}}", GITHUB), "/stickers": page("stickers.html"), "/koi": page("koi.html"), "/pagoda": page("pagoda.html"), "/pod": page("pod.html"), "/samurai": page("samurai.html"), "/gas": page("gas.html"), "/games": page("games.html"), "/poetry": page("poetry.html"), "/world": worldPage(), "/nature": naturePage(), "/orca": orcaPage() };
 // /card is the NFC business-card landing page; the tag on the card carries only this URL.
 const VCARD = ["BEGIN:VCARD", "VERSION:3.0", "N:Alvord;Alex;;;", "FN:Alex Alvord", "ORG:Cloud Lab Works LLC", "TITLE:Principal Architect", "EMAIL;TYPE=INTERNET,WORK:alex@cloudlabworks.dev", "URL:https://cloudlabworks.dev", "URL;TYPE=LinkedIn:https://www.linkedin.com/in/alexalvord/", "ADR;TYPE=WORK:;;;Duvall;WA;;USA", "NOTE:Hybrid multicloud and AI infrastructure. A working lab, open to collaboration on projects. cloudlabworks.dev", "END:VCARD"].join("\r\n") + "\r\n";
 // Scripts, self-hosted (CSP script-src 'self'): /live.js = the browser instrument + visualizer; /art.js = the nightly haiku on /art; /menu.js = keyboard handling for the hamburger drawer.
