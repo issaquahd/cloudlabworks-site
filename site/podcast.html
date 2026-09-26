@@ -74,6 +74,36 @@ footer{background:rgba(11,18,32,.6)}footer,footer a{color:#cbd5e1}
     </details>
   </section>
 
+  <section class="panel" id="ep02">
+    <h2>Episode 2: Pod</h2>
+    <p class="meta">2026-09-25 · 2:11 · Kubernetes · a thing-episode</p>
+    <video src="/media/podcast-ep02.mp4" poster="/media/podcast-ep02-poster.jpg" width="1280" height="720" controls playsinline preload="metadata" controlsList="nodownload noremoteplayback" disablePictureInPicture aria-label="Episode 2: Waku the orca beside a faceted seed pod that opens to reveal the containers living inside it" oncontextmenu="return false" draggable="false"></video>
+    <audio controls preload="metadata" src="/media/podcast-ep02.mp3" aria-label="Episode 2, audio only"></audio>
+    <p>Kubernetes will not run a container for you. Not one, not ever. It runs Pods, and a Pod is a husk that sits there doing nothing interesting until it opens. When it does, the containers are inside, and the teaching is the shape: everything in there shares one address, shares storage, and shares a fate. The Pod starts, they all start. The Pod dies, they all die.</p>
+    <p>This is a thing-episode, so the character <em>is</em> the concept — no room, no props, just the object changing shape. The sidecar rides along. The Pod gets replaced rather than repaired, because Pods are not pets, and the payoff is the part people find rude: you almost never make one yourself. A Deployment does it for you, and everything above a Pod is a nicer way of asking for one.</p>
+    <details>
+      <summary>Transcript</summary>
+      <p>Everybody says containers. Containers this, containers that. Here is the strange part. Kubernetes will not run a container for you. Not one. Not ever.</p>
+      <p>It runs these instead. This is a Pod. It is the smallest thing Kubernetes knows how to put on a machine.</p>
+      <p>So what is a Pod? Looks like a seed pod. Sits there. Does nothing interesting. Until you open it.</p>
+      <p>There they are. Containers. A Pod is a wrapper, and the containers live inside it.</p>
+      <p>Now here is the thing worth remembering. Everything in that Pod shares one address. One IP. They talk to each other on localhost, like neighbours sharing a hallway.</p>
+      <p>They share storage too. Mount a volume into the Pod and every container inside can reach the same files.</p>
+      <p>And they share a fate. The Pod starts, they all start. The Pod dies, they all die. Nobody gets left behind and nobody survives alone.</p>
+      <p>Most of the time a Pod holds exactly one container. That is normal. That is boring. Boring is good.</p>
+      <p>Sometimes there is a second one, riding along. A sidecar. It ships the logs, or handles the traffic, so the main container can do one job well.</p>
+      <p>Now the part people find rude. Pods are not pets. They get replaced. When one dies, Kubernetes does not repair it. It builds a fresh one.</p>
+      <p>Which means you almost never make a Pod yourself. You describe what you want, and a Deployment makes the Pods, watches them, and replaces them when they go.</p>
+      <p>So why learn the Pod at all, if something else builds them? Because everything above it is just a nicer way of asking for one.</p>
+      <p>A Pod is one or more containers, sharing an address, sharing storage, sharing a fate. That is the whole idea.</p>
+      <p>Next time somebody says they are running a container, you can be insufferable about it. Kubernetes is running a Pod.</p>
+    </details>
+    <details>
+      <summary>How it was made</summary>
+      <p>A thing-episode needs a rig nothing else can reuse, so the Pod was built from scratch: a husk that splits on a hinge, and containers on independent phases inside it, because three things starting on the same frame read as one object. The first cut of this episode failed the series' own animation gate — a third of the frame given to Waku in a bounded water panel left two thirds of it a still daylight ground, and whole-frame motion fell by a third against Episode 1. The fix was staging, not scoring: wider pod bob and sway, the containers desynchronised, sky drift pushed. Motion came back above Episode 1 without animating background purely to feed the metric, which was the thing worth refusing.</p>
+    </details>
+  </section>
+
   <section class="panel">
     <h2>Two kinds of episode</h2>
     <ul class="modes">
