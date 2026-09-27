@@ -87,7 +87,7 @@
           <li>Agents that run infrastructure: Cloudflare Workers + Zero Trust across three domains deployed by agent, scheduled sentinels for site health, a post-to-email pipeline, and Infrastructure as Music (lab state rendered as a live instrument, with a sound graph per recording).</li>
           <li>Governance as code: a constitution with gated vs. ungated action classes, a public <a href="/asr">Architecture Decision Record</a> (66 rows, each with its reach and its undo), a per-task ledger where every "done" carries a receipt the verifier checks against the system, and a persona prompt budget enforced at build time.</li>
           <li>Evidence in the open: a <a href="/tests">Live Test Pipeline</a> that publishes every test result, pass and fail, with identifiers stripped by an enum-only sanitizer and a transition guard, fed by the same poster that reports to the team channels; reviewed for consensus with a peer agent before each build.</li>
-          <li>Three sites, one estate: the public site, a private back office behind Cloudflare Access (Access JWT verified in the Worker, one sign-in, per-area locks), and a household display, all deployed from git by agent.</li>
+          <li>Three sites, one estate: the public site, an identity-gated private back office with per-area authorization enforced independently of the gate, and a household display, all deployed from git by agent.</li>
         </ul>
       </div>
       <div class="job">
