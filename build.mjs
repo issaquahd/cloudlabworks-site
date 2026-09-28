@@ -267,7 +267,10 @@ function orcaPage() {
 }
 
 // ---------- Bloggy Notes: /bloggy-notes combines the Blog index and the Notes list on one page, as two separate sections. /blog and /notes keep working (permalinks, RSS, old links); this is the new nav landing spot. ----------
-const bloggyNotesPage = () => page("bloggy-notes.html").replace("{{BLOG_ROWS}}", inSection(BLOG).length ? inSection(BLOG).map(postItem).join("\n") : emptyItem(BLOG));
+// Notes live in one place only: site/notes.html. /bloggy-notes derives its Notes section from
+// there at build time, so the daily lab-log insert cannot leave the two pages out of step.
+const noteRows = () => { const s = r("notes.html"); const a = s.indexOf('  <article class="note'), b = s.lastIndexOf("  </article>"); return a === -1 || b < a ? "" : s.slice(a, b + "  </article>".length); };
+const bloggyNotesPage = () => page("bloggy-notes.html").replace("{{BLOG_ROWS}}", inSection(BLOG).length ? inSection(BLOG).map(postItem).join("\n") : emptyItem(BLOG)).replace("{{NOTE_ROWS}}", () => noteRows());
 
 // ---------- GitHub contribution graphs (data/github.json from fetch-github.mjs; no runtime requests) ----------
 let gh = {};
