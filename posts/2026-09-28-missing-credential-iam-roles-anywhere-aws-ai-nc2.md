@@ -79,31 +79,6 @@ Every AWS SDK understands that directive. Application code does not change. No k
        └──── all reached via interface endpoints ────┘
 ```
 
-The same path as a rendered graph:
-
-```mermaid
-flowchart TB
-  subgraph VPC["Customer AWS VPC"]
-    subgraph NC2["NC2 cluster · EC2 i7i metal · AHV + CVM"]
-      APP["Fraud scoring app<br/>AHV guest<br/>no instance profile"]
-      LED["Ledger + card data<br/>AHV guest on local NVMe<br/>never leaves cluster"]
-      LED --> APP
-    end
-    RA["IAM Roles Anywhere"]
-    E3["endpoint: rolesanywhere"]
-    E1["endpoint: sagemaker.runtime"]
-    E2["endpoint: bedrock-runtime"]
-    E4["endpoint: s3"]
-    SM["SageMaker · fraud score"]
-    BR["Bedrock · analyst narrative"]
-    S3["S3 · features and artifacts"]
-  end
-  APP -->|"1 · X.509 certificate"| E3 --> RA
-  RA -->|"2 · temporary credentials"| APP
-  APP -->|"3 · signed API call"| E1 --> SM
-  APP --> E2 --> BR
-  APP --> E4 --> S3
-```
 
 ### What it actually unlocks
 
@@ -135,21 +110,6 @@ A fraud ledger with a strict SLA is precisely that profile. Keep the data on fas
 
 None of this is a single-cluster story. Production spans Availability Zones within the region and replicates to a second region.
 
-```mermaid
-flowchart LR
-  subgraph R1["AWS Region 1"]
-    PA["Pod A · AZ-1<br/>production"]
-    PB["Pod B · AZ-2<br/>Metro replica"]
-    W["AZ-3 · Witness<br/>quorum, auto failover"]
-    PA <-->|"AHV Metro · RPO 0"| PB
-    W -.-> PA
-    W -.-> PB
-  end
-  subgraph R2["AWS Region 2"]
-    PC["Pod C · DR<br/>regional AI endpoints<br/>must pre-exist"]
-  end
-  PA -->|"Nutanix DR · async"| PC
-```
 
 ```
   Region 1                            Region 2
